@@ -1,0 +1,85 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+        <mat-card-header>
+            <mat-card-title>{{headerText}}</mat-card-title>
+            <p>
+                Share what your experience was in your classes.
+                To help structure your reviews, try listing what
+                you liked (pros), what you disliked (cons), and
+                then talk about your experience in the class overall.
+            </p>
+        </mat-card-header>
+
+        <form class="login-form" [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+            <mat-card-content>                
+                <mat-form-field class="form-field-full-width">
+                    <mat-label>Course</mat-label>
+                    <mat-select formControlName="course" required>
+                        <div *ngFor="let course of courses">
+                            <mat-option *ngIf="reviewId || !completedReviews.includes(course.ClassName)"
+                                [value]="course.ClassName">
+                                {{course.ClassName}}
+                            </mat-option>
+                        </div>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="form-field-full-width">
+                    <mat-label>Semester</mat-label>
+                    <mat-select formControlName="semester" required>
+                        <mat-option *ngFor="let semester of semesters" [value]="semester">
+                            {{semester}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="form-field-full-width" id="reviewTooShort">
+                    <mat-label>Year</mat-label>
+                    <mat-select formControlName="year" required [ngClass]="{'is-invalid': submitted}">
+                        <mat-option *ngFor="let year of years" [value]="year">
+                            {{year}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="form-field-full-width">
+                    <input matInput placeholder="Review Title" formControlName="title" 
+                           required [ngClass]="{'is-invalid': submitted}">
+                </mat-form-field>
+
+                <mat-form-field class="form-field-full-width">
+                    <textarea matInput type="textarea" rows="20"
+                           formControlName="review" required
+                           [ngClass]="{'is-invalid': submitted}"
+                           placeholder="Review"></textarea>
+                </mat-form-field>
+
+                <div class="review-spacer">
+                    <h2>Course Ratings</h2>
+                    <h3>
+                        Please rate the following on a scale of 1-7&nbsp;&nbsp;&nbsp;
+                        <mat-icon #tooltip="matTooltip" (click)="tooltip.show()" matTooltip="{{scaleTooltip}}" [matTooltipClass]="'multiline-tooltip'">info_outline</mat-icon>
+                    </h3>
+                    <p>1 - The Worst, 2 - Bad, 3 - Below Average, 4 - Average, 5 - Above Average, 6 - Good, 7 - The Best</p>
+                    <p>Difficulty Rating: 1 - Easiest Thing Ever, 7 - Makes You Want To Cry</p>
+                </div>
+                <mat-form-field *ngFor="let field of fields" class="form-field-full-width">
+                    <input matInput type="number" placeholder="{{ field.title }}"
+                           required max="{{ field.max }}" min="{{ field.min }}"
+                            formControlName="{{ field.formName }}">
+                    <mat-hint>{{ field.hint }}</mat-hint>
+                </mat-form-field>
+                <!-- In case you ever want to use a slider for input, here's a good starting point
+                <div class="review-slider-container">
+                    <mat-label class="review-label">Difficulty:</mat-label>
+                    <mat-slider fxFlex class="review-slider" [formControl]="rating" [max]="7" [min]="0" [thumbLabel]="true" [tickInterval]="1"></mat-slider>
+                </div> -->
+            </mat-card-content>
+            <button [disabled]="loading" mat-raised-button color="primary" class="btn-block">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Submit
+            </button>
+            <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+        </form>
+    </mat-card>
+</div>

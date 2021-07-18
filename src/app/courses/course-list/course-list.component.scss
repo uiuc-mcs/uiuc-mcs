@@ -1,0 +1,71 @@
+::ng-deep .mat-cell,
+::ng-deep .mat-header-cell {
+    word-wrap: initial;
+    display: table-cell;
+    padding: 0px 5px !important;
+    line-break: unset;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+table {
+  width: 100%;
+  @media(min-width: 1600px) {
+    width: 1600px;
+  }
+ }
+
+th {
+  font-weight: bold;
+}
+
+::ng-deep .mat-tooltip  {
+  white-space: pre-line !important;
+}
+
+tr.mat-row:hover {
+  background-color: #F5F5F5;
+}
+
+.my-chips {
+  font-size: 11px;
+  min-height: 20px;
+  margin:1px !important;
+  padding: 2px 8px;
+}
+
+.th .center {
+  text-align: center !important;
+}
+
+.constrain-width {
+  max-width: 120px;
+}
+
+.circle {
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  border-radius: 50%;
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+  display: inline-block;
+  margin: 3px;
+}
+
+.summer {
+  color: #fff;
+  background: #ebbc00;
+}
+
+.spring {
+  color: #fff;
+  background: #00c261;
+}
+
+.fall {
+  color: #fff;
+  background: #98482b;
+}

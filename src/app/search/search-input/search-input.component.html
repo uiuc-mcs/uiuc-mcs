@@ -1,0 +1,17 @@
+<input #searchBox
+    type="search"
+    aria-label="search"
+    placeholder="Search courses"
+    (input)="doSearch()"
+    (keyup)="doSearch()"
+    [formControl]="searchControl"
+    [matAutocomplete]="auto">
+<mat-autocomplete class="search-container" 
+                  autoActiveFirstOption 
+                  #auto="matAutocomplete"
+                  (optionSelected)=doSearch()>
+    <mat-option *ngFor="let class of filteredOptions | async" 
+                [value]="class.ClassName">
+        {{class.ClassName}}
+    </mat-option>
+</mat-autocomplete>

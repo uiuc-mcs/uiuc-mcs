@@ -1,0 +1,26 @@
+<mat-toolbar color="primary" class="app-toolbar no-print">
+    <mat-toolbar-row>
+        <button mat-button class="hamburger" (click)="doMenuClick()">
+            <mat-icon svgIcon="menu"></mat-icon>
+        </button>
+        <a class="nav-link home" routerLink="/" fragment="big-image">
+            <img src="{{logoUrl}}" width="45" height="45" title="Home" alt="Home">
+        </a>
+        <app-nav-nodes></app-nav-nodes>
+        <app-search-input class="search-container" fxHide.lt-sm fxShow #searchBox 
+                          (onSearch)="doSearch($event)" (onFocus)="doSearch($event)">
+        </app-search-input>
+        <button fxHide.lt-md mat-raised-button class="donate" (click)="donateLink()">Donate</button>
+        <div class="toolbar-external-icons-container" fxHide.lt-md fxShow>
+            <a href="{{socialURL}}" title="{{socialName}}" attr.aria-label="UT {{properName}} on {{socialName}}">
+                <mat-icon svgIcon="{{socialLogo}}"></mat-icon>
+            </a>
+            <a href="https://github.com/MSCSHub/MSCSHub" title="GitHub" aria-label="UT MSCSO on GitHub">
+                <mat-icon svgIcon="logos:github"></mat-icon>
+            </a>
+            <a href="{{redditURL}}" title="Reddit" attr.aria-label="UT {{properName}} on Reddit">
+                <mat-icon svgIcon="logos:reddit"></mat-icon>
+            </a>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

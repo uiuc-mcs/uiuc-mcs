@@ -1,0 +1,60 @@
+<div class="content">
+  <div class="image-container" #imageContainer>
+    <div class="gradient-container" #gradientContainer>
+      <div>
+        <div fxFlex></div>
+        <mat-chip class="edit-chip" routerLink="/courses/edit/{{courseName}}">
+          Edit<mat-icon class="tab" matTooltip="Edit course details">mode_edit</mat-icon>
+        </mat-chip>
+      </div>
+      <div class="padded-cell white">
+        <h2 class="flat-bottom">{{courseName}}</h2>
+        <h3 class="white">({{courseNumber}})</h3>
+        <h4 class="white">
+          <span *ngIf="course?.SlackChannelLink">Slack Channel Link: <a class="slack-channel-link" href="{{course?.SlackChannelLink}}">#{{course?.SlackChannel}}</a><br></span>
+          <span>Professor: {{course?.Teacher | titlecase}}</span>
+          <span *ngIf="course?.Textbook"><br>Textbook: {{course?.TextbookName}}</span>
+        </h4>
+        <mat-chip-list>
+          <mat-chip>{{course?.category | titlecase}}&nbsp;<mat-icon svgIcon="icons:check"></mat-icon></mat-chip>
+          <div *ngFor="let item of course?.meta | keyvalue">
+            <mat-chip *ngIf="item.value" matTooltip="{{item.value}}" #tooltip="matTooltip" (click)="tooltip.toggle()">{{item.key | titlecase}}&nbsp;<mat-icon>info_outline</mat-icon></mat-chip>
+          </div>
+          <mat-chip *ngFor="let lang of course?.languages">{{lang}}&nbsp;<mat-icon svgIcon="icons:check"></mat-icon></mat-chip>
+          <div *ngFor="let season of course?.season | keyvalue">
+            <mat-chip *ngIf="season.value" matTooltip="{{semesterMatch(season.key | titlecase, objectKeys(course!.semesters))}}" #tooltip="matTooltip" (click)="tooltip.toggle()">
+              {{season.key | titlecase}}&nbsp;<mat-icon svgIcon="icons:{{season.key}}"></mat-icon>
+            </mat-chip>
+          </div>
+        </mat-chip-list>
+      </div>
+    </div>
+  </div>
+  <app-course-card [data]="cards"></app-course-card>
+  <div class="review-spacer" id="review-spacer"></div>
+  <div class="review-controller">
+    <h1>Course Reviews:</h1>
+    <div class="next-prev-container">
+      <span class="page-label">Page {{pageNumber + 1}}</span>
+      <button mat-stroked-button color="primary" [disabled]="disablePrev" (click)="getPrevPage()">Prev</button>
+      <button mat-stroked-button color="primary" [disabled]="disableNext" (click)="getNextPage()">Next</button>
+      <mat-form-field class="order-dropdown" appearance="fill">
+        <mat-select [(value)]="selectedSort" (selectionChange)="newSort($event)">
+          <mat-option *ngFor="let option of orderByOptions" [value]="option">
+            Sort by {{option.displayText}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>      
+    </div>
+  </div>
+  <div class="review-container">
+    <app-review-detail [reviewData]="reviewData" [pageNumber]="pageNumber"></app-review-detail>
+  </div>
+  <div class="review-footer">
+    <div class="next-prev-container">
+      Page {{pageNumber + 1}}
+      <button mat-stroked-button color="primary" [disabled]="disablePrev" (click)="getPrevPage()">Prev</button>
+      <button mat-stroked-button color="primary" [disabled]="disableNext" (click)="getNextPage()">Next</button>
+    </div>
+  </div>
+</div>

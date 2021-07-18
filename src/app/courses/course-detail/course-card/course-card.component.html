@@ -1,0 +1,13 @@
+<div class="grid-container">
+  <div *ngFor="let item of data">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{item.title}}</mat-card-title>
+        <mat-card-subtitle>{{item.subtitle}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        {{item.value ? (item.value | number: '1.0-2') : 'N/A'}}
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

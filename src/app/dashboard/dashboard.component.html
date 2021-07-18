@@ -1,0 +1,28 @@
+<div class="dashboard-header">
+  <span class="dashboard-item dash-image" id="big-image"><img src="{{logoUrl}}"></span>
+  <h1 class="dashboard-item">Welcome to {{courseService.websiteName}}!</h1>
+  <span class="dashboard-item">
+    This is the unofficial site for the University of Texas
+    at Austin Masters of {{courseService.degreeName}}. Here you
+    can find reviews for classes and add your own.
+  </span>
+  <div class="feedback-container">
+    <a mat-button 
+            href="https://github.com/MSCSHub/MSCSHub/issues"
+            class="feedback-button" 
+            color="primary">
+      Found a bug? Want a new feature?<br>Send Feedback
+    </a>
+  </div>
+</div>
+<span class="center-text" fxHide fxShow.lt-md>&#10229; Scroll to see more &#10230;</span>
+<div class="radio-container">
+  <mat-radio-group aria-label="Select an option" [(ngModel)]="scale">
+    <mat-radio-button [value]=5>Scale of 1-5</mat-radio-button>
+    <mat-radio-button [value]=7>Scale of 1-7</mat-radio-button>
+    <mat-radio-button [value]=10>Scale of 1-10</mat-radio-button>
+  </mat-radio-group>
+</div>
+<div class="cl-container">
+  <app-course-list [scale]="scale"></app-course-list>
+</div>

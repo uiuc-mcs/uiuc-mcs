@@ -1,0 +1,31 @@
+.mat-card-header, .mat-card-title, .mat-card-subtitle {
+  display: flex;
+  justify-content: center;
+}
+
+.mat-card-content {
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 21px;
+}
+
+.mat-card-title {
+  font-size: 20px;
+  margin: 0 -15px;
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: 15px;
+  overflow: hidden;
+  @media (min-width: 970px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  @media (max-width: 969px) {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  }
+  grid-auto-flow: dense;
+  justify-content: center;
+  padding-top: 20px;
+}
