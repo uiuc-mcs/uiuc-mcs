@@ -722,7 +722,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                <i>Default value: </i><code>^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+.)?[a-zA-Z]+.)?utexas.edu</code>
+                                <i>Default value: </i><code>^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+.)?[a-zA-Z]+.)?illinois.edu</code>
                             </td>
                         </tr>
                 </tbody>
@@ -881,7 +881,7 @@ export class RegisterComponent implements OnInit {
   submitted: boolean &#x3D; false
   returnUrl: string &#x3D; &#x27;/&#x27;
   error: string &#x3D; &#x27;&#x27;
-  emailRegex: string &#x3D; &quot;^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?utexas\.edu&quot;
+  emailRegex: string &#x3D; &quot;^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?illinois\.edu&quot;
   Semesters &#x3D; [
     &#x27;Fall 2019&#x27;,
     &#x27;Spring 2020&#x27;,
@@ -898,8 +898,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm &#x3D; this.formBuilder.group({
-      // email: [&#x27;&#x27;, [Validators.required, Validators.pattern(this.emailRegex)]],
-      email: [&#x27;&#x27;, [Validators.required]],
+      email: [&#x27;&#x27;, [Validators.required, Validators.pattern(this.emailRegex)]],
       password: [&#x27;&#x27;, [Validators.required, Validators.minLength(6)]],
       firstName: [&#x27;&#x27;, Validators.required],
       lastName: [&#x27;&#x27;, Validators.required],

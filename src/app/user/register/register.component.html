@@ -25,12 +25,11 @@
                 </mat-form-field>
 
                 <mat-form-field class="form-field-full-width">
-                    <!-- <input matInput placeholder="UTexas Email" -->
-                    <input matInput placeholder="Email"
+                    <input matInput placeholder="UIUC Email"
                            formControlName="email"
                            [ngClass]="{'is-invalid': submitted && f.email.errors}">
                     <mat-error *ngIf="f.email.errors">
-                        <!-- Must provide a <strong>@utexas.edu</strong> email. -->
+                        Must provide a <strong>@illinois.edu</strong> email.
                         Must provide an email.
                     </mat-error>
                 </mat-form-field>
