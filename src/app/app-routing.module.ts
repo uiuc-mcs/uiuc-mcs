@@ -44,7 +44,7 @@ const routes: Routes = [
   {path: 'user/reviews', component: ViewUserReviewsComponent, canActivate: [AuthguardGuard]},
   {path: 'sadPanda', component: SadPandaComponent},
   {path: 'thankyou', component: ThankyouComponent},
-  {path: '**', component: NothingHereComponent},
+  {path: '**', component: NothingHereComponent}
 ];
 
 @NgModule({

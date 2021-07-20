@@ -12,7 +12,7 @@
     "ng-deploy": "ng deploy",
     "deploy": "npm run build && npm run deploy-both && npm run doc",
     "doc": "(npm run compodoc) && (cd documentation && git add . && git diff-index --quiet HEAD || (git commit -a -m 'Updated' && git push))",
-    "deploy-mscs": "ng build --configuration=mscs && ng deploy --base-href=https://uiucmcs.org --cname=uiucmcs.org --repo=git@github.com:uiuc-mcs/uiuc-mcs.git --no-build"
+    "deploy-uiuc-mcs": "ng build --configuration=uiuc-mcs && ng deploy --base-href=https://uiucmcs.org --cname=uiucmcs.org --repo=git@github.com:uiuc-mcs/uiuc-mcs.git --no-build"
   },
   "private": true,
   "dependencies": {
