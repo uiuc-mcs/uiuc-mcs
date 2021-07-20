@@ -11,7 +11,7 @@
 
 ## Contributors
 
-Original code forked from [uiuc-mcs](https://github.com/uiuc-mcs/uiuc-mcs)
+Original code forked from [MSCSHub](https://github.com/MSCSHub/MSCSHub)
 
 ## License
 
