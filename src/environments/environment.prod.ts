@@ -1,16 +1,14 @@
 export const environment = {
   production: true,
-  algolia: "6639432e69f6e88a1b0feb7208ffacf4",
-  algoliaIndex: "MSCSHUB",
   website: "computerScience",
   firebase: {
-    apiKey: "AIzaSyB8rANSR3HoQdSprafHYjKw_wI5WOazlgQ",
-    authDomain: "utmcs-1bcf2.firebaseapp.com",
-    databaseURL: "https://utmcs-1bcf2-default-rtdb.firebaseio.com",
-    projectId: "utmcs-1bcf2",
-    storageBucket: "utmcs-1bcf2.appspot.com",
-    messagingSenderId: "669197706574",
-    appId: "1:669197706574:web:e972d2e24776573d60aa1f",
-    measurementId: "G-2LNR16P8J4"
+    apiKey: "AIzaSyDJNQ2n0BIfccr5-QQ80qVx0A6hYYBCo4Y",
+    authDomain: "uiuc-mcs-org.firebaseapp.com",
+    databaseURL: "https://uiuc-mcs-org-default-rtdb.firebaseio.com",
+    projectId: "uiuc-mcs-org",
+    storageBucket: "uiuc-mcs-org.appspot.com",
+    messagingSenderId: "869464868463",
+    appId: "1:869464868463:web:fc955a3ec3cb5807a16f9a",
+    measurementId: "G-E8VEJQTBME"
   }
 };

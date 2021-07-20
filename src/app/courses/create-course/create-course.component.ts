@@ -55,9 +55,9 @@ export class CreateCourseComponent implements OnInit {
       CourseNumber: ['', Validators.required],            // NEED
       DifficultyAvg: [0, Validators.required],
       DifficultyCount: [0, Validators.required],
-      GraphicThumbnail: ['', Validators.required],        // NEED
-      GraphicColor: ['', Validators.required],            // NEED
-      GraphicUrl: ['url(https://www.cs.utexas.edu', Validators.required],              // NEED
+      GraphicThumbnail: ['?', Validators.required],        // NEED
+      GraphicColor: ['?', Validators.required],            // NEED
+      GraphicUrl: ['url(https://ws.engr.illinois.edu/images/block.i.color.png)', Validators.required],              // NEED
       LectureQualityAvg: [0, Validators.required],
       LectureQualityCount: [0, Validators.required],
       PiazzaCommunityAvg: [0, Validators.required],
@@ -66,16 +66,16 @@ export class CreateCourseComponent implements OnInit {
       ProfessorQualityCount: [0, Validators.required],
       RatingAvg: [0, Validators.required],
       RatingCount: [0, Validators.required],
-      Teacher: ['', Validators.required],                 // NEED
+      Teacher: ['?', Validators.required],                 // NEED
       Textbook: [false, Validators.required],             
       TextbookName: ['', Validators.required],
       WorkloadAvg: [0, Validators.required],
       WorkloadCount: [0, Validators.required],
-      category: ['', Validators.required],                // NEED
-      csIsComputerScience: ['', Validators.required],     // NEED
-      csCategory: [''],              // NEED
-      dsIsDataScience: ['', Validators.required],         // NEED
-      dsCategory: [''],              // NEED
+      category: ['?', Validators.required],                // NEED
+      csIsComputerScience: ['true', Validators.required],     // NEED
+      csCategory: ['?'],              // NEED
+      dsIsDataScience: ['true', Validators.required],         // NEED
+      dsCategory: ['?'],              // NEED
       languages: ['', Validators.required],               
       // lastUpdated: ['', Validators.required],
       metaExams: ['', Validators.required],

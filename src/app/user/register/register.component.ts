@@ -19,7 +19,8 @@ export class RegisterComponent implements OnInit {
     'Fall 2019',
     'Spring 2020',
     'Fall 2020',
-    'Spring 2021'
+    'Spring 2021',
+    'Fall 2021',
   ]
 
   constructor(
@@ -30,7 +31,8 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.pattern(this.emailRegex)]],
+      // email: ['', [Validators.required, Validators.pattern(this.emailRegex)]],
+      email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],

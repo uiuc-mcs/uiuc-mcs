@@ -1,14 +1,5 @@
 {
   "projects": {
-    "default": "utmcs-1bcf2"
-  },
-  "targets": {
-    "utmcs-1bcf2": {
-      "hosting": {
-        "utmscs": [
-          "utmcs-1bcf2"
-        ]
-      }
-    }
+    "default": "uiuc-mcs-org"
   }
 }

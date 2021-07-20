@@ -12,15 +12,17 @@ export class NavbarComponent implements OnInit {
   @Output() menuClicked: EventEmitter<boolean> = new EventEmitter<boolean>()
   public currentUrl: string = ''
   menuStatus = false
-  public readonly website: string = environment.website
-  logoUrl: string = this.website === "computerScience" ? "assets/images/logos/Colorwheel/Colorwheel-40-bcs.png" : "assets/images/logos/Colorwheel/TheHubMSDS-128.png"
-  public readonly degreeName: string = this.website === "computerScience" ? "Computer Science" : "Data Science"
-  public readonly websiteName: string = this.website === "computerScience" ? "MSCSHub" : "MSDSHub"
-  public readonly properName: string = this.website === "computerScience" ? "MSCSO" : "MSDSO"
-  public readonly socialName: string = this.website === "computerScience" ? "Slack" : "Discord"
-  public readonly socialURL: string = this.website === "computerScience" ? "https://utmscso.slack.com/archives/C01QM0A19QR" : "https://discord.gg/SDh57AHQu3"
-  public readonly socialLogo: string = this.website === "computerScience" ? "logos:slack" : "logos:discord"
-  public readonly redditURL: string = this.website === "computerScience" ? "https://www.reddit.com/r/mscso" : "https://www.reddit.com/r/msdso"
+  logoUrl: string = "assets/images/logos/Colorwheel/Colorwheel-40-bcs.png"
+  public readonly website: string = "computerScience"
+  public readonly degreeName: string = "Computer Science"
+  public readonly websiteName: string = "UIUC MCS"
+  public readonly properName: string = "uiucmcs.org"
+  public readonly socialName: string = "Slack"
+  public readonly socialURL: string = ""
+  public readonly socialLogo: string = "logos:slack"
+  public readonly redditName: string = "/r/UIUC_MCS"
+  public readonly redditURL: string = "https://www.reddit.com/r/UIUC_MCS"
+  public readonly githubURL: string = "https://github.com/uiuc-mcs/uiuc-mcs"
 
   constructor(
     private router: Router,
@@ -30,7 +32,7 @@ export class NavbarComponent implements OnInit {
     this.currentUrl = this.router.url
   }
 
-  doSearch(event: any){
+  doSearch(event: any) {
     alert(this.currentUrl)
   }
 
