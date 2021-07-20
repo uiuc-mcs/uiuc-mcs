@@ -1,4 +1,4 @@
-# UIUC MCS .org
+# UIUC MCS
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/uiuc-mcs/uiuc-mcs)
 ![GitHub contributors](https://img.shields.io/github/contributors/uiuc-mcs/uiuc-mcs)
@@ -7,7 +7,7 @@
 ![GitHub forks](https://img.shields.io/github/forks/uiuc-mcs/uiuc-mcs)
 ![License](https://img.shields.io/github/license/uiuc-mcs/uiuc-mcs)
 
-[uiuc-mcs.org](https://uiuc-mcs.org) serves information about courses in the Master of Computer Science program at the University of Illinois at Urbana-Champaign (UIUC).
+[uiucmcs.org](https://uiucmcs.org) serves information about courses in the Master of Computer Science program at the University of Illinois at Urbana-Champaign (UIUC).
 
 ## Contributors
 
