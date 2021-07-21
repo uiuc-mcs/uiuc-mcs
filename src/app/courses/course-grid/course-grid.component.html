@@ -3,20 +3,18 @@
     <mat-card>
       <mat-card-subtitle>Filter by Category:</mat-card-subtitle>
       <mat-chip-list multiple>
-        <mat-chip [selected]="isSelected(category)" 
-                  (click)="toggleSelection(category)" 
-                  *ngFor="let category of categories">
-                  {{category | titlecase}}
+        <mat-chip [selected]="isSelected(category)" (click)="toggleSelection(category)"
+          *ngFor="let category of categories">
+          {{category}}
         </mat-chip>
       </mat-chip-list>
     </mat-card>
     <mat-card>
       <mat-card-subtitle>Filter by Language:</mat-card-subtitle>
       <mat-chip-list multiple>
-        <mat-chip [selected]="isSelected(language)"
-                  (click)="toggleSelection(language)" 
-                  *ngFor="let language of languages">
-                  {{language}}
+        <mat-chip [selected]="isSelected(language)" (click)="toggleSelection(language)"
+          *ngFor="let language of languages">
+          {{language}}
         </mat-chip>
       </mat-chip-list>
     </mat-card>
@@ -27,11 +25,16 @@
         <mat-card-title>{{class.ClassName}}</mat-card-title>
         <mat-card-subtitle>{{class.CourseNumber}}</mat-card-subtitle>
       </mat-card-header>
-      <mat-card-content>
+      <!-- <mat-card-content>
         <img src="{{class.GraphicThumbnail}}">
-      </mat-card-content>
+      </mat-card-content> -->
       <mat-chip-list>
-        <mat-chip *ngIf="class.category">{{class.category | titlecase}}</mat-chip>
+        <!-- <mat-chip *ngIf="class.category">{{class.category | titlecase}}</mat-chip> -->
+        <mat-chip *ngFor="let cat of class.category">{{cat}}&nbsp;
+          <!-- <mat-icon svgIcon="icons:check"></mat-icon> -->
+          <!-- <mat-icon>info_outline</mat-icon> -->
+        </mat-chip>
+
         <mat-chip *ngFor="let lang of class.languages">{{lang}}</mat-chip>
       </mat-chip-list>
     </mat-card>

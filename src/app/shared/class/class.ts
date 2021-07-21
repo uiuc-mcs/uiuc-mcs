@@ -1,5 +1,17 @@
 import { Timestamp } from "@firebase/firestore-types";
 
+export const courseCategories = [
+  "Advanced", "Elective", "Machine Learning", "Data Mining",
+  "Data Visualization", "Cloud Computing", "Artificial Intelligence",
+  "Database and Information Systems", "Graphics/HCI", "Parallel Computing",
+  "Programming Languages & Software Engineering", "Scientific Computing",
+  "Systems and Networking"
+] as const
+
+export const courseLanguages = ["C", "C++", "Kotlin", "GoLang", "MATLAB",
+  "Python", "R", "Rust", "No Code"
+] as const
+
 export interface ClassData {
   courseId: string,
   BookUsefulnessAvg: number,
@@ -26,28 +38,30 @@ export interface ClassData {
   TextbookName: string,
   WorkloadAvg: number,
   WorkloadCount: number,
-  category: string,
-  computerScience: {
-    isComputerScience: boolean,
-    category?: string,
-  },
-  dataScience: {
-    isDataScience: boolean,
-    category?: string,
-  },
+  // category: string,
+  category: string[] | null,
+
+  // computerScience: {
+  //   isComputerScience: boolean,
+  //   category?: string,
+  // },
+  // dataScience: {
+  //   isDataScience: boolean,
+  //   category?: string,
+  // },
   languages: string[] | null,
   lastUpdated: Timestamp,
   meta: {
-    exams: boolean, 
-    homework: boolean, 
-    "peer reviewed": boolean, 
-    projects: boolean, 
-    proofs: boolean, 
+    exams: boolean,
+    homework: boolean,
+    "peer reviewed": boolean,
+    projects: boolean,
+    proofs: boolean,
   },
   season: {
     spring: boolean,
     summer: boolean,
     fall: boolean
   },
-  semesters: {[key: string]: number},
+  semesters: { [key: string]: number },
 }

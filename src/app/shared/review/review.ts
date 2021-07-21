@@ -4,13 +4,13 @@ export interface Review {
   bookUsefulness: number,
   classId: string,
   course: string,
-  degreeProgram: degreeProgram,
+  // degreeProgram: degreeProgram,
   difficulty: number,
   exams: true,
   helpfulNegative?: number,
   helpfulPositive?: number,
-  isDataScience?: boolean,
-  isComputerScience?: boolean,
+  // isDataScience?: boolean,
+  // isComputerScience?: boolean,
   homework: true,
   lastUpdated: Timestamp,
   lectureQuality: number,
@@ -36,9 +36,9 @@ export enum reviewFeedbackType {
   undoFeedback = "",
 }
 
-export enum degreeProgram {
-  none = 0,
-  computerScience = 1,
-  dataScience = 2,
-  both = 3,
-}
+// export enum degreeProgram {
+//   none = 0,
+//   computerScience = 1,
+//   dataScience = 2,
+//   both = 3,
+// }

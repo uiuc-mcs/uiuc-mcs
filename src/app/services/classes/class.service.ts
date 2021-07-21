@@ -10,7 +10,7 @@ import { Observable, ReplaySubject } from 'rxjs';
 export class ClassService {
   private _classes: ReplaySubject<ClassData[]> = new ReplaySubject()
   public classes: Observable<ClassData[]> = this._classes.asObservable()
-  public readonly website: string = "computerScience"
+  // public readonly website: string = "computerScience"
   public readonly degreeName: string = "Computer Science"
   public readonly websiteName: string = "UIUC MCS"
   public readonly properName: string = "uiucmcs.org"
@@ -29,8 +29,8 @@ export class ClassService {
     let courseListener = this.afs.collection<ClassData>('Class')
     .valueChanges({idField: 'courseId'})
     .subscribe(data => {
-      data = data.filter(course => course.computerScience.isComputerScience)
-      data.forEach(course => course.category = course.computerScience.category || course.category)
+      // data = data.filter(course => course.computerScience.isComputerScience)
+      // data.forEach(course => course.category = course.computerScience.category || course.category)
       this._classes.next(data)
     })
   }

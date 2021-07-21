@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClassService } from 'src/app/services/classes/class.service';
-import { ClassData } from 'src/app/shared/class/class';
+import { ClassData, courseCategories, courseLanguages} from 'src/app/shared/class/class';
 import { TitleCasePipe } from '@angular/common';
 
 @Component({
@@ -15,8 +15,10 @@ import { TitleCasePipe } from '@angular/common';
 export class CreateCourseComponent implements OnInit {
   courseName: string = ""
   fields: string[] = ["exams", "homework", "projects", "proofs", "peer reviewed", "textbook"]
-  languages: string[] = ["C", "C++", "Kotlin", "GoLang", "MATLAB", "Python", "Rust", "No Code"]
-  categories: string[] = ["Applications", "Systems", "Theory", "Elective"]
+  // languages: string[] = ["C", "C++", "Kotlin", "GoLang", "MATLAB", "Python", "Rust", "No Code"]
+  // categories: string[] = ["Applications", "Systems", "Theory", "Elective"]
+  languages = courseLanguages
+  categories = courseCategories
   courseMetadataForm!: FormGroup
   courseData: ClassData | undefined
 
@@ -28,10 +30,10 @@ export class CreateCourseComponent implements OnInit {
     private router: Router,
     private tc: TitleCasePipe,
   ) {
-    if(this.courseService.website == "dataScience") {
-      this.categories = ["foundations", "elective"]
-      this.languages = ['Python', 'R', 'No Code']
-    }
+    // if(this.courseService.website == "dataScience") {
+    //   this.categories = ["foundations", "elective"]
+    //   this.languages = ['Python', 'R', 'No Code']
+    // }
   }
   classFields = [
     {field: 'ClassName', display: 'Class Name'},
@@ -40,11 +42,11 @@ export class CreateCourseComponent implements OnInit {
     {field: 'GraphicColor', display: 'Graphic Color (from course page - lienar-gradient...)'},
     {field: 'GraphicUrl', display: 'Graphic URL (from course page - url(https://...) )'},
     {field: 'Teacher', display: 'Teacher (separated by &)'},
-    {field: 'category', display: 'Category (if dataScience only this does not get used)'},
-    {field: 'csIsComputerScience', display: 'is Computer Science? boolean true or false'},
-    {field: 'csCategory', display: 'CS category'},
-    {field: 'dsIsDataScience', display: 'is Data Science? boolean true or false'},
-    {field: 'dsCategory', display: 'DS category'},
+    // {field: 'category', display: 'Category (if dataScience only this does not get used)'},
+    // {field: 'csIsComputerScience', display: 'is Computer Science? boolean true or false'},
+    // {field: 'csCategory', display: 'CS category'},
+    // {field: 'dsIsDataScience', display: 'is Data Science? boolean true or false'},
+    // {field: 'dsCategory', display: 'DS category'},
   ]
 
   ngOnInit(): void {
@@ -72,10 +74,10 @@ export class CreateCourseComponent implements OnInit {
       WorkloadAvg: [0, Validators.required],
       WorkloadCount: [0, Validators.required],
       category: ['?', Validators.required],                // NEED
-      csIsComputerScience: ['true', Validators.required],     // NEED
-      csCategory: ['?'],              // NEED
-      dsIsDataScience: ['true', Validators.required],         // NEED
-      dsCategory: ['?'],              // NEED
+      // csIsComputerScience: ['true', Validators.required],     // NEED
+      // csCategory: ['?'],              // NEED
+      // dsIsDataScience: ['true', Validators.required],         // NEED
+      // dsCategory: ['?'],              // NEED
       languages: ['', Validators.required],               
       // lastUpdated: ['', Validators.required],
       metaExams: ['', Validators.required],
@@ -127,14 +129,14 @@ export class CreateCourseComponent implements OnInit {
           WorkloadAvg: this.f.WorkloadAvg.value,
           WorkloadCount: this.f.WorkloadCount.value,
           category: this.f.category.value,
-          computerScience: {
-            isComputerScience: this.f.csIsComputerScience.value === "true" ? true : false,
-            category: this.f.csCategory.value,
-          },
-          dataScience: {
-            isDataScience: this.f.dsIsDataScience.value === "true" ? true : false,
-            category: this.f.dsCategory.value,
-          },
+          // computerScience: {
+          //   isComputerScience: this.f.csIsComputerScience.value === "true" ? true : false,
+          //   category: this.f.csCategory.value,
+          // },
+          // dataScience: {
+          //   isDataScience: this.f.dsIsDataScience.value === "true" ? true : false,
+          //   category: this.f.dsCategory.value,
+          // },
           languages: [],
           meta: {
             exams: this.f.metaExams.value,

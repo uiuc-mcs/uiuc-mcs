@@ -9,8 +9,8 @@ import { ClassData } from '../../shared/class/class'
 })
 export class CourseGridComponent implements OnInit {
   classes: ClassData[] = []
-  categories: string[] = ["Applications", "Systems", "Theory", "Elective"]
-  languages: string[] = ["C", "C++", "Kotlin", "GoLang", "MATLAB", "Python", "Rust", "No Code"]
+  categories: string[] = []
+  languages: string[] = []
   selected: string[] = []
   visibleClasses: ClassData[] = []
   visibleClassesSet: Set<ClassData> = new Set()
@@ -19,19 +19,23 @@ export class CourseGridComponent implements OnInit {
 
   constructor(
     private courses: ClassService,
-  ) { 
-    if(this.courses.website == "dataScience") {
-      this.categories = ["foundations", "elective"]
-      this.languages = ['Python', 'R', 'No Code']
-    }
+  ) {
+    // if (this.courses.website == "dataScience") {
+    //   this.categories = ["foundations", "elective"]
+    //   this.languages = ['Python', 'R', 'No Code']
+    // }
   }
 
   ngOnInit(): void {
     this.courses.classes.subscribe(data => {
       this.classes = data.sort((a, b) => (a.ClassName > b.ClassName) ? 1 : -1)
       this.filterItems()
+      var arrs:any = this.classes.map((x) => { return x.languages})
+      this.languages = Array.from(new Set([].concat.apply([], arrs)))
+      var arrs:any = this.classes.map((x) => { return x.category})
+      this.categories = Array.from(new Set([].concat.apply([], arrs)))
     })
-    document.getElementsByClassName("mat-drawer-content")[0].scroll(0,0)
+    document.getElementsByClassName("mat-drawer-content")[0].scroll(0, 0)
   }
 
   isSelected(item: string): boolean {
@@ -39,7 +43,7 @@ export class CourseGridComponent implements OnInit {
   }
 
   toggleSelection(item: string): void {
-    if(this.selected.includes(item)){
+    if (this.selected.includes(item)) {
       this.selected.splice(this.selected.indexOf(item), 1)
     } else {
       this.selected.push(item)
@@ -52,15 +56,15 @@ export class CourseGridComponent implements OnInit {
     this.selectedCats.clear()
     this.selectedLangs.clear()
     // We switched from a list to a set because we were seeing duplicates. Using a set ensures entries are unique
-    if(this.selected.length === 0){                                                 // If selected is empty
+    if (this.selected.length === 0) {                                                 // If selected is empty
       this.classes.forEach(data => {                                                // Add every class to the visible set
         this.visibleClassesSet.add(data)
       })
     } else {                                                                        // Something is selected
-      for(var i=0; i<this.selected.length; i++){                                    // For every item in this.selected
+      for (var i = 0; i < this.selected.length; i++) {                                    // For every item in this.selected
         let item = this.selected[i]                                                 // Get selection to process
-        if(this.categories.includes(item)){                                         // Check if it's a category
-          this.classes.filter(x => x.category === item).forEach(data => {           // Look for classes with categories that match the chosen cat
+        if (this.categories.includes(item)) {                                         // Check if it's a category
+          this.classes.filter(x => x.category?.includes(item)).forEach(data => {           // Look for classes with categories that match the chosen cat
             this.selectedCats.add(data)                                              // Add it to the set
           })
         } else {                                                                    // Otherwise it's a language
@@ -69,10 +73,10 @@ export class CourseGridComponent implements OnInit {
           })
         }
       }
-      if (this.selectedLangs.size === 0 || this.selectedCats.size === 0){           // If only one field is selected then 
+      if (this.selectedLangs.size === 0 || this.selectedCats.size === 0) {           // If only one field is selected then 
         this.selectedCats.forEach(data => {                                         // Add everything in selectedCats
-          this.visibleClassesSet.add(data)                                          
-        })                                                                          
+          this.visibleClassesSet.add(data)
+        })
         this.selectedLangs.forEach(data => {                                        // Add everything in selectedLangs
           this.visibleClassesSet.add(data)                                          // It looks like we're doing too much work but really one has to be empty
         })                                                                          // Instead of branching we can just do both operations and not care
