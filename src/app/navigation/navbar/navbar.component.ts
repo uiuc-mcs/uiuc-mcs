@@ -1,6 +1,7 @@
+import { AuthService } from 'src/app/services/auth/auth.service';
+// import { Location } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-navbar',
@@ -11,8 +12,13 @@ export class NavbarComponent implements OnInit {
   @Input() drawerFunc: any
   @Output() menuClicked: EventEmitter<boolean> = new EventEmitter<boolean>()
   public currentUrl: string = ''
+  isLoggedIn: boolean = false
   menuStatus = false
-  logoUrl: string = "assets/images/logos/Colorwheel/Colorwheel-40-bcs.png"
+  // logoUrl: string = "assets/images/logos/Colorwheel/Colorwheel-40-bcs.png"
+  navInfo = {
+    login: {title: 'Login', url: '/login'},
+    logout: {title: 'Log Out', url: '/logout'},
+  }
   public readonly website: string = "computerScience"
   public readonly degreeName: string = "Computer Science"
   public readonly websiteName: string = "UIUC MCS"
@@ -26,10 +32,15 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private router: Router,
+    // private location: Location,
+    private auth: AuthService,
   ) { }
 
   ngOnInit(): void {
     this.currentUrl = this.router.url
+    this.auth.isLoggedIn.subscribe(state => {
+      this.isLoggedIn = state
+    })
   }
 
   doSearch(event: any) {
@@ -40,7 +51,11 @@ export class NavbarComponent implements OnInit {
     this.menuClicked.emit()
   }
 
-  donateLink(): void {
-    window.location.href = "https://www.paypal.com/donate?hosted_button_id=8HUJHWGZD4MUG"
+  // donateLink(): void {
+  //   window.location.href = "https://www.paypal.com/donate?hosted_button_id=8HUJHWGZD4MUG"
+  // }
+  
+  logout() {
+    this.auth.logout()
   }
 }

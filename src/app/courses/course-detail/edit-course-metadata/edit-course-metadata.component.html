@@ -11,12 +11,12 @@
           <mat-select formControlName="category" multiple required>
             <mat-option *ngFor="let category of categories" [value]="category">{{category | titlecase}}</mat-option>
           </mat-select>
-          <!-- <mat-select type="boolean" formControlName="category" required>
-            <mat-option *ngFor="let category of categories" value="{{category}}">{{category | titlecase}}</mat-option>
-          </mat-select> -->
-          <mat-hint>What type of credit is this course?</mat-hint>
         </mat-form-field>
-        <mat-divider [inset]="true" [ngClass]="'edit-metadata-divider'"></mat-divider>
+        <mat-checkbox id="spring" formControlName="seasonSpring"
+        style="margin-right: 3rem;">Spring</mat-checkbox>
+        <mat-checkbox id="summer" formControlName="seasonSummer"
+        style="margin-right: 3rem;">Summer</mat-checkbox>
+        <mat-checkbox id="fall" formControlName="seasonFall">Fall</mat-checkbox>
         <mat-form-field class="form-field-full-width">
           <input matInput placeholder="Professor Name" formControlName="professor">
           <mat-hint>Separate professor names with an ampersand ' & '.</mat-hint>
@@ -51,7 +51,7 @@
             <textarea matInput type="textarea" rows="3" placeholder="{{field | titlecase}} Information"
               formControlName="{{field}}"></textarea>
           </mat-form-field>
-          <mat-divider [inset]="true" [ngClass]="'edit-metadata-divider field-divider'"></mat-divider>
+          <!-- <mat-divider [inset]="true" [ngClass]="'edit-metadata-divider field-divider'"></mat-divider> -->
         </div>
         <mat-form-field class="form-field-full-width">
           <mat-label>Languages</mat-label>

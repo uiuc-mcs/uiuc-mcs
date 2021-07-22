@@ -1,12 +1,7 @@
 ::ng-deep .mat-cell,
 ::ng-deep .mat-header-cell {
-    word-wrap: initial;
-    display: table-cell;
-    padding: 0px 5px !important;
-    line-break: unset;
-    white-space: nowrap;
-    overflow: hidden;
-    vertical-align: middle;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.87);
 }
 
 table {
@@ -15,17 +10,22 @@ table {
     width: 1600px;
   }
  }
-
-th {
-  font-weight: bold;
-}
-
+ 
 ::ng-deep .mat-tooltip  {
   white-space: pre-line !important;
 }
 
 tr.mat-row:hover {
   background-color: #F5F5F5;
+}
+
+tr.mat-row, tr.mat-footer-row {
+  height: 37px;
+  cursor: pointer;
+}
+
+tr.mat-header-row {
+  height: 38px;
 }
 
 .my-chips {

@@ -8,9 +8,21 @@ export const courseCategories = [
   "Systems and Networking"
 ] as const
 
-export const courseLanguages = ["C", "C++", "Kotlin", "GoLang", "MATLAB",
-  "Python", "R", "Rust", "No Code"
+export const courseLanguages = ["C", "C++", "JavaScript", "Kotlin", "GoLang",
+  "MATLAB", "Python", "R", "Rust", "No Code"
 ] as const
+
+// export const courseSeasons = [
+//   "spring",
+//   "summer",
+//   "fall"
+// ] as const
+
+// export const courseSeasons = {
+//   spring: false,
+//   summer: false,
+//   fall: false
+// } as const
 
 export interface ClassData {
   courseId: string,
@@ -36,6 +48,7 @@ export interface ClassData {
   Teacher: string,
   Textbook: boolean,
   TextbookName: string,
+  SeasonSpringName: string,
   WorkloadAvg: number,
   WorkloadCount: number,
   // category: string,

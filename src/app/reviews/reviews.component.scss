@@ -31,7 +31,7 @@
 .review-spacer {
   display: flex;
   flex-flow: wrap;
-  justify-content: space-between;
+  // justify-content: space-between;
   margin: 40px 0px 16px 5px;
 }
 
@@ -98,4 +98,12 @@
       min-width: 53px;
     }
   }  
+  .pagination button {
+    margin-right: 4px;
+    padding: 0.16rem 0rem 0.16rem 0rem;
+  }
+  
+  .filters {
+    margin-left: auto;
+  }
 }

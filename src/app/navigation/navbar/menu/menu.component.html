@@ -18,7 +18,7 @@
         </a>
     </li>
     <li fxShow fxHide.lt-md
-        [ngClass]="{selected: currentUrl === navInfo.createReview.url }">
+        *ngIf="isLoggedIn" [ngClass]="{selected: currentUrl === navInfo.createReview.url }">
         <a class="nav-link" routerLink="{{navInfo.createReview.url}}" [title]="navInfo.createReview.title">
             <span class="nav-link-inner">{{ navInfo.createReview.title }}</span>
         </a>
@@ -29,7 +29,7 @@
             <span class="nav-link-inner">{{ navInfo.settings.title }}</span>
         </a>
     </li>
-    <li fxShow fxHide.lt-lg
+    <!-- <li fxShow fxHide.lt-lg
         *ngIf="isLoggedIn" [ngClass]="{selected: currentUrl === navInfo.logout.url }">
         <a class="nav-link" (click)="logout()" [title]="navInfo.logout.title">
             <span class="nav-link-inner">{{ navInfo.logout.title }}</span>
@@ -40,5 +40,5 @@
         <a class="nav-link" routerLink="{{navInfo.login.url}}" [title]="navInfo.login.title">
             <span class="nav-link-inner">{{ navInfo.login.title }}</span>
         </a>
-    </li>
+    </li> -->
 </ul>

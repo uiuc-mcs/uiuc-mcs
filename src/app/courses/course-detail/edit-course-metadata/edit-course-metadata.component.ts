@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClassService } from 'src/app/services/classes/class.service';
-import { ClassData, courseCategories, courseLanguages} from 'src/app/shared/class/class';
+// import { ClassData, courseCategories, courseSeasons, courseLanguages } from 'src/app/shared/class/class';
+import { ClassData, courseCategories, courseLanguages } from 'src/app/shared/class/class';
 import { TitleCasePipe } from '@angular/common';
 
 @Component({
@@ -46,6 +48,9 @@ export class EditCourseMetadataComponent implements OnInit {
     this.courseName = this.route.snapshot.paramMap.get('courseId') || ""
     this.courseMetadataForm = this.formBuilder.group({
       category: ['', Validators.required],
+      seasonSpring: [false, Validators.required],
+      seasonSummer: [false, Validators.required],
+      seasonFall: [false, Validators.required],
       exams: ['', Validators.required],
       examsBool: ['', Validators.required],
       homework: ['', Validators.required],
@@ -74,6 +79,9 @@ export class EditCourseMetadataComponent implements OnInit {
       this.setFieldData(this.f["peer reviewed"], this.f["peer reviewedBool"], this.courseData?.meta['peer reviewed'].toString())
       this.setFieldData(this.f.textbook, this.f.textbookBool, this.courseData?.TextbookName)
       this.f.category.setValue(this.courseData?.category)
+      this.f.seasonSpring.setValue(this.courseData?.season.spring)
+      this.f.seasonSummer.setValue(this.courseData?.season.summer)
+      this.f.seasonFall.setValue(this.courseData?.season.fall)
       this.f.languages.setValue(this.courseData?.languages)
       this.f.professor.setValue(this.courseData?.Teacher)
       this.setFieldData(this.f["slack channel"], this.f["slack channelBool"], "#" + this.courseData?.SlackChannel)
@@ -98,6 +106,12 @@ export class EditCourseMetadataComponent implements OnInit {
       .doc(this.courseData?.courseId)
       .update({
         category: this.f.category.value,
+        season: {
+          spring: this.f.seasonSpring.value,
+          summer: this.f.seasonSummer.value,
+          fall: this.f.seasonFall.value
+        },
+        // semesters: {},
         meta: {
           exams: this.f.examsBool.value === "true" ? this.f.exams.value : "",
           homework: this.f.homeworkBool.value === "true" ? this.f.homework.value : "",

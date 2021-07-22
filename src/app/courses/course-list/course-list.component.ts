@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ClassService } from 'src/app/services/classes/class.service';
@@ -17,10 +17,10 @@ export class CourseListComponent implements AfterViewInit {
     'CourseNumber',
     'ClassName',
     'RatingCount',
-    'RatingAvg',
     'DifficultyAvg',
     'WorkloadAvg',
-    'BookUsefulnessAvg',
+    'RatingAvg',
+    // 'BookUsefulnessAvg',
     'Semester',
   ]
   objectKeys = Object.keys
