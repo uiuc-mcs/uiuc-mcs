@@ -1,12 +1,19 @@
 import { Timestamp } from "@firebase/firestore-types";
 
-export const courseCategories = [
-  "Advanced", "Elective", "Machine Learning", "Data Mining",
-  "Data Visualization", "Cloud Computing", "Artificial Intelligence",
+export const mcsdsCategories = [
+  "MCSDS Advanced", "MCSDS Elective", "Machine Learning", "Data Mining",
+  "Data Visualization", "Cloud Computing"
+]
+
+export const mcsCategories = [
+  "MCS Advanced", "MCS Elective", "Artificial Intelligence",
   "Database and Information Systems", "Graphics/HCI", "Parallel Computing",
   "Programming Languages & Software Engineering", "Scientific Computing",
   "Systems and Networking"
-] as const
+]
+
+export const courseCategories = Array.from(
+  new Set<string>(mcsCategories.concat(mcsdsCategories)))
 
 export const courseLanguages = ["C", "C++", "JavaScript", "Kotlin", "GoLang",
   "MATLAB", "Python", "R", "Rust", "No Code"

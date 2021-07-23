@@ -4,6 +4,16 @@
     color: rgba(0, 0, 0, 0.87);
 }
 
+.filter-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+//   .filter:not(:last-child):before {
+//     mar
+// }
+}
+
 table {
   width: 100%;
   @media(min-width: 1600px) {
