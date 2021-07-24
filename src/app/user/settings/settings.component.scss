@@ -1,3 +1,33 @@
 .font-override {
     color: #262626;
 }
+
+.mat-card {
+    max-width: 515px;
+    width: 100%;
+    padding: 16px;
+    
+    @media(min-width: 600px){
+        max-width: 600px;
+    }
+    @media (max-width: 600px) {
+        padding: 45px 10px 55px;
+    }
+}
+
+mat-card-header > button,
+mat-card-header > div > button {
+  margin-top: -10px;
+}
+
+.list-buttons {
+    display: flex;
+}
+
+.user-reviews-card-content {
+    text-align: center;
+}
+
+.view-own-reviews-nothing-here ::ng-deep .mat-line {
+    white-space: pre-wrap !important;
+}
