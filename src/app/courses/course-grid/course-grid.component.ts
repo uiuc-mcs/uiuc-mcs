@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ClassService } from 'src/app/services/classes/class.service';
-import { ClassData } from '../../shared/class/class'
+import { ClassData, mcsdsCategories, mcsCategories } from '../../shared/class/class'
 
 @Component({
   selector: 'app-course-grid',
@@ -9,7 +9,8 @@ import { ClassData } from '../../shared/class/class'
 })
 export class CourseGridComponent implements OnInit {
   classes: ClassData[] = []
-  categories: string[] = []
+  mcsCats: string[] = mcsCategories
+  mcsdsCats: string[] = mcsdsCategories
   languages: string[] = []
   selected: string[] = []
   visibleClasses: ClassData[] = []
@@ -19,21 +20,14 @@ export class CourseGridComponent implements OnInit {
 
   constructor(
     private courses: ClassService,
-  ) {
-    // if (this.courses.website == "dataScience") {
-    //   this.categories = ["foundations", "elective"]
-    //   this.languages = ['Python', 'R', 'No Code']
-    // }
-  }
+  ) {  }
 
   ngOnInit(): void {
     this.courses.classes.subscribe(data => {
       this.classes = data.sort((a, b) => (a.ClassName > b.ClassName) ? 1 : -1)
       this.filterItems()
-      var arrs:any = this.classes.map((x) => { return x.languages})
+      var arrs: any = this.classes.map((x) => { return x.languages })
       this.languages = Array.from(new Set([].concat.apply([], arrs)))
-      var arrs:any = this.classes.map((x) => { return x.category})
-      this.categories = Array.from(new Set([].concat.apply([], arrs)))
     })
     document.getElementsByClassName("mat-drawer-content")[0].scroll(0, 0)
   }
@@ -63,7 +57,11 @@ export class CourseGridComponent implements OnInit {
     } else {                                                                        // Something is selected
       for (var i = 0; i < this.selected.length; i++) {                                    // For every item in this.selected
         let item = this.selected[i]                                                 // Get selection to process
-        if (this.categories.includes(item)) {                                         // Check if it's a category
+        if (this.mcsCats.includes(item)) {                                         // Check if it's a category
+          this.classes.filter(x => x.category?.includes(item)).forEach(data => {           // Look for classes with categories that match the chosen cat
+            this.selectedCats.add(data)                                              // Add it to the set
+          })
+        } else if (this.mcsdsCats.includes(item)) {                                         // Check if it's a category
           this.classes.filter(x => x.category?.includes(item)).forEach(data => {           // Look for classes with categories that match the chosen cat
             this.selectedCats.add(data)                                              // Add it to the set
           })
