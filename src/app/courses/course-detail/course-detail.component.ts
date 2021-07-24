@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
-import { Review } from '../../shared/review/review';
+import { ratingsToStrings, Review } from '../../shared/review/review';
 import firebase from 'firebase/app'
 
 @Component({
@@ -114,6 +114,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         this.disableNext = true
         this.maxLength = this.reviewData.length
       }
+      this.reviewData = ratingsToStrings(this.reviewData)
     }, error => { console.error("Course Detail: getFirstPage - ", error) })
   }
 
@@ -142,6 +143,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         this.disableNext = true
         this.maxLength = this.reviewData.length
       }
+      this.reviewData = ratingsToStrings(this.reviewData)
     }, error => { console.error("Course Detail: nextPage -", error) })
   }
 

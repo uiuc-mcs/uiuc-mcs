@@ -8,6 +8,7 @@ import { FbUser } from 'src/app/shared/user/user';
 import {Clipboard} from '@angular/cdk/clipboard';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogOnDelete } from 'src/app/shared/dialog/review-delete/dialog-on-delete.component';
+import { NgSwitchDefault } from '@angular/common';
 
 @Component({
   selector: 'app-review-detail',
@@ -28,6 +29,8 @@ export class ReviewDetailComponent implements OnInit {
   userData: FbUser | undefined
   durationInSeconds: number = 3
   pageSizeOptions: number[] = [5, 10, 25, 100]
+  ratingString: string = ''
+  diffString: string = ''
 
   constructor(
     private route: ActivatedRoute,

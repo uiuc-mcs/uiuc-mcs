@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth/auth.service';
 import { ClassService } from '../services/classes/class.service';
 import { ClassData } from '../shared/class/class';
-// import { Review, degreeProgram } from '../shared/review/review';
+import { ratingsToStrings} from '../shared/review/review';
 import { Review } from '../shared/review/review';
 import firebase from 'firebase/app'
 
@@ -114,6 +114,7 @@ export class ReviewsComponent implements OnInit {
         this.disableNext = true
         this.maxLength = this.reviewData.length
       }
+      this.reviewData = ratingsToStrings(this.reviewData)
     }, error => { console.error("Reviews:", error) })
   }
 
@@ -148,6 +149,7 @@ export class ReviewsComponent implements OnInit {
         this.disableNext = true
         this.maxLength = this.reviewData.length
       }
+      this.reviewData = ratingsToStrings(this.reviewData)
     }, error => { console.error("Reviews:", error) })
   }
 
