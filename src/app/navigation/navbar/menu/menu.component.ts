@@ -12,12 +12,12 @@ export class MenuComponent implements OnInit {
   public currentUrl: string = ''
   isLoggedIn: boolean = false
   navInfo = {
+    home: {title: 'List', url: '/home'},
+    courses: {title: 'Grid', url: '/courses'},
     reviews: {title: 'Reviews', url: '/reviews'},
-    courses: {title: 'Courses', url: '/courses'},
     login: {title: 'Login', url: '/login'},
     logout: {title: 'Log Out', url: '/logout'},
     settings: {title: 'User Profile', url: '/settings'},
-    home: {title: 'Home', url: '/home'},
     register: {title: 'Register', url: '/register'},
     createReview: {title: 'Create Review', url: '/createReview'},
   }
