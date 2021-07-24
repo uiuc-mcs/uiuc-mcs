@@ -1,10 +1,28 @@
 <div class="content">
   <div class="filter-cards">
-    <mat-card>
+    <!-- <mat-card>
       <mat-card-subtitle>Filter by Category:</mat-card-subtitle>
       <mat-chip-list multiple>
         <mat-chip [selected]="isSelected(category)" (click)="toggleSelection(category)"
           *ngFor="let category of categories">
+          {{category}}
+        </mat-chip>
+      </mat-chip-list>
+    </mat-card> -->
+    <mat-card>
+      <mat-card-subtitle>Filter by MCS Area:</mat-card-subtitle>
+      <mat-chip-list multiple>
+        <mat-chip [selected]="isSelected(category)" (click)="toggleSelection(category)"
+          *ngFor="let category of mcsCats">
+          {{category}}
+        </mat-chip>
+      </mat-chip-list>
+    </mat-card>
+    <mat-card>
+      <mat-card-subtitle>Filter by MCS-DS Area:</mat-card-subtitle>
+      <mat-chip-list multiple>
+        <mat-chip [selected]="isSelected(category)" (click)="toggleSelection(category)"
+          *ngFor="let category of mcsdsCats">
           {{category}}
         </mat-chip>
       </mat-chip-list>
