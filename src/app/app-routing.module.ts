@@ -17,6 +17,8 @@ import { EditComponent } from './user/edit/edit.component';
 import { EditCourseMetadataComponent } from './courses/course-detail/edit-course-metadata/edit-course-metadata.component';
 import { NothingHereComponent } from './misc/nothing-here/nothing-here.component';
 import { CreateCourseComponent } from './courses/create-course/create-course.component';
+import { PrivacyComponent } from './privacy/privacy.component';
+import { TermsComponent } from './terms/terms.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -36,6 +38,8 @@ const routes: Routes = [
   {path: 'verifyEmail', component: VerifyEmailComponent},
   {path: 'createReview', component: CreateReviewComponent, canActivate: [AuthguardGuard]},
   {path: 'user/edit', component: EditComponent, canActivate: [AuthguardGuard]},
+  {path: 'privacy', component: PrivacyComponent},
+  {path: 'terms', component: TermsComponent},
   {path: '**', component: NothingHereComponent}
 ];
 
