@@ -7,7 +7,7 @@ import { ClassService } from '../services/classes/class.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  scale: number = 5
+  scale: number = 7
 
   constructor(
     public courseService: ClassService
