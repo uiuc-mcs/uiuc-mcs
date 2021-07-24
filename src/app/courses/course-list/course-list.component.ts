@@ -15,7 +15,6 @@ interface FilterOption {
   styleUrls: ['./course-list.component.scss']
 })
 export class CourseListComponent implements AfterViewInit {
-  @Input() scale: number = 7
   classes: ClassData[] = []
   dataSource = new MatTableDataSource<ClassData>()
   displayedColumns: string[] = [

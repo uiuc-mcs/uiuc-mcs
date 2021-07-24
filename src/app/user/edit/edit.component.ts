@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FbUser } from 'src/app/shared/user/user';
+import { MatriculateSemYear } from 'src/app/shared/class/class'
 
 @Component({
   selector: 'app-edit',
@@ -16,12 +17,14 @@ export class EditComponent implements OnInit {
     b_lastName: {name: "lastName", displayName: "Last Name", value: "Name Test", is_input: true},
     c_firstSemester: {name: "firstSemester", displayName: "First Semester", value: "Fall 2020", is_input: false}
   }
-  Semesters = [
-    'Fall 2019',
-    'Spring 2020',
-    'Fall 2020',
-    'Spring 2021'
-  ]
+
+  Semesters = MatriculateSemYear
+  // Semesters = [
+  //   'Fall 2019',
+  //   'Spring 2020',
+  //   'Fall 2020',
+  //   'Spring 2021'
+  // ]
 
   constructor(
     private auth: AuthService,

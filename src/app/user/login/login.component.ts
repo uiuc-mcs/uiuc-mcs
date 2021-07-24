@@ -42,13 +42,13 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true
-    if(this.loginForm?.invalid){
+    if (this.loginForm?.invalid) {
       return
     }
 
     this.loading = true
     this.auth.signIn(this.f.email.value, this.f.password.value)
-      .then(() => {this.loading = false})
+      .then(() => { this.loading = false })
       .catch(error => {
         this.loading = false
         this.processError(error)
@@ -56,9 +56,10 @@ export class LoginComponent implements OnInit {
   }
 
   processError(error: any): void {
-    if(error.code === "auth/user-not-found" || error.code === "auth/wrong-password"){
+    if (error.code === "auth/user-not-found" ||
+      error.code === "auth/wrong-password") {
       this.error = "Your account information was entered incorrectly."
-    // } else if(error.code === "auth/wrong-password") {
+      // } else if(error.code === "auth/wrong-password") {
     } else {
       this.error = error.message
     }

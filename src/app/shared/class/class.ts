@@ -24,6 +24,22 @@ export interface Difficulty {
   view: string;
 }
 
+const firstYear = 2014 // When was the first semester and year?
+const currentYear = (new Date()).getFullYear()
+export const Years: number[] = Array.from(
+  { length: currentYear - firstYear + 1 },
+  (_v, k) => k + firstYear)
+
+export const Semesters: string[] = ["Spring", "Summer", "Fall"]
+
+// MatriculateSemYear = ["2021 Fall", "2021 Summer", "2021 Spring", 
+// "2020 Fall"...]
+export const MatriculateSemYear: string[] = Years.map(String)
+  .reduce((a, v): any =>
+    [...a, ...Semesters.map(x => x + " " + v)],
+    []).reverse();
+
+
 export const Difficulties: Difficulty[] = [
   { value: 5, view: 'Very Hard' },
   { value: 4, view: 'Hard' },
@@ -32,7 +48,7 @@ export const Difficulties: Difficulty[] = [
   { value: 1, view: 'Very Easy' },
 ];
 
-export interface Rating {
+interface Rating {
   value: number;
   view: string;
 }

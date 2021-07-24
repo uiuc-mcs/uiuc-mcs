@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ClassService } from 'src/app/services/classes/class.service';
-import { ClassData, Difficulties, Ratings } from 'src/app/shared/class/class';
+import { ClassData, Difficulties, Ratings, Semesters} from 'src/app/shared/class/class';
 import { DialogReviewSubmission } from 'src/app/shared/dialog/review-submission/dialog-review-submission.component';
 import { DialogReviewTooShort } from 'src/app/shared/dialog/review-too-short/dialog-review-too-short.component';
 import { Review, SemesterYear } from 'src/app/shared/review/review';
@@ -29,7 +29,7 @@ export class CreateReviewComponent implements OnInit {
   years: number[] = [this.currentYear, this.currentYear - 1,
   this.currentYear - 2, this.currentYear - 3, this.currentYear - 4
   ]
-  semesters: string[] = ["Fall", "Summer", "Spring"]
+  semesters: string[] = Semesters.reverse()
   semesterYears: SemesterYear[] = []
   difficulties = Difficulties
   ratings = Ratings
