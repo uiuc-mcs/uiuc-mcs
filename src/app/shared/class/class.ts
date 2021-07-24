@@ -19,17 +19,31 @@ export const courseLanguages = ["C", "C++", "JavaScript", "Kotlin", "GoLang",
   "MATLAB", "Python", "R", "Rust", "No Code"
 ] as const
 
-// export const courseSeasons = [
-//   "spring",
-//   "summer",
-//   "fall"
-// ] as const
+export interface Difficulty {
+  value: number;
+  view: string;
+}
 
-// export const courseSeasons = {
-//   spring: false,
-//   summer: false,
-//   fall: false
-// } as const
+export const Difficulties: Difficulty[] = [
+  { value: 5, view: 'Very Hard' },
+  { value: 4, view: 'Hard' },
+  { value: 3, view: 'Medium' },
+  { value: 2, view: 'Easy' },
+  { value: 1, view: 'Very Easy' },
+];
+
+export interface Rating {
+  value: number;
+  view: string;
+}
+
+export const Ratings: Rating[] = [
+  { value: 5, view: 'Strongly Liked' },
+  { value: 4, view: 'Liked' },
+  { value: 3, view: 'Neutral' },
+  { value: 2, view: 'Disliked' },
+  { value: 1, view: 'Strongly Disliked' },
+];
 
 export interface ClassData {
   courseId: string,

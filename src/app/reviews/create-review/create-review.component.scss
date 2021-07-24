@@ -1,7 +1,19 @@
+.mat-form-field {
+    display: block;
+}
 .mat-card {
-    max-width: 800px;
+    max-width: 515px;
+    width: 100%;
+    padding: 16px;
 }
 
+#course,
+#semester,
+#difficulty,
+#workload,
+#rating {
+    max-width: 350px;
+}
 .review-spacer {
     text-align: center;
     padding-top: 15px;
@@ -13,16 +25,3 @@
 ::ng-deep .mat-tooltip  {
     white-space: pre-line !important;
 }
-
-// .review-slider-container {
-//     align-items: center;
-//     // flex-wrap: wrap;
-// }
-
-// .review-label {
-//     min-width: 100px;
-// }
-
-// .review-slider {
-//     // min-width: 300px;
-// }
