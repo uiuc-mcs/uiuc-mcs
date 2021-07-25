@@ -13,7 +13,6 @@ import { NavbarComponent } from './navigation/navbar/navbar.component';
 import { SearchInputComponent } from './search/search-input/search-input.component';
 import { LoginComponent } from './user/login/login.component';
 import { SettingsComponent } from './user/settings/settings.component';
-// import { AdminComponent } from './user/admin/admin.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 
 // Firebase
@@ -30,7 +29,6 @@ import { RegisterComponent } from './user/register/register.component';
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './user/verify-email/verify-email.component';
 import { CourseListComponent } from './courses/course-list/course-list.component';
-import { CourseCardComponent } from './courses/course-detail/course-card/course-card.component';
 import { CourseGridComponent } from './courses/course-grid/course-grid.component';
 import { CourseGridCardComponent } from './courses/course-grid/course-grid-card/course-grid-card.component';
 import { LogoutComponent } from './user/logout/logout.component';
@@ -62,7 +60,6 @@ import { TermsComponent } from './terms/terms.component'
     SearchInputComponent,
     LoginComponent,
     SettingsComponent,
-    // AdminComponent,
     ReviewsComponent,
     CourseDetailComponent,
     ReviewDetailComponent,
@@ -71,7 +68,6 @@ import { TermsComponent } from './terms/terms.component'
     ForgotPasswordComponent,
     VerifyEmailComponent,
     CourseListComponent,
-    CourseCardComponent,
     CourseGridComponent,
     CourseGridCardComponent,
     LogoutComponent,
