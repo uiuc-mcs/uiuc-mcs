@@ -23,6 +23,7 @@
             <span class="nav-link-inner">{{ navInfo.reviews.title }}</span>
           </a>
         </li>
+        <li fxFlex></li>
         <!-- <li fxShow fxHide.lt-md *ngIf="isLoggedIn" [ngClass]="{selected: currentUrl === navInfo.createReview.url }"> -->
         <li fxShow *ngIf="isLoggedIn" [ngClass]="{selected: currentUrl === navInfo.createReview.url }">
           <a class="nav-link" routerLink="{{navInfo.createReview.url}}" [title]="navInfo.createReview.title">

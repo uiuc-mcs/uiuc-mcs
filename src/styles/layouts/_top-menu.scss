@@ -135,7 +135,7 @@ app-root.folder-tutorial mat-toolbar.mat-toolbar {
   display: flex;
   flex-direction: row;
   align-items: center;
-  // width: 80%;
+  width: 100%;
 
   ul {
     display: flex;
@@ -144,6 +144,7 @@ app-root.folder-tutorial mat-toolbar.mat-toolbar {
     list-style-position: inside;
     padding: 0px;
     margin: 0px;
+    width: 100%;
 
     li {
       padding-bottom: 2px;
