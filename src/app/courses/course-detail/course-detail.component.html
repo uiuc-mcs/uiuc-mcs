@@ -40,31 +40,21 @@
       </div>
     </div>
   </div>
-  <!-- <app-course-card [data]="cards"></app-course-card> -->
-
-
-
-
   <div class="grid-container">
-    <div *ngFor="let item of cards">
+    <div *ngFor="let card of cards">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>{{item.title}}</mat-card-title>
-          <!-- <mat-card-subtitle>{{item.subtitle}}</mat-card-subtitle> -->
+          <mat-card-title>{{card.title}}</mat-card-title>
+          <!-- <mat-card-subtitle>{{card.subtitle}}</mat-card-subtitle> -->
         </mat-card-header>
         <mat-card-content>
-          {{item.value ? (item.value | number: '1.0-2') : 'N/A'}}
+          {{card.value ? (card.value | number: '1.0-2') : 'N/A'}}
         </mat-card-content>
       </mat-card>
     </div>
   </div>
-
-
-
-
   <div class="review-spacer" id="review-spacer"></div>
   <div class="review-controller">
-    <!-- <h1>Course Reviews:</h1> -->
     <div class="next-prev-container">
       <span class="page-label">Page {{pageNumber + 1}}</span>
       <button mat-stroked-button color="primary" [disabled]="disablePrev" (click)="getPrevPage()">Prev</button>

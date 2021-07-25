@@ -8,4 +8,4 @@ Original code forked from [MSCSHub](https://github.com/MSCSHub/MSCSHub)
 
 ## License
 
-This project uses the following license: [AGPLv3](https://www.gnu.org/licenses/agpl-3.0.html).
+This project is licensed under the [AGPLv3](https://www.gnu.org/licenses/agpl-3.0.html).

@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClassService } from 'src/app/services/classes/class.service';
-// import { ClassData, courseCategories, courseSeasons, courseLanguages } from 'src/app/shared/class/class';
 import { ClassData, courseCategories, courseLanguages } from 'src/app/shared/class/class';
 import { TitleCasePipe } from '@angular/common';
 
@@ -17,13 +15,6 @@ import { TitleCasePipe } from '@angular/common';
 export class EditCourseMetadataComponent implements OnInit {
   courseName: string = ""
   fields: string[] = ["exams", "homework", "projects", "proofs", "peer reviewed", "textbook"]
-  // languages: string[] = ["C", "C++", "Kotlin", "GoLang", "MATLAB", "Python", "R", "Rust", "No Code"]
-  // categories: string[] = ["Advanced", "Elective", "Machine Learning", "Data Mining",
-  //   "Data Visualization", "Cloud Computing", "Artificial Intelligence",
-  //   "Database and Information Systems", "Graphics/HCI", "Parallel Computing",
-  //   "Programming Languages & Software Engineering", "Scientific Computing",
-  //   "Systems and Networking"
-  // ]
   languages = courseLanguages
   categories = courseCategories
   courseMetadataForm!: FormGroup
@@ -37,11 +28,6 @@ export class EditCourseMetadataComponent implements OnInit {
     private router: Router,
     private tc: TitleCasePipe,
   ) {
-    // if (false) {
-    //   if(this.courseService.website == "dataScience") {
-    //   this.categories = ["foundations", "elective"]
-    //   this.languages = ['Python', 'R', 'No Code']
-    // }
   }
 
   ngOnInit(): void {
@@ -111,7 +97,6 @@ export class EditCourseMetadataComponent implements OnInit {
           summer: this.f.seasonSummer.value,
           fall: this.f.seasonFall.value
         },
-        // semesters: {},
         meta: {
           exams: this.f.examsBool.value === "true" ? this.f.exams.value : "",
           homework: this.f.homeworkBool.value === "true" ? this.f.homework.value : "",
