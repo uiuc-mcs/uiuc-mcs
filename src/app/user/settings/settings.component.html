@@ -2,25 +2,51 @@
   <mat-card>
     <mat-card-header>
       <mat-card-title>Profile</mat-card-title>
-        <div fxFlex></div>
-        <div class="card-header-buttons">
-          <button mat-icon-button routerLink="/user/edit">
-            <mat-icon matTooltip="Edit profile">mode_edit</mat-icon>
-          </button>
-        </div>
+      <div fxFlex></div>
+      <div class="card-header-buttons">
+        <!-- <button mat-icon-button routerLink="/user/edit"> -->
+        <!-- <button mat-icon-button (click)="onEditClick()">
+          <mat-icon matTooltip="Edit profile">mode_edit</mat-icon>
+        </button> -->
+        <span class="buttons">
+          <button mat-raised-button *ngIf="!editing" (click)="onEditClick()" [disabled]="editing ? true: null"
+            [disableRipple]="true">
+            Edit</button>
+          <button mat-raised-button *ngIf="editing" (click)="onCancelEditClick()" [disableRipple]="true">
+            Cancel</button>
+          <button mat-raised-button *ngIf="editing" (click)="onSubmit()" color="primary"
+            [disabled]="!editing ? true: null" [disableRipple]="true">
+            Save</button>
+        </span>
+      </div>
     </mat-card-header>
     <mat-card-content style="text-align: center;">
       <br>
-      <form class="user-edit-form">
-        <div *ngFor="let item of userInfo | keyvalue">
-          <mat-form-field class="form-field-full-width">
-            <mat-label>{{ item.value.displayName }}</mat-label>
-            <input type="text" matInput disabled placeholder="First Name" value="{{item.value.value}}"
-              class="font-override">
-          </mat-form-field>
-        </div>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="text" disabled matInput placeholder="Email" value="{{userInfo.a_email.value}}">
+      </mat-form-field>
+      <form class="user-edit-form" [formGroup]="editUserDataForm">
+        <mat-form-field>
+          <mat-label>{{ userInfo['b_firstName'].displayName }}</mat-label>
+          <input type="text" matInput placeholder="First Name" value="{{userInfo['b_firstName'].value}}"
+            formControlName="{{userInfo['b_firstName'].name}}">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>{{ userInfo['c_lastName'].displayName }}</mat-label>
+          <input type="text" matInput placeholder="Last Name" value="{{userInfo['c_lastName'].value}}"
+            formControlName="{{userInfo['c_lastName'].name}}">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>First Semester</mat-label>
+          <mat-select formControlName="firstSemester">
+            <mat-option [value]="semester" *ngFor="let semester of Semesters">
+              {{semester}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </form>
-      <br><br>
+      <br><br><br>
       <mat-card-header>
         <mat-card-title>Reviews</mat-card-title>
         <div fxFlex></div>
@@ -30,7 +56,11 @@
             matLine>You haven't created any reviews yet. Click here
             to get started</span></mat-list-item>
         <mat-list-item *ngFor="let review of reviewData" routerLink="/review/{{review.reviewId}}">
-          <span matLine>{{ review.course }}&nbsp; — &nbsp;{{ review.title }}</span>
+          <span>
+            <span matLine>{{ review.course }}</span>
+            <span matLine>{{ review.title }}</span>
+          </span>
+          <div fxFlex></div>
           <div (click)="$event.stopPropagation()" class="list-buttons">
             <button mat-icon-button (click)="openSnackBar('Link copied to clipboard.')">
               <mat-icon>link</mat-icon>

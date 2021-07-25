@@ -13,7 +13,6 @@ import { SettingsComponent } from './user/settings/settings.component';
 import { VerifyEmailComponent } from './user/verify-email/verify-email.component';
 import { AuthguardGuard } from './user/authguard.guard';
 import { LogoutComponent } from './user/logout/logout.component';
-import { EditComponent } from './user/edit/edit.component';
 import { EditCourseMetadataComponent } from './courses/course-detail/edit-course-metadata/edit-course-metadata.component';
 import { NothingHereComponent } from './misc/nothing-here/nothing-here.component';
 import { CreateCourseComponent } from './courses/create-course/create-course.component';
@@ -37,7 +36,6 @@ const routes: Routes = [
   {path: 'passwordReset', component: ForgotPasswordComponent},
   {path: 'verifyEmail', component: VerifyEmailComponent},
   {path: 'createReview', component: CreateReviewComponent, canActivate: [AuthguardGuard]},
-  {path: 'user/edit', component: EditComponent, canActivate: [AuthguardGuard]},
   {path: 'privacy', component: PrivacyComponent},
   {path: 'terms', component: TermsComponent},
   {path: '**', component: NothingHereComponent}

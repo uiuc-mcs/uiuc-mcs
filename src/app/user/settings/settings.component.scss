@@ -2,22 +2,51 @@
     color: #262626;
 }
 
+mat-form-field {
+    width: 100%;
+}
+
+:host ::ng-deep mat-list-item > div > span {
+    overflow: hidden;
+    span{
+        text-align: left !important;
+    }
+}
+
+:host ::ng-deep .mat-card-header-text {
+    display:flex;
+        margin: 0;
+    mat-card-title {
+        align-self: center;
+        margin: 0;
+    }
+}
+    
+mat-card-title {
+    align-self: center;
+}
+
 .mat-card {
-    max-width: 515px;
+    max-width: 450px;
     width: 100%;
     padding: 16px;
-    
-    @media(min-width: 600px){
-        max-width: 600px;
-    }
-    @media (max-width: 600px) {
-        padding: 45px 10px 55px;
-    }
 }
 
 mat-card-header > button,
 mat-card-header > div > button {
   margin-top: -10px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    button {
+        transition: none;
+    }
+    button:not(:last-child) {
+        margin-right: .5rem;
+    }
 }
 
 .list-buttons {

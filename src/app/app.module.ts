@@ -38,7 +38,6 @@ import { DialogSendFeedback } from './shared/dialog/send-feedback/dialog-send-fe
 import { DialogReviewSubmission } from './shared/dialog/review-submission/dialog-review-submission.component';
 import { DialogReviewTooShort } from './shared/dialog/review-too-short/dialog-review-too-short.component';
 import { DialogOnDelete } from './shared/dialog/review-delete/dialog-on-delete.component';
-import { EditComponent } from './user/edit/edit.component';
 import { EditCourseMetadataComponent } from './courses/course-detail/edit-course-metadata/edit-course-metadata.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 import { FooterComponent } from './footer/footer.component';
@@ -75,7 +74,6 @@ import { TermsComponent } from './terms/terms.component'
     DialogNotLoggedIn,
     DialogNotVerified,
     DialogSendFeedback,
-    EditComponent,
     EditCourseMetadataComponent,
     SidenavComponent,
     FooterComponent,
