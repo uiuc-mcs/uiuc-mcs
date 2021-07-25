@@ -12,10 +12,9 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navigation/navbar/navbar.component';
 import { SearchInputComponent } from './search/search-input/search-input.component';
-import { MenuComponent } from './navigation/navbar/menu/menu.component';
 import { LoginComponent } from './user/login/login.component';
 import { SettingsComponent } from './user/settings/settings.component';
-import { AdminComponent } from './user/admin/admin.component';
+// import { AdminComponent } from './user/admin/admin.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 
 // Firebase
@@ -63,10 +62,9 @@ import { TermsComponent } from './terms/terms.component'
     DashboardComponent,
     NavbarComponent,
     SearchInputComponent,
-    MenuComponent,
     LoginComponent,
     SettingsComponent,
-    AdminComponent,
+    // AdminComponent,
     ReviewsComponent,
     CourseDetailComponent,
     ReviewDetailComponent,

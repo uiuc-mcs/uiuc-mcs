@@ -130,11 +130,12 @@ app-root.folder-tutorial mat-toolbar.mat-toolbar {
 }
 
 // TOP MENU
-app-nav-nodes {
+// app-nav-nodes,
+#app-nav-nodes {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 80%;
+  // width: 80%;
 
   ul {
     display: flex;

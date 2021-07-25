@@ -1,5 +1,5 @@
 import { AuthService } from 'src/app/services/auth/auth.service';
-// import { Location } from '@angular/common';
+import { Location } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -16,9 +16,16 @@ export class NavbarComponent implements OnInit {
   menuStatus = false
   // logoUrl: string = "assets/images/logos/Colorwheel/Colorwheel-40-bcs.png"
   navInfo = {
+    home: {title: 'List', url: '/home'},
+    courses: {title: 'Grid', url: '/courses'},
+    reviews: {title: 'Reviews', url: '/reviews'},
     login: {title: 'Login', url: '/login'},
     logout: {title: 'Log Out', url: '/logout'},
+    settings: {title: 'Profile', url: '/settings'},
+    register: {title: 'Register', url: '/register'},
+    createReview: {title: 'Create Review', url: '/createReview'},
   }
+  
   public readonly website: string = "computerScience"
   public readonly degreeName: string = "Computer Science"
   public readonly websiteName: string = "UIUC MCS"
@@ -32,12 +39,15 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private router: Router,
-    // private location: Location,
+    private location: Location,
     private auth: AuthService,
   ) { }
 
   ngOnInit(): void {
-    this.currentUrl = this.router.url
+    // this.currentUrl = this.router.url
+    this.router.events.subscribe((val) => {
+      this.currentUrl = this.location.path();
+    });
     this.auth.isLoggedIn.subscribe(state => {
       this.isLoggedIn = state
     })

@@ -1,37 +1,51 @@
 <mat-toolbar color="primary" class="app-toolbar no-print">
-    <mat-toolbar-row>
-        <button mat-button class="hamburger" (click)="doMenuClick()">
-            <mat-icon svgIcon="menu"></mat-icon>
-        </button>
-        <!-- <a class="nav-link home" routerLink="/" fragment="big-image">
-            <img src="{{logoUrl}}" width="45" height="45" title="Home" alt="Home">
-        </a> -->
-        <app-nav-nodes></app-nav-nodes>
-        <app-search-input class="search-container" fxHide.lt-sm fxShow #searchBox (onSearch)="doSearch($event)"
-            (onFocus)="doSearch($event)">
-        </app-search-input>
-        <!-- <button fxHide.lt-md mat-raised-button class="donate" (click)="donateLink()">Donate</button> -->
-        <!-- <div class="toolbar-external-icons-container" fxHide.lt-md fxShow> -->
-        <!-- <a href="{{socialURL}}" title="{{socialName}}" attr.aria-label="UT {{properName}} on {{socialName}}">
-                <mat-icon svgIcon="{{socialLogo}}"></mat-icon>
-            </a> -->
-        <!-- <a href="{{redditURL}}" title="Reddit" attr.aria-label="UIUC MCS Information on Reddit">
-                <mat-icon svgIcon="logos:reddit"></mat-icon>
-            </a>
-            <a href="{{githubURL}}" title="GitHub" aria-label="UIUC MCS on GitHub">
-                <mat-icon svgIcon="logos:github"></mat-icon>
-            </a>
-        </div> -->
-        <span *ngIf="isLoggedIn" [ngClass]="{selected: currentUrl === navInfo.logout.url }"
-        style="cursor: pointer;">
-            <a class="nav-link" (click)="logout()" [title]="navInfo.logout.title">
-                <span class="nav-link-inner">{{ navInfo.logout.title }}</span>
-            </a>
-        </span>
-        <span *ngIf="!isLoggedIn">
-            <a class="nav-link" routerLink="{{navInfo.login.url}}" [title]="navInfo.login.title">
-                <span class="nav-link-inner">{{ navInfo.login.title }}</span>
-            </a>
-        </span>
-    </mat-toolbar-row>
+  <mat-toolbar-row>
+    <button mat-button class="hamburger" (click)="doMenuClick()">
+      <mat-icon svgIcon="menu"></mat-icon>
+    </button>
+    <div id="app-nav-nodes">
+      <ul role="navigation">
+        <!-- <li fxShow fxHide.lt-md [ngClass]="{selected: currentUrl === navInfo.home.url }"> -->
+        <li fxShow [ngClass]="{selected: currentUrl === navInfo.home.url }">
+          <a class="nav-link" routerLink="{{navInfo.home.url}}" [title]="navInfo.home.title">
+            <span class="nav-link-inner">{{ navInfo.home.title }}</span>
+          </a>
+        </li>
+        <!-- <li fxShow fxHide.lt-xs [ngClass]="{selected: currentUrl === navInfo.courses.url }"> -->
+        <li fxShow [ngClass]="{selected: currentUrl === navInfo.courses.url }">
+          <a class="nav-link" routerLink="{{navInfo.courses.url}}" [title]="navInfo.courses.title">
+            <span class="nav-link-inner">{{ navInfo.courses.title }}</span>
+          </a>
+        </li>
+        <!-- <li fxShow fxHide.lt-xs [ngClass]="{selected: currentUrl === navInfo.reviews.url }"> -->
+        <li fxShow [ngClass]="{selected: currentUrl === navInfo.reviews.url }">
+          <a class="nav-link" routerLink="{{navInfo.reviews.url}}" [title]="navInfo.reviews.title">
+            <span class="nav-link-inner">{{ navInfo.reviews.title }}</span>
+          </a>
+        </li>
+        <!-- <li fxShow fxHide.lt-md *ngIf="isLoggedIn" [ngClass]="{selected: currentUrl === navInfo.createReview.url }"> -->
+        <li fxShow *ngIf="isLoggedIn" [ngClass]="{selected: currentUrl === navInfo.createReview.url }">
+          <a class="nav-link" routerLink="{{navInfo.createReview.url}}" [title]="navInfo.createReview.title">
+            <span class="nav-link-inner">{{ navInfo.createReview.title }}</span>
+          </a>
+        </li>
+        <!-- <li fxShow fxHide.lt-lg *ngIf="isLoggedIn" [ngClass]="{selected: currentUrl === navInfo.settings.url }"> -->
+        <li fxShow *ngIf="isLoggedIn" [ngClass]="{selected: currentUrl === navInfo.settings.url }">
+          <a class="nav-link" routerLink="{{navInfo.settings.url}}" [title]="navInfo.settings.title">
+            <span class="nav-link-inner">{{ navInfo.settings.title }}</span>
+          </a>
+        </li>
+        <li fxShow *ngIf="isLoggedIn" [ngClass]="{selected: currentUrl === navInfo.logout.url }">
+          <a class="nav-link" (click)="logout()" [title]="navInfo.logout.title">
+            <span class="nav-link-inner">{{ navInfo.logout.title }}</span>
+          </a>
+        </li>
+        <li fxShow *ngIf="!isLoggedIn">
+          <a class="nav-link" routerLink="{{navInfo.login.url}}" [title]="navInfo.login.title">
+            <span class="nav-link-inner">{{ navInfo.login.title }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
 </mat-toolbar>
