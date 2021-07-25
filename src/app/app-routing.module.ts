@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { CourseGridComponent } from './courses/course-grid/course-grid.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { CourseListComponent } from './courses/course-list/course-list.component';
 import { ReviewDetailComponent } from './reviews/review-detail/review-detail.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { CreateReviewComponent } from './reviews/create-review/create-review.component';
@@ -21,7 +21,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { TermsComponent } from './terms/terms.component';
 
 const routes: Routes = [
-  {path: '', component: DashboardComponent},
+  {path: '', component: CourseListComponent },
   {path: 'home', redirectTo: '', pathMatch: 'full'},
   {path: 'courses', component: CourseGridComponent},
   {path: 'courses/create', component: CreateCourseComponent},

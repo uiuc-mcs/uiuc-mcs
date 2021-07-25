@@ -9,7 +9,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout'
 
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navigation/navbar/navbar.component';
 import { SearchInputComponent } from './search/search-input/search-input.component';
 import { LoginComponent } from './user/login/login.component';
@@ -59,7 +58,6 @@ import { TermsComponent } from './terms/terms.component'
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
     NavbarComponent,
     SearchInputComponent,
     LoginComponent,
