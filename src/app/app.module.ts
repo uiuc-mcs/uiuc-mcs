@@ -30,7 +30,6 @@ import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.
 import { VerifyEmailComponent } from './user/verify-email/verify-email.component';
 import { CourseListComponent } from './courses/course-list/course-list.component';
 import { CourseGridComponent } from './courses/course-grid/course-grid.component';
-import { CourseGridCardComponent } from './courses/course-grid/course-grid-card/course-grid-card.component';
 import { LogoutComponent } from './user/logout/logout.component';
 import { CreateReviewComponent } from './reviews/create-review/create-review.component';
 import { DialogNotLoggedIn } from './shared/dialog/not-logged-in/dialog-not-logged-in.component';
@@ -69,7 +68,6 @@ import { TermsComponent } from './terms/terms.component'
     VerifyEmailComponent,
     CourseListComponent,
     CourseGridComponent,
-    CourseGridCardComponent,
     LogoutComponent,
     CreateReviewComponent,
     DialogReviewSubmission,
