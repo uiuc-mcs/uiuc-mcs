@@ -31,7 +31,7 @@
         <!-- <app-review-helpfulness [isLoggedIn]="isLoggedIn" [reviewId]="review.reviewId"
           [value]="getFeedbackValue(review.reviewId!)" [positive]="review.helpfulPositive"
           [negative]="review.helpfulNegative"></app-review-helpfulness> -->
-        <mat-chip-list aria-label="Fish selection">
+        <mat-chip-list>
           <mat-chip class="chip-outlined" disabled>{{review.semester}} {{review.year}}</mat-chip>
           <div fxFlex></div>
           <mat-chip class="chip-outlined" [class]="'diff_'+review.difficulty" disabled matTooltip="Difficulty">
