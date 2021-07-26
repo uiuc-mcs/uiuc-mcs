@@ -6,6 +6,8 @@
       <mat-card-header>
         <mat-card-title>
           {{review.course}}
+          <mat-chip class="chip-outlined" disabled style="margin-left: 1rem"
+          >{{review.semester}} {{review.year}}</mat-chip>
         </mat-card-title>
         <div fxFlex></div>
         <div class="card-header-buttons">
@@ -28,19 +30,20 @@
           </p>
         </div>
         <p style="white-space: pre-line;">{{review.review}}</p>
-        <!-- <app-review-helpfulness [isLoggedIn]="isLoggedIn" [reviewId]="review.reviewId"
+      </mat-card-content>
+      <mat-card-footer>
+        <app-review-helpfulness [isLoggedIn]="isLoggedIn" [reviewId]="review.reviewId"
           [value]="getFeedbackValue(review.reviewId!)" [positive]="review.helpfulPositive"
-          [negative]="review.helpfulNegative"></app-review-helpfulness> -->
-        <mat-chip-list>
-          <mat-chip class="chip-outlined" disabled>{{review.semester}} {{review.year}}</mat-chip>
+          [negative]="review.helpfulNegative"></app-review-helpfulness>
           <div fxFlex></div>
+        <mat-chip-list>
           <mat-chip class="chip-outlined" [class]="'diff_'+review.difficulty" disabled matTooltip="Difficulty">
             {{review.difficultyString}}</mat-chip>
           <mat-chip class="chip-outlined" [class]="'rat_'+review.rating" disabled matTooltip="Rating">
             {{review.ratingString}}</mat-chip>
           <mat-chip class="chip-outlined" disabled matTooltip="Workload">{{review.workload}} hrs/wk</mat-chip>
         </mat-chip-list>
-      </mat-card-content>
+      </mat-card-footer>
     </mat-card>
   </div>
 </div>

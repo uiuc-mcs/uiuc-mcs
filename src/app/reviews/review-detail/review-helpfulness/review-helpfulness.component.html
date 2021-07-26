@@ -1,5 +1,5 @@
 <div class="helpful-container">
-    <div class="helpful-label">
+    <!-- <div class="helpful-label">
         <span>Was this review helpful?</span>
         <span class="helpful-vote-container">(
             <span class="helpful-vote-positive">+{{positive}}</span>
@@ -7,15 +7,16 @@
             <span class="helpful-vote-negative">-{{negative}}</span>
             )
         </span>
-    </div>
+    </div> -->
     <mat-button-toggle-group [multiple]="true" name="helpful" 
             aria-label="Helpful" 
             [disabled]="!isLoggedIn"
             matTooltip="Must be logged in."
             [matTooltipDisabled]="isLoggedIn"
-            [value]="value"
+            [value]="value" appearance="legacy"
             (change)="sendReviewFeedback($event)">
-        <mat-button-toggle value="yes">Yes</mat-button-toggle>
-        <mat-button-toggle value="no">No</mat-button-toggle>
+        <mat-button-toggle mat-raised-button [disableRipple]="true"
+        value="yes">Helpful</mat-button-toggle>
+        <!-- <mat-button-toggle value="no">No</mat-button-toggle> -->
     </mat-button-toggle-group>
 </div>

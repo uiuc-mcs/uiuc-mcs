@@ -16,6 +16,12 @@
  font-size: 16px;
 }
 
+.mat-card-footer {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+}
+
 .card-header-buttons {
   display: flex;
   @media(max-width:600px){
@@ -44,10 +50,6 @@ mat-card-header > div > button {
 
 .mat-card {
   margin: 10px 0px;
-}
-
-.mat-card-content{
-  margin: 0px 16px 50px 16px;
 }
 
 .rating-grid {

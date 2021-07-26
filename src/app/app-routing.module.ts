@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: '', component: CourseListComponent },
   {path: 'home', redirectTo: '', pathMatch: 'full'},
   {path: 'courses', component: CourseGridComponent},
-  {path: 'courses/create', component: CreateCourseComponent},
+  {path: 'courses/create', component: CreateCourseComponent, canActivate: [AuthguardGuard]},
   {path: 'courses/:courseId', component: CourseDetailComponent},
   {path: 'courses/edit/:courseId', component: EditCourseMetadataComponent, canActivate: [AuthguardGuard]},
   {path: 'reviews', component: ReviewsComponent},
