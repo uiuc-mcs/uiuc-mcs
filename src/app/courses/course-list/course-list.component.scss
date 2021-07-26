@@ -11,6 +11,17 @@
     overflow-x: hidden;
     overflow-y: hidden;
 }
+.course-list-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
 
 .filter-container {
     display: flex;

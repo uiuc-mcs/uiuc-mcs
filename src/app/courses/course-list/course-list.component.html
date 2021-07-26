@@ -21,9 +21,9 @@
       </mat-form-field>
     </div>
   </span>
-  <div>
-    <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8" [trackBy]="trackById"
-      matSortActive="ClassName" matSortDirection="asc">
+  <div class="table-container mat-elevation-z8">
+    <table mat-table matSort [dataSource]="dataSource" [trackBy]="trackById" matSortActive="ClassName"
+      matSortDirection="asc">
       <ng-container matColumnDef="category">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
         <td mat-cell *matCellDef="let class">{{class.category.join(' ')}}</td>
