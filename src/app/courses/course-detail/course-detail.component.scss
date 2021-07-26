@@ -1,170 +1,185 @@
 h2 {
-  @media (min-width: 500px){
-    font-size: 5rem;
-  }
-  @media (max-width: 500px){
-    font-size: 3.5rem;
-  }
-  line-height: 5rem;
-  font-weight: 900;
-  text-shadow: 1px 1px 1px rgba(51, 63, 72, 0.4);
-  text-transform: uppercase;
-  color: #ffffff;
-  margin-top: 0.75em;
+    @media (min-width: 500px) {
+        font-size: 5rem;
+    }
+    @media (max-width: 500px) {
+        font-size: 3.5rem;
+    }
+    line-height: 5rem;
+    font-weight: 900;
+    text-shadow: 1px 1px 1px rgba(51, 63, 72, 0.4);
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-top: 0.75em;
 }
 
 h3 {
-  font-size: 2.5rem;
-  line-height: 2.75rem;
-  font-weight: 700;
-  margin-top: 1em;
-  margin-bottom: 0px;
-  padding-bottom: 10px;
-  letter-spacing: -0.025rem;
+    font-size: 2.5rem;
+    line-height: 2.75rem;
+    font-weight: 700;
+    margin-top: 1em;
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+    letter-spacing: -0.025rem;
 }
 
 .review-spacer {
-  padding: 20px;
+    padding: 20px;
 }
 
 .review-footer {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.next-prev-container button {
-  margin-right: 4px;
-  padding: 0.16rem 0rem 0.16rem 0rem;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .mat-card {
-  margin: 10px 0px;
+    margin: 10px 0px;
 }
 
-.mat-card-header, .mat-card-title, .mat-card-subtitle {
-  display: flex;
-  justify-content: center;
+.mat-card-header,
+.mat-card-title,
+.mat-card-subtitle {
+    display: flex;
+    justify-content: center;
 }
 
-.mat-card-content{
-  margin: 0px 15px 50px 15px;
-  display: flex;
-  justify-content: center;
-  font-weight: 600;
-  font-size: 21px;
+.mat-card-content {
+    margin: 0px 15px 50px 15px;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 21px;
 }
 
 .mat-card-title {
-  font-size: 20px;
-  margin: 0 -15px;
+    font-size: 20px;
+    margin: 0 -15px;
 }
 
 .grid-container {
-  display: grid;
-  grid-gap: 15px;
-  overflow: hidden;
-  // grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  @media (min-width: 970px) {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-  @media (max-width: 969px) {
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-  }
-  grid-auto-flow: dense;
-  justify-content: center;
-  padding-top: 20px;
+    display: grid;
+    grid-gap: 15px;
+    overflow: hidden;
+    // grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    @media (min-width: 970px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    @media (max-width: 969px) {
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    }
+    grid-auto-flow: dense;
+    justify-content: center;
+    padding-top: 20px;
 }
 
 .padded-cell {
-  padding: 8% 3%;
+    padding: 8% 3%;
 }
 
 .white {
-  color: #ffffff !important;
+    color: #ffffff !important;
 }
 
 .content {
-  color: #545454;
-  font-family: "Libre Franklin", sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  box-sizing: border-box;
-  padding: 0;
-  justify-content: center;
-  max-width: 1180px;
-  margin: 0 auto;
-  margin-top: 20px;
+    color: #545454;
+    font-family: "Libre Franklin", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    box-sizing: border-box;
+    padding: 0;
+    justify-content: center;
+    max-width: 1180px;
+    margin: 0 auto;
+    margin-top: 20px;
 }
 
 .image-container {
-  background-size: contain;
-  background-position: 90% 50%;
-  background-repeat: no-repeat;
-  background-attachment: local;
-  background-color: #005f86;
+    background-size: contain;
+    background-position: 90% 50%;
+    background-repeat: no-repeat;
+    background-attachment: local;
+    background-color: #005f86;
 }
 
 .gradient-container {
-  margin-bottom: 0px;
-  background-size: cover;
+    margin-bottom: 0px;
+    background-size: cover;
 }
 
-::ng-deep .mat-tooltip, .semesters-chip{
-  white-space: pre-line !important;
+::ng-deep .mat-tooltip,
+.semesters-chip {
+    white-space: pre-line !important;
 }
 
 .tab {
-  padding-left: 5px;
+    padding-left: 5px;
 }
 
 .edit-chip {
-  margin-right: 15px;
-  margin-top: 15px;
-  margin-bottom: -15px;
+    margin-right: 15px;
+    margin-top: 15px;
+    margin-bottom: -15px;
 }
 
-
 .order-dropdown {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 .review-controller {
-  display: flex;
-  flex-flow: wrap;
-  justify-content: space-between;
-  margin: 0 0 -16px;
-  
-  ::ng-deep .mat-form-field-infix {
-    border-top: 0.5em solid transparent;
-    max-width: 150px;
-  }
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    margin: 0 0 -16px;
 
-  ::ng-deep .mat-form-field-flex {
-    padding-top: 0px !important;
-    border: 1px solid rgba(0, 0, 0, 0.26);
-    border-radius: 4px 4px 4px 4px !important;
-  }
+    ::ng-deep .mat-form-field-infix {
+        border-top: 0.5em solid transparent;
+        max-width: 150px;
+    }
 
-  ::ng-deep .mat-form-field-underline {
-    width: 0px !important;
-  }
+    ::ng-deep .mat-form-field-flex {
+        padding-top: 0px !important;
+        border: 1px solid rgba(0, 0, 0, 0.26);
+        border-radius: 4px 4px 4px 4px !important;
+    }
 
-  ::ng-deep .mat-select-arrow-wrapper {
-    vertical-align: bottom !important;
-  }
+    ::ng-deep .mat-form-field-underline {
+        width: 0px !important;
+    }
 
-  .page-label {
-    vertical-align: middle;
-    margin-right: 9px;
-  }
-  .next-prev-container button {
-    min-width: 55px;
-  }
+    ::ng-deep .mat-select-arrow-wrapper {
+        vertical-align: bottom !important;
+    }
+
+    .page-label {
+        vertical-align: middle;
+        margin-right: 9px;
+    }
+    //   .next-prev-container button {
+    //     min-width: 55px;
+    //   }
+}
+
+.next-prev-container {
+    width: 100%;
+    flex-wrap: wrap;
+    button {
+        margin-right: 4px;
+        padding: 0.16rem 0rem 0.16rem 0rem;
+    }
+}
+
+.no-reviews {
+    padding-top: 20px;
+    text-align: center;
+}
+
+::ng-deep .mat-form-field-wrapper {
+    padding: 0 !important;
 }
 
 .slack-channel-link {
-  color: white;
+    color: white;
 }
 a:hover {
-  text-decoration-line: underline;
+    text-decoration-line: underline;
 }
