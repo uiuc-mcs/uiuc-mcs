@@ -33,9 +33,6 @@
 table {
     width: 100%;
     overflow-x: auto;
-    @media (min-width: 1600px) {
-        width: 1600px;
-    }
 }
 
 ::ng-deep .mat-tooltip {

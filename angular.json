@@ -156,22 +156,7 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
-          "configurations": {
-            "production": {
-              "buildTarget": "uiuc-mcs-org:build:production",
-              "options": {
-                "base-href": "https://uiucmcs.org", 
-                "cname": "uiucmcs.org"
-              }
-            },
-            "uiuc-mcs": {
-              "buildTarget": "uiuc-mcs-org:build:uiuc-mcs",
-              "options": {
-                "base-href": "https://uiucmcs.org", 
-                "cname": "uiucmcs.org"
-              }
-            }
-          }
+          "options": {}
         }
       }
     }
