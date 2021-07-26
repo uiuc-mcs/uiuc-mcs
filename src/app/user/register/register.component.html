@@ -27,7 +27,7 @@
         <mat-form-field class="form-field-full-width" appearance="outline" floatLabel="auto">
           <mat-label>UIUC Email</mat-label>
           <input matInput placeholder="UIUC Email" formControlName="email"
-            [ngClass]="{'is-invalid': submitted && f.email.errors}">
+            [ngClass]="{'is-invalid': submitted && f.email.errors}" type="text">
           <mat-error *ngIf="f.email.errors">
             Please enter a valid @illinois.edu email.
           </mat-error>
@@ -35,8 +35,8 @@
 
         <mat-form-field class="form-field-full-width" appearance="outline" floatLabel="auto">
           <mat-label>Password</mat-label>
-          <input matInput type="password" formControlName="password"
-            [ngClass]="{'is-invalid': submitted && f.email.errors}" placeholder="Password">
+          <input matInput type="text" formControlName="password" [ngClass]="{'is-invalid': submitted && f.email.errors}"
+            placeholder="Password">
           <mat-error *ngIf="f.password.errors">
             Your password must be at least 6 characters.
           </mat-error>
