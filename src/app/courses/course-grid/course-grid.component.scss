@@ -1,57 +1,63 @@
 .filter-cards {
-  display: grid;
-  justify-content: space-evenly;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 15px;
-  padding-bottom: 0px;
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 15px;
+    padding-bottom: 0px;
 }
 
 .selected {
-  background-color: aquamarine;
+    background-color: aquamarine;
+}
+
+.mat-standard-chip {
+    height: auto;
 }
 
 .course-grid-container {
-  display: grid;
-  grid-gap: 15px;
-  overflow: hidden;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-auto-flow: dense;
-  justify-content: center;
-  align-content: center;
-  padding-top: 20px;
-
-  .mat-card-header, .mat-card-title, .mat-card-subtitle {
-    display: flex;
+    display: grid;
+    grid-gap: 15px;
+    overflow: hidden;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-flow: dense;
     justify-content: center;
-    text-align:center;
-    align-items: center;
-  }
+    align-content: center;
+    padding-top: 20px;
 
-  .mat-card-header {
-    height: 100px;
-  }
+    .mat-card-header,
+    .mat-card-title,
+    .mat-card-subtitle {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+    }
 
-  .mat-chip-list {
-    display: flex;
-    justify-content: center;
-  }
+    .mat-card-header {
+        height: 100px;
+    }
 
-  .mat-chip-list-wrapper {
-    justify-content: center;
-  }
+    .mat-chip-list {
+        display: flex;
+        justify-content: center;
+    }
 
-  img {
-    border: 0;
-    width: 100%;
-    height: auto;
-  }
+    .mat-chip-list-wrapper {
+        justify-content: center;
+    }
+
+    img {
+        border: 0;
+        width: 100%;
+        height: auto;
+    }
 }
 
 .content {
-  box-sizing: border-box;
-  padding: 0;
-  justify-content: center;
-  max-width: 1180px;
-  margin: 0 auto;
-  margin-top: 20px;
+    box-sizing: border-box;
+    padding: 0;
+    justify-content: center;
+    max-width: 1180px;
+    margin: 0 auto;
+    margin-top: 20px;
 }
