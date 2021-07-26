@@ -154,7 +154,6 @@ export class CreateReviewComponent implements OnInit {
     this.submitted = true
     if (this.reviewForm?.invalid) {
       this.error = this.reviewForm.errors
-      console.log(this.reviewForm)
       return
     }
     if (this.wordCountEnforced && this.countWords(this.f.review.value as string) < this.recommendedWordCount) {
@@ -202,7 +201,6 @@ export class CreateReviewComponent implements OnInit {
   openShortReviewDialog() {
     const dialogRef = this.dialog.open(DialogReviewTooShort)
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
       this.wordCountEnforced = result
       if (result) {
         window.location.hash = ""
