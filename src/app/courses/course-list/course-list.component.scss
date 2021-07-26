@@ -4,6 +4,10 @@
     color: rgba(0, 0, 0, 0.87);
 }
 
+::ng-deep .mat-form-field-wrapper {
+    margin-bottom: -1.34375em;
+}
+
 .mat-cell {
     line-break: unset;
     white-space: nowrap;
@@ -28,6 +32,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1.5rem;
+    padding-bottom: 1.34375em;
 }
 
 table {
