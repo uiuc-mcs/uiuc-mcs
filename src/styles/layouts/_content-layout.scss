@@ -2,8 +2,14 @@
     width: 100%;
 }
 
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 body {
     background-color: #e5e5e5;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 main {
@@ -11,6 +17,16 @@ main {
     button {
         min-width: 24px;
     }
+}
+
+.Site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.Site-content {
+    flex: 1;
 }
 
 ul {

@@ -1,30 +1,31 @@
-<app-navbar (menuClicked)="drawer.toggle()"></app-navbar>
-<mat-drawer-container class="sidemenu-container" autosize>
-  <mat-drawer #drawer class="sidemenu-sidenav" mode="side">
-    <app-sidenav (routeSelected)="drawer.close()"></app-sidenav>
-  </mat-drawer>
-  <div class="main-container">
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-    <footer>
-      <div class="footer-links">
-        <a href="https://cs.illinois.edu/academics/graduate/professional-mcs/online-master-computer-science">
-          UIUC MCS Website</a>
-        <a
-          href="https://cs.illinois.edu/academics/graduate/professional-mcs/online-master-computer-science-data-science">
-          UIUC MCS-DS Website</a>
-        <a href="{{redditURL}}">{{redditName}}</a>
-        <a href="https://github.com/uiuc-mcs/uiuc-mcs">Github</a>
-        <a href="https://github.com/uiuc-mcs/uiuc-mcs/issues">
-          Bugs/Features
-        </a>
-      </div>
-      <ul class="footer-ul">
-        <li><a href="/privacy">Privacy</a></li>
-        <li><a href="/terms">Terms</a></li>
-      </ul>
-      <span class="copyright">© {{currentYear}} {{properName}}</span>
-    </footer>
+<header>
+  <app-navbar (menuClicked)="drawer.toggle()"></app-navbar>
+</header>
+  <mat-drawer-container class="sidemenu-container Site-content" autosize>
+    <mat-drawer #drawer class="sidemenu-sidenav" mode="side">
+      <app-sidenav (routeSelected)="drawer.close()"></app-sidenav>
+    </mat-drawer>
+    <div class="main-container">
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </div>
+  </mat-drawer-container>
+<footer>
+  <div class="footer-links">
+    <a href="https://cs.illinois.edu/academics/graduate/professional-mcs/online-master-computer-science">
+      UIUC MCS Website</a>
+    <a href="https://cs.illinois.edu/academics/graduate/professional-mcs/online-master-computer-science-data-science">
+      UIUC MCS-DS Website</a>
+    <a href="{{redditURL}}">{{redditName}}</a>
+    <a href="https://github.com/uiuc-mcs/uiuc-mcs">Github</a>
+    <a href="https://github.com/uiuc-mcs/uiuc-mcs/issues">
+      Bugs/Features
+    </a>
   </div>
-</mat-drawer-container>
+  <ul class="footer-ul">
+    <li><a href="/privacy">Privacy</a></li>
+    <li><a href="/terms">Terms</a></li>
+  </ul>
+  <span class="copyright">© {{currentYear}} {{properName}}</span>
+</footer>
