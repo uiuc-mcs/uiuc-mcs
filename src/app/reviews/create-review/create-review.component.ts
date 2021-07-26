@@ -81,7 +81,7 @@ export class CreateReviewComponent implements OnInit {
     this.auth.userData.subscribe(data => {
       this.userData = data
       this.getUserReviews()
-    })
+    }).unsubscribe()
     this.initializeReviewForm()
     this.loadReview()
   }
@@ -108,7 +108,7 @@ export class CreateReviewComponent implements OnInit {
         const review = item.data() as Review
         this.completedReviews.push(review.course)
       }
-    }, error => { console.error("Create Review:", error) })
+    }, error => { console.error("Create Review:", error) }).unsubscribe();
   }
 
   initializeReviewForm() {
@@ -133,7 +133,7 @@ export class CreateReviewComponent implements OnInit {
     this.reviewForm.controls['timestamp'].setValue(new Date())
     this.auth.userData.subscribe(user => {
       this.reviewForm.controls['userId'].setValue(user.uid)
-    })
+    }).unsubscribe();
   }
 
   get f() {
@@ -195,7 +195,7 @@ export class CreateReviewComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogReviewSubmission)
     dialogRef.afterClosed().subscribe(result => {
       this.router.navigate(['courses', this.reviewForm.controls['course'].value])
-    })
+    }).unsubscribe();
   }
 
   openShortReviewDialog() {
@@ -206,6 +206,6 @@ export class CreateReviewComponent implements OnInit {
         window.location.hash = ""
         window.location.hash = "semester"
       }
-    })
+    }).unsubscribe();
   }
 }
