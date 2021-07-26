@@ -4,78 +4,85 @@
     color: rgba(0, 0, 0, 0.87);
 }
 
+.mat-cell {
+    line-break: unset;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
 .filter-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-//   .filter:not(:last-child):before {
-//     mar
-// }
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
 }
 
 table {
-  width: 100%;
-  @media(min-width: 1600px) {
-    width: 1600px;
-  }
- }
- 
-::ng-deep .mat-tooltip  {
-  white-space: pre-line !important;
+    width: 100%;
+    overflow-x: auto;
+    @media (min-width: 1600px) {
+        width: 1600px;
+    }
+}
+
+::ng-deep .mat-tooltip {
+    white-space: pre-line !important;
 }
 
 tr.mat-row:hover {
-  background-color: #F5F5F5;
+    background-color: #f5f5f5;
 }
 
-tr.mat-row, tr.mat-footer-row {
-  height: 37px;
-  cursor: pointer;
+tr.mat-row,
+tr.mat-footer-row {
+    height: 37px;
+    cursor: pointer;
 }
 
 tr.mat-header-row {
-  height: 38px;
+    height: 38px;
 }
 
 .my-chips {
-  font-size: 11px;
-  min-height: 20px;
-  margin:1px !important;
-  padding: 2px 8px;
+    font-size: 11px;
+    min-height: 20px;
+    margin: 1px !important;
+    padding: 2px 8px;
 }
 
 .th .center {
-  text-align: center !important;
+    text-align: center !important;
 }
 
 .constrain-width {
-  max-width: 120px;
+    max-width: 120px;
 }
 
 .circle {
-  width: 16px;
-  height: 16px;
-  line-height: 16px;
-  border-radius: 50%;
-  font-size: 12px;
-  color: #fff;
-  text-align: center;
-  display: inline-block;
-  margin: 3px;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    border-radius: 50%;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    margin: 3px;
 }
 
 .summer {
-  color: #fff;
-  background: #ebbc00;
+    color: #fff;
+    background: #ebbc00;
 }
 
 .spring {
-  color: #fff;
-  background: #00c261;
+    color: #fff;
+    background: #00c261;
 }
 
 .fall {
-  color: #fff;
-  background: #98482b;
+    color: #fff;
+    background: #98482b;
 }

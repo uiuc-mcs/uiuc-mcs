@@ -40,7 +40,6 @@ import { DialogReviewTooShort } from './shared/dialog/review-too-short/dialog-re
 import { DialogOnDelete } from './shared/dialog/review-delete/dialog-on-delete.component';
 import { EditCourseMetadataComponent } from './courses/course-detail/edit-course-metadata/edit-course-metadata.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
-import { FooterComponent } from './footer/footer.component';
 import { SadPandaComponent } from './misc/sad-panda/sad-panda.component';
 import { ThankyouComponent } from './misc/thankyou/thankyou.component';
 import { NothingHereComponent } from './misc/nothing-here/nothing-here.component';
@@ -76,7 +75,6 @@ import { TermsComponent } from './terms/terms.component'
     DialogSendFeedback,
     EditCourseMetadataComponent,
     SidenavComponent,
-    FooterComponent,
     SadPandaComponent,
     ThankyouComponent,
     NothingHereComponent,
