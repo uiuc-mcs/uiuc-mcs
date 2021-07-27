@@ -1,5 +1,12 @@
 .mat-card {
     max-width: 400px;
+    width: 100%;
+    .mat-form-field {
+    width: 100%;
+    }
+    .mat-error {
+        font-size: 88%;
+    }
 }
 
 .alert {

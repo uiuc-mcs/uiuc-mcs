@@ -11,7 +11,7 @@
           <input matInput placeholder="First Name" formControlName="firstName"
             [ngClass]="{'is-invalid': submitted && f.firstName.errors}">
           <mat-error *ngIf="f.firstName.errors">
-            Please enter your first name. It will never be shown publicly.
+            Please enter your first name. It will not be shown publicly.
           </mat-error>
         </mat-form-field>
 
