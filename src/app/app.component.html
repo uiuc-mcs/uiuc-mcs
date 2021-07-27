@@ -1,16 +1,17 @@
 <header>
   <app-navbar (menuClicked)="drawer.toggle()"></app-navbar>
 </header>
-<mat-drawer-container class="sidemenu-container Site-content" autosize>
-  <mat-drawer #drawer class="sidemenu-sidenav" mode="side">
+<mat-sidenav-container class="sidemenu-container Site-content" autosize>
+  <mat-sidenav #drawer class="sidemenu-sidenav" mode="over"
+  [fixedInViewport]="true">
     <app-sidenav (routeSelected)="drawer.close()"></app-sidenav>
-  </mat-drawer>
+  </mat-sidenav>
   <div class="main-container">
     <main>
       <router-outlet></router-outlet>
     </main>
   </div>
-</mat-drawer-container>
+</mat-sidenav-container>
 <footer>
   <!-- <div class="footer-links">
     <a href="https://cs.illinois.edu/academics/graduate/professional-mcs/online-master-computer-science">
