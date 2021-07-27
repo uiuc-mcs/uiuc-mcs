@@ -1,31 +1,46 @@
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Log In</mat-card-title>
-    </mat-card-header>
-    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<!-- <div class="basic-container slim"> -->
+<div class="comp-container" fxLayout="column" fxLayoutAlign="center center">
+  <div class="login-container basic-container slim">
+    <mat-card class="">
       <mat-card-content>
-        <mat-form-field class="form-field-full-width">
-          <input matInput placeholder="Email" formControlName="email"
-            [ngClass]="{'is-invalid': submitted && f.email.errors}">
-        </mat-form-field>
-        <mat-form-field class="form-field-full-width">
-          <input matInput type="password" formControlName="password"
-            [ngClass]="{'is-invalid': submitted && f.email.errors}" placeholder="Password">
-        </mat-form-field>
+        <mat-card-title>Sign in to your account</mat-card-title>
+        <form class="full-width-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="login-row">
+            <label for="email">Email</label>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="email" id="email"
+                [ngClass]="{'is-invalid': submitted && f.email.errors}">
+              <mat-error *ngIf="loginForm.controls.email.hasError('required')">Please enter your email</mat-error>
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="space-between space-between">
+              <label for="password">Password</label>
+              <a class= "forgot-pass" routerLink="/passwordReset">Forgot your password?</a>
+            </div>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="password" id="password" type="password"
+                [ngClass]="{'is-invalid': submitted && f.email.errors}">
+              <mat-error *ngIf="loginForm.controls.password.hasError('required')">Please enter your password</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="login-row">
+            <button [disabled]="loading" mat-raised-button color="primary">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+              Continue
+            </button>
+          </div>
+          <div *ngIf="error" class="alert">{{error}}</div>
+        </form>
       </mat-card-content>
-      <button [disabled]="loading" mat-raised-button color="primary" class="btn-block">
-        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-        Log In
-      </button>
-      <div *ngIf="error" class="alert">{{error}}</div>
-    </form>
-    <mat-card-footer>
-      <a class="forgot" routerLink="/passwordReset">Forgot your password?</a>
-      <div class="my-divider"></div>
-      <div class="forgot">
-        <button mat-flat-button color="primary" class="btn-create" routerLink="/register">Create New Account</button>
-      </div>
-    </mat-card-footer>
-  </mat-card>
+    </mat-card>
+    <br>
+    <br>
+    <span style="padding-left: 1.5rem;">
+      <span>
+        <span>Don't have an account?
+        </span>
+      </span>
+      <a routerLink="/register">Sign up
+      </a>
+    </span>
+  </div>
 </div>

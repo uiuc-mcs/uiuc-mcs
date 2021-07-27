@@ -2,6 +2,15 @@
 $margin-promotion-sections: 60px;
 $margin-promotion-sections-small: 15px;
 
+.app-toolbar a {
+    // @include font-size(16);
+    // font-weight: 400;
+    font-size: 16px;
+    color: #fff;
+    // font-family: $main-font;
+    text-transform: uppercase;
+}
+
 .header-background {
   overflow: hidden;
 }

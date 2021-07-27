@@ -1,35 +1,34 @@
-// .my-divider {
-//     align-items: center;
-//     border-bottom: 1px solid #dadde1;
-//     display: flex;
-//     margin: 20px 0px;
-//     text-align: center;
+// .comp-container {
+//     font-size: 16px !important;
+// }
+.mat-card-subtitle, .mat-card-content {
+    font-size: 16px;
+}
+
+.login-container {
+    width: 100%;
+}
+
+.mat-card {
+    padding: 56px 48px;
+    width: 100%;
+}
+
+// .label-row {
+//     margin-top: 1.5rem;
+//     width: 100%;
 // }
 
-// .forgot {
-//     display:flex;
-//     justify-content: center;
-//     margin-top: 20px;
-//     color: rgb(57,114,234);
-//     font-weight: 500;
-// }
+.login-row {
+    margin-top: 1.5rem;
+    width: 100%;
+}
 
-// .btn-create {
-//     display:flex;
-//     justify-content: center;
-//     align-items: center;
-//     background-color: rgb(101,181,67);
-// }
-
-// .btn-block{
-//     padding: 5px 0px;
-//     font-weight: 500;
-//     font-size: 18px;
-// }
-
-// .mat-card {
-//     max-width: 400px;
-// }
+label,
+.forgot-pass {
+    font-size: .875rem;
+    cursor: pointer;
+}
 
 // .alert {
 //     width: auto;
