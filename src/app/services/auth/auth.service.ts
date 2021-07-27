@@ -26,7 +26,7 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone,
   ) {
-    this.afs.firestore.enablePersistence().catch(err => console
+    this.afs.firestore.enablePersistence({synchronizeTabs:true}).catch(err => console
       .error("Persistence failed to enable, error:", err))
     let localData = localStorage.getItem('user')
     if (localData != 'null' && localData) {
