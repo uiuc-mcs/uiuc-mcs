@@ -49,8 +49,34 @@ ul {
     &.slim {
         max-width: 450px;
     }
-    .mat-card {
-        max-width: 900px;
+    &.col-form {
+        width: 100%;
+        .mat-card {
+            max-width: 900px;
+            padding: 56px 48px;
+            width: 100%;
+            @media (max-width: $bp-tiny) {
+                padding: 36px 36px;
+            }
+        }
+        .mat-error {
+            font-size: 88%;
+        }
+        .mat-card-content {
+            margin-bottom: 0;
+        }
+    }
+}
+
+form {
+    .form-row {
+        margin-top: 1.5rem;
+        width: 100%;
+    }
+    label,
+    .forgot-pass {
+        font-size: 0.875rem;
+        cursor: pointer;
     }
 }
 

@@ -1,11 +1,12 @@
-<!-- <div class="basic-container slim"> -->
-<div class="comp-container" fxLayout="column" fxLayoutAlign="center center">
-  <div class="login-container basic-container slim">
-    <mat-card class="">
+<div fxLayout="column" fxLayoutAlign="center center">
+  <div class="col-form basic-container slim">
+    <mat-card>
+        <mat-card-header>
+          <mat-card-title>Sign in to your account</mat-card-title>
+        </mat-card-header>
       <mat-card-content>
-        <mat-card-title>Sign in to your account</mat-card-title>
         <form class="full-width-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <div class="login-row">
+          <div class="form-row">
             <label for="email">Email</label>
             <mat-form-field appearance="outline">
               <input matInput formControlName="email" id="email"
@@ -22,7 +23,7 @@
               <mat-error *ngIf="loginForm.controls.password.hasError('required')">Please enter your password</mat-error>
             </mat-form-field>
           </div>
-          <div class="login-row">
+          <div class="form-row">
             <button [disabled]="loading" mat-raised-button color="primary">
               <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
               Continue

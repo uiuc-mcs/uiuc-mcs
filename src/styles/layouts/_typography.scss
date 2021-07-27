@@ -244,3 +244,16 @@ code {
 .course-grid-container .mat-chip-list-wrapper {
     justify-content: center;
 }
+
+.alert {
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+    font-weight: 400;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    // margin-top: 1rem;
+    border: 1px solid #d2d2d7;
+    border-color: rgba(227,0,0,.4);
+    background-color: #fff2f4;
+}
