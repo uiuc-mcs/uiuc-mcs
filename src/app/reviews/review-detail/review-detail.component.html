@@ -37,11 +37,11 @@
           [negative]="review.helpfulNegative"></app-review-helpfulness>
           <div fxFlex></div>
         <mat-chip-list>
-          <mat-chip class="chip-outlined" [class]="'diff_'+review.difficulty" disabled matTooltip="Difficulty">
+          <mat-chip class="chip-outlined hide-under-xs" [class]="'diff_'+review.difficulty" disabled matTooltip="Difficulty">
             {{review.difficultyString}}</mat-chip>
           <mat-chip class="chip-outlined" [class]="'rat_'+review.rating" disabled matTooltip="Rating">
             {{review.ratingString}}</mat-chip>
-          <mat-chip class="chip-outlined" disabled matTooltip="Workload">{{review.workload}} hrs/wk</mat-chip>
+          <mat-chip class="chip-outlined hide-under-xs" disabled matTooltip="Workload">{{review.workload}} hrs/wk</mat-chip>
         </mat-chip-list>
       </mat-card-footer>
     </mat-card>

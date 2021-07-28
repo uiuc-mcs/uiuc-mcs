@@ -17,14 +17,10 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   courseNumber: string = ""
   course?: ClassData
   cards = [
-    { title: 'Reviews', subtitle: 'Total Count', value: 0 },
-    { title: 'Rating', subtitle: 'On a Scale of 1-7', value: 0 },
-    { title: 'Difficulty', subtitle: 'On a Scale of 1-7', value: 0 },
+    { title: 'Reviews', subtitle: '', value: 0 },
+    { title: 'Avg. Difficulty', subtitle: '', value: 0 },
     { title: 'Workload', subtitle: 'Hours Per Week', value: 0 },
-    // {title: 'Reviews', subtitle: 'Total Count', value: 0}, 
-    // {title: 'Rating', subtitle: 'On a Scale of 1-7', value: 0},
-    // {title: 'Difficulty', subtitle: 'On a Scale of 1-7', value: 0},
-    // {title: 'Workload', subtitle: 'Hours Per Week', value: 0},
+    { title: 'Avg. Rating', subtitle: '', value: 0 },
     // {title: 'Textbook', subtitle: 'On a Scale of 1-7', value: 0},
     // {title: 'Lectures', subtitle: 'On a Scale of 1-7', value: 0},
     // {title: 'Professor', subtitle: 'On a Scale of 1-7', value: 0},
@@ -47,8 +43,8 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   selectedSort: { displayText: string, field: string, order: string } = this.orderByOptions[0]
   objectKeys = Object.keys
 
+//   @ViewChild('gradientContainer') gradientContainer!: ElementRef;
   @ViewChild('imageContainer') imageContainer!: ElementRef;
-  @ViewChild('gradientContainer') gradientContainer!: ElementRef;
 
   constructor(
     private route: ActivatedRoute,
@@ -79,8 +75,10 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   }
 
   updateGraphicStyles(): void {
-    if (this.gradientContainer?.nativeElement) {
-      this.renderer.setStyle(this.gradientContainer?.nativeElement, 'background', this.course?.GraphicColor)
+    // if (this.gradientContainer?.nativeElement) {
+    //   this.renderer.setStyle(this.gradientContainer?.nativeElement, 'background', this.course?.GraphicColor)
+    // }
+    if (this.imageContainer?.nativeElement) {
       this.renderer.setStyle(this.imageContainer?.nativeElement, 'background-image', this.course?.GraphicUrl)
     }
   }

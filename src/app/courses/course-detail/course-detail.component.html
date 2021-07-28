@@ -1,50 +1,45 @@
-<div class="content">
-  <div class="image-container" #imageContainer>
-    <div class="gradient-container" #gradientContainer>
+<div class="hero">
+  <div class="hero-back">
+    <div class="image-container" #imageContainer>
       <div>
         <div fxFlex></div>
-        <mat-chip style="display: none !important;" class="edit-chip" routerLink="/courses/edit/{{courseName}}">
+        <mat-chip [disableRipple]="true" style="display: none !important;" class="edit-chip"
+          routerLink="/courses/edit/{{courseName}}">
           Edit<mat-icon class="tab" matTooltip="Edit course details">mode_edit</mat-icon>
         </mat-chip>
       </div>
       <div class="padded-cell white">
-        <h2 class="flat-bottom">{{courseName}}</h2>
+        <h1 class="white">{{courseName}}</h1>
         <h3 class="white">{{courseNumber}}</h3>
-        <h4 class="white">
-          <span *ngIf="course?.Textbook"><br>Textbook: {{course?.TextbookName}}</span>
-        </h4>
+        <!-- <h4 class="white">
+              <span *ngIf="course?.Textbook"><br>Textbook: {{course?.TextbookName}}</span>
+            </h4> -->
         <mat-chip-list>
-          <mat-chip *ngFor="let cat of course?.category">{{cat}}&nbsp;
+          <mat-chip [disableRipple]="true" *ngFor="let cat of course?.category">{{cat}}
           </mat-chip>
-          <div *ngFor="let item of course?.meta | keyvalue">
-            <mat-chip *ngIf="item.value" matTooltip="{{item.value}}" #tooltip="matTooltip" (click)="tooltip.toggle()">
-              {{item.key | titlecase}}&nbsp;<mat-icon>info_outline</mat-icon>
-            </mat-chip>
-          </div>
-          <mat-chip *ngFor="let lang of course?.languages">{{lang}}&nbsp;<mat-icon svgIcon="icons:check"></mat-icon>
+          <!-- <div *ngFor="let item of course?.meta | keyvalue">
+                <mat-chip [disableRipple]="true" *ngIf="item.value" matTooltip="{{item.value}}" #tooltip="matTooltip" (click)="tooltip.toggle()">
+                  {{item.key | titlecase}}<mat-icon>info_outline</mat-icon>
+                </mat-chip>
+              </div> -->
+          <mat-chip [disableRipple]="true" *ngFor="let lang of course?.languages">{{lang}}<mat-icon svgIcon="icons:check">
+            </mat-icon>
           </mat-chip>
           <div *ngFor="let season of course?.season | keyvalue">
-            <mat-chip *ngIf="season.value"
-              matTooltip="{{semesterMatch(season.key | titlecase, objectKeys(course!.semesters))}}"
-              #tooltip="matTooltip" (click)="tooltip.toggle()">
-              {{season.key | titlecase}}&nbsp;<mat-icon svgIcon="icons:{{season.key}}"></mat-icon>
+            <mat-chip [disableRipple]="true" *ngIf="season.value"
+              matTooltip="{{semesterMatch(season.key | titlecase, objectKeys(course!.semesters))}}" #tooltip="matTooltip"
+              (click)="tooltip.toggle()">
+              {{season.key | titlecase}}<mat-icon svgIcon="icons:{{season.key}}"></mat-icon>
             </mat-chip>
           </div>
         </mat-chip-list>
       </div>
     </div>
   </div>
-  <div class="grid-container">
-    <div *ngFor="let card of cards">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>{{card.title}}</mat-card-title>
-          <!-- <mat-card-subtitle>{{card.subtitle}}</mat-card-subtitle> -->
-        </mat-card-header>
-        <mat-card-content>
-          {{card.value ? (card.value | number: '1.0-2') : 'N/A'}}
-        </mat-card-content>
-      </mat-card>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="rating-grid mat-elevation-z1">
+    <div *ngFor="let card of cards" class="rating-grid-cell">
+      {{card.title}} <br>
+      {{card.value ? (card.value | number: '1.0-2') : 'N/A'}}
     </div>
   </div>
   <div *ngIf="!reviewData.length" class="no-reviews">
@@ -54,13 +49,15 @@
         Create Review</button>
     </div>
   </div>
+</div>
+<div class="content">
   <div *ngIf="reviewData.length">
     <div class="review-spacer" id="review-spacer"></div>
     <div class="review-controller">
       <div class="next-prev-container">
-        <span class="page-label">Page {{pageNumber + 1}}</span>
+        <!-- <span class="page-label">Page {{pageNumber + 1}}</span>
         <button mat-stroked-button color="primary" [disabled]="disablePrev" (click)="getPrevPage()">Prev</button>
-        <button mat-stroked-button color="primary" [disabled]="disableNext" (click)="getNextPage()">Next</button>
+        <button mat-stroked-button color="primary" [disabled]="disableNext" (click)="getNextPage()">Next</button> -->
         <div fxFlex></div>
         <mat-form-field class="order-dropdown" appearance="fill">
           <mat-select [(value)]="selectedSort" (selectionChange)="newSort($event)">
@@ -74,12 +71,12 @@
     <div class="review-container">
       <app-review-detail [reviewData]="reviewData" [pageNumber]="pageNumber"></app-review-detail>
     </div>
-    <div class="review-footer">
+    <!-- <div class="review-footer">
       <div class="next-prev-container">
         Page {{pageNumber + 1}}
         <button mat-stroked-button color="primary" [disabled]="disablePrev" (click)="getPrevPage()">Prev</button>
         <button mat-stroked-button color="primary" [disabled]="disableNext" (click)="getNextPage()">Next</button>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
