@@ -1,6 +1,6 @@
 @import "~@angular/material/theming";
 $typography-configuration: mat-typography-config(
-    $body-1: mat-typography-level(16px),
+    $body-1: mat-typography-level(16px, 'normal'),
     $font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
 );
 @include mat-core($typography-configuration);
