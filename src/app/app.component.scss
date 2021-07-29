@@ -1,13 +1,3 @@
-// :host {
-//     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
-//         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-//     font-size: 14px;
-//     color: #333;
-//     box-sizing: border-box;
-//     -webkit-font-smoothing: antialiased;
-//     -moz-osx-font-smoothing: grayscale;
-// }
-
 .toolbar {
     position: absolute;
     top: 0;
@@ -201,6 +191,7 @@ footer {
     justify-content: center;
     min-height: 50px;
     padding-top: 15px;
+    font-size: 12px;
 }
 
 .footer-links {
@@ -216,16 +207,9 @@ footer {
 
 .footer-ul li {
     display: inline;
-    a {
-        font-size: 12px;
-    }
 }
 
 .footer-ul li + li::before {
     content: "•";
     padding: 0px 4px;
-}
-
-.copyright {
-    font-size: 12px;
 }
