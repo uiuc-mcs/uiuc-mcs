@@ -22,13 +22,14 @@
                   {{item.key | titlecase}}<mat-icon>info_outline</mat-icon>
                 </mat-chip>
               </div> -->
-          <mat-chip [disableRipple]="true" *ngFor="let lang of course?.languages">{{lang}}<mat-icon svgIcon="icons:check">
+          <mat-chip [disableRipple]="true" *ngFor="let lang of course?.languages">{{lang}}<mat-icon
+              svgIcon="icons:check">
             </mat-icon>
           </mat-chip>
           <div *ngFor="let season of course?.season | keyvalue">
             <mat-chip [disableRipple]="true" *ngIf="season.value"
-              matTooltip="{{semesterMatch(season.key | titlecase, objectKeys(course!.semesters))}}" #tooltip="matTooltip"
-              (click)="tooltip.toggle()">
+              matTooltip="{{semesterMatch(season.key | titlecase, objectKeys(course!.semesters))}}"
+              #tooltip="matTooltip" (click)="tooltip.toggle()">
               {{season.key | titlecase}}<mat-icon svgIcon="icons:{{season.key}}"></mat-icon>
             </mat-chip>
           </div>
@@ -36,11 +37,18 @@
       </div>
     </div>
   </div>
-  <div fxLayout="row" fxLayoutAlign="space-between center" class="rating-grid mat-elevation-z1">
-    <div *ngFor="let card of cards" class="rating-grid-cell">
-      {{card.title}} <br>
-      {{card.value ? (card.value | number: '1.0-2') : 'N/A'}}
-    </div>
+  <!-- <div fxLayout.sm="column" fxLayoutAlign="space-between center" class="rating-grid mat-elevation-z1"> -->
+  <div fxLayout="row" fxLayout.xs="column" 
+  fxLayoutAlign="space-between center" class="rating-grid mat-elevation-z1">
+      <!-- <div fxflex="" *ngFor="let card of cards.slice(0, 2)" class="rating-grid-cell"> -->
+      <div fxflex="" *ngFor="let card of cards" class="rating-grid-cell">
+        {{card.title}} <br>
+        {{card.value ? (card.value | number: '1.0-2') : 'N/A'}}
+      </div>
+      <!-- <div fxflex="" *ngFor="let card of cards.slice(2, 4)" class="rating-grid-cell">
+        {{card.title}} <br>
+        {{card.value ? (card.value | number: '1.0-2') : 'N/A'}}
+      </div> -->
   </div>
   <div *ngIf="!reviewData.length" class="no-reviews">
     <div>No reviews exist for this class yet.</div>
@@ -68,9 +76,7 @@
         </mat-form-field>
       </div>
     </div>
-    <div class="review-container">
-      <app-review-detail [reviewData]="reviewData" [pageNumber]="pageNumber"></app-review-detail>
-    </div>
+    <app-review-detail [reviewData]="reviewData" [pageNumber]="pageNumber"></app-review-detail>
     <!-- <div class="review-footer">
       <div class="next-prev-container">
         Page {{pageNumber + 1}}

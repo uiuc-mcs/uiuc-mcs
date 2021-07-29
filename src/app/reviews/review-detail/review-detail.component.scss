@@ -5,19 +5,18 @@
 }
 
 .content {
-    color: #545454;
-    font-family: "Libre Franklin", sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    box-sizing: border-box;
-    padding: 0;
-    justify-content: center;
-    max-width: 1180px;
-    margin: 0 auto;
-&:not(:first-child){
-    margin-top: 20px;
-
-}
+    // color: #545454;
+    // font-family: "Libre Franklin", sans-serif;
+    // font-size: 16px;
+    // line-height: 1.5;
+    // box-sizing: border-box;
+    // padding: 0;
+    // justify-content: center;
+    // max-width: 1180px;
+    // margin: 0 auto;
+    &:not(:first-child) {
+        margin-top: 20px;
+    }
 }
 
 .mat-card-header .mat-card-title {
