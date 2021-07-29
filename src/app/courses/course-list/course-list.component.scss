@@ -4,6 +4,13 @@
     color: rgba(0, 0, 0, 0.87);
 }
 
+.mat-column-RatingCount,
+.mat-column-DifficultyAvg,
+.mat-column-WorkloadAvg,
+.mat-column-RatingAvg {
+    text-align: center;
+}
+
 .mat-cell {
     line-break: unset;
     white-space: nowrap;
