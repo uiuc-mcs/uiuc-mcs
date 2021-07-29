@@ -1,6 +1,3 @@
-//@import "layout/_content-layout.scss";
-// @import "~src/styles/layout/content-layout.scss";
-// @import "~styles/layout/content-layout.scss";
 @import "_constants.scss";
 
 h1 {
@@ -40,8 +37,8 @@ h1 {
 //     margin: 0 -15px;
 // }
 .rating-grid {
-    border-bottom-right-radius: 4px;
-    border-bottom-left-radius: 4px;
+    margin-top: 20px;
+    border-radius: 4px;
     color: rgba(0, 0, 0, 0.87);
     background: white;
 }
@@ -86,11 +83,10 @@ h1 {
     }
     grid-auto-flow: dense;
     justify-content: center;
-    padding-top: 20px;
+    padding-top: 12px;
 }
 
 .padded-cell {
-    // padding: 8% 3%;
     padding: 4rem 1.5rem;
 }
 
@@ -131,14 +127,16 @@ h1 {
 }
 
 .review-controller {
+
     display: flex;
     flex-flow: wrap;
     justify-content: space-between;
     margin: 0 0 -16px;
+    margin-top: 12px;
 
     ::ng-deep .mat-form-field-infix {
         border-top: 0.5em solid transparent;
-        max-width: 150px;
+        min-width: 100%;
     }
 
     ::ng-deep .mat-form-field-flex {
