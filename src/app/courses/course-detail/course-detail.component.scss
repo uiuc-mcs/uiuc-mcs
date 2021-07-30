@@ -110,7 +110,8 @@ h1 {
 .hero-back {
     margin-top: -94px;
     padding-top: 90px;
-    background-color: #005f86;
+    // background-color: #005f86;
+    background-color: $uiuc-navy-lite;
 }
 
 ::ng-deep .mat-tooltip,
