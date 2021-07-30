@@ -36,12 +36,6 @@ h1 {
 //     font-size: 20px;
 //     margin: 0 -15px;
 // }
-.rating-grid {
-    margin-top: 20px;
-    border-radius: 4px;
-    color: rgba(0, 0, 0, 0.87);
-    background: white;
-}
 
 .hero {
     margin-left: -$main-pad-side;
@@ -50,6 +44,18 @@ h1 {
         margin-left: -$main-pad-side-mobile;
         margin-right: -$main-pad-side-mobile;
     }
+}
+
+.rating-grid {
+    margin-top: 20px;
+    border-radius: 4px;
+    color: rgba(0, 0, 0, 0.87);
+    background: white;
+}
+
+.rating-grid-title {
+    color: rgba(0, 0, 0, 0.57);
+    font-size: .875rem;
 }
 
 .rating-grid-cell {

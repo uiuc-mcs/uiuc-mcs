@@ -19,7 +19,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   cards = [
     { title: 'Reviews', subtitle: '', value: 0 },
     { title: 'Avg. Difficulty', subtitle: '', value: 0 },
-    { title: 'Workload', subtitle: 'Hours Per Week', value: 0 },
+    { title: 'Avg. Workload', subtitle: 'Hours Per Week', value: 0 },
     { title: 'Avg. Rating', subtitle: '', value: 0 },
     // {title: 'Textbook', subtitle: 'On a Scale of 1-7', value: 0},
     // {title: 'Lectures', subtitle: 'On a Scale of 1-7', value: 0},

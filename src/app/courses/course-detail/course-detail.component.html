@@ -41,8 +41,8 @@
   <div fxLayout="row" fxLayout.xs="column" 
   fxLayoutAlign="space-between center" class="rating-grid mat-elevation-z1">
       <div fxflex="" *ngFor="let card of cards" class="rating-grid-cell">
-        {{card.title}} <br>
-        {{card.value ? (card.value | number: '1.0-2') : 'N/A'}}
+        <span class="rating-grid-title">{{card.title}}</span> <br>
+        <span>{{card.value ? (card.value | number: '1.0-2') : 'N/A'}}</span>
       </div>
   </div>
   <div *ngIf="!reviewData.length" class="no-reviews">
