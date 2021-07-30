@@ -20,29 +20,37 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { TermsComponent } from './terms/terms.component';
 
 const routes: Routes = [
-  {path: '', component: CourseListComponent },
-  {path: 'home', redirectTo: '', pathMatch: 'full'},
-  {path: 'courses', component: CourseGridComponent},
-  {path: 'courses/create', component: CreateCourseComponent, canActivate: [AuthguardGuard]},
-  {path: 'courses/:courseId', component: CourseDetailComponent},
-  {path: 'courses/edit/:courseId', component: EditCourseMetadataComponent, canActivate: [AuthguardGuard]},
-  {path: 'reviews', component: ReviewsComponent},
-  {path: 'review/:id', component: ReviewDetailComponent},
-  {path: 'review/edit/:id', component: CreateReviewComponent},
-  {path: 'settings', component: SettingsComponent, canActivate: [AuthguardGuard]},
-  {path: 'login', component: LoginComponent},
-  {path: 'logout', component: LogoutComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'passwordReset', component: ForgotPasswordComponent},
-  {path: 'verifyEmail', component: VerifyEmailComponent},
-  {path: 'createReview', component: CreateReviewComponent, canActivate: [AuthguardGuard]},
-  {path: 'privacy', component: PrivacyComponent},
-  {path: 'terms', component: TermsComponent},
-  {path: '**', component: NothingHereComponent}
+    { path: '', component: CourseListComponent },
+    { path: 'home', redirectTo: '', pathMatch: 'full' },
+    { path: 'courses', component: CourseGridComponent },
+    { path: 'courses/create', component: CreateCourseComponent, canActivate: [AuthguardGuard] },
+    { path: 'courses/:courseId', component: CourseDetailComponent },
+    { path: 'courses/edit/:courseId', component: EditCourseMetadataComponent, canActivate: [AuthguardGuard] },
+    { path: 'reviews', component: ReviewsComponent },
+    { path: 'review/:id', component: ReviewDetailComponent },
+    { path: 'review/edit/:id', component: CreateReviewComponent },
+    { path: 'settings', component: SettingsComponent, canActivate: [AuthguardGuard] },
+    { path: 'login', component: LoginComponent },
+    { path: 'logout', component: LogoutComponent },
+    { path: 'register', component: RegisterComponent },
+    { path: 'passwordReset', component: ForgotPasswordComponent },
+    { path: 'verifyEmail', component: VerifyEmailComponent },
+    { path: 'createReview', component: CreateReviewComponent, canActivate: [AuthguardGuard] },
+    { path: 'privacy', component: PrivacyComponent },
+    { path: 'terms', component: TermsComponent },
+    { path: '**', component: NothingHereComponent }
 ];
 
+export type ScrollPositionRestoration =
+    "disabled" | "enabled" | "top"
+
+let routerOptions = {
+    scrollPositionRestoration: <ScrollPositionRestoration>'enabled',
+    // anchorScrolling: <AnchorScrolling>'enabled',
+}
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes, routerOptions)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }
