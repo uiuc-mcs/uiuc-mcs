@@ -1,5 +1,6 @@
 <div class="course-list-container">
-  <span class="filter-container">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center"
+   class="filter-container">
     <div class="filter">
       <mat-form-field appearance="fill">
         <mat-label>MCS Requirements Filter</mat-label>
@@ -20,7 +21,7 @@
         </mat-select>
       </mat-form-field>
     </div>
-  </span>
+  </div>
   <div class="table-container mat-elevation-z1">
     <table mat-table matSort [dataSource]="dataSource" [trackBy]="trackById" matSortActive="ClassName"
       matSortDirection="asc">
