@@ -84,7 +84,7 @@
         <mat-form-field id="review" class="form-field-full-width" floatLabel="always" appearance="outline">
           <mat-label>Review Body</mat-label>
           <textarea matInput type="textarea" rows="12" formControlName="review" required
-            [ngClass]="{'is-invalid': submitted}"
+            [ngClass]="{'is-invalid': submitted}" autocomplete="off"
             placeholder="{{reviewPlaceholder}}"></textarea>
           <mat-error *ngIf="reviewForm.controls.review.hasError('required')">
             Please enter a review
