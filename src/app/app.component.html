@@ -3,7 +3,7 @@
 </header>
 <mat-sidenav-container class="sidemenu-container Site-content" autosize>
   <mat-sidenav #drawer class="sidemenu-sidenav" mode="over"
-  [fixedInViewport]="true">
+  [fixedInViewport]="true" position="end">
     <app-sidenav (routeSelected)="drawer.close()"></app-sidenav>
   </mat-sidenav>
   <div class="main-container">

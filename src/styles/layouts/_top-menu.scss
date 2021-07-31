@@ -1,9 +1,9 @@
 // VARIABLES
 // $showTopMenuWidth: 1048px;
-$showTopMenuWidth: 900px;
+$showTopMenuWidth: 600px;
 $hideTopMenuWidth: $showTopMenuWidth - 1;
-$hamburgerShownMargin: 0 8px 0 0;
-$hamburgerHiddenMargin: 0 16px 0 -64px;
+$hamburgerShownMargin: 0 0 0 8px;
+$hamburgerHiddenMargin: 0 -64px 0 16px;
 
 // DOCS PAGE / STANDARD: TOPNAV TOOLBAR FIXED
 mat-toolbar.mat-toolbar {

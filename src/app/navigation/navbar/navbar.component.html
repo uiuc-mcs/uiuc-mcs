@@ -1,8 +1,5 @@
 <mat-toolbar color="primary" class="app-toolbar no-print">
   <mat-toolbar-row>
-    <button mat-button class="hamburger" (click)="doMenuClick()">
-      <mat-icon svgIcon="menu"></mat-icon>
-    </button>
     <div id="app-nav-nodes">
       <ul role="navigation">
         <li [ngClass]="{selected: currentUrl === navInfo.home.url }">
@@ -31,17 +28,20 @@
             <span class="nav-link-inner">{{ navInfo.settings.title }}</span>
           </a>
         </li>
-        <li *ngIf="isLoggedIn" [ngClass]="{selected: currentUrl === navInfo.logout.url }">
+        <li fxHide fxShow.gt-xs *ngIf="isLoggedIn" [ngClass]="{selected: currentUrl === navInfo.logout.url }">
           <a class="nav-link" (click)="logout()" [title]="navInfo.logout.title">
             <span class="nav-link-inner">{{ navInfo.logout.title }}</span>
           </a>
         </li>
-        <li *ngIf="!isLoggedIn">
+        <li fxHide fxShow.gt-xs *ngIf="!isLoggedIn">
           <a class="nav-link" routerLink="{{navInfo.login.url}}" [title]="navInfo.login.title">
             <span class="nav-link-inner">{{ navInfo.login.title }}</span>
           </a>
         </li>
       </ul>
     </div>
+    <button mat-button class="hamburger" (click)="doMenuClick()">
+      <mat-icon svgIcon="menu"></mat-icon>
+    </button>
   </mat-toolbar-row>
 </mat-toolbar>
