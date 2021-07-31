@@ -16,8 +16,8 @@ export class SidenavComponent implements OnInit {
     d_create: {title: "Create Review", link: "/createReview", show: true},
     e_settings: {title: "Profile", link: "/settings", show: this.isLoggedIn},
     // f_myReviews: {title: "My Reviews", link: "/user/reviews", show: this.isLoggedIn},
-    g_logout: {title: "Log Out", link: "/logout", show: this.isLoggedIn},
-    h_login: {title: "Log In", link: "/login", show: !this.isLoggedIn},
+    g_logout: {title: "Sign out", link: "/logout", show: this.isLoggedIn},
+    h_login: {title: "Sign in", link: "/login", show: !this.isLoggedIn},
   }
 
   constructor(
