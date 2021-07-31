@@ -7,22 +7,6 @@ mat-form-field {
     margin-top: 12px;
 }
 
-:host ::ng-deep mat-list-item > div > span {
-    overflow: hidden;
-    span{
-        text-align: left !important;
-    }
-}
-
-:host ::ng-deep .mat-card-header-text {
-    display:flex;
-        margin: 0;
-    mat-card-title {
-        align-self: center;
-        margin: 0;
-    }
-}
-    
 mat-card-title {
     align-self: center;
 }
@@ -56,8 +40,4 @@ mat-card-header > div > button {
 
 .user-reviews-card-content {
     text-align: center;
-}
-
-.view-own-reviews-nothing-here ::ng-deep .mat-line {
-    white-space: pre-wrap !important;
 }
