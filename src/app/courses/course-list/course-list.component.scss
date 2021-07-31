@@ -83,6 +83,10 @@
     }
 }
 
+.mat-select-panel {
+    max-height: none !important;
+}
+
 table {
     width: 100%;
     overflow-x: auto;
@@ -94,12 +98,12 @@ tr.mat-row:hover {
 
 tr.mat-row,
 tr.mat-footer-row {
-    height: 37px;
+    height: 37px !important;
     cursor: pointer;
 }
 
 tr.mat-header-row {
-    height: 38px;
+    height: 38px !important;
 }
 
 .my-chips {
