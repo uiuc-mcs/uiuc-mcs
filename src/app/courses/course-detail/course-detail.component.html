@@ -1,6 +1,6 @@
 <div class="hero">
   <div class="hero-back">
-    <div class="image-container" #imageContainer>
+    <div class="image-container restrict-width" #imageContainer>
       <div>
         <div fxFlex></div>
         <mat-chip [disableRipple]="true" style="display: none !important;" class="edit-chip"
@@ -38,12 +38,12 @@
     </div>
   </div>
 </div>
-  <div fxLayout="row" fxLayout.xs="column" 
-  fxLayoutAlign="space-between center" class="rating-grid mat-elevation-z1">
-      <div fxflex="" *ngFor="let card of cards" class="rating-grid-cell">
-        <span class="rating-grid-title">{{card.title}}</span> <br>
-        <span>{{card.value ? (card.value | number: '1.0-2') : 'N/A'}}</span>
-      </div>
+<div class="restrict-width">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="rating-grid mat-elevation-z1">
+    <div fxflex="" *ngFor="let card of cards" class="rating-grid-cell">
+      <span class="rating-grid-title">{{card.title}}</span> <br>
+      <span>{{card.value ? (card.value | number: '1.0-2') : 'N/A'}}</span>
+    </div>
   </div>
   <div *ngIf="!reviewData.length" class="no-reviews">
     <div>No reviews exist for this class yet.</div>
@@ -77,3 +77,4 @@
       </div>
     </div> -->
   </div>
+</div>

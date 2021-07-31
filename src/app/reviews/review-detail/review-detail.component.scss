@@ -3,25 +3,54 @@
         display: none;
     }
 }
+.rev-card-header {
+    display: flex;
+    @media (max-width: 600px) {
+        padding-left: 0;
+    }
 
-.content {
-    // color: #545454;
-    // font-family: "Libre Franklin", sans-serif;
-    // font-size: 16px;
-    // line-height: 1.5;
-    // box-sizing: border-box;
-    // padding: 0;
-    // justify-content: center;
-    // max-width: 1180px;
-    // margin: 0 auto;
-    &:not(:first-child) {
-        margin-top: 20px;
+    .left {
+        display: inherit;
+        mat-chip-list {
+            margin-left: 10px;
+        }
+        @media (max-width: 600px) {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            mat-chip-list {
+                margin-left: 0;
+            }
+        }
+    }
+
+    .card-header-buttons {
+        margin-left: auto;
+        display: flex;
+        @media (max-width: 600px) {
+            flex-direction: column;
+        }
+    }
+
+    .rev-course {
+        font-weight: 500;
+        font-size: 1.25rem;
     }
 }
 
-.mat-card-header .mat-card-title {
-    color: rgba(0, 0, 0, 0.87);
-    font-size: 16px;
+.mat-card-content {
+    padding: 16px;
+    // padding-bottom: 0px;
+    @media (max-width: 600px) {
+        // padding: 12px 0px 12px 0px;
+        padding: 0
+    }
+}
+
+.content {
+    &:not(:first-child) {
+        margin-top: 20px;
+    }
 }
 
 .mat-card-footer {
@@ -30,25 +59,20 @@
     margin: 0;
 }
 
-.card-header-buttons {
-    display: flex;
-    @media (max-width: 600px) {
-        flex-direction: column;
+.rev-header {
+    display: inline-flex;
+    width: 100%;
+    .edit-buttons {
+        margin-left: auto;
     }
 }
 
-mat-card-header > button,
-mat-card-header > div > button {
-    margin-top: -10px;
-}
-
-.rev-header {
-    display: inline-flex;
+.review-body {
+    white-space: pre-line;
 }
 
 .rev-title {
     color: rgba(0, 0, 0, 0.87);
-    font-weight: 500;
 }
 
 .rev-subtitle {

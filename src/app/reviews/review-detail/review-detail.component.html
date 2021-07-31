@@ -3,26 +3,28 @@
     <div *ngIf="!reviewData.length && showEmptyMsg">No reviews exist for this class yet. Be the first to leave one!
     </div>
     <mat-card *ngFor="let review of reviewData | slice:pageNumber*pageLength:(pageNumber+1)*pageLength">
-      <mat-card-header>
-        <mat-card-title>
-          {{review.course}}
-          <mat-chip class="chip-outlined" disabled style="margin-left: 1rem"
-          >{{review.semester}} {{review.year}}</mat-chip>
-        </mat-card-title>
-        <div fxFlex></div>
+      <mat-card-content>
+      <div class="rev-card-header">
+        <div class="left">
+          <span class="rev-course">{{review.course}}</span>
+          <mat-chip-list>
+            <mat-chip class="chip-outlined" disabled>{{review.semester}} {{review.year}}
+            </mat-chip>
+          </mat-chip-list>
+        </div>
         <div class="card-header-buttons">
           <button mat-icon-button (click)="openSnackBar('Link copied to clipboard.', review.reviewId)">
             <mat-icon matTooltip="Copy link">link</mat-icon>
           </button>
-          <button *ngIf="review.userId === userData?.uid" mat-icon-button routerLink="/review/edit/{{review.reviewId}}">
-            <mat-icon matTooltip="Edit review">mode_edit</mat-icon>
-          </button>
-          <button *ngIf="review.userId === userData?.uid" mat-icon-button (click)="removeReview(review.reviewId)">
-            <mat-icon matTooltip="Delete review">delete</mat-icon>
-          </button>
+            <button *ngIf="review.userId === userData?.uid" mat-icon-button
+              routerLink="/review/edit/{{review.reviewId}}">
+              <mat-icon matTooltip="Edit review">mode_edit</mat-icon>
+            </button>
+            <!-- <button *ngIf="review.userId === userData?.uid" mat-icon-button (click)="removeReview(review.reviewId)">
+              <mat-icon matTooltip="Delete review">delete</mat-icon>
+            </button> -->
         </div>
-      </mat-card-header>
-      <mat-card-content>
+      </div>
         <div class="rev-header">
           <p>
             <span class="rev-title">{{review.title}}</span><br>
@@ -30,20 +32,22 @@
           </p>
         </div>
         <p style="white-space: pre-line;">{{review.review}}</p>
-      </mat-card-content>
-      <mat-card-footer>
-        <app-review-helpfulness [isLoggedIn]="isLoggedIn" [reviewId]="review.reviewId"
-          [value]="getFeedbackValue(review.reviewId!)" [positive]="review.helpfulPositive"
-          [negative]="review.helpfulNegative"></app-review-helpfulness>
+        <mat-card-footer>
+          <app-review-helpfulness [isLoggedIn]="isLoggedIn" [reviewId]="review.reviewId"
+            [value]="getFeedbackValue(review.reviewId!)" [positive]="review.helpfulPositive"
+            [negative]="review.helpfulNegative"></app-review-helpfulness>
           <div fxFlex></div>
-        <mat-chip-list>
-          <mat-chip class="chip-outlined hide-under-xs" [class]="'diff_'+review.difficulty" disabled matTooltip="Difficulty">
-            {{review.difficultyString}}</mat-chip>
-          <mat-chip class="chip-outlined" [class]="'rat_'+review.rating" disabled matTooltip="Rating">
-            {{review.ratingString}}</mat-chip>
-          <mat-chip class="chip-outlined hide-under-xs" disabled matTooltip="Workload">{{review.workload}} hrs/wk</mat-chip>
-        </mat-chip-list>
-      </mat-card-footer>
+          <mat-chip-list>
+            <mat-chip class="chip-outlined hide-under-xs" [class]="'diff_'+review.difficulty" disabled
+              matTooltip="Difficulty">
+              {{review.difficultyString}}</mat-chip>
+            <mat-chip class="chip-outlined" [class]="'rat_'+review.rating" disabled matTooltip="Rating">
+              {{review.ratingString}}</mat-chip>
+            <mat-chip class="chip-outlined hide-under-xs" disabled matTooltip="Workload">{{review.workload}} hrs/wk
+            </mat-chip>
+          </mat-chip-list>
+        </mat-card-footer>
+      </mat-card-content>
     </mat-card>
   </div>
 </div>
