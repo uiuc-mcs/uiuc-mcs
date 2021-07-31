@@ -4,11 +4,14 @@
 // import global themes
 // @import './ng-io-theme';
 
-// import global constants
+// global constants
 @import './constants.scss';
 
-// import mixins
+// mixins
 @import './mixins.scss';
 
-// import base layouts
+// base layouts
 @import './layouts/layouts-dir';
+
+// theme
+@import './_theme.scss';

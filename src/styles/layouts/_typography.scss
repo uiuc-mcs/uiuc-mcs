@@ -1,3 +1,4 @@
+@import "_constants.scss";
 @import "~@angular/material/theming";
 $typography-configuration: mat-typography-config(
     $body-1: mat-typography-level(16px, 1.5),
@@ -9,6 +10,20 @@ body {
     color: $darkgray;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+$primary: map-get($my-app-theme, primary);
+
+a {
+    text-decoration: none;
+    color: mat-color($primary);
+    &:hover {
+        color: #1a1f36
+    }
+}
+
+strong {
+    font-weight: 500;
 }
 
 h1,
@@ -114,14 +129,6 @@ li {
     p {
         margin: 0;
     }
-}
-
-a {
-    text-decoration: none;
-}
-
-strong {
-    font-weight: 500;
 }
 
 .sidenav-content a {

@@ -1,0 +1,4 @@
+@import "_constants.scss";
+@import "~@angular/material/theming";
+
+@include angular-material-theme($my-app-theme);

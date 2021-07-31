@@ -3,6 +3,8 @@
 $uiuc-navy: #002855;
 $uiuc-navy-lite: #002855db;
 
+$primary-color: $uiuc-navy;
+
 $uiuc-mcs-palette: (
  50: #e5eaf0,
  100: #bec9db,
@@ -30,125 +32,10 @@ $uiuc-mcs-palette: (
 
 $my-app-primary: mat-palette($uiuc-mcs-palette);
 $my-app-accent:  mat-palette($mat-pink, 500, 900, A100);
-$my-app-warn:    mat-palette($mat-deep-orange);
+$my-app-warn:    mat-palette($mat-red);
 
 $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
-@include angular-material-theme($my-app-theme);
 
-// COLOR PALETTE
-$blue: #1976d2;
-$accentblue: #1e88e5;
-$brightred: #dd0031;
-$darkred: #c3002f;
-$white: #ffffff;
-$offwhite: #fafafa;
-$backgroundgray: #f1f1f1;
-$lightgray: #dbdbdb;
-$lightboxgray: #ebebeb;
-$mist: #eceff1;
-$mediumgray: #6e6e6e;
-$darkgray: #444444;
-$deepgray: #333333;
-$black: #0a1014;
-$orange: #ff9800;
-$darkorange: #940;
-$anti-pattern: $brightred;
-
-// API & CODE COLORS
-$amber-700: #ffa000;
-$blue-400: #42a5f5;
-$blue-500: #2196f3;
-$blue-600: #1e88e5;
-$blue-800: #1565c0;
-$blue-900: #0d47a1;
-$blue-grey-50: #eceff1;
-$blue-grey-100: #cfd8dc;
-$blue-grey-200: #b0bec5;
-$blue-grey-300: #90a4ae;
-$blue-grey-400: #78909c;
-$blue-grey-500: #607d8b;
-$blue-grey-600: #546e7a;
-$blue-grey-700: #455a64;
-$blue-grey-800: #37474f;
-$blue-grey-900: #263238;
-$codegreen: #17ff0b;
-$green-500: #4caf50;
-$green-800: #2e7d32;
-$light-green-600: #7cb342;
-$pink-600: #d81b60;
-$purple-600: #8e24aa;
-$teal-500: #009688;
-$lightgrey: #f5f6f7;
-
-// STATE COLORS
-$focus-outline-ondark: rgba($white, 0.8);
-$focus-outline-onlight: $accentblue;
-
-// GRADIENTS
-$bluegradient: linear-gradient(145deg, $blue-900, $blue-400);
-$redgradient: linear-gradient(145deg, $darkred, $brightred);
-
-// API LABEL COLOR AND SYMBOLS MAP
-$api-symbols: (
-    all: (
-        content: " ",
-        background: $white,
-    ),
-    class: (
-        content: "C",
-        background: $blue-500,
-    ),
-    const: (
-        content: "K",
-        background: $mediumgray,
-    ),
-    decorator: (
-        content: "@",
-        background: $blue-800,
-    ),
-    directive: (
-        content: "D",
-        background: $pink-600,
-    ),
-    enum: (
-        content: "E",
-        background: $amber-700,
-    ),
-    function: (
-        content: "F",
-        background: $green-500,
-    ),
-    interface: (
-        content: "I",
-        background: $teal-500,
-    ),
-    let: (
-        content: "K",
-        background: $mediumgray,
-    ),
-    ngmodule: (
-        content: "M",
-        background: $darkorange,
-    ),
-    package: (
-        content: "Pk",
-        background: $purple-600,
-    ),
-    pipe: (
-        content: "P",
-        background: $blue-grey-600,
-    ),
-    type-alias: (
-        content: "T",
-        background: $light-green-600,
-    ),
-    var: (
-        content: "K",
-        background: $mediumgray,
-    ),
-);
-
-// OTHER
 $small-breakpoint-width: 840px;
 $phone-breakpoint: 480px;
 $tablet-breakpoint: 800px;
@@ -163,3 +50,16 @@ $bp-big: 1000px;
 $main-pad-above: 80px;
 $main-pad-side: 2rem;
 $main-pad-side-mobile: 8px;
+
+// COLOR PALETTE
+$blue: #1976d2;
+$accentblue: #1e88e5;
+$white: #ffffff;
+$offwhite: #fafafa;
+$mediumgray: #6e6e6e;
+$darkgray: #444444;
+$deepgray: #333333;
+
+// // STATE COLORS
+$focus-outline-ondark: rgba($white, 0.8);
+$focus-outline-onlight: $accentblue;
