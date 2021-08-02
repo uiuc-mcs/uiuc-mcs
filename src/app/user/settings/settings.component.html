@@ -56,15 +56,15 @@
             matLine>You haven't created any reviews yet. Click here
             to get started</span></mat-list-item>
         <mat-list-item *ngFor="let review of reviewData" routerLink="/review/{{review.reviewId}}">
-          <span>
+          <span style="min-width: 0;">
             <span matLine>{{ review.course }}</span>
             <span matLine>{{ review.title }}</span>
           </span>
           <div fxFlex></div>
-          <div (click)="$event.stopPropagation()" class="list-buttons">
-            <button mat-icon-button (click)="openSnackBar('Link copied to clipboard.')">
+          <div class="list-buttons" (click)="$event.stopPropagation()">
+            <!-- <button mat-icon-button (click)="openSnackBar('Link copied to clipboard.')">
               <mat-icon>link</mat-icon>
-            </button>
+            </button> -->
             <button mat-icon-button routerLink="/review/edit/{{review.reviewId}}">
               <mat-icon>mode_edit</mat-icon>
             </button>

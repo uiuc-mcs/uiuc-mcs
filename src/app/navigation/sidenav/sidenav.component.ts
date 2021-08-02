@@ -10,7 +10,7 @@ export class SidenavComponent implements OnInit {
   @Output() routeSelected: EventEmitter<any> = new EventEmitter
   isLoggedIn: boolean = false
   links = {
-    a_home: {title: "List", link: "/", show: true},
+    a_home: {title: "Courses", link: "/", show: true},
     b_courses: {title: "Grid", link: "/courses", show: true},
     c_reviews: {title: "Reviews", link: "/reviews", show: true},
     d_create: {title: "Create Review", link: "/createReview", show: true},

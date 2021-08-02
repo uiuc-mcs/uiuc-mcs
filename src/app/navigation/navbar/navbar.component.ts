@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   menuStatus = false
   // logoUrl: string = "assets/images/logos/Colorwheel/Colorwheel-40-bcs.png"
   navInfo = {
-    home: {title: 'List', url: '/home'},
+    home: {title: 'Courses', url: '/home'},
     courses: {title: 'Grid', url: '/courses'},
     reviews: {title: 'Reviews', url: '/reviews'},
     login: {title: 'Sign in', url: '/login'},
