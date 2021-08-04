@@ -174,7 +174,7 @@ export class CreateReviewComponent implements OnInit {
                     this.loading = false
                     this.openSubmittedDialog()
                 }, error => {
-                    console.error("Create Review: Submission failed - ", error)
+                    console.error("Create Review Failed: ", error)
                     this.loading = false
                     this.error = error.message
                 })
@@ -185,7 +185,7 @@ export class CreateReviewComponent implements OnInit {
                     this.loading = false
                     this.openSubmittedDialog()
                 }, error => {
-                    console.error("Create Review: Submission failed -", error)
+                    console.error("Create Review Failed: ", error)
                     this.loading = false
                     this.error = error.message
                 })
@@ -197,7 +197,7 @@ export class CreateReviewComponent implements OnInit {
         const dialogRef = this.dialog.open(DialogReviewSubmission)
         dialogRef.afterClosed().subscribe(result => {
             this.router.navigate(['courses', this.reviewForm.controls['course'].value])
-        }).unsubscribe();
+        })
     }
 
     openShortReviewDialog() {
