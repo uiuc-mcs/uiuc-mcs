@@ -8,6 +8,10 @@
     text-align: left !important;
 }
 
+td {
+    text-overflow: ellipsis;
+}
+
 .mat-cell {
     line-break: unset;
     white-space: nowrap;
@@ -15,6 +19,7 @@
     overflow-x: hidden;
     overflow-y: hidden;
 }
+
 .course-list-container {
     width: 100%;
     display: flex;
