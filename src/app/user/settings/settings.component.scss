@@ -10,6 +10,16 @@ mat-form-field {
 mat-card-title {
     align-self: center;
 }
+    
+mat-card-content {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+         
+.no-reviews-button {
+    display: block;
+    margin: auto;
+}
 
 .mat-card {
     max-width: 450px;

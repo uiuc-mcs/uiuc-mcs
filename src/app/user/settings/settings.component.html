@@ -46,15 +46,18 @@
           </mat-select>
         </mat-form-field>
       </form>
-      <br><br><br>
-      <mat-card-header>
+      <br>
+      <div *ngIf="!reviewData.length">
+        <button mat-raised-button color="primary" routerLink="/createReview"
+         class="no-reviews-button">
+          Write your first review
+        </button>
+      </div>
+      <mat-card-header *ngIf="reviewData.length">
         <mat-card-title>Reviews</mat-card-title>
         <div fxFlex></div>
       </mat-card-header>
       <mat-nav-list>
-        <mat-list-item *ngIf="!reviewData.length" routerLink="/createReview" class="view-own-reviews-nothing-here"><span
-            matLine>You haven't created any reviews yet. Click here
-            to get started</span></mat-list-item>
         <mat-list-item *ngFor="let review of reviewData" routerLink="/review/{{review.reviewId}}">
           <span style="min-width: 0;">
             <span matLine>{{ review.course }}</span>
