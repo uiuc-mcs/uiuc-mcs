@@ -15,3 +15,7 @@
 
 // theme
 @import './_theme.scss';
+
+.select-no-max-height {
+    max-height: none !important;
+}

@@ -4,7 +4,7 @@
     <div class="filter">
       <mat-form-field appearance="fill">
         <mat-label>MCS Requirements Filter</mat-label>
-        <mat-select [(value)]="mcsValue">
+        <mat-select [(value)]="mcsValue" panelClass="select-no-max-height">
           <mat-option *ngFor="let opt of mcsOptions" [value]="opt.value" (click)="onFilterOptionClick(false)">
             {{opt.view}}
           </mat-option>
@@ -14,7 +14,7 @@
     <div class="filter">
       <mat-form-field appearance="fill">
         <mat-label>MCS-DS Requirements Filter</mat-label>
-        <mat-select [(value)]="mcsdsValue">
+        <mat-select [(value)]="mcsdsValue" panelClass="select-no-max-height">
           <mat-option *ngFor="let opt of mcsdsOptions" [value]="opt.value" (click)="onFilterOptionClick(true)">
             {{opt.view}}
           </mat-option>
