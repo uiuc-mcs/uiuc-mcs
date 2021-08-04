@@ -176,9 +176,9 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
 
   updateCards(course: ClassData): void {
     this.cards[0].value = course.RatingCount
-    this.cards[1].value = course.RatingAvg
-    this.cards[2].value = course.DifficultyAvg
-    this.cards[3].value = course.WorkloadAvg
+    this.cards[1].value = course.DifficultyAvg
+    this.cards[2].value = course.WorkloadAvg
+    this.cards[3].value = course.RatingAvg
     // this.cards[4].value = course.Textbook ? course.BookUsefulnessAvg : 0
     // this.cards[5].value = course.LectureQualityAvg
     // this.cards[6].value = course.ProfessorQualityAvg
