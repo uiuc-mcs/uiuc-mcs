@@ -92,7 +92,7 @@ export class ReviewsComponent implements OnInit {
             return query.orderBy(this.selectedSort.field, this.selectedSort.order as firebase.firestore.OrderByDirection)
         }).get().subscribe(response => {
             if (!response.docs.length) {
-                console.warn("Reviews: No reviews exist")
+                // console.warn("Reviews: No reviews exist")
                 this.disableNext = true
                 this.disablePrev = true
                 this.reviewData = []
@@ -131,7 +131,7 @@ export class ReviewsComponent implements OnInit {
             return query.orderBy('timestamp', 'desc').startAfter(lastReview)
         }).get().subscribe(response => {
             if (!response.docs.length) {
-                console.warn("Reviews:", "No reviews exist")
+                // console.warn("Reviews:", "No reviews exist")
                 //TODO Add something to let the user know that there are no reviews
                 this.disableNext = true
                 return

@@ -119,7 +119,7 @@ export class SettingsComponent implements OnInit {
       ref.where("userId", '==', this.userData?.uid)
     ).get().subscribe(response => {
       if (!response.docs.length) {
-        console.warn("View User Reviews: getUserReviews - No reviews exist")
+        // console.warn("View User Reviews: getUserReviews - No reviews exist")
         return
       }
       this.reviewData = []
