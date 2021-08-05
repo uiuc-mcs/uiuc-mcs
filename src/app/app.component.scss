@@ -6,22 +6,19 @@
     height: 60px;
     display: flex;
     align-items: center;
-    background-color: #1976d2;
+    // background-color: #1976d2;
     color: white;
     font-weight: 600;
-}
-
-.toolbar img {
-    margin: 0 16px;
-}
-
-.toolbar #twitter-logo {
-    height: 40px;
-    margin: 0 16px;
-}
-
-.toolbar #twitter-logo:hover {
-    opacity: 0.8;
+    img {
+        margin: 0 16px;
+    }
+    #twitter-logo {
+        height: 40px;
+        margin: 0 16px;
+    }
+    #twitter-logo:hover {
+        opacity: 0.8;
+    }
 }
 
 .sidemenu-container {
@@ -109,41 +106,6 @@ svg.material-icons:not(:last-child) {
     margin-left: 60px;
 }
 
-svg#rocket {
-    width: 80px;
-    position: absolute;
-    left: -10px;
-    top: -24px;
-}
-
-svg#rocket-smoke {
-    height: calc(100vh - 95px);
-    position: absolute;
-    top: 10px;
-    right: 180px;
-    z-index: -10;
-}
-
-.circle-link {
-    height: 40px;
-    width: 40px;
-    border-radius: 40px;
-    margin: 8px;
-    background-color: white;
-    border: 1px solid #eeeeee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    transition: 1s ease-out;
-}
-
-.circle-link:hover {
-    transform: translateY(-0.25rem);
-    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-}
-
 /* Responsive Styles */
 @media screen and (max-width: 767px) {
     .card-container > *:not(.circle-link) {
@@ -159,10 +121,6 @@ svg#rocket-smoke {
         margin-left: 72px;
     }
 
-    svg#rocket-smoke {
-        right: 120px;
-        transform: rotate(-5deg);
-    }
 }
 
 .sidemenu-sidenav {
@@ -171,8 +129,6 @@ svg#rocket-smoke {
 
 footer {
     padding: 40px 0 10px;
-    display: flex;
-    align-items: center;
     line-height: 20px;
     display: flex;
     flex-direction: column;
@@ -181,24 +137,11 @@ footer {
     min-height: 50px;
     padding-top: 15px;
     font-size: 12px;
-}
-
-.footer-links {
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    a {
-        padding: 0 10px;
+    .footer-ul li {
+        display: inline;
     }
-}
-
-.footer-ul li {
-    display: inline;
-}
-
-.footer-ul li + li::before {
-    content: "•";
-    padding: 0px 4px;
+    .footer-ul li + li::before {
+        content: "•";
+        padding: 0px 4px;
+    }
 }
