@@ -42,6 +42,7 @@ export class ReviewsComponent implements OnInit {
 
     selectedSort: { displayText: string, field: string, order: string } = this.orderByOptions[0]
     selectedCourseFilter: ClassData[] | '' = ''
+    
     get reviewedCourses() {
         var ret: (ClassData | '')[] = this.courses.filter((el) => {
           return el.RatingCount > 0
@@ -82,13 +83,17 @@ export class ReviewsComponent implements OnInit {
         this.nothingHere = false
         this.afs.collection('Reviews', ref => {
             let query = ref.limit(this.pageLength)
-            if (this.courseId) { query = query.where("classId", "==", this.courseId) }
-            // query = query.where(this.websiteFilter, "==", true) 
-            if (this.queryValid) {
-                query = query.where(this.f['category'].value, this.f['operation'].value, this.f['inputValue'].value)
-                if (this.f['operation'].value != "==") { query = query.orderBy(this.f['category'].value, "desc") }
+            if (this.courseId) { 
+                query = query.where("classId", "==", this.courseId) 
             }
-            return query.orderBy(this.selectedSort.field, this.selectedSort.order as firebase.firestore.OrderByDirection)
+            // query = query.where(this.websiteFilter, "==", true) 
+            // if (this.queryValid) {
+            //     query = query.where(this.f['category'].value, this.f['operation'].value, this.f['inputValue'].value)
+            //     if (this.f['operation'].value != "==") { query = query.orderBy(this.f['category'].value, "desc") }
+            // }
+            return query.orderBy(this.selectedSort.field, 
+                this.selectedSort.order as 
+                firebase.firestore.OrderByDirection)
         }).get().subscribe(response => {
             if (!response.docs.length) {
                 // console.warn("Reviews: No reviews exist")
