@@ -4,8 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth/auth.service';
 import { ClassService } from '../services/classes/class.service';
 import { ClassData } from '../shared/class/class';
-import { ratingsToStrings } from '../shared/review/review';
-import { Review } from '../shared/review/review';
+import { Review, ratingsToStrings } from '../shared/review/review';
 import firebase from 'firebase/app'
 
 @Component({
