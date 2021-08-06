@@ -41,7 +41,6 @@ import { DialogOnDelete } from './shared/dialog/review-delete/dialog-on-delete.c
 import { EditCourseMetadataComponent } from './courses/course-detail/edit-course-metadata/edit-course-metadata.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 import { SadPandaComponent } from './misc/sad-panda/sad-panda.component';
-import { ThankyouComponent } from './misc/thankyou/thankyou.component';
 import { NothingHereComponent } from './misc/nothing-here/nothing-here.component';
 import { PandaPartyComponent } from './misc/panda-party/panda-party.component';
 import { ReviewHelpfulnessComponent } from './reviews/review-detail/review-helpfulness/review-helpfulness.component';
@@ -75,7 +74,6 @@ import { TermsComponent } from './terms/terms.component'
         EditCourseMetadataComponent,
         SidenavComponent,
         SadPandaComponent,
-        ThankyouComponent,
         NothingHereComponent,
         PandaPartyComponent,
         ReviewHelpfulnessComponent,
