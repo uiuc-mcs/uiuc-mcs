@@ -44,7 +44,6 @@ import { SadPandaComponent } from './misc/sad-panda/sad-panda.component';
 import { ThankyouComponent } from './misc/thankyou/thankyou.component';
 import { NothingHereComponent } from './misc/nothing-here/nothing-here.component';
 import { PandaPartyComponent } from './misc/panda-party/panda-party.component';
-import { StarRatingComponent } from './reviews/star-rating/star-rating.component';
 import { ReviewHelpfulnessComponent } from './reviews/review-detail/review-helpfulness/review-helpfulness.component';
 import { CreateCourseComponent } from './courses/create-course/create-course.component';
 import { PrivacyComponent } from './privacy/privacy.component'
@@ -79,7 +78,6 @@ import { TermsComponent } from './terms/terms.component'
         ThankyouComponent,
         NothingHereComponent,
         PandaPartyComponent,
-        StarRatingComponent,
         ReviewHelpfulnessComponent,
         CreateCourseComponent,
         PrivacyComponent,
