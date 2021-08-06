@@ -30,6 +30,7 @@ export class ReviewDetailComponent implements OnInit {
     pageSizeOptions: number[] = [5, 10, 25, 100]
     ratingString: string = ''
     diffString: string = ''
+    loading: boolean = true
 
     constructor(
         private route: ActivatedRoute,
@@ -52,11 +53,13 @@ export class ReviewDetailComponent implements OnInit {
     }
 
     getSingleReview(reviewId: string) {
+        this.loading = true;
         this.afs.collection("Reviews").doc(reviewId).get().subscribe(doc => {
             const review = doc.data() as Review
             review.reviewId = doc.id
             this.reviewData.push(review)
             this.reviewData = ratingsToStrings(this.reviewData)
+            this.loading = false;
         })
     }
 

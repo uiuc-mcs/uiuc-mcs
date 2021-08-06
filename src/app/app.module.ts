@@ -14,6 +14,7 @@ import { SearchInputComponent } from './search/search-input/search-input.compone
 import { LoginComponent } from './user/login/login.component';
 import { SettingsComponent } from './user/settings/settings.component';
 import { ReviewsComponent } from './reviews/reviews.component';
+import { LoadingComponent } from './loading/loading.component';
 
 // Firebase
 import { AngularFireModule } from "@angular/fire"
@@ -56,6 +57,7 @@ import { TermsComponent } from './terms/terms.component'
         LoginComponent,
         SettingsComponent,
         ReviewsComponent,
+        LoadingComponent,
         CourseDetailComponent,
         ReviewDetailComponent,
         DialogOnDelete,

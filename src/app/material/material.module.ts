@@ -24,7 +24,7 @@ import { MatListModule } from '@angular/material/list';
 // import { MatMenuModule } from '@angular/material/menu'; // Don't need
 // import { MatPaginatorModule } from '@angular/material/paginator'; // Don't need
 // import { MatProgressBarModule } from '@angular/material/progress-bar'; // Don't need
-// import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; // Don't need
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; // Don't need
 // import { MatRadioModule } from '@angular/material/radio';
 // import { MatRippleModule } from '@angular/material/core'; // Don't need
 import { MatSelectModule } from '@angular/material/select';
@@ -285,7 +285,7 @@ export const svgIconProviders = [
         // MatMenuModule, // Don't need
         // MatPaginatorModule, // Don't need
         // MatProgressBarModule, // Don't need
-        // MatProgressSpinnerModule, // Don't need
+        MatProgressSpinnerModule, // Don't need
         // MatRadioModule,
         // MatRippleModule, // Don't need
         MatSelectModule,
@@ -322,7 +322,7 @@ export const svgIconProviders = [
         // MatMenuModule, // Don't need
         // MatPaginatorModule, // Don't need
         // MatProgressBarModule, // Don't need
-        // MatProgressSpinnerModule, // Don't need
+        MatProgressSpinnerModule, // Don't need
         // MatRadioModule,
         // MatRippleModule, // Don't need
         MatSelectModule,

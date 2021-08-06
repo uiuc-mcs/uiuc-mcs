@@ -44,6 +44,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   isLoggedIn: boolean = false
   selectedSort: { displayText: string, field: string, order: string } = this.orderByOptions[0]
   objectKeys = Object.keys
+  loading: boolean = true
 
 //   @ViewChild('gradientContainer') gradientContainer!: ElementRef;
   @ViewChild('imageContainer') imageContainer!: ElementRef;
@@ -86,6 +87,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   }
 
   getFirstPage() {
+    this.loading = true
     this.pageNumber = 0
     this.disablePrev = true
     this.disableNext = false
@@ -101,6 +103,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         // console.warn("Course Detail: No reviews exist")
         this.disableNext = true
         this.disablePrev = true
+        this.loading = false
         return
       }
       for (let item of response.docs) {
@@ -115,10 +118,12 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         this.maxLength = this.reviewData.length
       }
       this.reviewData = ratingsToStrings(this.reviewData)
+      this.loading = false
     }, error => { console.error("Course Detail: getFirstPage - ", error) })
   }
 
   nextPage() {
+      this.loading = true
     this.disablePrev = false
     const lastReview = this.reviewDataStack[this.reviewDataStack.length - 1].docs[this.pageLength - 1]
     this.afs.collection('Reviews', ref => ref
@@ -130,6 +135,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
       if (!response.docs.length) {
         // console.warn("Course Detail: No reviews exist")
         this.disableNext = true
+        this.loading = false
         return
       }
       for (let item of response.docs) {
@@ -144,6 +150,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         this.maxLength = this.reviewData.length
       }
       this.reviewData = ratingsToStrings(this.reviewData)
+      this.loading = false
     }, error => { console.error("Course Detail: nextPage -", error) })
   }
 

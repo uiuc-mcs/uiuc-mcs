@@ -3,8 +3,7 @@
     <div class="image-container restrict-width" #imageContainer>
       <div>
         <div fxFlex></div>
-        <mat-chip [disableRipple]="true" style="display: none !important;" 
-        class="edit-chip"
+        <mat-chip [disableRipple]="true" style="display: none !important;" class="edit-chip"
           routerLink="/courses/edit/{{courseName}}">
           Edit<mat-icon matTooltip="Edit course details">mode_edit</mat-icon>
         </mat-chip>
@@ -40,14 +39,16 @@
   </div>
 </div>
 <div class="restrict-width">
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" 
-  class="rating-grid mat-elevation-z1">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="rating-grid mat-elevation-z1">
     <div fxflex="" *ngFor="let card of cards" class="rating-grid-cell">
       <span class="rating-grid-title">{{card.title}}</span> <br>
       <span>{{card.value ? (card.value | number: '1.0-2') : 'N/A'}}</span>
     </div>
   </div>
-  <div *ngIf="!reviewData.length" class="no-reviews">
+  <div *ngIf="!reviewData.length && loading" style="margin-top: 12px">
+    <app-loading></app-loading>
+  </div>
+  <div *ngIf="!reviewData.length && !loading" class="no-reviews">
     <div>No reviews exist for this class yet.</div>
     <div style="padding-top: 20px">
       <button mat-raised-button color="primary" routerLink="/createReview">
