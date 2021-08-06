@@ -1,4 +1,4 @@
-<div class="reviews-container">
+<div class="restrict-width">
   <!-- <mat-card> -->
   <!-- <mat-card-subtitle>Filter Reviews By:</mat-card-subtitle> -->
   <!-- <mat-card-content> -->
@@ -41,8 +41,8 @@
   </form> -->
   <!-- </mat-card-content> -->
   <!-- </mat-card> -->
-  <div fxLayout="row wrap" fxLayoutAlign="space-between center" 
-  class="review-controller next-prev-container" id="review-spacer">
+  <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="review-controller next-prev-container"
+    id="review-spacer">
     <!-- /TODO Add more features above the review container, like a search bar and date picker -->
     <!-- <h1>Course Reviews:</h1> -->
     <!-- <span class="pagination" *ngIf="showPagination">
@@ -66,16 +66,12 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <div class="review-container">
-    <div class="center" *ngIf="nothingHere">
-      <h1>Could not find any Reviews using input parameters.<br>Please try a different search.</h1>
-    </div>
-    <app-review-detail 
-    [reviewData]="reviewData" [pageNumber]="pageNumber" 
-    [showEmptyMsg]="false"
-    [pageLength]="pageLength">
-    </app-review-detail>
+  <div class="center" *ngIf="nothingHere">
+    <h1>Could not find any Reviews using input parameters.<br>Please try a different search.</h1>
   </div>
+  <app-review-detail [reviewData]="reviewData" [pageNumber]="pageNumber" [showEmptyMsg]="false"
+    [pageLength]="pageLength">
+  </app-review-detail>
   <!-- <div class="review-footer review-controller">
     <div *ngIf="showPagination" class="next-prev-container">
       Page {{pageNumber + 1}}

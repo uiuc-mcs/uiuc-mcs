@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content restrict-width">
   <div class="review-container">
     <div *ngIf="!reviewData.length && loading">
           <app-loading></app-loading>
@@ -17,7 +17,8 @@
           </mat-chip-list>
         </div>
         <div class="card-header-buttons">
-          <button mat-icon-button (click)="openSnackBar('Link copied to clipboard.', review.reviewId)">
+          <button mat-icon-button 
+          (click)="openSnackBar('Link copied to clipboard.', review.reviewId)">
             <mat-icon matTooltip="Copy link">link</mat-icon>
           </button>
             <button *ngIf="review.userId === userData?.uid" mat-icon-button

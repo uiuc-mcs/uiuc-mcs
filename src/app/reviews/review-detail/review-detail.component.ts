@@ -64,7 +64,9 @@ export class ReviewDetailComponent implements OnInit {
     }
 
     openSnackBar(message: string, reviewId?: string, action: string = "Dismiss") {
-        this.clipboard.copy(`${window.location.host}/review/${reviewId}`)
+        const protocol = window.location.protocol
+        const host = window.location.host
+        this.clipboard.copy(`${protocol}//${host}/review/${reviewId}`)
         this._snackBar.open(message, action, {
             duration: this.durationInSeconds * 1000,
         });
