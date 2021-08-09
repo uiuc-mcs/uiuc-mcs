@@ -73,7 +73,7 @@ export class CreateCourseComponent implements OnInit {
       TextbookName: ['', Validators.required],
       WorkloadAvg: [0, Validators.required],
       WorkloadCount: [0, Validators.required],
-      category: ['?', Validators.required],                // NEED
+      category: ['', Validators.required],                // NEED
       // csIsComputerScience: ['true', Validators.required],     // NEED
       // csCategory: ['?'],              // NEED
       // dsIsDataScience: ['true', Validators.required],         // NEED
@@ -128,15 +128,7 @@ export class CreateCourseComponent implements OnInit {
           TextbookName: this.f.TextbookName.value,
           WorkloadAvg: this.f.WorkloadAvg.value,
           WorkloadCount: this.f.WorkloadCount.value,
-          category: this.f.category.value,
-          // computerScience: {
-          //   isComputerScience: this.f.csIsComputerScience.value === "true" ? true : false,
-          //   category: this.f.csCategory.value,
-          // },
-          // dataScience: {
-          //   isDataScience: this.f.dsIsDataScience.value === "true" ? true : false,
-          //   category: this.f.dsCategory.value,
-          // },
+          category: [],
           languages: [],
           meta: {
             exams: this.f.metaExams.value,
