@@ -9,7 +9,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
-// import { MatCheckboxModule } from '@angular/material/checkbox'; // Don't need
+import { MatCheckboxModule } from '@angular/material/checkbox'; // Don't need
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
 // import { MatStepperModule } from '@angular/material/stepper'; // Don't need
@@ -270,7 +270,7 @@ export const svgIconProviders = [
         MatButtonModule,
         MatButtonToggleModule,
         MatCardModule,
-        // MatCheckboxModule, // Don't need
+        MatCheckboxModule, // Don't need
         MatChipsModule,
         MatDividerModule,
         // MatStepperModule, // Don't need
@@ -307,7 +307,7 @@ export const svgIconProviders = [
         MatButtonModule,
         MatButtonToggleModule,
         MatCardModule,
-        // MatCheckboxModule, // Don't need
+        MatCheckboxModule, // Don't need
         MatChipsModule,
         MatDividerModule,
         // MatStepperModule, // Don't need
