@@ -37,9 +37,9 @@
                         ],
                         "stylePreprocessorOptions": {
                             "includePaths": [
-                              "./src/styles/"
+                                "./src/styles/"
                             ]
-                          },
+                        },
                         "scripts": []
                     },
                     "configurations": {
@@ -163,7 +163,11 @@
                 },
                 "deploy": {
                     "builder": "angular-cli-ghpages:deploy",
-                    "options": {}
+                    "options": {
+                        "baseHref": "https://uiucmcs.org",
+                        "cname": "uiucmcs.org",
+                        "noSilent": true
+                    }
                 }
             }
         }
