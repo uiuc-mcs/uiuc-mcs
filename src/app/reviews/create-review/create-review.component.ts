@@ -47,6 +47,7 @@ export class CreateReviewComponent implements OnInit {
     minWorkload: number = 1
     maxWorkload: number = 168
 
+    minReviewCharLength: number = 100
     recommendedWordCount: number = 100
     wordCountEnforced: boolean = false
 
@@ -123,7 +124,7 @@ export class CreateReviewComponent implements OnInit {
             workload: ['', [Validators.required, Validators.max(this.maxWorkload), Validators.min(this.minWorkload)]],
             rating: ['', [Validators.required, Validators.max(this.maxRating), Validators.min(this.minRating)]],
             title: ['', Validators.required],
-            review: ['', Validators.required],
+            review: ['', [Validators.required, Validators.minLength(this.minReviewCharLength)]],
             userId: ['', Validators.required],
             timestamp: [new Date(), Validators.required],
             classId: ['', Validators.required],
@@ -140,6 +141,14 @@ export class CreateReviewComponent implements OnInit {
 
     get f() {
         return this.reviewForm?.controls
+    }
+    
+    countReviewChars() {
+        const len = this.f.review.value.length
+        if (len == 1) {
+            return "1 character"
+        }
+        return len + " characters"
     }
 
     countWords(s: string) {
