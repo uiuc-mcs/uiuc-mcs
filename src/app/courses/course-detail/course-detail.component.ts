@@ -29,10 +29,10 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     // {title: 'Piazza Support', subtitle: 'On a Scale of 1-7', value: 0},
   ]
   orderByOptions = [
-    { displayText: "Most Helpful", field: "wilsonScore", order: "desc" },
-    { displayText: "Least Helpful", field: "wilsonScore", order: "asc" },
     { displayText: "Newest", field: "timestamp", order: "desc" },
     { displayText: "Oldest", field: "timestamp", order: "asc" },
+    { displayText: "Most Helpful", field: "wilsonScore", order: "desc" },
+    { displayText: "Least Helpful", field: "wilsonScore", order: "asc" },
   ]
   reviewDataStack: any[] = []
   reviewData: Review[] = []

@@ -87,6 +87,8 @@ export const documentWriteListener = functions.firestore
       } else if (!change.after.exists) { // delete
         const doc = classes.doc(change.before.data()?.classId)
         updateCounts(doc, change.before.data(), {}, -1)
+      } else { // should never be here
+        console.log(`in documentWriteListener, change: ${change}`);
       }
     } catch (error) {
       console.log(error);
