@@ -60,10 +60,6 @@ export class NavbarComponent implements OnInit {
   doMenuClick(): void {
     this.menuClicked.emit()
   }
-
-  // donateLink(): void {
-  //   window.location.href = "https://www.paypal.com/donate?hosted_button_id=8HUJHWGZD4MUG"
-  // }
   
   logout() {
     this.auth.logout()
