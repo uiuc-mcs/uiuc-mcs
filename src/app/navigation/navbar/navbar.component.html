@@ -1,7 +1,7 @@
 <mat-toolbar color="primary" class="app-toolbar no-print">
   <mat-toolbar-row>
-    <div id="app-nav-nodes">
-      <ul role="navigation">
+    <div id="app-nav-nodes" role="navigation">
+      <ul>
         <li [ngClass]="{selected: currentUrl === navInfo.home.url }">
           <a class="nav-link" routerLink="{{navInfo.home.url}}" [title]="navInfo.home.title">
             <span class="nav-link-inner">{{ navInfo.home.title }}</span>
