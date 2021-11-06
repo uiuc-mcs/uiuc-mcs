@@ -3,3 +3,31 @@ Good resource on flex layouts in angular - https://medium.com/angular-in-depth/a
 CSS Guide - https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout
 Angular Tour of Heroes - https://angular.io/tutorial/toh-pt6
 Load data in chunks for reviews - https://medium.com/@AnkitMaheshwariIn/pagination-in-angular-firestore-firebase-database-add-get-documents-14ca723e9c24
+
+
+angular-gh-pages
+function createNotFoundPage(dir, options, logger) {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (options.dryRun) {
+            logger.info('Dry-run / SKIPPED: copying of index.html to 404.html');
+            return;
+        }
+        const indexHtml = path.join(dir, 'index.html');
+        const notFoundPage = path.join(dir, '404.html');
+        try {
+            fse.copy(indexHtml, path.join(dir, 'reviews.html'));
+            fse.copy(indexHtml, path.join(dir, 'courses.html'));
+            fse.copy(indexHtml, path.join(dir, 'login.html'));
+            fse.copy(indexHtml, path.join(dir, 'register.html'));
+            fse.copy(indexHtml, path.join(dir, 'privacy.html'));
+            fse.copy(indexHtml, path.join(dir, 'terms.html'));
+            return yield fse.copy(indexHtml, notFoundPage);
+        }
+        catch (err) {
+            logger.info('index.html could not be copied to 404.html. This does not look like an angular-cli project?!');
+            logger.info('(Hint: are you sure that you have setup the directory correctly?)');
+            logger.debug('Diagnostic info: ' + err.message);
+            return;
+        }
+    });
+}
