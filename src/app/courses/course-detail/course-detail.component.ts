@@ -39,7 +39,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   pageNumber: number = 0
   disableNext: boolean = false
   disablePrev: boolean = false
-  pageLength: number = 5
+  pageLength: number = 55
   maxLength: number = 99999
   isLoggedIn: boolean = false
   selectedSort: { displayText: string, field: string, order: string } = this.orderByOptions[0]
