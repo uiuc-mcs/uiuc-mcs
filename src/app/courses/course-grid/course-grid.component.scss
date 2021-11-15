@@ -24,6 +24,10 @@
     align-content: center;
     padding-top: 20px;
 
+    mat-card{
+        cursor: pointer;
+    }
+
     .mat-card-header,
     .mat-card-title,
     .mat-card-subtitle {
