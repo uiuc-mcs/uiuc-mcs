@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ClassService } from 'src/app/services/classes/class.service';
-import { ClassData, mcsCategories, mcsdsCategories } from '../../shared/class/class'
+import { getRouterLink, ClassData, mcsCategories, mcsdsCategories } from '../../shared/class/class'
 
 interface FilterOption {
     value: string;
@@ -34,6 +34,7 @@ export class CourseListComponent implements AfterViewInit {
     emptyFilter: FilterOption = { value: '', view: '' }
     mcsValue: string = this.emptyFilter.value
     mcsdsValue: string = this.emptyFilter.value
+    getRouterLink = getRouterLink
 
     makeOptions(cats: string[]) {
         // Construct the array of options filters

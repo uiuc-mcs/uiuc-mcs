@@ -115,3 +115,9 @@ export interface ClassData {
   },
   semesters: { [key: string]: number },
 }
+
+export function getRouterLink(course: ClassData): string {
+  var ret = `/courses/${course.CourseNumber}-${course.ClassName}`
+  ret = ret.replace(/ /g, '-')
+  return ret
+}

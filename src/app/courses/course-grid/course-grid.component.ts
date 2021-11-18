@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClassService } from 'src/app/services/classes/class.service';
-import { ClassData, mcsdsCategories, mcsCategories } from '../../shared/class/class'
+import { getRouterLink, ClassData, mcsdsCategories, mcsCategories } from '../../shared/class/class'
 
 @Component({
   selector: 'app-course-grid',
@@ -17,6 +17,7 @@ export class CourseGridComponent implements OnInit {
   visibleClassesSet: Set<ClassData> = new Set()
   selectedLangs: Set<ClassData> = new Set()
   selectedCats: Set<ClassData> = new Set()
+  getRouterLink = getRouterLink 
 
   constructor(
     private courses: ClassService,

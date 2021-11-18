@@ -10,7 +10,15 @@
       <mat-card-content>
       <div class="rev-card-header">
         <div class="left">
-          <span class="rev-course">{{review.course}}</span>
+          <!-- <span class="rev-course">{{review.course}}</span> -->
+          <span *ngIf="links" class="rev-course">
+            <a [routerLink]="courseRouterLink(review)">
+            {{review.course}}
+            </a>
+          </span>
+          <span *ngIf="!links" class="rev-course">
+            {{review.course}}
+          </span>
           <mat-chip-list>
             <mat-chip class="chip-outlined" disabled>{{review.semester}} {{review.year}}
             </mat-chip>

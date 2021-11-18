@@ -8,6 +8,7 @@ export interface SemesterYear {
 export interface Review {
   bookUsefulness: number,
   classId: string,
+  classNumber: string,
   course: string,
   // degreeProgram: degreeProgram,
   difficulty: number,
@@ -42,6 +43,12 @@ export enum reviewFeedbackType {
   positive = "yes",
   negative = "no",
   undoFeedback = "",
+}
+
+export function courseRouterLink(review: Review): string {
+  var ret = `/courses/${review.classNumber}-${review.course}`
+  ret = ret.replace(/ /g, '-')
+  return ret
 }
 
 function ratingNumToString(num: number): string {

@@ -38,7 +38,7 @@
     </mat-card>
   </div>
   <div class="course-grid-container">
-    <mat-card *ngFor="let class of visibleClasses" [routerLink]="['/courses/', class.ClassName]">
+    <mat-card *ngFor="let class of visibleClasses" [routerLink]="getRouterLink(class)">
       <mat-card-header>
         <mat-card-title>{{class.ClassName}}</mat-card-title>
         <mat-card-subtitle>{{class.CourseNumber}}</mat-card-subtitle>

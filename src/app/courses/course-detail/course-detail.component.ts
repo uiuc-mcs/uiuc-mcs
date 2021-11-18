@@ -61,7 +61,11 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.courseName = this.route.snapshot.paramMap.get('courseId') || ""
+    const param = this.route.snapshot.paramMap.get('courseId') || ""
+    if (param != "") {
+      const pos = param.split('-', 2).join('-').length;
+      this.courseName = param.substring(pos + 1).replace(/-/g, ' ')
+    }
     this.auth.isLoggedIn.subscribe(state => { this.isLoggedIn = state })
     this.getClassData()
     this.getFirstPage()
@@ -123,7 +127,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
   }
 
   nextPage() {
-      this.loading = true
+    this.loading = true
     this.disablePrev = false
     const lastReview = this.reviewDataStack[this.reviewDataStack.length - 1].docs[this.pageLength - 1]
     this.afs.collection('Reviews', ref => ref
