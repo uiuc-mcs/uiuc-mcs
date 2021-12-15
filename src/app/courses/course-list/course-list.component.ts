@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { getRouterLink, ClassData, mcsCategories, mcsdsCategories } from '../../shared/class/class'
 
@@ -19,14 +20,12 @@ export class CourseListComponent implements AfterViewInit {
     classes: ClassData[] = []
     dataSource = new MatTableDataSource<ClassData>()
     displayedColumns: string[] = [
-        // 'category',
         'CourseNumber',
         'ClassName',
         'RatingCount',
         'DifficultyAvg',
         'WorkloadAvg',
         'RatingAvg',
-        // 'BookUsefulnessAvg',
         'Semester',
     ]
     mcsOptions: FilterOption[]
@@ -51,7 +50,8 @@ export class CourseListComponent implements AfterViewInit {
     objectKeys = Object.keys
     @ViewChild(MatSort) sort!: MatSort
     constructor(
-        private courses: ClassService
+        private courses: ClassService,
+        private router: Router
     ) {
         this.mcsOptions = this.makeOptions(mcsCategories)
         this.mcsdsOptions = this.makeOptions(mcsdsCategories)
@@ -80,5 +80,18 @@ export class CourseListComponent implements AfterViewInit {
 
     trackById(index: number, item: ClassData) {
         return item.ClassName
+    }
+
+    rowClick(ev: MouseEvent, course: ClassData) {
+        console.log('here')
+        const link = `/courses/${course.CourseNumber}-${course.ClassName}`
+            .replace(/ /g, '-')
+        // if (ev.button === 1 || (ev.ctrlKey && ev.button === 0)) {
+        if (ev.ctrlKey || ev.metaKey) {
+            this.router.navigate([]).then(result => { window.open(link); });
+        }
+        else {
+            this.router.navigate([link]);
+        }
     }
 }
