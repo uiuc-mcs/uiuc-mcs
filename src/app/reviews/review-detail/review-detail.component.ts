@@ -28,9 +28,6 @@ export class ReviewDetailComponent implements OnInit {
   isLoggedIn: boolean = false
   userData: FbUser | undefined
   durationInSeconds: number = 3
-  pageSizeOptions: number[] = [5, 10, 25, 100]
-  ratingString: string = ''
-  diffString: string = ''
   loading: boolean = true
   courseRouterLink = courseRouterLink
 
