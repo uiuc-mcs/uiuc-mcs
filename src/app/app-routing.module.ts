@@ -38,6 +38,7 @@ const routes: Routes = [
     { path: 'createReview', component: CreateReviewComponent, canActivate: [AuthguardGuard] },
     { path: 'privacy', component: PrivacyComponent },
     { path: 'terms', component: TermsComponent },
+    { path: '404', component: NothingHereComponent },
     { path: '**', component: NothingHereComponent }
 ];
 
