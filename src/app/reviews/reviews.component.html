@@ -1,56 +1,6 @@
 <div class="restrict-width">
-  <!-- <mat-card> -->
-  <!-- <mat-card-subtitle>Filter Reviews By:</mat-card-subtitle> -->
-  <!-- <mat-card-content> -->
-  <!-- <form class="filter-grid" [formGroup]="queryForm">
-    <mat-card class="query-card">
-      <mat-card-subtitle>Filter by Class Name</mat-card-subtitle>
-      <mat-form-field style="width: 100%">
-        <mat-label>Course</mat-label>
-        <mat-select (selectionChange)="onCourseChange($event.value)">
-          <mat-option *ngFor="let course of reviewedCourses" [value]="course.courseId">
-            {{course.ClassName}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </mat-card>
-    <mat-card class="query-card">
-      <mat-card-subtitle>Filter By Query</mat-card-subtitle>
-      <mat-form-field class="category-width">
-        <mat-label>Category</mat-label>
-        <mat-select formControlName="category">
-          <mat-option *ngFor="let category of categories | keyvalue" [value]="category.value">
-            {{category.key}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="op-width">
-        <mat-label>Op.</mat-label>
-        <mat-select formControlName="operation">
-          <mat-option *ngFor="let operation of operations" [value]="operation">
-            {{operation}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="input-width">
-        <mat-label>Input</mat-label>
-        <input matInput formControlName="inputValue" type="number">
-      </mat-form-field>
-      <button mat-flat-button color="primary" (click)="onQuerySubmit()">Submit</button>
-    </mat-card>
-  </form> -->
-  <!-- </mat-card-content> -->
-  <!-- </mat-card> -->
   <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="review-controller next-prev-container"
     id="review-spacer">
-    <!-- /TODO Add more features above the review container, like a search bar and date picker -->
-    <!-- <h1>Course Reviews:</h1> -->
-    <!-- <span class="pagination" *ngIf="showPagination">
-      Page {{pageNumber + 1}}
-      <button mat-stroked-button color="primary" [disabled]="disablePrev || pageNumber === 0"
-        (click)=getPrevPage()>Prev</button>
-      <button mat-stroked-button color="primary" [disabled]="disableNext" (click)="getNextPage()">Next</button>
-    </span> -->
     <mat-form-field class="order-dropdown" appearance="fill">
       <mat-select [(value)]="selectedCourseFilter" (selectionChange)="onCourseChange($event.value)">
         <mat-option *ngFor="let course of reviewedCourses" [value]="course">
@@ -59,7 +9,7 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field class="order-dropdown" appearance="fill">
-      <mat-select [(value)]="selectedSort" (selectionChange)="newSort($event)">
+      <mat-select [(value)]="selectedSort" (selectionChange)="newSort()">
         <mat-option *ngFor="let option of orderByOptions" [value]="option">
           Sort by {{option.displayText}}
         </mat-option>
@@ -69,14 +19,7 @@
   <div class="center" *ngIf="nothingHere">
     <h1>Could not find any Reviews using input parameters.<br>Please try a different search.</h1>
   </div>
-  <app-review-detail [reviewData]="reviewData" [pageNumber]="pageNumber" [showEmptyMsg]="false"
+  <app-review-detail [reviewData]="reviewData" [pageNumber]="0" [showEmptyMsg]="false"
     [pageLength]="pageLength" [links]="true">
   </app-review-detail>
-  <!-- <div class="review-footer review-controller">
-    <div *ngIf="showPagination" class="next-prev-container">
-      Page {{pageNumber + 1}}
-      <button mat-stroked-button color="primary" [disabled]="disablePrev" (click)=getPrevPage()>Prev</button>
-      <button mat-stroked-button color="primary" [disabled]="disableNext" (click)="getNextPage()">Next</button>
-    </div>
-  </div> -->
 </div>
