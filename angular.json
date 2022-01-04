@@ -26,7 +26,6 @@
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.app.json",
                         "assets": [
-                            "src/assets",
                             "src/favicon.ico",
                             "src/robots.txt"
                         ],
@@ -131,7 +130,6 @@
                         "tsConfig": "tsconfig.spec.json",
                         "karmaConfig": "karma.conf.js",
                         "assets": [
-                            "src/assets",
                             "src/favicon.ico",
                             "src/robots.txt"
                         ],
