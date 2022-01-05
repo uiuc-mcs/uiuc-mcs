@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, DocumentData, QueryDocumentSnapshot } from '@angular/fire/firestore';
 import { AuthService } from '../services/auth/auth.service';
 import { ClassService } from '../services/classes/class.service';
 import { ClassData } from '../shared/class/class';
@@ -19,11 +19,12 @@ export class ReviewsComponent implements OnInit {
     ) { }
 
     reviewData: Review[] = []
+    latestDoc: any | null = null
+    limit: number = 10
     pageLength: number = 55
     isLoggedIn: boolean = false
     courses: ClassData[] = []
     courseId: string = ''
-    nothingHere: boolean = false
     orderByOptions = [
         { displayText: "Newest", field: "timestamp", order: "desc" },
         { displayText: "Oldest", field: "timestamp", order: "asc" },
@@ -61,8 +62,21 @@ export class ReviewsComponent implements OnInit {
         this.getFirstPage()
     }
 
+    updateReviewArray(docs: Array<QueryDocumentSnapshot<DocumentData>>) {
+        this.reviewData = []
+        for (let item of docs) {
+            const review = item.data() as Review
+            review.reviewId = item.id
+            const course = this.courses.find(item => item.courseId == review.classId)
+            if (course) {
+                review.classNumber = course.CourseNumber
+            }
+            this.reviewData.push(review)
+        }
+        this.reviewData = ratingsToStrings(this.reviewData)
+    }
+
     getFirstPage() {
-        this.nothingHere = false
         this.afs.collection('Reviews', ref => {
             let query = ref.limit(this.pageLength)
             if (this.courseId) {
@@ -71,12 +85,44 @@ export class ReviewsComponent implements OnInit {
             return query.orderBy(this.selectedSort.field,
                 this.selectedSort.order as
                 firebase.firestore.OrderByDirection)
+                .limit(this.limit)
+        }).get().subscribe(response => {
+            if (response.empty) {
+                this.reviewData = []
+                return
+            }
+            var docs = response.docs as Array<QueryDocumentSnapshot<DocumentData>>
+            this.latestDoc = docs[docs.length - 1]
+            console.log('updated latestDoc', this.latestDoc)
+            this.updateReviewArray(docs)
+        }, error => { console.error("Reviews:", error) })
+    }
+
+    getMore() {
+        this.afs.collection('Reviews', ref => {
+            let query = ref.limit(this.pageLength)
+            if (this.courseId) {
+                query = query.where("classId", "==", this.courseId)
+            }
+            if (this.latestDoc) {
+                console.log(this.latestDoc)
+                return query.orderBy(this.selectedSort.field,
+                    this.selectedSort.order as
+                    firebase.firestore.OrderByDirection)
+                    .startAfter(this.latestDoc).limit(this.limit)
+                // .startAfter(this.latestDoc || 0).limit(3)
+            }
+            return query.orderBy(this.selectedSort.field,
+                this.selectedSort.order as
+                firebase.firestore.OrderByDirection)
+                .limit(this.limit)
         }).get().subscribe(response => {
             if (!response.docs.length) {
                 this.reviewData = []
-                this.nothingHere = true
                 return
             }
+            this.latestDoc = response.docs[response.docs.length - 1]
+            console.log('updated latestDoc', this.latestDoc)
             this.reviewData = []
             for (let item of response.docs) {
                 const review = item.data() as Review
@@ -90,4 +136,32 @@ export class ReviewsComponent implements OnInit {
             this.reviewData = ratingsToStrings(this.reviewData)
         }, error => { console.error("Reviews:", error) })
     }
+
+    // getFirstPage() {
+    //     this.afs.collection('Reviews', ref => {
+    //         let query = ref.limit(this.pageLength)
+    //         if (this.courseId) {
+    //             query = query.where("classId", "==", this.courseId)
+    //         }
+    //         return query.orderBy(this.selectedSort.field,
+    //             this.selectedSort.order as
+    //             firebase.firestore.OrderByDirection)
+    //     }).get().subscribe(response => {
+    //         if (!response.docs.length) {
+    //             this.reviewData = []
+    //             return
+    //         }
+    //         this.reviewData = []
+    //         for (let item of response.docs) {
+    //             const review = item.data() as Review
+    //             review.reviewId = item.id
+    //             const course = this.courses.find(item => item.courseId == review.classId)
+    //             if (course) {
+    //                 review.classNumber = course.CourseNumber
+    //             }
+    //             this.reviewData.push(review)
+    //         }
+    //         this.reviewData = ratingsToStrings(this.reviewData)
+    //     }, error => { console.error("Reviews:", error) })
+    // }
 }

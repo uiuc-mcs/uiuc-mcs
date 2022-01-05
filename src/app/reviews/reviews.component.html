@@ -16,9 +16,6 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <div class="center" *ngIf="nothingHere">
-    <h1>Could not find any Reviews using input parameters.<br>Please try a different search.</h1>
-  </div>
   <app-review-detail [reviewData]="reviewData" [pageNumber]="0" 
     [showEmptyMsg]="false" [pageLength]="pageLength" [links]="true">
   </app-review-detail>
