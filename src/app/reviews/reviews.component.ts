@@ -63,7 +63,6 @@ export class ReviewsComponent implements OnInit {
     }
 
     updateReviewArray(docs: Array<QueryDocumentSnapshot<DocumentData>>) {
-        this.reviewData = []
         for (let item of docs) {
             const review = item.data() as Review
             review.reviewId = item.id
@@ -78,15 +77,15 @@ export class ReviewsComponent implements OnInit {
 
     getFirstPage() {
         this.afs.collection('Reviews', ref => {
-            let query = ref.limit(this.pageLength)
+            let query = ref.limit(this.limit)
             if (this.courseId) {
                 query = query.where("classId", "==", this.courseId)
             }
             return query.orderBy(this.selectedSort.field,
                 this.selectedSort.order as
                 firebase.firestore.OrderByDirection)
-                .limit(this.limit)
         }).get().subscribe(response => {
+            this.reviewData = []
             if (response.empty) {
                 this.reviewData = []
                 return
@@ -100,17 +99,16 @@ export class ReviewsComponent implements OnInit {
 
     getMore() {
         this.afs.collection('Reviews', ref => {
-            let query = ref.limit(this.pageLength)
+            let query = ref.limit(this.limit)
             if (this.courseId) {
                 query = query.where("classId", "==", this.courseId)
             }
             if (this.latestDoc) {
-                console.log(this.latestDoc)
+                console.log("latestDoc", this.latestDoc)
                 return query.orderBy(this.selectedSort.field,
                     this.selectedSort.order as
                     firebase.firestore.OrderByDirection)
                     .startAfter(this.latestDoc).limit(this.limit)
-                // .startAfter(this.latestDoc || 0).limit(3)
             }
             return query.orderBy(this.selectedSort.field,
                 this.selectedSort.order as
@@ -121,47 +119,11 @@ export class ReviewsComponent implements OnInit {
                 this.reviewData = []
                 return
             }
-            this.latestDoc = response.docs[response.docs.length - 1]
+            var docs = response.docs as Array<QueryDocumentSnapshot<DocumentData>>
+            this.latestDoc = docs[docs.length - 1]
             console.log('updated latestDoc', this.latestDoc)
-            this.reviewData = []
-            for (let item of response.docs) {
-                const review = item.data() as Review
-                review.reviewId = item.id
-                const course = this.courses.find(item => item.courseId == review.classId)
-                if (course) {
-                    review.classNumber = course.CourseNumber
-                }
-                this.reviewData.push(review)
-            }
-            this.reviewData = ratingsToStrings(this.reviewData)
+            this.updateReviewArray(docs)
         }, error => { console.error("Reviews:", error) })
     }
 
-    // getFirstPage() {
-    //     this.afs.collection('Reviews', ref => {
-    //         let query = ref.limit(this.pageLength)
-    //         if (this.courseId) {
-    //             query = query.where("classId", "==", this.courseId)
-    //         }
-    //         return query.orderBy(this.selectedSort.field,
-    //             this.selectedSort.order as
-    //             firebase.firestore.OrderByDirection)
-    //     }).get().subscribe(response => {
-    //         if (!response.docs.length) {
-    //             this.reviewData = []
-    //             return
-    //         }
-    //         this.reviewData = []
-    //         for (let item of response.docs) {
-    //             const review = item.data() as Review
-    //             review.reviewId = item.id
-    //             const course = this.courses.find(item => item.courseId == review.classId)
-    //             if (course) {
-    //                 review.classNumber = course.CourseNumber
-    //             }
-    //             this.reviewData.push(review)
-    //         }
-    //         this.reviewData = ratingsToStrings(this.reviewData)
-    //     }, error => { console.error("Reviews:", error) })
-    // }
 }
