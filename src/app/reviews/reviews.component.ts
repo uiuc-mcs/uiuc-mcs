@@ -23,6 +23,7 @@ export class ReviewsComponent implements OnInit {
     limit: number = 10
     pageLength: number = 55
     isLoggedIn: boolean = false
+    noMore: boolean = false
     courses: ClassData[] = []
     courseId: string = ''
     orderByOptions = [
@@ -46,20 +47,22 @@ export class ReviewsComponent implements OnInit {
     ngOnInit(): void {
         this.auth.isLoggedIn.subscribe(state => { this.isLoggedIn = state })
         this.classService.classes.subscribe(data => { this.courses = data })
-        this.getFirstPage()
+        this.initLoad()
     }
 
-    onCourseChange(value: any): void {
+    onCourseChange(value: any) {
         if (value !== '') {
             this.courseId = value.courseId
         } else {
             this.courseId = ''
         }
-        this.getFirstPage()
+        this.initLoad()
     }
 
-    newSort(): void {
-        this.getFirstPage()
+    initLoad() {
+        this.latestDoc = null
+        this.reviewData = []
+        this.getMore()
     }
 
     updateReviewArray(docs: Array<QueryDocumentSnapshot<DocumentData>>) {
@@ -73,28 +76,6 @@ export class ReviewsComponent implements OnInit {
             this.reviewData.push(review)
         }
         this.reviewData = ratingsToStrings(this.reviewData)
-    }
-
-    getFirstPage() {
-        this.afs.collection('Reviews', ref => {
-            let query = ref.limit(this.limit)
-            if (this.courseId) {
-                query = query.where("classId", "==", this.courseId)
-            }
-            return query.orderBy(this.selectedSort.field,
-                this.selectedSort.order as
-                firebase.firestore.OrderByDirection)
-        }).get().subscribe(response => {
-            this.reviewData = []
-            if (response.empty) {
-                this.reviewData = []
-                return
-            }
-            var docs = response.docs as Array<QueryDocumentSnapshot<DocumentData>>
-            this.latestDoc = docs[docs.length - 1]
-            console.log('updated latestDoc', this.latestDoc)
-            this.updateReviewArray(docs)
-        }, error => { console.error("Reviews:", error) })
     }
 
     getMore() {
@@ -115,11 +96,12 @@ export class ReviewsComponent implements OnInit {
                 firebase.firestore.OrderByDirection)
                 .limit(this.limit)
         }).get().subscribe(response => {
-            if (!response.docs.length) {
-                this.reviewData = []
+            if (response.empty) {
+                this.noMore = true
                 return
             }
             var docs = response.docs as Array<QueryDocumentSnapshot<DocumentData>>
+            this.noMore = docs.length < this.limit
             this.latestDoc = docs[docs.length - 1]
             console.log('updated latestDoc', this.latestDoc)
             this.updateReviewArray(docs)

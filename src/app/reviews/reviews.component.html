@@ -9,7 +9,7 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field class="order-dropdown" appearance="fill">
-      <mat-select [(value)]="selectedSort" (selectionChange)="newSort()">
+      <mat-select [(value)]="selectedSort" (selectionChange)="initLoad()">
         <mat-option *ngFor="let option of orderByOptions" [value]="option">
           Sort by {{option.displayText}}
         </mat-option>
@@ -19,7 +19,8 @@
   <app-review-detail [reviewData]="reviewData" [pageNumber]="0" 
     [showEmptyMsg]="false" [pageLength]="pageLength" [links]="true">
   </app-review-detail>
-  <div *ngIf="reviewData.length" style="text-align: center; z-index: 1000000;">
+  <div *ngIf="reviewData.length && !noMore" 
+  style="text-align: center;">
     <button mat-raised-button color="primary" class="btn-block" (click)="getMore()">
       More
     </button>
