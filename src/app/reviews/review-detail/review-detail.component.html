@@ -26,13 +26,11 @@
         <div class="card-header-buttons">
           <button mat-icon-button 
           (click)="openSnackBar('Link copied to clipboard.', review.reviewId)">
-            <!-- <mat-icon matTooltip="Copy link">link</mat-icon> -->
-            <mat-icon>link</mat-icon>
+            <mat-icon matTooltip="Copy link">link</mat-icon>
           </button>
             <button *ngIf="review.userId === userData?.uid" mat-icon-button
               routerLink="/review/edit/{{review.reviewId}}">
-              <!-- <mat-icon matTooltip="Edit review">mode_edit</mat-icon> -->
-              <mat-icon >mode_edit</mat-icon>
+              <mat-icon matTooltip="Edit review">mode_edit</mat-icon>
             </button>
             <!-- <button *ngIf="review.userId === userData?.uid" mat-icon-button (click)="removeReview(review.reviewId)">
               <mat-icon matTooltip="Delete review">delete</mat-icon>
@@ -52,16 +50,12 @@
             [negative]="review.helpfulNegative"></app-review-helpfulness>
           <div fxFlex></div>
           <mat-chip-list>
-            <!-- <mat-chip class="chip-outlined hide-under-xs" [class]="'diff_'+review.difficulty" disabled
-              matTooltip="Difficulty"> -->
-            <mat-chip class="chip-outlined hide-under-xs" [class]="'diff_'+review.difficulty" disabled>
+            <mat-chip class="chip-outlined hide-under-xs" [class]="'diff_'+review.difficulty" disabled
+              matTooltip="Difficulty">
               {{review.difficultyString}}</mat-chip>
-            <!-- <mat-chip class="chip-outlined" [class]="'rat_'+review.rating" disabled matTooltip="Rating"> -->
-            <mat-chip class="chip-outlined" [class]="'rat_'+review.rating" disabled>
+            <mat-chip class="chip-outlined" [class]="'rat_'+review.rating" disabled matTooltip="Rating">
               {{review.ratingString}}</mat-chip>
-            <!-- <mat-chip class="chip-outlined hide-under-xs" disabled matTooltip="Workload"> -->
-            <mat-chip class="chip-outlined hide-under-xs" disabled>
-              {{review.workload}} hrs/wk
+            <mat-chip class="chip-outlined hide-under-xs" disabled matTooltip="Workload">{{review.workload}} hrs/wk
             </mat-chip>
           </mat-chip-list>
         </mat-card-footer>

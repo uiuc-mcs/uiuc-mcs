@@ -85,7 +85,7 @@ export class ReviewsComponent implements OnInit {
                 query = query.where("classId", "==", this.courseId)
             }
             if (this.latestDoc) {
-                console.log("latestDoc", this.latestDoc)
+                // console.log("latestDoc", this.latestDoc)
                 return query.orderBy(this.selectedSort.field,
                     this.selectedSort.order as
                     firebase.firestore.OrderByDirection)
@@ -103,7 +103,7 @@ export class ReviewsComponent implements OnInit {
             var docs = response.docs as Array<QueryDocumentSnapshot<DocumentData>>
             this.noMore = docs.length < this.limit
             this.latestDoc = docs[docs.length - 1]
-            console.log('updated latestDoc', this.latestDoc)
+            // console.log('updated latestDoc', this.latestDoc)
             this.updateReviewArray(docs)
         }, error => { console.error("Reviews:", error) })
     }
