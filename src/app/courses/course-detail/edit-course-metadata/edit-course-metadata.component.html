@@ -39,7 +39,7 @@
         </mat-form-field> -->
         <!-- <mat-divider [inset]="true" [ngClass]="'edit-metadata-divider field-divider'"></mat-divider> -->
 
-        <div *ngFor="let field of fields">
+        <!-- <div *ngFor="let field of fields">
           <mat-form-field class="form-field-full-width">
             <mat-label>{{field | titlecase}}</mat-label>
             <mat-select type="boolean" formControlName="{{field}}Bool" required>
@@ -51,8 +51,8 @@
             <textarea matInput type="textarea" rows="3" placeholder="{{field | titlecase}} Information"
               formControlName="{{field}}"></textarea>
           </mat-form-field>
+        </div> -->
           <!-- <mat-divider [inset]="true" [ngClass]="'edit-metadata-divider field-divider'"></mat-divider> -->
-        </div>
         <mat-form-field class="form-field-full-width">
           <mat-label>Languages</mat-label>
           <mat-select formControlName="languages" multiple>

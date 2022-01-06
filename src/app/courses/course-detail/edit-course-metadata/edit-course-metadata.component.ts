@@ -14,7 +14,7 @@ import { TitleCasePipe } from '@angular/common';
 })
 export class EditCourseMetadataComponent implements OnInit {
   courseName: string = ""
-  fields: string[] = ["exams", "homework", "projects", "proofs", "peer reviewed", "textbook"]
+//   fields: string[] = ["exams", "homework", "projects", "proofs", "peer reviewed", "textbook"]
   languages = courseLanguages
   categories = courseCategories
   courseMetadataForm!: FormGroup

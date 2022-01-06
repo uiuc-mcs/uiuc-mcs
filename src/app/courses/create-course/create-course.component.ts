@@ -14,7 +14,7 @@ import { TitleCasePipe } from '@angular/common';
 })
 export class CreateCourseComponent implements OnInit {
   courseName: string = ""
-  fields: string[] = ["exams", "homework", "projects", "proofs", "peer reviewed", "textbook"]
+//   fields: string[] = ["exams", "homework", "projects", "proofs", "peer reviewed", "textbook"]
   // languages: string[] = ["C", "C++", "Kotlin", "GoLang", "MATLAB", "Python", "Rust", "No Code"]
   // categories: string[] = ["Applications", "Systems", "Theory", "Elective"]
   languages = courseLanguages
