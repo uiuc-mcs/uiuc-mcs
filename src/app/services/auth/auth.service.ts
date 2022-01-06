@@ -61,7 +61,7 @@ export class AuthService {
       user.firstSemester = data?.firstSemester
       user.firstName = data?.firstName
       user.lastName = data?.lastName
-      user.slackId = data?.slackId
+    //   user.slackId = data?.slackId
       user.reviewFeedback = data?.reviewFeedback
       localStorage.setItem('user', JSON.stringify(user))
       this._userData.next(user)
@@ -86,7 +86,7 @@ export class AuthService {
         userCredential.user?.updateProfile({ displayName: `${firstName} ${lastName}` })
         this.afs.collection("UserExtraData").doc(userCredential.user?.uid).set({
           uid: userCredential.user?.uid,
-          slackId: null,
+        //   slackId: null,
           firstSemester: firstSemester,
           firstName: firstName,
           lastName: lastName,

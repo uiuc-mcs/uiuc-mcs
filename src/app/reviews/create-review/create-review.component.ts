@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ClassService } from 'src/app/services/classes/class.service';
-import { ClassData, Difficulties, Ratings, Semesters } from 'src/app/shared/class/class';
+import { ClassData, Difficulties, Ratings, Semesters, getRouterLink } from 'src/app/shared/class/class';
 import { DialogReviewSubmission } from 'src/app/shared/dialog/review-submission/dialog-review-submission.component';
 import { DialogReviewTooShort } from 'src/app/shared/dialog/review-too-short/dialog-review-too-short.component';
 import { Review, SemesterYear } from 'src/app/shared/review/review';
@@ -142,7 +142,7 @@ export class CreateReviewComponent implements OnInit {
     get f() {
         return this.reviewForm?.controls
     }
-    
+
     countReviewChars() {
         const len = this.f.review.value.length
         if (len == 1) {
@@ -160,7 +160,8 @@ export class CreateReviewComponent implements OnInit {
 
     onSubmit() {
         const courseName = this.reviewForm.controls['course'].value
-        const classId = this.courses?.find(item => item.ClassName === courseName)?.courseId
+        const course = this.courses?.find(item => item.ClassName === courseName)
+        const classId = course?.courseId
         this.reviewForm.controls['classId'].setValue(classId)
         this.submitted = true
         if (this.reviewForm?.invalid) {
@@ -181,7 +182,7 @@ export class CreateReviewComponent implements OnInit {
                 .update(this.reviewForm.value)
                 .then(result => {
                     this.loading = false
-                    this.openSubmittedDialog()
+                    this.openSubmittedDialog(course)
                 }, error => {
                     console.error("Create Review Failed: ", error)
                     this.loading = false
@@ -192,7 +193,7 @@ export class CreateReviewComponent implements OnInit {
                 .add(this.reviewForm.value)
                 .then(result => {
                     this.loading = false
-                    this.openSubmittedDialog()
+                    this.openSubmittedDialog(course)
                 }, error => {
                     console.error("Create Review Failed: ", error)
                     this.loading = false
@@ -201,11 +202,19 @@ export class CreateReviewComponent implements OnInit {
         }
     }
 
-    openSubmittedDialog() {
+    openSubmittedDialog(course?: ClassData) {
+        // const classId = this.courses?.find(item => item.ClassName === courseName)?.courseId
         this.courseService.updateCourseData()
         const dialogRef = this.dialog.open(DialogReviewSubmission)
         dialogRef.afterClosed().subscribe(result => {
-            this.router.navigate(['courses', this.reviewForm.controls['course'].value])
+            if (course) {
+                const link = getRouterLink(course)
+                // this.router.navigate(['courses', this.reviewForm.controls['course'].value])
+                this.router.navigate([link])
+            }
+            else {
+                this.router.navigate(['home'])
+            }
         })
     }
 

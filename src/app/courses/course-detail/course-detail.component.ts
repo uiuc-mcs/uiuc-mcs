@@ -34,10 +34,6 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         { title: 'Avg. Difficulty', subtitle: '', value: 0 },
         { title: 'Avg. Workload', subtitle: 'Hours Per Week', value: 0 },
         { title: 'Avg. Rating', subtitle: '', value: 0 },
-        // {title: 'Textbook', subtitle: 'On a Scale of 1-7', value: 0},
-        // {title: 'Lectures', subtitle: 'On a Scale of 1-7', value: 0},
-        // {title: 'Professor', subtitle: 'On a Scale of 1-7', value: 0},
-        // {title: 'Piazza Support', subtitle: 'On a Scale of 1-7', value: 0},
     ]
     orderByOptions = [
         { displayText: "Newest", field: "timestamp", order: "desc" },
@@ -89,9 +85,6 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     }
 
     updateGraphicStyles(): void {
-        // if (this.gradientContainer?.nativeElement) {
-        //   this.renderer.setStyle(this.gradientContainer?.nativeElement, 'background', this.course?.GraphicColor)
-        // }
         if (this.imageContainer?.nativeElement) {
             this.renderer.setStyle(this.imageContainer?.nativeElement, 'background-image', this.course?.GraphicUrl)
         }
@@ -197,10 +190,6 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         this.cards[1].value = course.DifficultyAvg
         this.cards[2].value = course.WorkloadAvg
         this.cards[3].value = course.RatingAvg
-        // this.cards[4].value = course.Textbook ? course.BookUsefulnessAvg : 0
-        // this.cards[5].value = course.LectureQualityAvg
-        // this.cards[6].value = course.ProfessorQualityAvg
-        // this.cards[7].value = course.PiazzaCommunityAvg
     }
 
     semesterMatch(season: string, semesters: string[]): string {

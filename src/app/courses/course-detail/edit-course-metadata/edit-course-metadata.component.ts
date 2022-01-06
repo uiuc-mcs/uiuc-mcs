@@ -37,41 +37,41 @@ export class EditCourseMetadataComponent implements OnInit {
       seasonSpring: [false, Validators.required],
       seasonSummer: [false, Validators.required],
       seasonFall: [false, Validators.required],
-      exams: ['', Validators.required],
-      examsBool: ['', Validators.required],
-      homework: ['', Validators.required],
-      homeworkBool: ['', Validators.required],
+    //   exams: ['', Validators.required],
+    //   examsBool: ['', Validators.required],
+    //   homework: ['', Validators.required],
+    //   homeworkBool: ['', Validators.required],
       languages: [''],
-      professor: ['', Validators.required],
-      projects: ['', Validators.required],
-      projectsBool: ['', Validators.required],
-      proofs: ['', Validators.required],
-      proofsBool: ['', Validators.required],
-      "peer reviewed": ['', Validators.required],
-      "peer reviewedBool": ['', Validators.required],
-      "slack channel": ['', Validators.required],
-      "slack channelBool": ['', Validators.required],
-      "slack channelLink": ['', Validators.required],
-      textbook: ['', Validators.required],
-      textbookBool: ['', Validators.required],
-      textbookName: [''],
+    //   professor: ['', Validators.required],
+    //   projects: ['', Validators.required],
+    //   projectsBool: ['', Validators.required],
+    //   proofs: ['', Validators.required],
+    //   proofsBool: ['', Validators.required],
+    //   "peer reviewed": ['', Validators.required],
+    //   "peer reviewedBool": ['', Validators.required],
+    //   "slack channel": ['', Validators.required],
+    //   "slack channelBool": ['', Validators.required],
+    //   "slack channelLink": ['', Validators.required],
+    //   textbook: ['', Validators.required],
+    //   textbookBool: ['', Validators.required],
+    //   textbookName: [''],
     })
     this.courseService.classes.subscribe(data => {
       this.courseData = data.find(x => x.ClassName == this.courseName)
-      this.setFieldData(this.f.exams, this.f.examsBool, this.courseData?.meta.exams)
-      this.setFieldData(this.f.homework, this.f.homeworkBool, this.courseData?.meta.homework)
-      this.setFieldData(this.f.projects, this.f.projectsBool, this.courseData?.meta.projects)
-      this.setFieldData(this.f.proofs, this.f.proofsBool, this.courseData?.meta.proofs)
-      this.setFieldData(this.f["peer reviewed"], this.f["peer reviewedBool"], this.courseData?.meta['peer reviewed'].toString())
-      this.setFieldData(this.f.textbook, this.f.textbookBool, this.courseData?.TextbookName)
+    //   this.setFieldData(this.f.exams, this.f.examsBool, this.courseData?.meta.exams)
+    //   this.setFieldData(this.f.homework, this.f.homeworkBool, this.courseData?.meta.homework)
+    //   this.setFieldData(this.f.projects, this.f.projectsBool, this.courseData?.meta.projects)
+    //   this.setFieldData(this.f.proofs, this.f.proofsBool, this.courseData?.meta.proofs)
+    //   this.setFieldData(this.f["peer reviewed"], this.f["peer reviewedBool"], this.courseData?.meta['peer reviewed'].toString())
+    //   this.setFieldData(this.f.textbook, this.f.textbookBool, this.courseData?.TextbookName)
       this.f.category.setValue(this.courseData?.category)
       this.f.seasonSpring.setValue(this.courseData?.season.spring)
       this.f.seasonSummer.setValue(this.courseData?.season.summer)
       this.f.seasonFall.setValue(this.courseData?.season.fall)
       this.f.languages.setValue(this.courseData?.languages)
-      this.f.professor.setValue(this.courseData?.Teacher)
-      this.setFieldData(this.f["slack channel"], this.f["slack channelBool"], "#" + this.courseData?.SlackChannel)
-      this.setFieldData(this.f["slack channelLink"], this.f["slack channelBool"], this.courseData?.SlackChannelLink)
+    //   this.f.professor.setValue(this.courseData?.Teacher)
+    //   this.setFieldData(this.f["slack channel"], this.f["slack channelBool"], "#" + this.courseData?.SlackChannel)
+    //   this.setFieldData(this.f["slack channelLink"], this.f["slack channelBool"], this.courseData?.SlackChannelLink)
     })
   }
 
@@ -97,19 +97,19 @@ export class EditCourseMetadataComponent implements OnInit {
           summer: this.f.seasonSummer.value,
           fall: this.f.seasonFall.value
         },
-        meta: {
-          exams: this.f.examsBool.value === "true" ? this.f.exams.value : "",
-          homework: this.f.homeworkBool.value === "true" ? this.f.homework.value : "",
-          projects: this.f.projectsBool.value === "true" ? this.f.projects.value : "",
-          proofs: this.f.proofsBool.value === "true" ? this.f.proofs.value : "",
-          "peer reviewed": this.f["peer reviewedBool"].value === "true" ? this.f["peer reviewed"].value : "",
-        },
+        // meta: {
+        //   exams: this.f.examsBool.value === "true" ? this.f.exams.value : "",
+        //   homework: this.f.homeworkBool.value === "true" ? this.f.homework.value : "",
+        //   projects: this.f.projectsBool.value === "true" ? this.f.projects.value : "",
+        //   proofs: this.f.proofsBool.value === "true" ? this.f.proofs.value : "",
+        //   "peer reviewed": this.f["peer reviewedBool"].value === "true" ? this.f["peer reviewed"].value : "",
+        // },
         languages: this.f.languages.value,
-        SlackChannel: this.f["slack channelBool"].value === "true" ? this.f["slack channel"].value.replace('#', '') : "",
-        SlackChannelLink: this.f["slack channelBool"].value === "true" ? this.f["slack channelLink"].value : "",
-        Teacher: this.tc.transform(this.f.professor.value),
-        Textbook: this.f.textbookBool.value === "true" ? true : false,
-        TextbookName: this.tc.transform(this.f.textbook.value),
+        // SlackChannel: this.f["slack channelBool"].value === "true" ? this.f["slack channel"].value.replace('#', '') : "",
+        // SlackChannelLink: this.f["slack channelBool"].value === "true" ? this.f["slack channelLink"].value : "",
+        // Teacher: this.tc.transform(this.f.professor.value),
+        // Textbook: this.f.textbookBool.value === "true" ? true : false,
+        // TextbookName: this.tc.transform(this.f.textbook.value),
       }).then(() => {
         this.courseService.updateCourseData()
         this.router.navigate([`courses/${this.courseName}`])

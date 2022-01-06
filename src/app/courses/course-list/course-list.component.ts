@@ -83,7 +83,7 @@ export class CourseListComponent implements AfterViewInit {
     }
 
     rowClick(ev: MouseEvent, course: ClassData) {
-        console.log('here')
+        // console.log('here')
         const link = `/courses/${course.CourseNumber}-${course.ClassName}`
             .replace(/ /g, '-')
         // if (ev.button === 1 || (ev.ctrlKey && ev.button === 0)) {

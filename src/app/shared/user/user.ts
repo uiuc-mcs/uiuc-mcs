@@ -4,11 +4,11 @@ export interface User {
     displayName?: string,
     photoUrl?: string,
     emailVerified?: boolean,
-    slackId?: string,
+    // slackId?: string,
 }
 
 export interface FbUser extends firebase.default.User {
-    slackId?: string,
+    // slackId?: string,
     firstName?: string,
     lastName?: string,
     firstSemester?: string,

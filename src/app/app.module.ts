@@ -35,7 +35,7 @@ import { LogoutComponent } from './user/logout/logout.component';
 import { CreateReviewComponent } from './reviews/create-review/create-review.component';
 import { DialogNotLoggedIn } from './shared/dialog/not-logged-in/dialog-not-logged-in.component';
 import { DialogNotVerified } from './shared/dialog/not-verified/dialog-not-verified.component';
-import { DialogSendFeedback } from './shared/dialog/send-feedback/dialog-send-feedback.component';
+// import { DialogSendFeedback } from './shared/dialog/send-feedback/dialog-send-feedback.component';
 import { DialogReviewSubmission } from './shared/dialog/review-submission/dialog-review-submission.component';
 import { DialogReviewTooShort } from './shared/dialog/review-too-short/dialog-review-too-short.component';
 import { DialogOnDelete } from './shared/dialog/review-delete/dialog-on-delete.component';
@@ -72,7 +72,7 @@ import { TermsComponent } from './terms/terms.component'
         DialogReviewTooShort,
         DialogNotLoggedIn,
         DialogNotVerified,
-        DialogSendFeedback,
+        // DialogSendFeedback,
         EditCourseMetadataComponent,
         SidenavComponent,
         SadPandaComponent,
