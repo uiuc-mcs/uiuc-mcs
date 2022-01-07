@@ -83,8 +83,8 @@ export class CourseListComponent implements AfterViewInit {
     }
 
     rowClick(ev: MouseEvent, course: ClassData) {
-        // console.log('here')
         const link = getRouterLink(course)
+        // console.log(link)
         // if (ev.button === 1 || (ev.ctrlKey && ev.button === 0)) {
         if (ev.ctrlKey || ev.metaKey) {
             this.router.navigate([]).then(result => { window.open(link); });
