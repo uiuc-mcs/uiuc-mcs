@@ -6,9 +6,9 @@ import { ClassService } from 'src/app/services/classes/class.service';
 import { getRouterLink, ClassData, courseCategories, courseLanguages } from 'src/app/shared/class/class';
 
 @Component({
-  selector: 'app-edit-course-metadata',
-  templateUrl: './edit-course-metadata.component.html',
-  styleUrls: ['./edit-course-metadata.component.scss'],
+  selector: 'app-course-edit',
+  templateUrl: './course-edit.component.html',
+  styleUrls: ['./course-edit.component.scss'],
 })
 export class EditCourseMetadataComponent implements OnInit {
   courseName: string = ""

@@ -4,9 +4,9 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { ClassData, courseCategories, courseLanguages} from 'src/app/shared/class/class';
 
 @Component({
-  selector: 'app-create-course',
-  templateUrl: './create-course.component.html',
-  styleUrls: ['./create-course.component.scss'],
+  selector: 'app-course-create',
+  templateUrl: './course-create.component.html',
+  styleUrls: ['./course-create.component.scss'],
 })
 export class CreateCourseComponent implements OnInit {
   courseName: string = ""

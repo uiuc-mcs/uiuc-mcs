@@ -37,13 +37,13 @@ import { DialogNotVerified } from './shared/dialog/not-verified/dialog-not-verif
 import { DialogReviewSubmission } from './shared/dialog/review-submission/dialog-review-submission.component';
 import { DialogReviewTooShort } from './shared/dialog/review-too-short/dialog-review-too-short.component';
 import { DialogOnDelete } from './shared/dialog/review-delete/dialog-on-delete.component';
-import { EditCourseMetadataComponent } from './courses/edit-course-metadata/edit-course-metadata.component';
+import { EditCourseMetadataComponent } from './courses/course-edit/course-edit.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 import { SadPandaComponent } from './misc/sad-panda/sad-panda.component';
 import { NothingHereComponent } from './misc/nothing-here/nothing-here.component';
 import { PandaPartyComponent } from './misc/panda-party/panda-party.component';
 import { ReviewHelpfulnessComponent } from './reviews/review-detail/review-helpfulness/review-helpfulness.component';
-import { CreateCourseComponent } from './courses/create-course/create-course.component';
+import { CreateCourseComponent } from './courses/course-create/course-create.component';
 import { PrivacyComponent } from './privacy/privacy.component'
 import { TermsComponent } from './terms/terms.component'
 
