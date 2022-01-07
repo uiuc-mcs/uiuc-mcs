@@ -138,9 +138,9 @@ export class CreateCourseComponent implements OnInit {
         //     proofs: this.f.metaProofs.value,
         //   },
           season: {
-            spring: this.f.seasonSpring.value === "true" ? true : false,
-            summer: this.f.seasonSummer.value === "true" ? true : false,
-            fall: this.f.seasonFall.value === "true" ? true : false,
+            spring: this.f.seasonSpring.value === "true",
+            summer: this.f.seasonSummer.value === "true",
+            fall: this.f.seasonFall.value === "true",
           },
           semesters: {},
         })

@@ -84,8 +84,7 @@ export class CourseListComponent implements AfterViewInit {
 
     rowClick(ev: MouseEvent, course: ClassData) {
         // console.log('here')
-        const link = `/courses/${course.CourseNumber}-${course.ClassName}`
-            .replace(/ /g, '-')
+        const link = getRouterLink(course)
         // if (ev.button === 1 || (ev.ctrlKey && ev.button === 0)) {
         if (ev.ctrlKey || ev.metaKey) {
             this.router.navigate([]).then(result => { window.open(link); });

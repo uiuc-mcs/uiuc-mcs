@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClassService } from 'src/app/services/classes/class.service';
-import { ClassData, courseCategories, courseLanguages } from 'src/app/shared/class/class';
+import { getRouterLink, ClassData, courseCategories, courseLanguages } from 'src/app/shared/class/class';
 import { TitleCasePipe } from '@angular/common';
 
 @Component({
@@ -112,7 +112,11 @@ export class EditCourseMetadataComponent implements OnInit {
         // TextbookName: this.tc.transform(this.f.textbook.value),
       }).then(() => {
         this.courseService.updateCourseData()
-        this.router.navigate([`courses/${this.courseName}`])
+        var link = 'home'
+        if (this.courseData) {
+            link = getRouterLink(this.courseData)
+        }
+        this.router.navigate([link])
       })
   }
 }
