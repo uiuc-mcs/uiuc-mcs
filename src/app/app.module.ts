@@ -37,7 +37,7 @@ import { DialogNotVerified } from './shared/dialog/not-verified/dialog-not-verif
 import { DialogReviewSubmission } from './shared/dialog/review-submission/dialog-review-submission.component';
 import { DialogReviewTooShort } from './shared/dialog/review-too-short/dialog-review-too-short.component';
 import { DialogOnDelete } from './shared/dialog/review-delete/dialog-on-delete.component';
-import { EditCourseMetadataComponent } from './courses/course-detail/edit-course-metadata/edit-course-metadata.component';
+import { EditCourseMetadataComponent } from './courses/edit-course-metadata/edit-course-metadata.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 import { SadPandaComponent } from './misc/sad-panda/sad-panda.component';
 import { NothingHereComponent } from './misc/nothing-here/nothing-here.component';
