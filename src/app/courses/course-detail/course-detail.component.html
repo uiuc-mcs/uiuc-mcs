@@ -11,17 +11,9 @@
       <div class="padded-cell white">
         <h1 class="white">{{courseName}}</h1>
         <h3 class="white">{{courseNumber}}</h3>
-        <!-- <h4 class="white">
-              <span *ngIf="course?.Textbook"><br>Textbook: {{course?.TextbookName}}</span>
-            </h4> -->
         <mat-chip-list>
           <mat-chip [disableRipple]="true" *ngFor="let cat of course?.category">{{cat}}
           </mat-chip>
-          <!-- <div *ngFor="let item of course?.meta | keyvalue">
-                <mat-chip [disableRipple]="true" *ngIf="item.value" matTooltip="{{item.value}}" #tooltip="matTooltip" (click)="tooltip.toggle()">
-                  {{item.key | titlecase}}<mat-icon>info_outline</mat-icon>
-                </mat-chip>
-              </div> -->
           <mat-chip [disableRipple]="true" *ngFor="let lang of course?.languages">{{lang}}<mat-icon
               svgIcon="icons:check">
             </mat-icon>

@@ -14,21 +14,13 @@ function intersect(a: string[], b: string[]): string[] {
 }
 
 const countsMap: any = {
-//   bookUsefulness: 'BookUsefulnessCount',
   difficulty: 'DifficultyCount',
-//   lectureQuality: 'LectureQualityCount',
-//   piazzaCommunity: 'PiazzaCommunityCount',
-//   professorQuality: 'ProfessorQualityCount',
   rating: 'RatingCount',
   workload: 'WorkloadCount',
 }
 
 const avgMap: any = {
-//   bookUsefulness: 'BookUsefulnessAvg',
   difficulty: 'DifficultyAvg',
-//   lectureQuality: 'LectureQualityAvg',
-//   piazzaCommunity: 'PiazzaCommunityAvg',
-//   professorQuality: 'ProfessorQualityAvg',
   rating: 'RatingAvg',
   workload: 'WorkloadAvg',
 }
