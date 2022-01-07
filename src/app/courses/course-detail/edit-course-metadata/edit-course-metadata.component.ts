@@ -4,17 +4,14 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { getRouterLink, ClassData, courseCategories, courseLanguages } from 'src/app/shared/class/class';
-import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-edit-course-metadata',
   templateUrl: './edit-course-metadata.component.html',
   styleUrls: ['./edit-course-metadata.component.scss'],
-  providers: [TitleCasePipe],
 })
 export class EditCourseMetadataComponent implements OnInit {
   courseName: string = ""
-//   fields: string[] = ["exams", "homework", "projects", "proofs", "peer reviewed"]
   languages = courseLanguages
   categories = courseCategories
   courseMetadataForm!: FormGroup
@@ -26,7 +23,6 @@ export class EditCourseMetadataComponent implements OnInit {
     private courseService: ClassService,
     private afs: AngularFirestore,
     private router: Router,
-    private tc: TitleCasePipe,
   ) {
   }
 
@@ -37,20 +33,7 @@ export class EditCourseMetadataComponent implements OnInit {
       seasonSpring: [false, Validators.required],
       seasonSummer: [false, Validators.required],
       seasonFall: [false, Validators.required],
-    //   exams: ['', Validators.required],
-    //   examsBool: ['', Validators.required],
-    //   homework: ['', Validators.required],
-    //   homeworkBool: ['', Validators.required],
       languages: [''],
-    //   projects: ['', Validators.required],
-    //   projectsBool: ['', Validators.required],
-    //   proofs: ['', Validators.required],
-    //   proofsBool: ['', Validators.required],
-    //   "peer reviewed": ['', Validators.required],
-    //   "peer reviewedBool": ['', Validators.required],
-    //   "slack channel": ['', Validators.required],
-    //   "slack channelBool": ['', Validators.required],
-    //   "slack channelLink": ['', Validators.required],
     })
     this.courseService.classes.subscribe(data => {
       this.courseData = data.find(x => x.ClassName == this.courseName)
@@ -59,8 +42,6 @@ export class EditCourseMetadataComponent implements OnInit {
       this.f.seasonSummer.setValue(this.courseData?.season.summer)
       this.f.seasonFall.setValue(this.courseData?.season.fall)
       this.f.languages.setValue(this.courseData?.languages)
-    //   this.setFieldData(this.f["slack channel"], this.f["slack channelBool"], "#" + this.courseData?.SlackChannel)
-    //   this.setFieldData(this.f["slack channelLink"], this.f["slack channelBool"], this.courseData?.SlackChannelLink)
     })
   }
 
@@ -68,12 +49,12 @@ export class EditCourseMetadataComponent implements OnInit {
     return this.courseMetadataForm?.controls
   }
 
-  setFieldData(field: AbstractControl, fieldBool: AbstractControl, fieldValue: any): void {
-    fieldValue ? field.setValue(fieldValue) : ""
-    fieldValue ? fieldBool.setValue("true") : fieldBool.setValue("false")
-    fieldValue ? field.enable() : field.disable()
-    fieldBool.valueChanges.subscribe(val => { val == "true" ? field.enable() : field.disable() })
-  }
+//   setFieldData(field: AbstractControl, fieldBool: AbstractControl, fieldValue: any): void {
+//     fieldValue ? field.setValue(fieldValue) : ""
+//     fieldValue ? fieldBool.setValue("true") : fieldBool.setValue("false")
+//     fieldValue ? field.enable() : field.disable()
+//     fieldBool.valueChanges.subscribe(val => { val == "true" ? field.enable() : field.disable() })
+//   }
 
   onSubmit(): void {
     this.afs
