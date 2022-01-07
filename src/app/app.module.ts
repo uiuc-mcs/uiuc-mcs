@@ -10,7 +10,6 @@ import { FlexLayoutModule } from '@angular/flex-layout'
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navigation/navbar/navbar.component';
-import { SearchInputComponent } from './search/search-input/search-input.component';
 import { LoginComponent } from './user/login/login.component';
 import { SettingsComponent } from './user/settings/settings.component';
 import { ReviewsComponent } from './reviews/reviews.component';
@@ -53,7 +52,6 @@ import { TermsComponent } from './terms/terms.component'
     declarations: [
         AppComponent,
         NavbarComponent,
-        SearchInputComponent,
         LoginComponent,
         SettingsComponent,
         ReviewsComponent,

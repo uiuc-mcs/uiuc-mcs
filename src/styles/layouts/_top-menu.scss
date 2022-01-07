@@ -196,54 +196,6 @@ app-root.folder-tutorial mat-toolbar.mat-toolbar {
   }
 }
 
-// SEARCH BOX
-app-search-input.search-container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-  min-width: 150px;
-  height: 100%;
-  margin-right: 16px;
-
-  input {
-    color: $darkgray;
-    border: none;
-    border-radius: 100px;
-    background-color: $white;
-    padding: 5px 16px;
-    margin-left: 8px;
-    width: 180px;
-    max-width: 240px;
-    height: 50%;
-    -webkit-appearance: none;
-
-    &:hover {
-      outline: none;
-    }
-
-    @include placeholder {
-      @include font-size(14);
-      color: $mediumgray;
-    }
-
-    @include bp(big) {
-      transition: width 0.4s ease-in-out;
-
-      &:hover {
-        width: 80%;
-      }
-      &:focus {
-        width: 80%;
-      }
-    }
-
-    @media (max-width: 480px) {
-      width: 150px;
-    }
-  }
-}
-
 // EXTERNAL LINK ICONS
 .app-toolbar {
   .toolbar-external-icons-container {
