@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { getRouterLink, ClassData, courseCategories, courseLanguages } from 'src/app/shared/class/class';
@@ -48,13 +48,6 @@ export class EditCourseMetadataComponent implements OnInit {
   get f() {
     return this.courseMetadataForm?.controls
   }
-
-//   setFieldData(field: AbstractControl, fieldBool: AbstractControl, fieldValue: any): void {
-//     fieldValue ? field.setValue(fieldValue) : ""
-//     fieldValue ? fieldBool.setValue("true") : fieldBool.setValue("false")
-//     fieldValue ? field.enable() : field.disable()
-//     fieldBool.valueChanges.subscribe(val => { val == "true" ? field.enable() : field.disable() })
-//   }
 
   onSubmit(): void {
     this.afs
