@@ -1,7 +1,12 @@
 <div class="content restrict-width">
   <div class="review-container">
     <div *ngIf="!reviewData.length && loading">
-          <app-loading></app-loading>
+      <mat-card style="width: 112px;margin: auto;">
+        <mat-card-content>
+          <mat-progress-spinner mode="indeterminate" diameter="80">
+          </mat-progress-spinner>
+        </mat-card-content>
+      </mat-card>
     </div>
     <div *ngIf="!reviewData.length && !loading && showEmptyMsg">
       No reviews exist for this class yet. Be the first to leave one!
