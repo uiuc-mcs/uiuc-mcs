@@ -1,6 +1,5 @@
 export const environment = {
   production: true,
-  website: "computerScience",
   firebase: {
     apiKey: "AIzaSyDJNQ2n0BIfccr5-QQ80qVx0A6hYYBCo4Y",
     authDomain: "uiuc-mcs-org.firebaseapp.com",

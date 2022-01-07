@@ -21,8 +21,6 @@ export class ClassService {
     let courseListener = this.afs.collection<ClassData>('Class')
     .valueChanges({idField: 'courseId'})
     .subscribe(data => {
-      // data = data.filter(course => course.computerScience.isComputerScience)
-      // data.forEach(course => course.category = course.computerScience.category || course.category)
       this._classes.next(data)
     })
   }
