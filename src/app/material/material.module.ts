@@ -15,7 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; // Don't need
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -40,6 +40,19 @@ export const svgIconProviders = [
                 '</svg>',
         },
         multi: true,
+    },
+    {
+        provide: SVG_ICONS,
+        useValue: {
+            namespace: 'icons',
+            name: 'check',
+            svgSource: `
+ <svg version="1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48" enable-background="new 0 0 48 48">
+ <polygon fill="#43A047" points="40.6,12.1 17,35.7 7.4,26.1 4.6,29 17,41.3 43.4,14.9"/>
+ </svg>
+ `
+        },
+        multi: true
     },
     {
         provide: SVG_ICONS,
@@ -131,7 +144,7 @@ export const svgIconProviders = [
         MatIconModule,
         MatInputModule,
         MatListModule,
-        MatProgressSpinnerModule, // Don't need
+        MatProgressSpinnerModule,
         MatSelectModule,
         MatSidenavModule,
         MatSnackBarModule,
@@ -153,7 +166,7 @@ export const svgIconProviders = [
         MatIconModule,
         MatInputModule,
         MatListModule,
-        MatProgressSpinnerModule, // Don't need
+        MatProgressSpinnerModule,
         MatSelectModule,
         MatSidenavModule,
         MatSnackBarModule,
