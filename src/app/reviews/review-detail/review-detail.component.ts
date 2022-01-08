@@ -8,6 +8,8 @@ import { FbUser } from 'src/app/shared/user/user';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogOnDelete } from 'src/app/shared/dialog/review-delete/dialog-on-delete.component';
+import { ClassService } from 'src/app/services/classes/class.service';
+import { ClassData } from 'src/app/shared/class/class';
 
 @Component({
     selector: 'app-review-detail',
@@ -39,6 +41,7 @@ export class ReviewDetailComponent implements OnInit {
         private clipboard: Clipboard,
         public dialog: MatDialog,
         private router: Router,
+        private classService: ClassService,
     ) { }
 
     ngOnInit(): void {
@@ -61,6 +64,14 @@ export class ReviewDetailComponent implements OnInit {
             }
             const review = doc.data() as Review
             review.reviewId = doc.id
+
+            var courses: ClassData[] = []
+            this.classService.classes.subscribe(data => { courses = data })
+            const course = courses.find(item => item.courseId == review.classId)
+            
+            if (course) {
+                review.classNumber = course.CourseNumber
+            }
             this.reviewData.push(review)
             this.reviewData = ratingsToStrings(this.reviewData)
             this.loading = false;
