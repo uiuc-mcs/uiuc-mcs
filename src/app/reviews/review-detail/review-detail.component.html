@@ -1,38 +1,33 @@
 <div class="content restrict-width">
   <div class="review-container">
     <div *ngIf="!reviewData.length && loading">
-      <mat-card style="width: 112px;margin: auto;">
-        <mat-card-content>
-          <mat-progress-spinner mode="indeterminate" diameter="80">
-          </mat-progress-spinner>
-        </mat-card-content>
-      </mat-card>
+      <mat-progress-spinner mode="indeterminate" diameter="80" style="margin: auto;">
+      </mat-progress-spinner>
     </div>
     <div *ngIf="!reviewData.length && !loading && showEmptyMsg">
       No reviews exist for this class yet. Be the first to leave one!
     </div>
     <mat-card *ngFor="let review of reviewData | slice:pageNumber*pageLength:(pageNumber+1)*pageLength">
       <mat-card-content>
-      <div class="rev-card-header">
-        <div class="left">
-          <span *ngIf="links" class="rev-course">
-            <a [routerLink]="courseRouterLink(review)">
-            {{review.course}}
-            </a>
-          </span>
-          <span *ngIf="!links" class="rev-course">
-            {{review.course}}
-          </span>
-          <mat-chip-list>
-            <mat-chip class="chip-outlined" disabled>{{review.semester}} {{review.year}}
-            </mat-chip>
-          </mat-chip-list>
-        </div>
-        <div class="card-header-buttons">
-          <button mat-icon-button 
-          (click)="openSnackBar('Link copied to clipboard.', review.reviewId)">
-            <mat-icon matTooltip="Copy link">link</mat-icon>
-          </button>
+        <div class="rev-card-header">
+          <div class="left">
+            <span *ngIf="links" class="rev-course">
+              <a [routerLink]="courseRouterLink(review)">
+                {{review.course}}
+              </a>
+            </span>
+            <span *ngIf="!links" class="rev-course">
+              {{review.course}}
+            </span>
+            <mat-chip-list>
+              <mat-chip class="chip-outlined" disabled>{{review.semester}} {{review.year}}
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+          <div class="card-header-buttons">
+            <button mat-icon-button (click)="openSnackBar('Link copied to clipboard.', review.reviewId)">
+              <mat-icon matTooltip="Copy link">link</mat-icon>
+            </button>
             <button *ngIf="review.userId === userData?.uid" mat-icon-button
               routerLink="/review/edit/{{review.reviewId}}">
               <mat-icon matTooltip="Edit review">mode_edit</mat-icon>
@@ -40,8 +35,8 @@
             <!-- <button *ngIf="review.userId === userData?.uid" mat-icon-button (click)="removeReview(review.reviewId)">
               <mat-icon matTooltip="Delete review">delete</mat-icon>
             </button> -->
+          </div>
         </div>
-      </div>
         <div class="rev-header">
           <p>
             <span class="rev-title">{{review.title}}</span><br>

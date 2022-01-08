@@ -38,12 +38,8 @@
     </div>
   </div>
   <div *ngIf="!reviewData.length && loading" style="margin-top: 12px">
-    <mat-card style="width: 112px;margin: auto;">
-      <mat-card-content>
-        <mat-progress-spinner mode="indeterminate" diameter="80">
-        </mat-progress-spinner>
-      </mat-card-content>
-    </mat-card>
+    <mat-progress-spinner mode="indeterminate" diameter="80" style="margin: auto;">
+    </mat-progress-spinner>
   </div>
   <div *ngIf="!reviewData.length && !loading" class="no-reviews">
     <div>No reviews exist for this class yet.</div>
