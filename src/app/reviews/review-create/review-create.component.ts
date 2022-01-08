@@ -13,8 +13,8 @@ import { FbUser } from 'src/app/shared/user/user';
 
 @Component({
     selector: 'app-create-review',
-    templateUrl: './create-review.component.html',
-    styleUrls: ['./create-review.component.scss']
+    templateUrl: './review-create.component.html',
+    styleUrls: ['./review-create.component.scss']
 })
 
 export class CreateReviewComponent implements OnInit {

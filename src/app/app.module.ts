@@ -28,7 +28,7 @@ import { CreateCourseComponent } from './courses/course-create/course-create.com
 import { ReviewsComponent } from './reviews/reviews.component';
 import { ReviewDetailComponent } from './reviews/review-detail/review-detail.component';
 import { ReviewHelpfulnessComponent } from './reviews/review-detail/review-helpfulness/review-helpfulness.component';
-import { CreateReviewComponent } from './reviews/create-review/create-review.component';
+import { CreateReviewComponent } from './reviews/review-create/review-create.component';
 
 import { LoginComponent } from './user/login/login.component';
 import { SettingsComponent } from './user/settings/settings.component';

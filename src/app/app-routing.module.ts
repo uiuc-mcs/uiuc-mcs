@@ -5,7 +5,7 @@ import { CourseGridComponent } from './courses/course-grid/course-grid.component
 import { CourseListComponent } from './courses/course-list/course-list.component';
 import { ReviewDetailComponent } from './reviews/review-detail/review-detail.component';
 import { ReviewsComponent } from './reviews/reviews.component';
-import { CreateReviewComponent } from './reviews/create-review/create-review.component';
+import { CreateReviewComponent } from './reviews/review-create/review-create.component';
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
