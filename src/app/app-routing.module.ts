@@ -18,28 +18,29 @@ import { NothingHereComponent } from './misc/nothing-here/nothing-here.component
 import { CreateCourseComponent } from './courses/course-create/course-create.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { TermsComponent } from './terms/terms.component';
+import { environment } from 'src/environments/environment'
 
 const routes: Routes = [
-    { path: '', component: CourseListComponent },
+    { path: '', component: CourseListComponent, data: {title: environment.websiteName}},
     { path: 'home', redirectTo: '', pathMatch: 'full' },
-    { path: 'courses', component: CourseGridComponent },
+    { path: 'courses', component: CourseGridComponent, data: {title: `Course Grid | ${environment.websiteName}` }},
     { path: 'courses/create', component: CreateCourseComponent, canActivate: [AuthguardGuard] },
     { path: 'courses/:courseId', component: CourseDetailComponent },
     { path: 'courses/edit/:courseId', component: EditCourseMetadataComponent, canActivate: [AuthguardGuard] },
-    { path: 'reviews', component: ReviewsComponent },
+    { path: 'reviews', component: ReviewsComponent, data: {title: `Course Reviews | ${environment.websiteName}`}},
     { path: 'review/:id', component: ReviewDetailComponent },
     { path: 'review/edit/:id', component: CreateReviewComponent },
-    { path: 'settings', component: SettingsComponent, canActivate: [AuthguardGuard] },
-    { path: 'login', component: LoginComponent },
-    { path: 'logout', component: LogoutComponent },
-    { path: 'register', component: RegisterComponent },
-    { path: 'passwordReset', component: ForgotPasswordComponent },
+    { path: 'settings', component: SettingsComponent, canActivate: [AuthguardGuard], data: {title: `Profile | ${environment.websiteName}`}},
+    { path: 'login', component: LoginComponent, data: {title: `Sign In | ${environment.websiteName}`}},
+    { path: 'logout', component: LogoutComponent, data: {title: `Sign Out | ${environment.websiteName}`}},
+    { path: 'register', component: RegisterComponent, data: {title: `Sign Up | ${environment.websiteName}`}},
+    { path: 'passwordReset', component: ForgotPasswordComponent, data: {title: `Reset Password | ${environment.websiteName}`}},
     { path: 'verifyEmail', component: VerifyEmailComponent },
-    { path: 'createReview', component: CreateReviewComponent, canActivate: [AuthguardGuard] },
-    { path: 'privacy', component: PrivacyComponent },
-    { path: 'terms', component: TermsComponent },
-    { path: '404', component: NothingHereComponent },
-    { path: '**', component: NothingHereComponent }
+    { path: 'createReview', component: CreateReviewComponent, canActivate: [AuthguardGuard], data: {title: `Create Review | ${environment.websiteName}`}},
+    { path: 'privacy', component: PrivacyComponent, data: {title: `Privacy | ${environment.websiteName}`}},
+    { path: 'terms', component: TermsComponent, data: {title: `Terms of Use | ${environment.websiteName}`}},
+    { path: '404', component: NothingHereComponent, data: {title: `Error | ${environment.websiteName}`}},
+    { path: '**', component: NothingHereComponent, data: {title: `Error | ${environment.websiteName}`}}
 ];
 
 export type ScrollPositionRestoration =

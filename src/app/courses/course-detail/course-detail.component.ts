@@ -9,6 +9,8 @@ import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
 import { ratingsToStrings, Review } from '../../shared/review/review';
 import firebase from 'firebase/app'
+import { Title } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment'
 
 @Component({
     selector: 'app-course-detail',
@@ -24,6 +26,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         private auth: AuthService,
         private renderer: Renderer2,
         private classService: ClassService,
+        private titleService: Title
     ) { }
 
     courseName: string = ""
@@ -53,7 +56,6 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     objectKeys = Object.keys
     loading: boolean = true
 
-    //   @ViewChild('gradientContainer') gradientContainer!: ElementRef;
     @ViewChild('imageContainer') imageContainer!: ElementRef;
 
     ngAfterViewInit(): void {
@@ -72,6 +74,30 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         document.getElementsByClassName("mat-drawer-content")[0].scroll(0, 0) // Ensures that we start from the top
     }
 
+    setTitle() {
+        console.log("setTitle()")
+        var preTitle = ""
+        if (this.courseName != "" && this.courseName != "") {
+            preTitle = `${this.courseNumber} - ${this.courseName}`
+        }
+        else if (this.courseName != "") {
+            preTitle = this.courseName
+        }
+        else if (this.courseNumber != "") {
+            preTitle = this.courseNumber
+        }
+        else {
+            preTitle = ""
+        }
+        var title = ""
+        if (preTitle != "") {
+            title = `${preTitle} | ${environment.websiteName}`
+        } else {
+            title = environment.websiteName
+        }
+        this.titleService.setTitle(title);
+    }
+
     getClassData(): void {
         this.classService.classes.subscribe(data => {
             this.course = data.find(x => x.ClassName == this.courseName)
@@ -79,6 +105,7 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
                 this.router.navigate(['404'])
             }
             this.courseNumber = this.course!.CourseNumber
+            this.setTitle()
             this.updateCards(this.course!)
             this.updateGraphicStyles()
         })

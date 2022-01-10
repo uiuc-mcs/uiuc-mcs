@@ -10,6 +10,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogOnDelete } from 'src/app/shared/dialog/review-delete/dialog-on-delete.component';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
+import { environment } from 'src/environments/environment';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-review-detail',
@@ -42,6 +44,7 @@ export class ReviewDetailComponent implements OnInit {
         public dialog: MatDialog,
         private router: Router,
         private classService: ClassService,
+        private titleService: Title
     ) { }
 
     ngOnInit(): void {
@@ -62,19 +65,21 @@ export class ReviewDetailComponent implements OnInit {
                 this.router.navigate(['404'])
                 return
             }
-            const review = doc.data() as Review
-            review.reviewId = doc.id
+            const rev = doc.data() as Review
+            rev.reviewId = doc.id
 
             var courses: ClassData[] = []
             this.classService.classes.subscribe(data => { courses = data })
-            const course = courses.find(item => item.courseId == review.classId)
+            const course = courses.find(item => item.courseId == rev.classId)
             
             if (course) {
-                review.classNumber = course.CourseNumber
+                rev.classNumber = course.CourseNumber
             }
-            this.reviewData.push(review)
+            this.reviewData.push(rev)
             this.reviewData = ratingsToStrings(this.reviewData)
             this.loading = false;
+            const title = `${rev.course} (${rev.semester} ${rev.year}) Course Review | ${environment.websiteName}`
+            this.titleService.setTitle(title);
         })
     }
 
