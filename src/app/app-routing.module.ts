@@ -37,7 +37,7 @@ const routes: Routes = [
     { path: 'passwordReset', component: ForgotPasswordComponent, data: {title: `Reset Password | ${environment.websiteName}`}},
     { path: 'verifyEmail', component: VerifyEmailComponent },
     { path: 'createReview', component: CreateReviewComponent, canActivate: [AuthguardGuard], data: {title: `Create Review | ${environment.websiteName}`}},
-    { path: 'privacy', component: PrivacyComponent, data: {title: `Privacy | ${environment.websiteName}`}},
+    { path: 'privacy', component: PrivacyComponent, data: {title: `Privacy Policy | ${environment.websiteName}`}},
     { path: 'terms', component: TermsComponent, data: {title: `Terms of Use | ${environment.websiteName}`}},
     { path: '404', component: NothingHereComponent, data: {title: `Error | ${environment.websiteName}`}},
     { path: '**', component: NothingHereComponent, data: {title: `Error | ${environment.websiteName}`}}

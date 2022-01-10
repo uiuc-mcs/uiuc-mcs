@@ -75,7 +75,6 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     }
 
     setTitle() {
-        console.log("setTitle()")
         var preTitle = ""
         if (this.courseName != "" && this.courseName != "") {
             preTitle = `${this.courseNumber} - ${this.courseName}`
