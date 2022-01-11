@@ -9,6 +9,7 @@ import { filter } from 'rxjs/operators';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
     constructor(private router: Router,
         private activatedRoute: ActivatedRoute,
@@ -28,7 +29,6 @@ export class AppComponent {
                     this.titleService.setTitle(data.title)
                 })
             })
-
     }
 
     getChild(activatedRoute: ActivatedRoute): ActivatedRoute {
