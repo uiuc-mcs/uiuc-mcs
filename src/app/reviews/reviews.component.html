@@ -1,6 +1,6 @@
 <div class="restrict-width">
-  <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="review-controller next-prev-container"
-    id="review-spacer">
+  <div fxLayout="row wrap" fxLayoutAlign="space-between center"
+    class="review-controller next-prev-container" id="review-spacer">
     <mat-form-field class="order-dropdown" appearance="fill">
       <mat-select [(value)]="selectedCourseFilter" (selectionChange)="onCourseChange($event.value)">
         <mat-option *ngFor="let course of reviewedCourses" [value]="course">
@@ -16,8 +16,8 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <app-review-detail [reviewData]="reviewData"
-    [showEmptyMsg]="false" [pageLength]="pageLength" [links]="true">
+  <app-review-detail [reviewData]="reviewData" [showEmptyMsg]="false" 
+  [links]="true">
   </app-review-detail>
   <div *ngIf="reviewData.length && !noMore" style="text-align: center;">
     <button mat-raised-button color="primary" class="btn-block" (click)="getMore()">

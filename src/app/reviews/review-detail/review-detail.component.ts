@@ -20,12 +20,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class ReviewDetailComponent implements OnInit {
     @Input() reviewId: string = ""
-    @Input() author: string = ""
-    @Input() class: string = ""
-    @Input() query: string = ""
-    @Input() pageLength: number = 55
     @Input() reviewData: Review[] = []
-    @Input() dataLength: number = 0
     @Input() showEmptyMsg: boolean = true
     @Input() links: boolean = true
     isLoggedIn: boolean = false
