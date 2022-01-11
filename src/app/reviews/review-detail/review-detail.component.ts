@@ -28,7 +28,6 @@ export class ReviewDetailComponent implements OnInit {
     @Input() dataLength: number = 0
     @Input() showEmptyMsg: boolean = true
     @Input() links: boolean = true
-    pageNumber: number = 0
     isLoggedIn: boolean = false
     userData: FbUser | undefined
     durationInSeconds: number = 3
