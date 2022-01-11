@@ -46,7 +46,6 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     ]
     reviewDataStack: any[] = []
     reviewData: Review[] = []
-    pageNumber: number = 0
     disableNext: boolean = false
     disablePrev: boolean = false
     pageLength: number = 55
@@ -118,7 +117,6 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
 
     getFirstPage() {
         this.loading = true
-        this.pageNumber = 0
         this.disablePrev = true
         this.disableNext = false
         this.reviewDataStack = []
@@ -142,7 +140,6 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
                 this.reviewData.push(review)
             }
             this.reviewDataStack.push(response)
-            this.pageNumber = 0
             if (response.docs.length < 5) {
                 this.disableNext = true
                 this.maxLength = this.reviewData.length
@@ -174,7 +171,6 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
                 this.reviewData.push(review)
             }
             this.reviewDataStack.push(response)
-            this.pageNumber++
             if (response.docs.length < 5 || this.reviewData.length >= this.course!.RatingCount) {
                 this.disableNext = true
                 this.maxLength = this.reviewData.length
@@ -182,33 +178,6 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
             this.reviewData = ratingsToStrings(this.reviewData)
             this.loading = false
         }, error => { console.error("Course Detail: nextPage -", error) })
-    }
-
-    getPrevPage(): void {
-        this.pageNumber--
-        this.disableNext = false
-        if (this.pageNumber === 0) {
-            this.disablePrev = true
-        }
-        this.goToLocation("review-spacer")
-    }
-
-    getNextPage(): void {
-        this.disablePrev = false
-        if ((this.pageNumber + 1) * this.pageLength >= this.reviewData.length) {
-            this.nextPage()
-        } else { this.pageNumber++ }
-        if ((this.pageNumber + 1) * this.pageLength >= this.maxLength) {
-            this.disableNext = true
-        }
-        this.goToLocation("review-spacer")
-    }
-
-    goToLocation(location: string): void {
-        window.location.hash = ""
-        window.location.hash = location
-        let x = document.getElementsByClassName("mat-drawer-content")[0]
-        x.scroll(0, x.scrollTop - 40)
     }
 
     updateCards(course: ClassData): void {

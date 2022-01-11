@@ -16,7 +16,7 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <app-review-detail [reviewData]="reviewData" [pageNumber]="0" 
+  <app-review-detail [reviewData]="reviewData"
     [showEmptyMsg]="false" [pageLength]="pageLength" [links]="true">
   </app-review-detail>
   <div *ngIf="reviewData.length && !noMore" style="text-align: center;">

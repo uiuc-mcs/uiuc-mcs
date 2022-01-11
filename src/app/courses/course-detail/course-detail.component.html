@@ -51,9 +51,6 @@
   <div *ngIf="reviewData.length">
     <div class="review-controller">
       <div class="next-prev-container">
-        <!-- <span class="page-label">Page {{pageNumber + 1}}</span>
-        <button mat-stroked-button color="primary" [disabled]="disablePrev" (click)="getPrevPage()">Prev</button>
-        <button mat-stroked-button color="primary" [disabled]="disableNext" (click)="getNextPage()">Next</button> -->
         <div fxFlex></div>
         <mat-form-field class="order-dropdown" appearance="fill">
           <mat-select [(value)]="selectedSort" (selectionChange)="newSort($event)">
@@ -64,13 +61,6 @@
         </mat-form-field>
       </div>
     </div>
-    <app-review-detail [reviewData]="reviewData" [pageNumber]="pageNumber" [links]="false"></app-review-detail>
-    <!-- <div class="review-footer">
-      <div class="next-prev-container">
-        Page {{pageNumber + 1}}
-        <button mat-stroked-button color="primary" [disabled]="disablePrev" (click)="getPrevPage()">Prev</button>
-        <button mat-stroked-button color="primary" [disabled]="disableNext" (click)="getNextPage()">Next</button>
-      </div>
-    </div> -->
+    <app-review-detail [reviewData]="reviewData" [links]="false"></app-review-detail>
   </div>
 </div>

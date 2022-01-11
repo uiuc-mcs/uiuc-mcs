@@ -22,13 +22,13 @@ export class ReviewDetailComponent implements OnInit {
     @Input() reviewId: string = ""
     @Input() author: string = ""
     @Input() class: string = ""
-    @Input() pageNumber: number = 0
     @Input() query: string = ""
     @Input() pageLength: number = 55
     @Input() reviewData: Review[] = []
     @Input() dataLength: number = 0
     @Input() showEmptyMsg: boolean = true
     @Input() links: boolean = true
+    pageNumber: number = 0
     isLoggedIn: boolean = false
     userData: FbUser | undefined
     durationInSeconds: number = 3
