@@ -41,8 +41,8 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     orderByOptions = [
         { displayText: "Newest", field: "timestamp", order: "desc" },
         { displayText: "Oldest", field: "timestamp", order: "asc" },
-        { displayText: "Most Helpful", field: "wilsonScore", order: "desc" },
-        { displayText: "Least Helpful", field: "wilsonScore", order: "asc" },
+        // { displayText: "Most Helpful", field: "wilsonScore", order: "desc" },
+        // { displayText: "Least Helpful", field: "wilsonScore", order: "asc" },
     ]
     reviewDataStack: any[] = []
     reviewData: Review[] = []
