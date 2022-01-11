@@ -29,8 +29,8 @@ export class ReviewsComponent implements OnInit {
     orderByOptions = [
         { displayText: "Newest", field: "timestamp", order: "desc" },
         { displayText: "Oldest", field: "timestamp", order: "asc" },
-        { displayText: "Most Helpful", field: "wilsonScore", order: "desc" },
-        { displayText: "Least Helpful", field: "wilsonScore", order: "asc" },
+        // { displayText: "Most Helpful", field: "wilsonScore", order: "desc" },
+        // { displayText: "Least Helpful", field: "wilsonScore", order: "asc" },
     ]
 
     selectedSort: { displayText: string, field: string, order: string } = this.orderByOptions[0]
