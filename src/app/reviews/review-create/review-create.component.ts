@@ -213,7 +213,7 @@ export class CreateReviewComponent implements OnInit {
                 this.router.navigate([link])
             }
             else {
-                this.router.navigate(['home'])
+                this.router.navigate([''])
             }
         })
     }

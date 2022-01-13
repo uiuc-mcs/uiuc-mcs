@@ -63,7 +63,7 @@ export class EditCourseMetadataComponent implements OnInit {
         languages: this.f.languages.value,
       }).then(() => {
         this.courseService.updateCourseData()
-        var link = 'home'
+        var link = ''
         if (this.courseData) {
             link = getRouterLink(this.courseData)
         }

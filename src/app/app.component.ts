@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { environment } from 'src/environments/environment'
-import { filter } from 'rxjs/operators';
+import { filter, map, mergeMap } from 'rxjs/operators';
+import { SEOService } from './services/seo/seo.service';
 
 @Component({
     selector: 'app-root',
@@ -13,28 +13,30 @@ import { filter } from 'rxjs/operators';
 export class AppComponent {
     constructor(private router: Router,
         private activatedRoute: ActivatedRoute,
-        private titleService: Title) {
-    }
+        private seoService: SEOService) { }
 
     currentYear: any = new Date().getFullYear()
     properName: string = environment.websiteName
 
     ngOnInit() {
         this.router.events.pipe(
-            filter(event => event instanceof NavigationEnd),
+            filter((event) => event instanceof NavigationEnd),
+            map(() => this.activatedRoute),
+            map((route) => {
+                while (route.firstChild) route = route.firstChild;
+                return route;
+            }),
+            filter((route) => route.outlet === 'primary'),
+            mergeMap((route) => route.data)
         )
-            .subscribe(() => {
-                var rt = this.getChild(this.activatedRoute)
-                rt.data.subscribe(data => {
-                    this.titleService.setTitle(data.title)
-                })
-            })
-    }
-
-    getChild(activatedRoute: ActivatedRoute): ActivatedRoute {
-        if (activatedRoute.firstChild) {
-            return this.getChild(activatedRoute.firstChild);
-        }
-        return activatedRoute;
+            .subscribe((event) => {
+                if (event['title']) {
+                    this.seoService.updateTitle(event['title']);
+                }
+                if (event['description']) {
+                    this.seoService.updateDescription(event['description'])
+                }
+                this.seoService.updateOgUrl();
+            });
     }
 }

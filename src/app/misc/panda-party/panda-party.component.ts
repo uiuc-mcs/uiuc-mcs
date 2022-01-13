@@ -9,7 +9,7 @@ export class PandaPartyComponent {
   @Input() title: string = ""
   @Input() src: string = ""
   @Input() altText: string = ""
-  @Input() link: string = "/home"
+  @Input() link: string = "/"
   @Input() subtitle: string = ""
   constructor() { }
 }

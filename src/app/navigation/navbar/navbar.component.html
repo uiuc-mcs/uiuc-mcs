@@ -2,40 +2,40 @@
   <mat-toolbar-row>
     <div id="app-nav-nodes" role="navigation">
       <ul>
-        <li [ngClass]="{selected: currentUrl === navInfo.home.url }">
-          <a class="nav-link" routerLink="{{navInfo.home.url}}" [title]="navInfo.home.title">
-            <span class="nav-link-inner">{{ navInfo.home.title }}</span>
+        <li>
+          <a class="nav-link" routerLink="{{navInfo.get('courses')!.url}}" [title]="navInfo.get('courses')!.title">
+            <span class="nav-link-inner">{{ navInfo.get('courses')!.title }}</span>
           </a>
         </li>
-        <li fxHide fxShow.gt-xs [ngClass]="{selected: currentUrl === navInfo.courses.url }">
-          <a class="nav-link" routerLink="{{navInfo.courses.url}}" [title]="navInfo.courses.title">
-            <span class="nav-link-inner">{{ navInfo.courses.title }}</span>
+        <li fxHide fxShow.gt-xs>
+          <a class="nav-link" routerLink="{{navInfo.get('grid')!.url}}" [title]="navInfo.get('grid')!.title">
+            <span class="nav-link-inner">{{ navInfo.get('grid')!.title }}</span>
           </a>
         </li>
-        <li fxHide fxShow.gt-xs [ngClass]="{selected: currentUrl === navInfo.reviews.url }">
-          <a class="nav-link" routerLink="{{navInfo.reviews.url}}" [title]="navInfo.reviews.title">
-            <span class="nav-link-inner">{{ navInfo.reviews.title }}</span>
+        <li fxHide fxShow.gt-xs>
+          <a class="nav-link" routerLink="{{navInfo.get('reviews')!.url}}" [title]="navInfo.get('reviews')!.title">
+            <span class="nav-link-inner">{{ navInfo.get('reviews')!.title }}</span>
           </a>
         </li>
         <li fxFlex></li>
-        <li fxHide fxShow.gt-xs *ngIf="isLoggedIn" [ngClass]="{selected: currentUrl === navInfo.createReview.url }">
-          <a class="nav-link" routerLink="{{navInfo.createReview.url}}" [title]="navInfo.createReview.title">
-            <span class="nav-link-inner">{{ navInfo.createReview.title }}</span>
+        <li fxHide fxShow.gt-xs *ngIf="isLoggedIn">
+          <a class="nav-link" routerLink="{{navInfo.get('createReview')!.url}}" [title]="navInfo.get('createReview')!.title">
+            <span class="nav-link-inner">{{ navInfo.get('createReview')!.title }}</span>
           </a>
         </li>
-        <li fxHide fxShow.gt-xs *ngIf="isLoggedIn" [ngClass]="{selected: currentUrl === navInfo.settings.url }">
-          <a class="nav-link" routerLink="{{navInfo.settings.url}}" [title]="navInfo.settings.title">
-            <span class="nav-link-inner">{{ navInfo.settings.title }}</span>
+        <li fxHide fxShow.gt-xs *ngIf="isLoggedIn">
+          <a class="nav-link" routerLink="{{navInfo.get('settings')!.url}}" [title]="navInfo.get('settings')!.title">
+            <span class="nav-link-inner">{{ navInfo.get('settings')!.title }}</span>
           </a>
         </li>
-        <li fxHide fxShow.gt-xs *ngIf="isLoggedIn" [ngClass]="{selected: currentUrl === navInfo.logout.url }">
-          <a class="nav-link" (click)="logout()" [title]="navInfo.logout.title">
-            <span class="nav-link-inner">{{ navInfo.logout.title }}</span>
+        <li fxHide fxShow.gt-xs *ngIf="isLoggedIn">
+          <a class="nav-link" (click)="logout()" [title]="navInfo.get('logout')!.title">
+            <span class="nav-link-inner">{{ navInfo.get('logout')!.title }}</span>
           </a>
         </li>
         <li fxHide fxShow.gt-xs *ngIf="!isLoggedIn">
-          <a class="nav-link" routerLink="{{navInfo.login.url}}" [title]="navInfo.login.title">
-            <span class="nav-link-inner">{{ navInfo.login.title }}</span>
+          <a class="nav-link" routerLink="{{navInfo.get('login')!.url}}" [title]="navInfo.get('login')!.title">
+            <span class="nav-link-inner">{{ navInfo.get('login')!.title }}</span>
           </a>
         </li>
       </ul>

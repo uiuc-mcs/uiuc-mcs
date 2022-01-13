@@ -1,4 +1,4 @@
-import { BrowserModule, Title } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -49,6 +49,8 @@ import { PandaPartyComponent } from './misc/panda-party/panda-party.component';
 import { PrivacyComponent } from './privacy/privacy.component'
 import { TermsComponent } from './terms/terms.component'
 
+import { SEOService } from './services/seo/seo.service';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -97,7 +99,7 @@ import { TermsComponent } from './terms/terms.component'
     providers: [
         ScreenTrackingService,
         UserTrackingService,
-        Title
+        SEOService
     ],
     bootstrap: [AppComponent]
 })
