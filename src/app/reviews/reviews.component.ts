@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, DocumentData, QueryDocumentSnapshot } from '@angular/fire/firestore';
+import { AngularFirestore, DocumentData, QueryDocumentSnapshot } from '@angular/fire/compat/firestore';
 import { AuthService } from '../services/auth/auth.service';
 import { ClassService } from '../services/classes/class.service';
 import { ClassData } from '../shared/class/class';
 import { Review, ratingsToStrings } from '../shared/review/review';
-import firebase from 'firebase/app'
+import { OrderByDirection } from 'firebase/firestore';
 
 @Component({
     selector: 'app-reviews',
@@ -88,12 +88,12 @@ export class ReviewsComponent implements OnInit {
                 // console.log("latestDoc", this.latestDoc)
                 return query.orderBy(this.selectedSort.field,
                     this.selectedSort.order as
-                    firebase.firestore.OrderByDirection)
+                    OrderByDirection)
                     .startAfter(this.latestDoc).limit(this.limit)
             }
             return query.orderBy(this.selectedSort.field,
                 this.selectedSort.order as
-                firebase.firestore.OrderByDirection)
+                OrderByDirection)
                 .limit(this.limit)
         }).get().subscribe(response => {
             if (response.empty) {

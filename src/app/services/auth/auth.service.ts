@@ -1,13 +1,13 @@
 // Following this guide. Mostly implemented but untested, probably best to learn more then come back.
 
 import { Injectable, NgZone } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import firebase from 'firebase/app'
 import { Observable, ReplaySubject } from 'rxjs';
 import { reviewFeedbackType } from 'src/app/shared/review/review';
 import { FbUser } from '../../shared/user/user'
+import { increment } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,8 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone,
   ) {
-    this.afs.firestore.enablePersistence({synchronizeTabs:true}).catch(err => console
+    this.afs.firestore.enablePersistence({synchronizeTabs:true})
+    .catch((err: string) => console
       .error("Persistence failed to enable, error:", err))
     let localData = localStorage.getItem('user')
     if (localData != 'null' && localData) {
@@ -162,8 +163,8 @@ export class AuthService {
       }
       this.afs.collection("UserExtraData").doc(user.uid).update({ reviewFeedback: user.reviewFeedback })
       this.afs.collection("Reviews").doc(reviewId).update({
-        'helpfulPositive': firebase.firestore.FieldValue.increment(helpful.positive),
-        'helpfulNegative': firebase.firestore.FieldValue.increment(helpful.negative),
+        'helpfulPositive': increment(helpful.positive),
+        'helpfulNegative': increment(helpful.negative),
       })
       return true
     })

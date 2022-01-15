@@ -8,10 +8,10 @@ import { MaterialModule } from './material/material.module'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout'
 
-import { AngularFireModule } from "@angular/fire"
-import { AngularFireAuthModule } from "@angular/fire/auth"
-import { AngularFirestoreModule } from "@angular/fire/firestore"
-import { AngularFireAnalyticsModule, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
+import { AngularFireModule } from "@angular/fire/compat"
+import { AngularFireAuthModule } from "@angular/fire/compat/auth"
+import { AngularFirestoreModule } from "@angular/fire/compat/firestore"
+import { AngularFireAnalyticsModule, ScreenTrackingService, UserTrackingService } from '@angular/fire/compat/analytics';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
