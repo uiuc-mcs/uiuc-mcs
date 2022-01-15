@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, DocumentData, QueryDocumentSnapshot } from '@angular/fire/compat/firestore';
 import { AuthService } from '../services/auth/auth.service';
 import { ClassService } from '../services/classes/class.service';
 import { ClassData } from '../shared/class/class';
 import { Review, ratingsToStrings } from '../shared/review/review';
-import { OrderByDirection } from 'firebase/firestore';
+import { Firestore, collection } from '@angular/fire/firestore';
+import { DocumentData, getDocs, limit, orderBy, OrderByDirection, query, QueryDocumentSnapshot, startAfter, where } from 'firebase/firestore';
 
 @Component({
     selector: 'app-reviews',
@@ -13,7 +13,7 @@ import { OrderByDirection } from 'firebase/firestore';
 })
 export class ReviewsComponent implements OnInit {
     constructor(
-        private afs: AngularFirestore,
+        private afs: Firestore,
         private auth: AuthService,
         private classService: ClassService,
     ) { }
@@ -78,34 +78,34 @@ export class ReviewsComponent implements OnInit {
         this.reviewData = ratingsToStrings(this.reviewData)
     }
 
-    getMore() {
-        this.afs.collection('Reviews', ref => {
-            let query = ref.limit(this.limit)
-            if (this.courseId) {
-                query = query.where("classId", "==", this.courseId)
-            }
-            if (this.latestDoc) {
-                // console.log("latestDoc", this.latestDoc)
-                return query.orderBy(this.selectedSort.field,
-                    this.selectedSort.order as
-                    OrderByDirection)
-                    .startAfter(this.latestDoc).limit(this.limit)
-            }
-            return query.orderBy(this.selectedSort.field,
+    async getMore() {
+        const ref = collection(this.afs, 'Reviews')
+
+        var q = query(ref)
+        if (this.courseId) {
+            q = query(q, where("classId", "==", this.courseId))
+        }
+
+        q = query(q,
+            orderBy(this.selectedSort.field,
                 this.selectedSort.order as
                 OrderByDirection)
-                .limit(this.limit)
-        }).get().subscribe(response => {
-            if (response.empty) {
-                this.noMore = true
-                return
-            }
-            var docs = response.docs as Array<QueryDocumentSnapshot<DocumentData>>
-            this.noMore = docs.length < this.limit
-            this.latestDoc = docs[docs.length - 1]
-            // console.log('updated latestDoc', this.latestDoc)
-            this.updateReviewArray(docs)
-        }, error => { console.error("Reviews:", error) })
-    }
+        )
 
+        if (this.latestDoc) {
+            // console.log("latestDoc", this.latestDoc)
+            q = query(q, startAfter(this.latestDoc))
+        }
+
+        q = query(q, limit(this.limit))
+        const response = await getDocs(q)
+        if (response.empty) {
+            this.noMore = true
+            return
+        }
+        var docs = response.docs as Array<QueryDocumentSnapshot<DocumentData>>
+        this.noMore = docs.length < this.limit
+        this.latestDoc = docs[docs.length - 1]
+        this.updateReviewArray(docs)
+    }
 }

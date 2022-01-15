@@ -2,7 +2,6 @@ import {
     Component, OnInit, ViewChild, ElementRef, Renderer2,
     AfterViewInit, ViewEncapsulation
 } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ClassService } from 'src/app/services/classes/class.service';
@@ -10,7 +9,10 @@ import { ClassData } from 'src/app/shared/class/class';
 import { ratingsToStrings, Review } from '../../shared/review/review';
 import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment'
-import firebase from 'firebase/compat/app';
+// import { AngularFirestore } from '@angular/fire/compat/firestore';
+// import firebase from 'firebase/compat/app';
+import { Firestore, collection } from '@angular/fire/firestore';
+import { getDocs, limit, orderBy, OrderByDirection, query, startAfter, where } from 'firebase/firestore';
 
 @Component({
     selector: 'app-course-detail',
@@ -22,7 +24,8 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     constructor(
         private router: Router,
         private route: ActivatedRoute,
-        private afs: AngularFirestore,
+        // private afs: AngularFirestore,
+        private afs: Firestore,
         private auth: AuthService,
         private renderer: Renderer2,
         private classService: ClassService,
@@ -115,69 +118,75 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         }
     }
 
-    getFirstPage() {
+    async getFirstPage() {
         this.loading = true
         this.disablePrev = true
         this.disableNext = false
         this.reviewDataStack = []
-        this.afs.collection('Reviews', ref => ref
-            .where("course", '==', this.courseName)
-            .limit(this.pageLength)
-            .orderBy(this.selectedSort.field, this.selectedSort.order as
-                firebase.firestore.OrderByDirection)
-        ).get().subscribe(response => {
-            this.reviewData = []
-            if (!response.docs.length) {
-                // console.warn("Course Detail: No reviews exist")
-                this.disableNext = true
-                this.disablePrev = true
-                this.loading = false
-                return
-            }
-            for (let item of response.docs) {
-                const review = item.data() as Review
-                review.reviewId = item.id
-                this.reviewData.push(review)
-            }
-            this.reviewDataStack.push(response)
-            if (response.docs.length < 5) {
-                this.disableNext = true
-                this.maxLength = this.reviewData.length
-            }
-            this.reviewData = ratingsToStrings(this.reviewData)
+        const ref = collection(this.afs, 'Reviews')
+        var q = query(ref)
+        q = query(q,
+            where("course", '==', this.courseName),
+            limit(this.pageLength),
+            orderBy(this.selectedSort.field, this.selectedSort.order as
+                OrderByDirection))
+
+        const response = await getDocs(q)
+        this.reviewData = []
+        if (!response.docs.length) {
+            // console.warn("Course Detail: No reviews exist")
+            this.disableNext = true
+            this.disablePrev = true
             this.loading = false
-        }, error => { console.error("Course Detail: getFirstPage - ", error) })
+            return
+        }
+        for (let item of response.docs) {
+            const review = item.data() as Review
+            review.reviewId = item.id
+            this.reviewData.push(review)
+        }
+        this.reviewDataStack.push(response)
+        if (response.docs.length < 5) {
+            this.disableNext = true
+            this.maxLength = this.reviewData.length
+        }
+        this.reviewData = ratingsToStrings(this.reviewData)
+        this.loading = false
     }
 
-    nextPage() {
+    async nextPage() {
         this.loading = true
         this.disablePrev = false
         const lastReview = this.reviewDataStack[this.reviewDataStack.length - 1].docs[this.pageLength - 1]
-        this.afs.collection('Reviews', ref => ref
-            .where("course", '==', this.courseName)
-            .limit(this.pageLength)
-            .orderBy(this.selectedSort.field, this.selectedSort.order as firebase.firestore.OrderByDirection)
-            .startAfter(lastReview)
-        ).get().subscribe(response => {
-            if (!response.docs.length) {
-                // console.warn("Course Detail: No reviews exist")
-                this.disableNext = true
-                this.loading = false
-                return
-            }
-            for (let item of response.docs) {
-                const review = item.data() as Review
-                review.reviewId = item.id
-                this.reviewData.push(review)
-            }
-            this.reviewDataStack.push(response)
-            if (response.docs.length < 5 || this.reviewData.length >= this.course!.RatingCount) {
-                this.disableNext = true
-                this.maxLength = this.reviewData.length
-            }
-            this.reviewData = ratingsToStrings(this.reviewData)
+
+        const ref = collection(this.afs, 'Reviews')
+        var q = query(ref)
+        q = query(q,
+            where("course", '==', this.courseName),
+            limit(this.pageLength),
+            orderBy(this.selectedSort.field, this.selectedSort.order as
+                OrderByDirection),
+            startAfter(lastReview))
+
+        const response = await getDocs(q)
+        if (!response.docs.length) {
+            // console.warn("Course Detail: No reviews exist")
+            this.disableNext = true
             this.loading = false
-        }, error => { console.error("Course Detail: nextPage -", error) })
+            return
+        }
+        for (let item of response.docs) {
+            const review = item.data() as Review
+            review.reviewId = item.id
+            this.reviewData.push(review)
+        }
+        this.reviewDataStack.push(response)
+        if (response.docs.length < 5 || this.reviewData.length >= this.course!.RatingCount) {
+            this.disableNext = true
+            this.maxLength = this.reviewData.length
+        }
+        this.reviewData = ratingsToStrings(this.reviewData)
+        this.loading = false
     }
 
     updateCards(course: ClassData): void {

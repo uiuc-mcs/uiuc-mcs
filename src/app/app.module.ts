@@ -11,6 +11,9 @@ import { FlexLayoutModule } from '@angular/flex-layout'
 import { AngularFireModule } from "@angular/fire/compat"
 import { AngularFireAuthModule } from "@angular/fire/compat/auth"
 import { AngularFirestoreModule } from "@angular/fire/compat/firestore"
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+
 import { AngularFireAnalyticsModule, ScreenTrackingService, UserTrackingService } from '@angular/fire/compat/analytics';
 import { environment } from '../environments/environment';
 
@@ -95,6 +98,8 @@ import { SEOService } from './services/seo/seo.service';
         FormsModule,
         ReactiveFormsModule,
         FlexLayoutModule,
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideFirestore(() => getFirestore()),
     ],
     providers: [
         ScreenTrackingService,
