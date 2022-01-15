@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+// import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Firestore } from '@angular/fire/firestore';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -7,11 +8,12 @@ import { courseRouterLink, Review, ratingsToStrings } from 'src/app/shared/revie
 import { FbUser } from 'src/app/shared/user/user';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogOnDelete } from 'src/app/shared/dialog/review-delete/dialog-on-delete.component';
+// import { DialogOnDelete } from 'src/app/shared/dialog/review-delete/dialog-on-delete.component';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
 import { environment } from 'src/environments/environment';
 import { Title } from '@angular/platform-browser';
+import { deleteDoc, doc, getDoc } from 'firebase/firestore';
 
 @Component({
     selector: 'app-review-detail',
@@ -31,7 +33,8 @@ export class ReviewDetailComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private afs: AngularFirestore,
+        // private afs: AngularFirestore,
+        private afs: Firestore,
         private auth: AuthService,
         private _snackBar: MatSnackBar,
         private clipboard: Clipboard,
@@ -52,29 +55,39 @@ export class ReviewDetailComponent implements OnInit {
         }
     }
 
-    getSingleReview(reviewId: string) {
+    async getSingleReview(reviewId: string) {
         this.loading = true;
-        this.afs.collection("Reviews").doc(reviewId).get().subscribe(doc => {
-            if (!doc.exists) {
-                this.router.navigate(['404'])
-                return
-            }
-            const rev = doc.data() as Review
-            rev.reviewId = doc.id
+        const ref = doc(this.afs, "Reviews", reviewId as string)
+        const docSnap = await getDoc(ref)
+        if (!docSnap.exists) {
+            this.router.navigate(['404'])
+            return
+        }
 
-            var courses: ClassData[] = []
-            this.classService.classes.subscribe(data => { courses = data })
-            const course = courses.find(item => item.courseId == rev.classId)
-            
-            if (course) {
-                rev.classNumber = course.CourseNumber
-            }
-            this.reviewData.push(rev)
-            this.reviewData = ratingsToStrings(this.reviewData)
-            this.loading = false;
-            const title = `${rev.course} (${rev.semester} ${rev.year}) Course Review | ${environment.websiteName}`
-            this.titleService.setTitle(title);
-        })
+        // .collection("Reviews")
+        //     .doc(reviewId)
+        //     .get()
+        //     .subscribe(docSnap => {
+        if (!docSnap.exists) {
+            this.router.navigate(['404'])
+            return
+        }
+        const rev = docSnap.data() as Review
+        rev.reviewId = docSnap.id
+
+        var courses: ClassData[] = []
+        this.classService.classes.subscribe(data => { courses = data })
+        const course = courses.find(item => item.courseId == rev.classId)
+
+        if (course) {
+            rev.classNumber = course.CourseNumber
+        }
+        this.reviewData.push(rev)
+        this.reviewData = ratingsToStrings(this.reviewData)
+        this.loading = false;
+        const title = `${rev.course} (${rev.semester} ${rev.year}) Course Review | ${environment.websiteName}`
+        this.titleService.setTitle(title);
+        // })
     }
 
     openSnackBar(message: string, reviewId?: string, action: string = "Dismiss") {
@@ -86,21 +99,25 @@ export class ReviewDetailComponent implements OnInit {
         });
     }
 
-    removeReview(reviewId: string | undefined): void {
-        if (!reviewId) return
-        this.openDialog(reviewId)
-    }
+    // removeReview(reviewId: string | undefined): void {
+    //     if (!reviewId) return
+    //     this.openDialog(reviewId)
+    // }
 
-    openDialog(reviewId: string) {
-        const dialogRef = this.dialog.open(DialogOnDelete)
-        dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-                this.afs.collection("Reviews").doc(reviewId).delete()
-                let index = this.reviewData.findIndex(x => x.reviewId == reviewId)
-                this.reviewData.splice(index, 1)
-            }
-        })
-    }
+    // openDialog(reviewId: string) {
+    //     const dialogRef = this.dialog.open(DialogOnDelete)
+    //     dialogRef.afterClosed().subscribe(async (result) => {
+    //         if (result) {
+    //             const ref = doc(this.afs, "Reviews", reviewId as string)
+    //             await deleteDoc(ref)
+
+
+    //             // this.afs.collection("Reviews").doc(reviewId).delete()
+    //             let index = this.reviewData.findIndex(x => x.reviewId == reviewId)
+    //             this.reviewData.splice(index, 1)
+    //         }
+    //     })
+    // }
 
     getFeedbackValue(reviewId: string): string[] {
         if (!this.userData?.reviewFeedback) return [""]

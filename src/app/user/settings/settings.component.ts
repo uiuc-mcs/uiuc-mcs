@@ -2,155 +2,159 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FbUser } from 'src/app/shared/user/user';
 import { Clipboard } from '@angular/cdk/clipboard';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+// import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Firestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogOnDelete } from 'src/app/shared/dialog/review-delete/dialog-on-delete.component';
 import { Review } from 'src/app/shared/review/review';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatriculateSemYear } from 'src/app/shared/class/class'
+import { collection, deleteDoc, doc, getDocs, query, where } from 'firebase/firestore';
 
 @Component({
-  selector: 'app-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+    selector: 'app-settings',
+    templateUrl: './settings.component.html',
+    styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
-  editUserDataForm: FormGroup
-  userData: FbUser | undefined
-  reviewData: Review[] = []
-  durationInSeconds = 3
-  Semesters = MatriculateSemYear
-  editing = false
+    editUserDataForm: FormGroup
+    userData: FbUser | undefined
+    reviewData: Review[] = []
+    durationInSeconds = 3
+    Semesters = MatriculateSemYear
+    editing = false
 
-  userInfo = {
-    a_email: { name: "email", displayName: "Email", value: "test@test.com", is_input: true },
-    b_firstName: { name: "firstName", displayName: "First Name", value: "Test Name", is_input: true },
-    c_lastName: { name: "lastName", displayName: "Last Name", value: "Name Test", is_input: true },
-    d_firstSemester: { name: "firstSemester", displayName: "First Semester", value: "Fall 2020", is_input: false },
-  }
-
-  constructor(
-    private auth: AuthService,
-    private afs: AngularFirestore,
-    private clipboard: Clipboard,
-    private _snackBar: MatSnackBar,
-    public dialog: MatDialog,
-    private formBuilder: FormBuilder,
-  ) {
-    this.editUserDataForm = this.formBuilder.group({
-      firstName: [{ value: '', disabled: true }, Validators.required],
-      lastName: [{ value: '', disabled: true }, Validators.required],
-      firstSemester: [{ value: '', disabled: true }, Validators.required],
-    })
-  }
-  controlNames = ['firstName', 'lastName', 'firstSemester']
-  // savedInputs = {
-  //   firstName: '',
-  //   lastName: '',
-  //   firstSemester: ''
-  // }
-  savedInputs: any = this.controlNames.reduce(
-    (o, key) => Object.assign(o, { [key]: '' }), {});
-
-  enableFormInputs() {
-    for (let x of this.controlNames) {
-      this.editUserDataForm.controls[x].enable()
+    userInfo = {
+        a_email: { name: "email", displayName: "Email", value: "test@test.com", is_input: true },
+        b_firstName: { name: "firstName", displayName: "First Name", value: "Test Name", is_input: true },
+        c_lastName: { name: "lastName", displayName: "Last Name", value: "Name Test", is_input: true },
+        d_firstSemester: { name: "firstSemester", displayName: "First Semester", value: "Fall 2020", is_input: false },
     }
-  }
 
-  disableFormInputs() {
-    for (let x of this.controlNames) {
-      this.editUserDataForm.controls[x].disable()
+    constructor(
+        private auth: AuthService,
+        // private afs: AngularFirestore,
+        private afs: Firestore,
+        private clipboard: Clipboard,
+        private _snackBar: MatSnackBar,
+        public dialog: MatDialog,
+        private formBuilder: FormBuilder,
+    ) {
+        this.editUserDataForm = this.formBuilder.group({
+            firstName: [{ value: '', disabled: true }, Validators.required],
+            lastName: [{ value: '', disabled: true }, Validators.required],
+            firstSemester: [{ value: '', disabled: true }, Validators.required],
+        })
     }
-  }
+    controlNames = ['firstName', 'lastName', 'firstSemester']
+    // savedInputs = {
+    //   firstName: '',
+    //   lastName: '',
+    //   firstSemester: ''
+    // }
+    savedInputs: any = this.controlNames.reduce(
+        (o, key) => Object.assign(o, { [key]: '' }), {});
 
-  onEditClick() {
-    this.editing = true
-    for (let x of this.controlNames) {
-      this.savedInputs[x] = this.editUserDataForm.controls[x].value
+    enableFormInputs() {
+        for (let x of this.controlNames) {
+            this.editUserDataForm.controls[x].enable()
+        }
     }
-    this.enableFormInputs()
-  }
-  
-  onCancelEditClick() {
-    this.editing = false
-    for (let x of this.controlNames) {
-      this.editUserDataForm.controls[x].setValue(this.savedInputs[x])
+
+    disableFormInputs() {
+        for (let x of this.controlNames) {
+            this.editUserDataForm.controls[x].disable()
+        }
     }
-    this.disableFormInputs()
-  }
 
-  ngOnInit(): void {
-    this.auth.userData.subscribe(user => {
-      if (user) {
-        this.userData = user
-        this.userInfo.a_email.value = user.email || ''
-        this.userInfo.b_firstName.value = user.firstName || ''
-        this.userInfo.c_lastName.value = user.lastName || ''
-        this.userInfo.d_firstSemester.value = user.firstSemester || ''
-        this.f.firstName.setValue(user.firstName)
-        this.f.lastName.setValue(user.lastName)
-        this.f.firstSemester.setValue(user.firstSemester)
-        this.getUserReviews()
-      }
-    })
-  }
-
-  get f() {
-    return this.editUserDataForm?.controls
-  }
-
-  onSubmit(): void {
-    if (this.f.invalid) {
-      return
+    onEditClick() {
+        this.editing = true
+        for (let x of this.controlNames) {
+            this.savedInputs[x] = this.editUserDataForm.controls[x].value
+        }
+        this.enableFormInputs()
     }
-    this.auth.updateUserExtraData(
-      this.f.firstName.value,
-      this.f.lastName.value,
-      this.f.firstSemester.value
-    )
-    this.editing = false
-    this.disableFormInputs()
-  }
 
-  getUserReviews(): void {
-    this.afs.collection('Reviews', ref =>
-      ref.where("userId", '==', this.userData?.uid)
-    ).get().subscribe(response => {
-      if (!response.docs.length) {
-        // console.warn("View User Reviews: getUserReviews - No reviews exist")
-        return
-      }
-      this.reviewData = []
-      for (let item of response.docs) {
-        const review = item.data() as Review
-        review.reviewId = item.id
-        this.reviewData.push(review)
-      }
-    }, error => { console.error("View User Reviews: getUserReviews - ", error) })
-  }
+    onCancelEditClick() {
+        this.editing = false
+        for (let x of this.controlNames) {
+            this.editUserDataForm.controls[x].setValue(this.savedInputs[x])
+        }
+        this.disableFormInputs()
+    }
 
-  openSnackBar(message: string, action: string = "Dismiss") {
-    this.clipboard.copy(window.location.host)
-    this._snackBar.open(message, action, {
-      duration: this.durationInSeconds * 1000,
-    });
-  }
+    ngOnInit(): void {
+        this.auth.userData.subscribe(user => {
+            if (user) {
+                this.userData = user
+                this.userInfo.a_email.value = user.email || ''
+                this.userInfo.b_firstName.value = user.firstName || ''
+                this.userInfo.c_lastName.value = user.lastName || ''
+                this.userInfo.d_firstSemester.value = user.firstSemester || ''
+                this.f.firstName.setValue(user.firstName)
+                this.f.lastName.setValue(user.lastName)
+                this.f.firstSemester.setValue(user.firstSemester)
+                this.getUserReviews()
+            }
+        })
+    }
 
-  removeReview(reviewId: string | undefined): void {
-    if (!reviewId) return
-    this.openDialog(reviewId)
-  }
+    get f() {
+        return this.editUserDataForm?.controls
+    }
 
-  openDialog(reviewId: string) {
-    const dialogRef = this.dialog.open(DialogOnDelete)
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.afs.collection("Reviews").doc(reviewId).delete()
-        let index = this.reviewData.findIndex(x => x.reviewId == reviewId)
-        this.reviewData.splice(index, 1)
-      }
-    })
-  }
+    onSubmit(): void {
+        if (this.f.invalid) {
+            return
+        }
+        this.auth.updateUserExtraData(
+            this.f.firstName.value,
+            this.f.lastName.value,
+            this.f.firstSemester.value
+        )
+        this.editing = false
+        this.disableFormInputs()
+    }
+
+    async getUserReviews() {
+        const ref = collection(this.afs, 'Reviews')
+        var q = query(ref, where("userId", '==', this.userData?.uid))
+        const response = await getDocs(q)
+        if (!response.docs.length) {
+            // console.warn("View User Reviews: getUserReviews - No reviews exist")
+            return
+        }
+        this.reviewData = []
+        for (let item of response.docs) {
+            const review = item.data() as Review
+            review.reviewId = item.id
+            this.reviewData.push(review)
+        }
+    }
+
+    openSnackBar(message: string, action: string = "Dismiss") {
+        this.clipboard.copy(window.location.host)
+        this._snackBar.open(message, action, {
+            duration: this.durationInSeconds * 1000,
+        });
+    }
+
+    removeReview(reviewId: string | undefined): void {
+        if (!reviewId) return
+        this.openDialog(reviewId)
+    }
+
+    openDialog(reviewId: string) {
+        const dialogRef = this.dialog.open(DialogOnDelete)
+        dialogRef.afterClosed().subscribe(
+            async (result) => {
+                if (result) {
+                    const ref = doc(this.afs, "Reviews", reviewId as string)
+                    await deleteDoc(ref)
+                    let index = this.reviewData.findIndex(x => x.reviewId == reviewId)
+                    this.reviewData.splice(index, 1)
+                }
+            })
+    }
 }
