@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+// import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Firestore } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,6 +11,8 @@ import { DialogReviewSubmission } from 'src/app/shared/dialog/review-submission/
 import { DialogReviewTooShort } from 'src/app/shared/dialog/review-too-short/dialog-review-too-short.component';
 import { Review, SemesterYear } from 'src/app/shared/review/review';
 import { FbUser } from 'src/app/shared/user/user';
+import { doc, getDoc, updateDoc, addDoc } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
 @Component({
     selector: 'app-create-review',
@@ -56,7 +59,8 @@ export class CreateReviewComponent implements OnInit {
         private formBuilder: FormBuilder,
         private auth: AuthService,
         public dialog: MatDialog,
-        private afs: AngularFirestore,
+        // private afs: AngularFirestore,
+        private afs: Firestore,
         private router: Router,
         private route: ActivatedRoute,
     ) { }
@@ -89,29 +93,33 @@ export class CreateReviewComponent implements OnInit {
         this.loadReview()
     }
 
-    loadReview() {
-        if (this.reviewId) {
-            this.headerText = "Edit Review"
-            this.afs.collection("Reviews").doc(this.reviewId).get().subscribe(doc => {
-                var docData = doc.data() as Review
-                docData.semyear = { semester: docData.semester, year: docData.year }
-                this.reviewForm.setValue(docData)
-            })
-            this.f.course.disable()
+    async loadReview() {
+        if (!this.reviewId) {
+            return
         }
+        this.headerText = "Edit Review"
+        const ref = doc(this.afs, "Reviews", this.reviewId as string)
+        const docSnap = await getDoc(ref)
+        if (!docSnap) return
+
+        var docData = docSnap.data() as Review
+        docData.semyear = { semester: docData.semester, year: docData.year }
+        this.reviewForm.setValue(docData)
+        this.f.course.disable()
     }
 
-    getUserReviews(): void {
-        this.afs.collection('Reviews', ref =>
-            ref.where("userId", '==', this.userData?.uid)
-        ).get().subscribe(response => {
-            if (!response.docs.length) return
-            this.completedReviews = []
-            for (let item of response.docs) {
-                const review = item.data() as Review
-                this.completedReviews.push(review.course)
-            }
-        }, error => { console.error("Create Review:", error) }).unsubscribe();
+    async getUserReviews() {
+        const ref = collection(this.afs, 'Reviews')
+        var q = query(ref, where("userId", '==', this.userData?.uid))
+        const response = await getDocs(q)
+
+        if (!response.docs.length) return
+
+        this.completedReviews = []
+        for (let item of response.docs) {
+            const review = item.data() as Review
+            this.completedReviews.push(review.course)
+        }
     }
 
     initializeReviewForm() {
@@ -158,7 +166,7 @@ export class CreateReviewComponent implements OnInit {
         return s.split(' ').filter(function (str) { return str != ""; }).length;
     }
 
-    onSubmit() {
+    async onSubmit() {
         const courseName = this.reviewForm.controls['course'].value
         const course = this.courses?.find(item => item.ClassName === courseName)
         const classId = course?.courseId
@@ -177,29 +185,15 @@ export class CreateReviewComponent implements OnInit {
         this.reviewForm.value.year = this.reviewForm.value.semyear.year
         this.reviewForm.value.semester = this.reviewForm.value.semyear.semester
         if (this.reviewId) {
-            this.afs.collection('Reviews')
-                .doc(this.reviewId)
-                .update(this.reviewForm.value)
-                .then(result => {
-                    this.loading = false
-                    this.openSubmittedDialog(course)
-                }, error => {
-                    console.error("Create Review Failed: ", error)
-                    this.loading = false
-                    this.error = error.message
-                })
+            const ref = doc(this.afs, "Reviews", this.reviewId as string)
+            await updateDoc(ref, this.reviewForm.value)
         } else {
-            this.afs.collection('Reviews')
-                .add(this.reviewForm.value)
-                .then(result => {
-                    this.loading = false
-                    this.openSubmittedDialog(course)
-                }, error => {
-                    console.error("Create Review Failed: ", error)
-                    this.loading = false
-                    this.error = error.message
-                })
+            const ref = collection(this.afs, 'Reviews')
+            await addDoc(ref, this.reviewForm.value)
         }
+        this.loading = false
+        this.openSubmittedDialog(course)
+
     }
 
     openSubmittedDialog(course?: ClassData) {
