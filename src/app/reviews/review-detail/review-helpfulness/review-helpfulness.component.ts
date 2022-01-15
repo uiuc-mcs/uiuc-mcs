@@ -29,7 +29,7 @@ export class ReviewHelpfulnessComponent {
           if(toggle.value === "yes") this.positive != undefined ? this.positive += 1 : this.positive = 1
           else if(toggle.value === "no") this.negative != undefined ? this.negative += 1 : this.negative = 1
         }
-        if(this.reviewId){this.auth.reviewFeedback(this.reviewId, group.value[0])}
-    } else if(this.reviewId) this.auth.reviewFeedback(this.reviewId, reviewFeedbackType.undoFeedback)
+        if(this.reviewId){this.auth.setReviewFeedback(this.reviewId, group.value[0])}
+    } else if(this.reviewId) this.auth.setReviewFeedback(this.reviewId, reviewFeedbackType.undoFeedback)
   }
 }
