@@ -198,7 +198,6 @@ export class CreateReviewComponent implements OnInit {
 
     openSubmittedDialog(course?: ClassData) {
         // const classId = this.courses?.find(item => item.ClassName === courseName)?.courseId
-        this.courseService.updateCourseData()
         const dialogRef = this.dialog.open(DialogReviewSubmission)
         dialogRef.afterClosed().subscribe(result => {
             if (course) {

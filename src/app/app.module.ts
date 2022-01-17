@@ -8,13 +8,15 @@ import { MaterialModule } from './material/material.module'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout'
 
-import { AngularFireModule } from "@angular/fire/compat"
-import { AngularFireAuthModule } from "@angular/fire/compat/auth"
-import { AngularFirestoreModule } from "@angular/fire/compat/firestore"
-import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+// import { AngularFireModule } from "@angular/fire/compat"
+// import { AngularFireAuthModule } from "@angular/fire/compat/auth"
+// import { AngularFirestoreModule } from "@angular/fire/compat/firestore"
+// import { AngularFireAnalyticsModule, ScreenTrackingService, UserTrackingService } from '@angular/fire/compat/analytics';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getAnalytics, provideAnalytics, UserTrackingService, ScreenTrackingService } from '@angular/fire/analytics';
 
-import { AngularFireAnalyticsModule, ScreenTrackingService, UserTrackingService } from '@angular/fire/compat/analytics';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
@@ -90,16 +92,18 @@ import { SEOService } from './services/seo/seo.service';
         AppRoutingModule,
         BrowserAnimationsModule,
         MaterialModule,
-        AngularFireModule.initializeApp(environment.firebase),
-        AngularFireAuthModule,
-        AngularFirestoreModule,
-        AngularFireAnalyticsModule,
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
         FlexLayoutModule,
+        // AngularFireModule.initializeApp(environment.firebase),
+        // AngularFirestoreModule,
+        // AngularFireAuthModule,
+        // AngularFireAnalyticsModule,
         provideFirebaseApp(() => initializeApp(environment.firebase)),
         provideFirestore(() => getFirestore()),
+        provideAuth(() => getAuth()),
+        provideAnalytics(() => getAnalytics()),
     ],
     providers: [
         ScreenTrackingService,

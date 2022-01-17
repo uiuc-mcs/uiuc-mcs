@@ -1,14 +1,6 @@
-export interface User {
-    uid: string,
-    email?: string,
-    displayName?: string,
-    photoUrl?: string,
-    emailVerified?: boolean,
-    // slackId?: string,
-}
+import { User } from 'firebase/auth';
 
-export interface FbUser extends firebase.default.User {
-    // slackId?: string,
+export interface FbUser extends User{
     firstName?: string,
     lastName?: string,
     firstSemester?: string,

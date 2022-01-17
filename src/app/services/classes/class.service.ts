@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ClassData } from 'src/app/shared/class/class';
 // import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Firestore } from '@angular/fire/firestore';
+import { collection, Firestore, onSnapshot } from '@angular/fire/firestore';
 import { Observable, ReplaySubject } from 'rxjs';
-
-import { collection, onSnapshot } from 'firebase/firestore';
 
 @Injectable({
     providedIn: 'root'
@@ -18,17 +16,14 @@ export class ClassService {
         // private afs: AngularFirestore  
         private afs: Firestore,
     ) {
-        this.updateCourseData()
-    }
-
-    async updateCourseData() {
         const ref = collection(this.afs, 'Class')
         const unsubscribe = onSnapshot(ref, (querySnapshot) => {
             const cities: ClassData[] = [];
             querySnapshot.forEach((doc) => {
-                cities.push(doc.data() as ClassData);
+                var data = doc.data()
+                data['courseId'] = doc.id
+                cities.push(data as ClassData);
             });
-            // console.log("change in ClassData");
             this._classes.next(cities)
         });
     }
