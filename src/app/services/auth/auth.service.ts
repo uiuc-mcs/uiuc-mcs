@@ -1,20 +1,20 @@
 import { Injectable, NgZone } from '@angular/core';
-// import { AngularFireAuth } from '@angular/fire/compat/auth';
-// import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import {
     Auth, createUserWithEmailAndPassword, getAuth, onAuthStateChanged,
     sendEmailVerification,
     sendPasswordResetEmail, signInWithEmailAndPassword, signOut,
     updateCurrentUser, updateProfile
 } from '@angular/fire/auth';
-// import { authState, User } from '@angular/fire/auth';
+
 import { Firestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable, ReplaySubject } from 'rxjs';
 import { reviewFeedbackType } from 'src/app/shared/review/review';
 import { FbUser } from '../../shared/user/user'
-import { enableIndexedDbPersistence, increment, setDoc, updateDoc } from 'firebase/firestore';
-import { doc, getDoc } from 'firebase/firestore';
+import {
+    doc, getDoc, enableIndexedDbPersistence, increment, setDoc,
+    updateDoc
+} from 'firebase/firestore';
 
 
 @Injectable({
@@ -136,8 +136,7 @@ export class AuthService {
             this._userData.next(undefined)
         }).then(_ => {
             this.router.navigate(['logout'])
-        })
-            .catch((error) => { console.error("Auth: logout - ", error) })
+        }).catch((error) => { console.error("Auth: logout - ", error) })
     }
 
     forgotPassword(email: string) {
@@ -146,8 +145,7 @@ export class AuthService {
             .then(_ => {
                 window.alert('Password reset email has been sent. Check your email inbox to proceed.')
                 this.router.navigate(['login'])
-            })
-            .catch(error => { window.alert(error) })
+            }).catch(error => { window.alert(error) })
     }
 
     async updateUserExtraData(firstName: string, lastName: string, firstSemester: string) {
@@ -190,9 +188,9 @@ export class AuthService {
         var user = this.auth.currentUser as FbUser
         if (user) {
             // sendEmailVerification(this.auth.currentUser)
-        // }
-        // return this.afAuth.currentUser
-        // .then(async (user: FbUser | null) => {
+            // }
+            // return this.afAuth.currentUser
+            // .then(async (user: FbUser | null) => {
             if (!user || !user?.emailVerified) return false
             if (!user.reviewFeedback) user.reviewFeedback = {}
 
