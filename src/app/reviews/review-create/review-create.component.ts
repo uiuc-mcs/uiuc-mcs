@@ -141,7 +141,9 @@ export class CreateReviewComponent implements OnInit {
         })
         this.reviewForm.controls['timestamp'].setValue(new Date())
         this.auth.userData.subscribe(user => {
-            this.reviewForm.controls['userId'].setValue(user.uid)
+            if (user) {
+                this.reviewForm.controls['userId'].setValue(user.uid)
+            }
         }).unsubscribe();
     }
 
