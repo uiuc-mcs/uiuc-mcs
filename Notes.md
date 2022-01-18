@@ -1,4 +1,4 @@
-### angular-gh-pages engine.js
+## angular-gh-pages engine.js
   angular-gh-pages
 function createNotFoundPage(dir, options, logger) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -98,7 +98,15 @@ function createNotFoundPage(dir, options, logger) {
     });
 }
 
-### TODO
+## TODO
+
+### Problematic URLs
+
+* https://uiucmcs.org/courses/CS-425-Distributed-Systems-\(Cloud-Computing-Concepts\)
+* https://uiucmcs.org/courses/CS-425-Distributed-Systems-(Cloud-Computing-Concepts)
+
+### Misc
+
 * Cursor pointer for grid tags
 * Sort course list by semester
 * Cleanup: ag "computerScience"
@@ -106,13 +114,14 @@ function createNotFoundPage(dir, options, logger) {
 * Tabs on profile page with reviews  or profile
 * Add review bottom right button
 
+
 * Common class pairings feature?
 
 
 
-### Old
+## Old
 Load data in chunks for reviews - https://medium.com/@AnkitMaheshwariIn/pagination-in-angular-firestore-firebase-database-add-get-documents-14ca723e9c24
 
-#### Deploying
+### Deploying
 git remote add origin git@github.com:uiuc-mcs/uiuc-mcs.git
 ng deploy --base-href=https://uiucmcs.org --cname=uiucmcs.org --no-silent

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Firestore } from '@angular/fire/firestore';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClassData, courseCategories, courseLanguages } from 'src/app/shared/class/class';
@@ -19,7 +18,6 @@ export class CreateCourseComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        // private afs: AngularFirestore,
         private afs: Firestore,
     ) {
     }

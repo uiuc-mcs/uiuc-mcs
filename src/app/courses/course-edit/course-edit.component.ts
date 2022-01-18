@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Firestore } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -23,7 +22,6 @@ export class EditCourseMetadataComponent implements OnInit {
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private courseService: ClassService,
-        // private afs: AngularFirestore,
         private afs: Firestore,
         private router: Router,
     ) {
@@ -65,7 +63,6 @@ export class EditCourseMetadataComponent implements OnInit {
                 languages: this.f.languages.value,
             }
         )
-        // this.courseService.updateCourseData()
         var link = ''
         if (this.courseData) {
             link = getRouterLink(this.courseData)

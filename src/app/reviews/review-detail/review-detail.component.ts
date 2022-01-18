@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-// import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Firestore } from '@angular/fire/firestore';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,12 +7,11 @@ import { courseRouterLink, Review, ratingsToStrings } from 'src/app/shared/revie
 import { FbUser } from 'src/app/shared/user/user';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { MatDialog } from '@angular/material/dialog';
-// import { DialogOnDelete } from 'src/app/shared/dialog/review-delete/dialog-on-delete.component';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
 import { environment } from 'src/environments/environment';
 import { Title } from '@angular/platform-browser';
-import { deleteDoc, doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 
 @Component({
     selector: 'app-review-detail',
@@ -33,7 +31,6 @@ export class ReviewDetailComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        // private afs: AngularFirestore,
         private afs: Firestore,
         private auth: AuthService,
         private _snackBar: MatSnackBar,
@@ -64,10 +61,6 @@ export class ReviewDetailComponent implements OnInit {
             return
         }
 
-        // .collection("Reviews")
-        //     .doc(reviewId)
-        //     .get()
-        //     .subscribe(docSnap => {
         if (!docSnap.exists) {
             this.router.navigate(['404'])
             return
@@ -87,7 +80,6 @@ export class ReviewDetailComponent implements OnInit {
         this.loading = false;
         const title = `${rev.course} (${rev.semester} ${rev.year}) Course Review | ${environment.websiteName}`
         this.titleService.setTitle(title);
-        // })
     }
 
     openSnackBar(message: string, reviewId?: string, action: string = "Dismiss") {

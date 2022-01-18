@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Firestore } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -59,7 +58,6 @@ export class CreateReviewComponent implements OnInit {
         private formBuilder: FormBuilder,
         private auth: AuthService,
         public dialog: MatDialog,
-        // private afs: AngularFirestore,
         private afs: Firestore,
         private router: Router,
         private route: ActivatedRoute,

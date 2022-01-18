@@ -9,8 +9,6 @@ import { ClassData } from 'src/app/shared/class/class';
 import { ratingsToStrings, Review } from '../../shared/review/review';
 import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment'
-// import { AngularFirestore } from '@angular/fire/compat/firestore';
-// import firebase from 'firebase/compat/app';
 import { Firestore, collection } from '@angular/fire/firestore';
 import { getDocs, limit, orderBy, OrderByDirection, query, startAfter, where } from 'firebase/firestore';
 
@@ -24,7 +22,6 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
     constructor(
         private router: Router,
         private route: ActivatedRoute,
-        // private afs: AngularFirestore,
         private afs: Firestore,
         private auth: AuthService,
         private renderer: Renderer2,

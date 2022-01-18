@@ -8,10 +8,6 @@ import { MaterialModule } from './material/material.module'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout'
 
-// import { AngularFireModule } from "@angular/fire/compat"
-// import { AngularFireAuthModule } from "@angular/fire/compat/auth"
-// import { AngularFirestoreModule } from "@angular/fire/compat/firestore"
-// import { AngularFireAnalyticsModule, ScreenTrackingService, UserTrackingService } from '@angular/fire/compat/analytics';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
@@ -96,10 +92,6 @@ import { SEOService } from './services/seo/seo.service';
         FormsModule,
         ReactiveFormsModule,
         FlexLayoutModule,
-        // AngularFireModule.initializeApp(environment.firebase),
-        // AngularFirestoreModule,
-        // AngularFireAuthModule,
-        // AngularFireAnalyticsModule,
         provideFirebaseApp(() => initializeApp(environment.firebase)),
         provideFirestore(() => getFirestore()),
         provideAuth(() => getAuth()),

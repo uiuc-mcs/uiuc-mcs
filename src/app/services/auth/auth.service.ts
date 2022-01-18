@@ -30,19 +30,11 @@ export class AuthService {
     private readonly auth: Auth
 
     constructor(
-        // public afs: AngularFirestore,
         private afs: Firestore,
-        // public afAuth: AngularFireAuth,
         public router: Router,
         public ngZone: NgZone,
     ) {
         this.auth = getAuth()
-        // afAuth.authState.subscribe((user: User) => this.currentUser = user);
-        // updateCurrentUser(this.auth, this.auth.currentUser)
-
-        // this.afs.firestore.enablePersistence({synchronizeTabs:true})
-        // .catch((err: string) => console
-        //   .error("Persistence failed to enable, error:", err))
         enableIndexedDbPersistence(this.afs).catch((err: any) => {
             if (err.code == 'failed-precondition') {
                 console.error("Persistence failed to enable, error:", err)
@@ -106,7 +98,6 @@ export class AuthService {
     }
 
     signUp(email: string, password: string, firstName: string, lastName: string, firstSemester: string) {
-        // return this.afAuth.createUserWithEmailAndPassword(email, password)
         return createUserWithEmailAndPassword(this.auth, email, password)
             .then(async (userCredential) => {
                 var cred_user = userCredential.user as FbUser
@@ -129,7 +120,6 @@ export class AuthService {
     }
 
     logout() {
-        // return this.afAuth.signOut().then(() => {
         return signOut(this.auth).then(() => {
             this.setUserData(null)
             this._isLoggedIn.next(false)
@@ -140,7 +130,6 @@ export class AuthService {
     }
 
     forgotPassword(email: string) {
-        // return this.afAuth.sendPasswordResetEmail(email)
         return sendPasswordResetEmail(this.auth, email)
             .then(_ => {
                 window.alert('Password reset email has been sent. Check your email inbox to proceed.')
@@ -150,7 +139,6 @@ export class AuthService {
 
     async updateUserExtraData(firstName: string, lastName: string, firstSemester: string) {
         await updateCurrentUser(this.auth, this.auth.currentUser)
-
         var loc_user = this.auth.currentUser as FbUser
         if (loc_user) {
             const displayName = `${firstName} ${lastName}`
@@ -172,10 +160,6 @@ export class AuthService {
         if (this.auth.currentUser) {
             sendEmailVerification(this.auth.currentUser)
         }
-        // return this.afAuth.currentUser
-        // .then((user: FbUser | null) => {
-        //     user?.sendEmailVerification()
-        // })
     }
 
     async setReviewFeedback(reviewId: string, vote: reviewFeedbackType): Promise<boolean> {
@@ -187,10 +171,6 @@ export class AuthService {
         await updateCurrentUser(this.auth, this.auth.currentUser)
         var user = this.auth.currentUser as FbUser
         if (user) {
-            // sendEmailVerification(this.auth.currentUser)
-            // }
-            // return this.afAuth.currentUser
-            // .then(async (user: FbUser | null) => {
             if (!user || !user?.emailVerified) return false
             if (!user.reviewFeedback) user.reviewFeedback = {}
 

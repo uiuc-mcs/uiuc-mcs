@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ClassData } from 'src/app/shared/class/class';
-// import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { collection, Firestore, onSnapshot } from '@angular/fire/firestore';
 import { Observable, ReplaySubject } from 'rxjs';
 
@@ -11,9 +10,7 @@ export class ClassService {
     private _classes: ReplaySubject<ClassData[]> = new ReplaySubject()
     public classes: Observable<ClassData[]> = this._classes.asObservable()
 
-
     constructor(
-        // private afs: AngularFirestore  
         private afs: Firestore,
     ) {
         const ref = collection(this.afs, 'Class')
