@@ -100,11 +100,6 @@ function createNotFoundPage(dir, options, logger) {
 
 ## TODO
 
-### Problematic URLs
-
-* https://uiucmcs.org/courses/CS-425-Distributed-Systems-\(Cloud-Computing-Concepts\)
-* https://uiucmcs.org/courses/CS-425-Distributed-Systems-(Cloud-Computing-Concepts)
-
 ### Misc
 
 * Cursor pointer for grid tags
