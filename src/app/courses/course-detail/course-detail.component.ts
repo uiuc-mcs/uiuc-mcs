@@ -9,8 +9,10 @@ import { ClassData } from 'src/app/shared/class/class';
 import { ratingsToStrings, Review } from '../../shared/review/review';
 import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment'
-import { Firestore, collection, getDocs, limit, orderBy, OrderByDirection, 
-    query, startAfter, where } from '@angular/fire/firestore';
+import {
+    Firestore, collection, getDocs, limit, orderBy, OrderByDirection,
+    query, startAfter, where
+} from '@angular/fire/firestore';
 
 @Component({
     selector: 'app-course-detail',
@@ -102,10 +104,12 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
             if (!this.course) {
                 this.router.navigate(['404'])
             }
-            this.courseNumber = this.course!.CourseNumber
-            this.setTitle()
-            this.updateCards(this.course!)
-            this.updateGraphicStyles()
+            else {
+                this.courseNumber = this.course!.CourseNumber
+                this.setTitle()
+                this.updateCards(this.course!)
+                this.updateGraphicStyles()
+            }
         })
     }
 

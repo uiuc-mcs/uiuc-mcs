@@ -51,6 +51,8 @@ import { PrivacyComponent } from './privacy/privacy.component'
 import { TermsComponent } from './terms/terms.component'
 
 import { SEOService } from './services/seo/seo.service';
+import { CustomUrlSerializer } from './app-routing.module'
+import { UrlSerializer } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -100,7 +102,8 @@ import { SEOService } from './services/seo/seo.service';
     providers: [
         ScreenTrackingService,
         UserTrackingService,
-        SEOService
+        SEOService,
+        { provide: UrlSerializer, useClass: CustomUrlSerializer },
     ],
     bootstrap: [AppComponent]
 })
