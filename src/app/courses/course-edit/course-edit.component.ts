@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Firestore } from '@angular/fire/firestore';
+import { Firestore, doc, updateDoc } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { doc, updateDoc } from 'firebase/firestore';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { getRouterLink, ClassData, courseCategories, courseLanguages } from 'src/app/shared/class/class';
 

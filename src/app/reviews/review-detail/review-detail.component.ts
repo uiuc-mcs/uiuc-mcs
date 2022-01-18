@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Firestore } from '@angular/fire/firestore';
+import { Firestore, doc, getDoc } from '@angular/fire/firestore';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -11,7 +11,6 @@ import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
 import { environment } from 'src/environments/environment';
 import { Title } from '@angular/platform-browser';
-import { doc, getDoc } from 'firebase/firestore';
 
 @Component({
     selector: 'app-review-detail',

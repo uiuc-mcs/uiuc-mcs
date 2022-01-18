@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
+import { doc, getDoc, updateDoc, addDoc } from '@angular/fire/firestore';
+import { collection, getDocs, query, where } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,8 +12,6 @@ import { DialogReviewSubmission } from 'src/app/shared/dialog/review-submission/
 import { DialogReviewTooShort } from 'src/app/shared/dialog/review-too-short/dialog-review-too-short.component';
 import { Review, SemesterYear } from 'src/app/shared/review/review';
 import { FbUser } from 'src/app/shared/user/user';
-import { doc, getDoc, updateDoc, addDoc } from 'firebase/firestore';
-import { collection, getDocs, query, where } from 'firebase/firestore';
 
 @Component({
     selector: 'app-create-review',

@@ -9,7 +9,7 @@ import { DialogOnDelete } from 'src/app/shared/dialog/review-delete/dialog-on-de
 import { Review } from 'src/app/shared/review/review';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatriculateSemYear } from 'src/app/shared/class/class'
-import { collection, deleteDoc, doc, getDocs, query, where } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getDocs, query, where }  from '@angular/fire/firestore';
 
 @Component({
     selector: 'app-settings',

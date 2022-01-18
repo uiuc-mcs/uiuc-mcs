@@ -6,16 +6,13 @@ import {
     updateCurrentUser, updateProfile
 } from '@angular/fire/auth';
 
-import { Firestore } from '@angular/fire/firestore';
+import { Firestore, doc, getDoc, enableIndexedDbPersistence, increment, setDoc, 
+    updateDoc
+} from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable, ReplaySubject } from 'rxjs';
 import { reviewFeedbackType } from 'src/app/shared/review/review';
 import { FbUser } from '../../shared/user/user'
-import {
-    doc, getDoc, enableIndexedDbPersistence, increment, setDoc,
-    updateDoc
-} from 'firebase/firestore';
-
 
 @Injectable({
     providedIn: 'root'

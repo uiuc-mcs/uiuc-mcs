@@ -9,8 +9,8 @@ import { ClassData } from 'src/app/shared/class/class';
 import { ratingsToStrings, Review } from '../../shared/review/review';
 import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment'
-import { Firestore, collection } from '@angular/fire/firestore';
-import { getDocs, limit, orderBy, OrderByDirection, query, startAfter, where } from 'firebase/firestore';
+import { Firestore, collection, getDocs, limit, orderBy, OrderByDirection, 
+    query, startAfter, where } from '@angular/fire/firestore';
 
 @Component({
     selector: 'app-course-detail',

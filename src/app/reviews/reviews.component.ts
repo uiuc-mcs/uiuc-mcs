@@ -4,7 +4,8 @@ import { ClassService } from '../services/classes/class.service';
 import { ClassData } from '../shared/class/class';
 import { Review, ratingsToStrings } from '../shared/review/review';
 import { Firestore, collection } from '@angular/fire/firestore';
-import { DocumentData, getDocs, limit, orderBy, OrderByDirection, query, QueryDocumentSnapshot, startAfter, where } from 'firebase/firestore';
+import { DocumentData, getDocs, limit, orderBy, OrderByDirection, 
+    query, QueryDocumentSnapshot, startAfter, where } from '@angular/fire/firestore';
 
 @Component({
     selector: 'app-reviews',

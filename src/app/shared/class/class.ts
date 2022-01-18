@@ -1,4 +1,4 @@
-import { Timestamp } from "@firebase/firestore-types";
+import { Timestamp } from '@angular/fire/firestore';
 
 export const mcsdsCategories = [
   "MCSDS Advanced", "MCSDS Elective", "Machine Learning", "Data Mining",

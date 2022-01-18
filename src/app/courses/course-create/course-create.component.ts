@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Firestore } from '@angular/fire/firestore';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClassData, courseCategories, courseLanguages } from 'src/app/shared/class/class';
-import { addDoc, collection } from 'firebase/firestore';
+import { Firestore, addDoc, collection } from '@angular/fire/firestore';
 
 @Component({
     selector: 'app-course-create',
