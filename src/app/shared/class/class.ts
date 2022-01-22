@@ -65,6 +65,7 @@ export interface ClassData {
   courseId: string,
   ClassName: string,
   CourseNumber: string,
+  Description: string,
   DifficultyAvg: number,
   DifficultyCount: number,
   GraphicUrl: string,

@@ -7,12 +7,14 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
 import { ratingsToStrings, Review } from '../../shared/review/review';
-import { Title } from '@angular/platform-browser';
+// import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment'
 import {
     Firestore, collection, getDocs, limit, orderBy, OrderByDirection,
     query, startAfter, where
 } from '@angular/fire/firestore';
+
+import { SEOService } from '../../services/seo/seo.service';
 
 @Component({
     selector: 'app-course-detail',
@@ -28,7 +30,8 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         private auth: AuthService,
         private renderer: Renderer2,
         private classService: ClassService,
-        private titleService: Title
+        // private titleService: Title,
+        private seoService: SEOService
     ) { }
 
     courseName: string = ""
@@ -95,9 +98,9 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         } else {
             title = environment.websiteName
         }
-        this.titleService.setTitle(title);
+        this.seoService.updateTitle(title);
     }
-
+    
     getClassData(): void {
         this.classService.classes.subscribe(data => {
             this.course = data.find(x => x.ClassName == this.courseName)
@@ -107,6 +110,9 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
             else {
                 this.courseNumber = this.course!.CourseNumber
                 this.setTitle()
+                if (this.course.Description) {
+                    this.seoService.updateDescription(this.course.Description);
+                }
                 this.updateCards(this.course!)
                 this.updateGraphicStyles()
             }
