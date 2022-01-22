@@ -7,7 +7,6 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
 import { ratingsToStrings, Review } from '../../shared/review/review';
-// import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment'
 import {
     Firestore, collection, getDocs, limit, orderBy, OrderByDirection,
@@ -30,7 +29,6 @@ export class CourseDetailComponent implements OnInit, AfterViewInit {
         private auth: AuthService,
         private renderer: Renderer2,
         private classService: ClassService,
-        // private titleService: Title,
         private seoService: SEOService
     ) { }
 
