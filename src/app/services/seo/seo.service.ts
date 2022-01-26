@@ -15,15 +15,15 @@ export class SEOService {
 
     updateTitle(title: string) {
         this.title.setTitle(title);
-        this.meta.updateTag({ name: 'og:title', content: title })
+        this.meta.updateTag({ property: 'og:title', content: title })
     }
 
     updateDescription(description: string) {
         this.meta.updateTag({ name: 'description', content: description })
-        this.meta.updateTag({ name: 'og:description', content: description })
+        this.meta.updateTag({ property: 'og:description', content: description })
     }
 
     updateOgUrl() {
-        this.meta.updateTag({ name: 'og:url', content: this.document.URL })
+        this.meta.updateTag({ property: 'og:url', content: this.document.URL })
     }
 }
