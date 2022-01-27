@@ -8,9 +8,9 @@ import { MaterialModule } from './material/material.module'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout'
 
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getApp, initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getFirestore, initializeFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getAnalytics, provideAnalytics, UserTrackingService, ScreenTrackingService } from '@angular/fire/analytics';
 
 import { environment } from '../environments/environment';
@@ -95,7 +95,9 @@ import { UrlSerializer } from '@angular/router';
         ReactiveFormsModule,
         FlexLayoutModule,
         provideFirebaseApp(() => initializeApp(environment.firebase)),
-        provideFirestore(() => getFirestore()),
+        // provideFirestore(() => getFirestore()),
+        provideFirestore(() => initializeFirestore(getApp(), 
+        {experimentalForceLongPolling: true})),
         provideAuth(() => getAuth()),
         provideAnalytics(() => getAnalytics()),
     ],
