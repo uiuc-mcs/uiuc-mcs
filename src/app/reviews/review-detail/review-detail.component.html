@@ -25,11 +25,12 @@
             </mat-chip-list>
           </div>
           <div class="card-header-buttons">
-            <button mat-icon-button (click)="openSnackBar('Link copied to clipboard.', review.reviewId)">
+            <button mat-icon-button (click)="openSnackBar('Link copied to clipboard.', review.reviewId)"
+             aria-label="copy review link to clipboard.">
               <mat-icon matTooltip="Copy link">link</mat-icon>
             </button>
             <button *ngIf="review.userId === userData?.uid" mat-icon-button
-              routerLink="/review/edit/{{review.reviewId}}">
+              routerLink="/review/edit/{{review.reviewId}}" aria-label="edit review">
               <mat-icon matTooltip="Edit review">mode_edit</mat-icon>
             </button>
             <!-- <button *ngIf="review.userId === userData?.uid" mat-icon-button (click)="removeReview(review.reviewId)">
