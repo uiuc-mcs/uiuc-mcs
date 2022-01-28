@@ -103,7 +103,6 @@ function createNotFoundPage(dir, options, logger) {
 ### Misc
 
 * Cursor pointer for grid tags
-* Sort course list by semester
 * Can't vote your own helpful
 * Tabs on profile page with reviews  or profile
 * Add review bottom right button
