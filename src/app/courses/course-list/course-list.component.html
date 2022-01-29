@@ -21,6 +21,17 @@
         </mat-select>
       </mat-form-field>
     </div>
+    <div class="filter">
+      <mat-form-field appearance="fill">
+        <mat-label>Semester Filter</mat-label>
+        <mat-select [(value)]="semesterValue" panelClass="select-no-max-height">
+          <mat-option *ngFor="let opt of semesterOptions" [value]="opt.value" 
+          (click)="onSemesterFilterClick()">
+            {{opt.view}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </div>
   <div class="table-container mat-elevation-z1">
     <table mat-table matSort [dataSource]="dataSource" [trackBy]="trackById" matSortActive="ClassName"

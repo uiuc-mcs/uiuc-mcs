@@ -82,6 +82,7 @@ export interface ClassData {
     summer: boolean,
     fall: boolean
   },
+  sem: string,
   semesters: { [key: string]: number },
 }
 
