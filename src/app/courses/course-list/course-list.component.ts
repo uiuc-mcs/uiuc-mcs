@@ -81,7 +81,7 @@ export class CourseListComponent implements AfterViewInit {
     ngAfterViewInit(): void {
         this.courses.classes.subscribe(data => {
             this.classes = this.addSemsToData(data)
-            console.log(data)
+            // console.log(data)
             this.dataSource = new MatTableDataSource(this.classes)
             this.dataSource.sort = this.sort
         });
@@ -94,8 +94,7 @@ export class CourseListComponent implements AfterViewInit {
         var targetValue = this.semesterValue
 
         const filterValue = targetValue.trim().toLocaleLowerCase();
-        console.log(filterValue)
-        console.log(this.dataSource)
+        // console.log(filterValue)
         this.dataSource.filter = filterValue;
     }
 
@@ -113,8 +112,7 @@ export class CourseListComponent implements AfterViewInit {
             var targetValue = this.mcsValue
         }
         const filterValue = targetValue.trim().toLocaleLowerCase();
-        console.log(filterValue)
-        console.log(this.dataSource)
+        // console.log(filterValue)
         this.dataSource.filter = filterValue;
     }
 
