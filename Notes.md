@@ -26,7 +26,7 @@ function createNotFoundPage(dir, options, logger) {
         }
         const indexHtml = path.join(dir, 'index.html');
         const pages_to_copy = ['404', 'reviews', 'courses', 'privacy',
-            'terms', 'login', 'register', 'createReview',
+            'terms', 'login', 'register', 'createReview', 'passwordReset'
         ];
         const courses = [
             'CS-598-Advanced-Bayesian-Modeling',
