@@ -25,7 +25,7 @@ function createNotFoundPage(dir, options, logger) {
             return;
         }
         const indexHtml = path.join(dir, 'index.html');
-        const pages_to_copy = ['404', 'reviews', 'courses', 'privacy',
+        const pages_to_copy = ['404', 'reviews', 'courses', 'privacy', 'grid',
             'terms', 'login', 'register', 'createReview', 'passwordReset'
         ];
         const courses = [
