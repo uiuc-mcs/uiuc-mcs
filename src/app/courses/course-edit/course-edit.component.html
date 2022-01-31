@@ -5,7 +5,7 @@
     </mat-card-header>
     <mat-card-content style="text-align: center;">
       <br>
-      <form class="user-edit-form" [formGroup]="courseMetadataForm" (ngSubmit)="onSubmit()">
+      <form class="user-edit-form" [formGroup]="editForm" (ngSubmit)="onSubmit()">
         <mat-form-field class="form-field-full-width">
           <mat-label>Category</mat-label>
           <mat-select formControlName="category" multiple required>
@@ -17,7 +17,7 @@
         <mat-checkbox id="summer" formControlName="seasonSummer"
         style="margin-right: 3rem;">Summer</mat-checkbox>
         <mat-checkbox id="fall" formControlName="seasonFall">Fall</mat-checkbox>
-        <mat-divider [inset]="true" [ngClass]="'edit-metadata-divider'"></mat-divider>
+        <mat-divider [inset]="true"></mat-divider>
 
         <mat-form-field class="form-field-full-width">
           <mat-label>Languages</mat-label>

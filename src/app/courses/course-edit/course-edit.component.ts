@@ -10,11 +10,11 @@ import { getRouterLink, ClassData, courseCategories, courseLanguages } from 'src
     templateUrl: './course-edit.component.html',
     styleUrls: ['./course-edit.component.scss'],
 })
-export class EditCourseMetadataComponent implements OnInit {
+export class EditCourseComponent implements OnInit {
     courseName: string = ""
     languages = courseLanguages
     categories = courseCategories
-    courseMetadataForm!: FormGroup
+    editForm!: FormGroup
     courseData: ClassData | undefined
 
     constructor(
@@ -28,7 +28,7 @@ export class EditCourseMetadataComponent implements OnInit {
 
     ngOnInit(): void {
         this.courseName = this.route.snapshot.paramMap.get('courseId') || ""
-        this.courseMetadataForm = this.formBuilder.group({
+        this.editForm = this.formBuilder.group({
             category: ['', Validators.required],
             seasonSpring: [false, Validators.required],
             seasonSummer: [false, Validators.required],
@@ -46,7 +46,7 @@ export class EditCourseMetadataComponent implements OnInit {
     }
 
     get f() {
-        return this.courseMetadataForm?.controls
+        return this.editForm?.controls
     }
 
     async onSubmit() {

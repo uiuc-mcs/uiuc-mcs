@@ -13,7 +13,7 @@ import { SettingsComponent } from './user/settings/settings.component';
 import { VerifyEmailComponent } from './user/verify-email/verify-email.component';
 import { AuthguardGuard } from './user/authguard.guard';
 import { LogoutComponent } from './user/logout/logout.component';
-import { EditCourseMetadataComponent } from './courses/course-edit/course-edit.component';
+import { EditCourseComponent } from './courses/course-edit/course-edit.component';
 import { NothingHereComponent } from './misc/nothing-here/nothing-here.component';
 import { CreateCourseComponent } from './courses/course-create/course-create.component';
 import { PrivacyComponent } from './privacy/privacy.component';
@@ -62,7 +62,7 @@ const routes: Routes = [
     { path: 'courses', redirectTo: '', pathMatch: 'full' },
     { path: 'courses/create', component: CreateCourseComponent, canActivate: [AuthguardGuard] },
     { path: 'courses/:courseId', component: CourseDetailComponent },
-    { path: 'courses/edit/:courseId', component: EditCourseMetadataComponent, canActivate: [AuthguardGuard] },
+    { path: 'courses/edit/:courseId', component: EditCourseComponent, canActivate: [AuthguardGuard] },
     { path: 'grid', component: CourseGridComponent, data: { title: `Course Grid | ${environment.websiteName}` } },
     { path: 'reviews', component: ReviewsComponent, data: { title: `Course Reviews | ${environment.websiteName}` } },
     { path: 'review/:id', component: ReviewDetailComponent },

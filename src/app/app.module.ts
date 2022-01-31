@@ -23,7 +23,7 @@ import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { CourseListComponent } from './courses/course-list/course-list.component';
 import { CourseGridComponent } from './courses/course-grid/course-grid.component';
-import { EditCourseMetadataComponent } from './courses/course-edit/course-edit.component';
+import { EditCourseComponent } from './courses/course-edit/course-edit.component';
 import { CreateCourseComponent } from './courses/course-create/course-create.component';
 
 import { ReviewsComponent } from './reviews/reviews.component';
@@ -75,7 +75,7 @@ import { UrlSerializer } from '@angular/router';
         DialogReviewTooShort,
         DialogNotLoggedIn,
         DialogNotVerified,
-        EditCourseMetadataComponent,
+        EditCourseComponent,
         SidenavComponent,
         SadPandaComponent,
         NothingHereComponent,
