@@ -50,7 +50,6 @@ import { PandaPartyComponent } from './misc/panda-party/panda-party.component';
 import { PrivacyComponent } from './privacy/privacy.component'
 import { TermsComponent } from './terms/terms.component'
 
-import { SEOService } from './services/seo/seo.service';
 import { CustomUrlSerializer } from './app-routing.module'
 import { UrlSerializer } from '@angular/router';
 
@@ -104,7 +103,6 @@ import { UrlSerializer } from '@angular/router';
     providers: [
         ScreenTrackingService,
         UserTrackingService,
-        SEOService,
         { provide: UrlSerializer, useClass: CustomUrlSerializer },
     ],
     bootstrap: [AppComponent]
