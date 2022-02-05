@@ -21,7 +21,7 @@ export class ReviewsComponent implements OnInit {
 
     reviewData: Review[] = []
     latestDoc: any | null = null
-    limit: number = 33
+    limit: number = 12
     pageLength: number = 55
     isLoggedIn: boolean = false
     noMore: boolean = false
