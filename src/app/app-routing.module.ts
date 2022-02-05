@@ -20,13 +20,15 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { TermsComponent } from './terms/terms.component';
 import { environment } from 'src/environments/environment'
 
+import { DefaultUrlSerializer, UrlSerializer, UrlTree } from '@angular/router';
+
 export interface NavItem {
     title: string,
     url: string,
     show: boolean
 }
-export const NavInfo = new Map<string, NavItem> ([
-    ['courses', { title: 'Courses', url: '/', show: true}],
+export const NavInfo = new Map<string, NavItem>([
+    ['courses', { title: 'Courses', url: '/', show: true }],
     ['grid', { title: 'Grid', url: '/grid', show: true }],
     ['reviews', { title: 'Reviews', url: '/reviews', show: true }],
     ['createReview', { title: 'Create Review', url: '/createReview', show: false }],
@@ -35,19 +37,18 @@ export const NavInfo = new Map<string, NavItem> ([
     ['logout', { title: 'Sign out', url: '/logout', show: false }],
 ])
 
-import { DefaultUrlSerializer, UrlSerializer, UrlTree } from '@angular/router';
 export class CustomUrlSerializer implements UrlSerializer {
     private _defaultUrlSerializer: DefaultUrlSerializer = new DefaultUrlSerializer();
 
     parse(url: string): UrlTree {
-       // Encode parentheses
-       url = url.replace(/\(/g, '%28').replace(/\)/g, '%29');
-       // Use the default serializer.
-       return this._defaultUrlSerializer.parse(url)
+        // Encode parentheses
+        url = url.replace(/\(/g, '%28').replace(/\)/g, '%29');
+        // Use the default serializer.
+        return this._defaultUrlSerializer.parse(url)
     }
 
     serialize(tree: UrlTree): string {
-       return this._defaultUrlSerializer.serialize(tree).replace(/%28/g, '(').replace(/%29/g, ')');
+        return this._defaultUrlSerializer.serialize(tree).replace(/%28/g, '(').replace(/%29/g, ')');
     }
 }
 
@@ -59,25 +60,86 @@ const routes: Routes = [
             description: 'Course Reviews and information about the Master of Computer Science programs at the University of Illinois at Urbana-Champaign.',
         }
     },
-    { path: 'courses', redirectTo: '', pathMatch: 'full' },
-    { path: 'courses/create', component: CreateCourseComponent, canActivate: [AuthguardGuard] },
-    { path: 'courses/:courseId', component: CourseDetailComponent },
-    { path: 'courses/edit/:courseId', component: EditCourseComponent, canActivate: [AuthguardGuard] },
-    { path: 'grid', component: CourseGridComponent, data: { title: `Course Grid | ${environment.websiteName}` } },
-    { path: 'reviews', component: ReviewsComponent, data: { title: `Course Reviews | ${environment.websiteName}` } },
-    { path: 'review/:id', component: ReviewDetailComponent },
-    { path: 'review/edit/:id', component: CreateReviewComponent },
-    { path: 'settings', component: SettingsComponent, canActivate: [AuthguardGuard], data: { title: `Profile | ${environment.websiteName}` } },
-    { path: 'login', component: LoginComponent, data: { title: `Sign In | ${environment.websiteName}` } },
-    { path: 'logout', component: LogoutComponent, data: { title: `Sign Out | ${environment.websiteName}` } },
-    { path: 'register', component: RegisterComponent, data: { title: `Sign Up | ${environment.websiteName}` } },
-    { path: 'passwordReset', component: ForgotPasswordComponent, data: { title: `Reset Password | ${environment.websiteName}` } },
-    { path: 'verifyEmail', component: VerifyEmailComponent },
-    { path: 'createReview', component: CreateReviewComponent, canActivate: [AuthguardGuard], data: { title: `Create Review | ${environment.websiteName}` } },
-    { path: 'privacy', component: PrivacyComponent, data: { title: `Privacy Policy | ${environment.websiteName}` } },
-    { path: 'terms', component: TermsComponent, data: { title: `Terms of Use | ${environment.websiteName}` } },
-    { path: '404', component: NothingHereComponent, data: { title: `Error | ${environment.websiteName}` } },
-    { path: '**', component: NothingHereComponent, data: { title: `Error | ${environment.websiteName}` } }
+    {
+        path: 'courses', redirectTo: '', pathMatch: 'full',
+        data: { title: '', description: '' },
+    },
+    {
+        path: 'courses/create', component: CreateCourseComponent,
+        data: { title: 'Create Course', description: '' },
+        canActivate: [AuthguardGuard]
+    },
+    {
+        path: 'courses/:courseId', component: CourseDetailComponent,
+        data: { title: '', description: '' }
+    },
+    {
+        path: 'courses/edit/:courseId', component: EditCourseComponent,
+        data: { title: '', description: '' },
+        canActivate: [AuthguardGuard]
+    },
+    {
+        path: 'grid', component: CourseGridComponent,
+        data: { title: `Course Grid | ${environment.websiteName}`, description: '' }
+    },
+    {
+        path: 'reviews', component: ReviewsComponent,
+        data: { title: `Course Reviews | ${environment.websiteName}`, description: '' }
+    },
+    {
+        path: 'review/:id', component: ReviewDetailComponent,
+        data: { title: '', description: '' }
+    },
+    {
+        path: 'review/edit/:id', component: CreateReviewComponent,
+        data: { title: '', description: '' }
+    },
+    {
+        path: 'settings', component: SettingsComponent,
+        data: { title: `Profile | ${environment.websiteName}`, description: '' },
+        canActivate: [AuthguardGuard],
+    },
+    {
+        path: 'login', component: LoginComponent,
+        data: { title: `Sign In | ${environment.websiteName}`, description: '' }
+    },
+    {
+        path: 'logout', component: LogoutComponent,
+        data: { title: `Sign Out | ${environment.websiteName}`, description: '' }
+    },
+    {
+        path: 'register', component: RegisterComponent,
+        data: { title: `Sign Up | ${environment.websiteName}`, description: '' }
+    },
+    {
+        path: 'passwordReset', component: ForgotPasswordComponent,
+        data: { title: `Reset Password | ${environment.websiteName}`, description: '' }
+    },
+    {
+        path: 'verifyEmail', component: VerifyEmailComponent,
+        data: { title: `Create Review | ${environment.websiteName}`, description: '' },
+    },
+    {
+        path: 'createReview', component: CreateReviewComponent,
+        data: { title: `Create Review | ${environment.websiteName}`, description: '' },
+        canActivate: [AuthguardGuard],
+    },
+    {
+        path: 'privacy', component: PrivacyComponent,
+        data: { title: `Privacy Policy | ${environment.websiteName}`, description: '' }
+    },
+    {
+        path: 'terms', component: TermsComponent,
+        data: { title: `Terms of Use | ${environment.websiteName}`, description: '' }
+    },
+    {
+        path: '404', component: NothingHereComponent,
+        data: { title: `Error | ${environment.websiteName}`, description: '' }
+    },
+    {
+        path: '**', component: NothingHereComponent,
+        data: { title: `Error | ${environment.websiteName}`, description: '' }
+    }
 ];
 
 export type ScrollPositionRestoration =
