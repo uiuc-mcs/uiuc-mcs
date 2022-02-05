@@ -104,7 +104,7 @@ function createNotFoundPage(dir, options, logger) {
 
 * Cursor pointer for grid tags
 * Can't vote your own helpful
-* Tabs on profile page with reviews  or profile
+* Tabs on profile page with reviews or profile
 * Add review bottom right button
 
 
