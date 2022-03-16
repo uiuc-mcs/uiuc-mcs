@@ -1,16 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
-import { Inject } from '@angular/core';
 
 @Injectable({
     providedIn: 'root'
 })
 export class SEOService {
     constructor(private title: Title,
-         private meta: Meta,
-         @Inject(DOCUMENT) private document: any,
-         ) { }
+        private meta: Meta,
+        @Inject(DOCUMENT) private document: any,
+    ) { }
 
 
     updateTitle(title: string) {
@@ -25,5 +24,13 @@ export class SEOService {
 
     updateOgUrl() {
         this.meta.updateTag({ property: 'og:url', content: this.document.URL })
+    }
+
+    updateCanonical(url?: string) {
+        let canURL = url == undefined ? this.document.URL : url;
+        let link: HTMLLinkElement = this.document.createElement('link');
+        link.setAttribute('rel', 'canonical');
+        this.document.head.appendChild(link);
+        link.setAttribute('href', canURL);
     }
 }

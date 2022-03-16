@@ -33,6 +33,7 @@ export class AppComponent {
                 this.seoService.updateTitle(event['title']);
                 this.seoService.updateDescription(event['description'])
                 this.seoService.updateOgUrl();
+                this.seoService.updateCanonical();
             });
     }
 }
