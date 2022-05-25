@@ -28,9 +28,18 @@ export class SEOService {
 
     updateCanonical(url?: string) {
         let canURL = url == undefined ? this.document.URL : url;
-        let link: HTMLLinkElement = this.document.createElement('link');
-        link.setAttribute('rel', 'canonical');
-        this.document.head.appendChild(link);
-        link.setAttribute('href', canURL);
+        var links = document.getElementsByTagName("link");
+        var can_link = null;
+        for (var i = 0; i < links.length; i ++) {
+            if (links[i].getAttribute("rel") === "canonical") {
+                can_link = links[i]
+            }
+        }
+        if ( can_link === null ) {
+            can_link = this.document.createElement('link');
+            this.document.head.appendChild(can_link);
+        }
+        can_link.setAttribute('rel', 'canonical');
+        can_link.setAttribute('href', canURL);
     }
 }
