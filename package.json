@@ -21,7 +21,6 @@
     "@angular/platform-browser": "^13.3.11",
     "@angular/platform-browser-dynamic": "^13.3.11",
     "@angular/router": "^13.3.11",
-    "protobufjs": ">=6.11.3",
     "firebase": "^9.8.2",
     "rxfire": "^6.0.3",
     "rxjs": "^7.5.5",
