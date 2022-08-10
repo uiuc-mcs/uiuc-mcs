@@ -15,7 +15,7 @@ body {
 main {
     padding: $main-pad-above $main-pad-side 2rem;
     @media (max-width: $bp-tiny) {
-        padding: $main-pad-above $main-pad-side-mobile 2rem;
+        padding: $main-pad-above-mobile $main-pad-side-mobile 2rem;
     }
 }
 
@@ -37,6 +37,16 @@ ul {
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+@media (max-width: $bp-tiny) {
+    #mat1 > .mat-form-field-wrapper {
+        padding-bottom: 1em;
+    }
+
+    #mat2 > .mat-form-field-wrapper {
+        padding-bottom: 1em;
+    }
 }
 
 .basic-container {
@@ -71,6 +81,13 @@ form {
     .forgot-pass {
         font-size: 0.875rem;
         cursor: pointer;
+    }
+}
+
+@media (max-width: $bp-tiny) {
+    form .form-row {
+        margin-top: 1rem;
+        width: 100%;
     }
 }
 

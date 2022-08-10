@@ -2,13 +2,13 @@
   <div class="col-form basic-container slim">
     <mat-card>
         <mat-card-header>
-          <mat-card-title>Sign in to your account</mat-card-title>
+          <mat-card-title id="login-card-title">Sign in to your account</mat-card-title>
         </mat-card-header>
       <mat-card-content>
         <form class="full-width-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div class="form-row">
             <label for="email">Email</label>
-            <mat-form-field appearance="outline">
+            <mat-form-field id="mat1" appearance="outline">
               <input matInput formControlName="email" id="email"
                 [ngClass]="{'is-invalid': submitted && f.email.errors}">
               <mat-error *ngIf="loginForm.controls.email.hasError('required')">Please enter your email</mat-error>
@@ -17,7 +17,7 @@
               <label for="password">Password</label>
               <a class= "forgot-pass" routerLink="/passwordReset">Forgot your password?</a>
             </div>
-            <mat-form-field appearance="outline">
+            <mat-form-field id="mat2"  appearance="outline">
               <input matInput formControlName="password" id="password" type="password"
                 [ngClass]="{'is-invalid': submitted && f.email.errors}">
               <mat-error *ngIf="loginForm.controls.password.hasError('required')">Please enter your password</mat-error>
@@ -33,9 +33,7 @@
         </form>
       </mat-card-content>
     </mat-card>
-    <br>
-    <br>
-    <span style="padding-left: 1.5rem;">
+    <span style="padding-left: 1.5rem; margin-top:1.5rem; display: inline-block;">
       <span>
         <span>Don't have an account?
         </span>
