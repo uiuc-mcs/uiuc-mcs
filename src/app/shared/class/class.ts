@@ -71,6 +71,7 @@ export interface ClassData {
   GraphicUrl: string,
   RatingAvg: number,
   RatingCount: number,
+  SampleSyllabus: string,
   SeasonSpringName: string,
   WorkloadAvg: number,
   WorkloadCount: number,

@@ -9,6 +9,12 @@
     }
 }
 
+.chip-hover-disabled:hover::after,
+.chip-hover-disabled::after {
+    opacity: initial !important;
+    background: initial !important;
+}
+
 .hero-back {
     margin-top: -94px;
     padding-top: 90px;
@@ -37,7 +43,7 @@
 
 .rating-grid-title {
     color: rgba(0, 0, 0, 0.57);
-    font-size: .875rem;
+    font-size: 0.875rem;
 }
 
 .rating-grid-cell {
