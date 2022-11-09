@@ -8,8 +8,8 @@ export const mcsdsCategories = [
 export const mcsCategories = [
   "MCS Advanced", "MCS Elective", "Artificial Intelligence",
   "Database and Information Systems", "Graphics/HCI", "Parallel Computing",
-  "Programming Languages & Software Engineering", "Scientific Computing",
-  "Systems and Networking"
+  "Programming Languages & Software Engineering", "Security and Privacy", 
+  "Scientific Computing", "Systems and Networking"
 ]
 
 export const courseCategories = Array.from(
