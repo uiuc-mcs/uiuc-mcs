@@ -63,24 +63,12 @@ export class CourseListComponent implements AfterViewInit {
         this.semesterOptions = this.makeOptions(Semesters)
     }
 
-    addSemsToData(data:ClassData[]): ClassData[] {
-        var ret: ClassData[] = []
-        for (const x of data) {
-            var semStr = ""
-            if ( x.season.spring ) semStr += 'spring '
-            if ( x.season.summer ) semStr += 'summer '
-            if ( x.season.fall ) semStr += 'fall '
-
-            var temp = x
-            temp['sem'] = semStr
-            ret.push(x)
-        }
-        return ret
-    }
-
     ngAfterViewInit(): void {
         this.courses.classes.subscribe(data => {
-            this.classes = this.addSemsToData(data)
+            var ret: ClassData[] = []
+            for (const x of data)
+                ret.push(x)
+            this.classes = ret
             // console.log(data)
             this.dataSource = new MatTableDataSource(this.classes)
             this.dataSource.sort = this.sort
