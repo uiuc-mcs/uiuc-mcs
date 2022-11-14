@@ -75,7 +75,6 @@ export class CreateCourseComponent implements OnInit {
                 summer: this.f.seasonSummer.value === "true",
                 fall: this.f.seasonFall.value === "true",
             },
-            semesters: {},
         })
             .then(result => {
                 window.alert("Added! Reload the window to add another one.")

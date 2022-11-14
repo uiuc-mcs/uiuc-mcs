@@ -19,10 +19,7 @@
             </mat-icon>
           </mat-chip>
           <div *ngFor="let season of course?.season | keyvalue">
-            <mat-chip [disableRipple]="true" *ngIf="season.value"
-class="chip-hover-disabled" 
-              matTooltip="{{semesterMatch(season.key | titlecase, objectKeys(course!.semesters))}}"
-              #tooltip="matTooltip" (click)="tooltip.toggle()">
+            <mat-chip [disableRipple]="true" *ngIf="season.value" class="chip-hover-disabled">
               {{season.key | titlecase}}<mat-icon svgIcon="icons:{{season.key}}"></mat-icon>
             </mat-chip>
           </div>
