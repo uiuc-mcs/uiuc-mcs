@@ -85,13 +85,13 @@ export class CourseListComponent implements AfterViewInit {
                 }
 
                 if(filterData.semesterValue == 'Summer') {
-                    showData &&= data.season.spring;
+                    showData &&= data.season.summer;
                 }
 
                 if(filterData.semesterValue == 'Fall') {
-                    showData &&= data.season.spring;
+                    showData &&= data.season.fall;
                 }
-                
+
                 return showData
             }
         });
