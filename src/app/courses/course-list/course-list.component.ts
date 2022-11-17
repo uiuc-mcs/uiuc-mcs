@@ -64,44 +64,55 @@ export class CourseListComponent implements AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        this.courses.classes.subscribe(data => {
-            var ret: ClassData[] = []
-            for (const x of data)
-                ret.push(x)
-            this.classes = ret
-            // console.log(data)
+        this.courses.classes.subscribe((data: ClassData[]) => {
+            this.classes = data
             this.dataSource = new MatTableDataSource(this.classes)
             this.dataSource.sort = this.sort
+            this.dataSource.filterPredicate = (data, filterStr) => {
+                const filterData: { mcsValue: string, mcsdsValue: string, semesterValue: string } = JSON.parse(filterStr);
+                let showData = true;
+                
+                if(filterData.mcsValue && data.category) {
+                    showData &&= data.category.includes(filterData.mcsValue);
+                }
+
+                if(filterData.mcsdsValue && data.category) {
+                    showData &&= data.category.includes(filterData.mcsdsValue);
+                }
+
+                if(filterData.semesterValue == 'Spring') {
+                    showData &&= data.season.spring;
+                }
+
+                if(filterData.semesterValue == 'Summer') {
+                    showData &&= data.season.summer;
+                }
+
+                if(filterData.semesterValue == 'Fall') {
+                    showData &&= data.season.fall;
+                }
+
+                return showData
+            }
         });
     }
 
-    onSemesterFilterClick() {
-        this.mcsValue = this.emptyFilter.value
-        this.mcsdsValue = this.emptyFilter.value
-
-        var targetValue = this.semesterValue
-
-        const filterValue = targetValue.trim().toLocaleLowerCase();
-        // console.log(filterValue)
-        this.dataSource.filter = filterValue;
+    updateFilter() {
+        this.dataSource.filter = JSON.stringify({
+            mcsValue: this.mcsValue,
+            mcsdsValue: this.mcsdsValue,
+            semesterValue: this.semesterValue,
+        })
     }
 
-    onFilterOptionClick(isMCSDS: boolean) {
-        var targetValue = this.emptyFilter.value
-        if (isMCSDS) {
-            this.mcsValue = this.emptyFilter.value
-            this.semesterValue = this.emptyFilter.value
+    updateMcsFilter() {
+        this.mcsdsValue = this.emptyFilter.value; // Only filter mcs or mcsds at a time
+        this.updateFilter()
+    }
 
-            var targetValue = this.mcsdsValue
-        } else {
-            this.mcsdsValue = this.emptyFilter.value
-            this.semesterValue = this.emptyFilter.value
-
-            var targetValue = this.mcsValue
-        }
-        const filterValue = targetValue.trim().toLocaleLowerCase();
-        // console.log(filterValue)
-        this.dataSource.filter = filterValue;
+    updateMcsdsFilter() {
+        this.mcsValue = this.emptyFilter.value; // Only filter mcs or mcsds at a time
+        this.updateFilter()
     }
 
     trackById(index: number, item: ClassData) {
@@ -110,8 +121,6 @@ export class CourseListComponent implements AfterViewInit {
 
     rowClick(ev: MouseEvent, course: ClassData) {
         const link = getRouterLink(course)
-        // console.log(link)
-        // if (ev.button === 1 || (ev.ctrlKey && ev.button === 0)) {
         if (ev.ctrlKey || ev.metaKey) {
             this.router.navigate([]).then(result => { window.open(link); });
         }

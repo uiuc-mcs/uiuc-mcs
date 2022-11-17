@@ -5,7 +5,7 @@
       <mat-form-field appearance="fill">
         <mat-label>MCS Requirements Filter</mat-label>
         <mat-select [(value)]="mcsValue" panelClass="select-no-max-height">
-          <mat-option *ngFor="let opt of mcsOptions" [value]="opt.value" (click)="onFilterOptionClick(false)">
+          <mat-option *ngFor="let opt of mcsOptions" [value]="opt.value" (click)="updateMcsFilter()">
             {{opt.view}}
           </mat-option>
         </mat-select>
@@ -15,7 +15,7 @@
       <mat-form-field appearance="fill">
         <mat-label>MCS-DS Requirements Filter</mat-label>
         <mat-select [(value)]="mcsdsValue" panelClass="select-no-max-height">
-          <mat-option *ngFor="let opt of mcsdsOptions" [value]="opt.value" (click)="onFilterOptionClick(true)">
+          <mat-option *ngFor="let opt of mcsdsOptions" [value]="opt.value" (click)="updateMcsdsFilter()">
             {{opt.view}}
           </mat-option>
         </mat-select>
@@ -25,8 +25,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Semester Filter</mat-label>
         <mat-select [(value)]="semesterValue" panelClass="select-no-max-height">
-          <mat-option *ngFor="let opt of semesterOptions" [value]="opt.value" 
-          (click)="onSemesterFilterClick()">
+          <mat-option *ngFor="let opt of semesterOptions" [value]="opt.value" (click)="updateFilter()">
             {{opt.view}}
           </mat-option>
         </mat-select>
