@@ -66,8 +66,19 @@ export class CourseListComponent implements AfterViewInit {
     ngAfterViewInit(): void {
         this.courses.classes.subscribe(data => {
             var ret: ClassData[] = []
-            for (const x of data)
+            for (var x of data){
+                x.season_str = []
+                if (x.season.fall) {
+                    x.season_str.push("fall")
+                }
+                if (x.season.spring) {
+                    x.season_str.push("spring")
+                }
+                if (x.season.summer) {
+                    x.season_str.push("summer")
+                }
                 ret.push(x)
+            }
             this.classes = ret
             // console.log(data)
             this.dataSource = new MatTableDataSource(this.classes)

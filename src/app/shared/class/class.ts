@@ -72,7 +72,6 @@ export interface ClassData {
   RatingAvg: number,
   RatingCount: number,
   SampleSyllabus: string,
-  SeasonSpringName: string,
   WorkloadAvg: number,
   WorkloadCount: number,
   category: string[] | null,
@@ -83,6 +82,7 @@ export interface ClassData {
     summer: boolean,
     fall: boolean
   },
+  season_str: string[]
 }
 
 export function getRouterLink(course: ClassData): string {
