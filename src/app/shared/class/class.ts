@@ -19,11 +19,6 @@ export const courseLanguages = ["C", "C++", "JavaScript", "Kotlin", "GoLang",
   "MATLAB", "Python", "R", "Rust", "No Code"
 ] as const
 
-export interface Difficulty {
-  value: number;
-  view: string;
-}
-
 const firstYear = 2014 // When was the first semester and year?
 const currentYear = (new Date()).getFullYear()
 export const Years: number[] = Array.from(
@@ -39,6 +34,10 @@ export const MatriculateSemYear: string[] = Years.map(String)
     [...a, ...Semesters.map(x => x + " " + v)],
     []).reverse();
 
+export interface Difficulty {
+  value: number;
+  view: string;
+}
 
 export const Difficulties: Difficulty[] = [
   { value: 5, view: 'Very Hard' },
