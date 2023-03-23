@@ -52,6 +52,7 @@ import { TermsComponent } from './terms/terms.component'
 
 import { CustomUrlSerializer } from './app-routing.module'
 import { UrlSerializer } from '@angular/router';
+import { CourseChartComponent } from './courses/course-chart/course-chart.component';
 
 @NgModule({
     declarations: [
@@ -83,6 +84,7 @@ import { UrlSerializer } from '@angular/router';
         CreateCourseComponent,
         PrivacyComponent,
         TermsComponent,
+        CourseChartComponent,
     ],
     imports: [
         BrowserModule,
