@@ -1,20 +1,26 @@
 <div class="restrict-width">
-  <div fxLayout="row wrap" fxLayoutAlign="space-between center"
-    class="review-controller next-prev-container" id="review-spacer">
-    <mat-form-field class="order-dropdown" appearance="fill">
-      <mat-select [(value)]="selectedCourseFilter" (selectionChange)="onCourseChange($event.value)">
-        <mat-option *ngFor="let course of reviewedCourses" [value]="course">
-          {{course !== '' ? course.ClassName : "Courses: All"}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field class="order-dropdown" appearance="fill">
-      <mat-select [(value)]="selectedSort" (selectionChange)="initLoad()">
-        <mat-option *ngFor="let option of orderByOptions" [value]="option">
-          Sort by {{option.displayText}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center"
+   class="filter-container">
+    <div class="filter">
+      <mat-form-field appearance="fill">
+        <mat-label>Course Filter</mat-label>
+        <mat-select [(value)]="selectedCourseFilter" (selectionChange)="onCourseChange($event.value)">
+          <mat-option *ngFor="let course of reviewedCourses" [value]="course">
+            {{course !== '' ? course.ClassName : ""}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="filter">
+      <mat-form-field appearance="fill">
+        <mat-label>Sort by</mat-label>
+        <mat-select [(value)]="selectedSort" (selectionChange)="initLoad()">
+          <mat-option *ngFor="let option of orderByOptions" [value]="option">
+            {{option.displayText}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </div>
   <app-review-detail [reviewData]="reviewData" [showEmptyMsg]="false" 
   [links]="true">

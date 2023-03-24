@@ -12,3 +12,33 @@
 .review-controller {
     font-size: 14px;
 }
+
+.filter-container {
+    width: 100%;
+}
+
+.filter {
+    flex-grow: 0;
+    max-width: 50%;
+    flex-basis: 50%;
+    mat-form-field {
+        width: 100%;
+    }
+    &:last-child {
+        margin-left: 0.5rem;
+    }
+    &:first-child {
+        margin-right: 0.5rem;
+    }
+    @media screen and (max-width: 599px) {
+        flex-basis: 100%;
+        width: 100%;
+        max-width: 100%;
+        &:last-child {
+            margin-left: 0;
+        }
+        &:first-child {
+            margin-right: 0;
+        }
+    }
+}
