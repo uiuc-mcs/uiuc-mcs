@@ -20,12 +20,16 @@
     "@angular/material": "^14.2.7",
     "@angular/platform-browser": "^14.2.12",
     "@angular/platform-browser-dynamic": "^14.2.12",
-    "@angular/router": "^14.2.12"
+    "@angular/router": "^14.2.12",
+    "chart.js": "^4.2.1",
+    "randomcolor": "^0.6.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.2.10",
     "@angular/cli": "^14.2.10",
     "@angular/compiler-cli": "^14.2.12",
-    "angular-cli-ghpages": "^1.0.5"
+    "@types/randomcolor": "^0.5.7",
+    "angular-cli-ghpages": "^1.0.5",
+    "typescript": "^4.8.4"
   }
 }

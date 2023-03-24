@@ -13,6 +13,11 @@
           </a>
         </li>
         <li fxHide fxShow.gt-xs>
+          <a class="nav-link" routerLink="{{navInfo.get('chart')!.url}}" [title]="navInfo.get('chart')!.title">
+            <span class="nav-link-inner">{{ navInfo.get('chart')!.title }}</span>
+          </a>
+        </li>
+        <li fxHide fxShow.gt-xs>
           <a class="nav-link" routerLink="{{navInfo.get('reviews')!.url}}" [title]="navInfo.get('reviews')!.title">
             <span class="nav-link-inner">{{ navInfo.get('reviews')!.title }}</span>
           </a>
