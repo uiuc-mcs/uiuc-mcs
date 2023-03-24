@@ -1,7 +1,7 @@
 import { Component, ElementRef, AfterViewInit, ViewChild, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Chart, registerables } from "chart.js";
-import randomColor from 'randomColor';
+import randomColor from 'randomcolor';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { getRouterLink } from 'src/app/shared/class/class';
 
@@ -89,10 +89,9 @@ export class CourseChartComponent implements OnInit, AfterViewInit {
             tooltip: {
               callbacks: {
                 label: (context) => {
-                  const classData = this.courseData[context.dataIndex].classData;
+                  const classData = this.courseData[context.datasetIndex].classData;
                   return [
-                    `Course Name: ${classData.ClassName}`,
-                    `Course Number: ${classData.CourseNumber}`,
+                    `${classData.CourseNumber} ${classData.ClassName}`,
                     `Reviews: ${classData.RatingCount}`,
                     `Difficulty: ${classData.DifficultyAvg.toFixed(2)}`,
                     `Rating: ${classData.RatingAvg.toFixed(2)}`,
