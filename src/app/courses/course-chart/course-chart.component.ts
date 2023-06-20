@@ -75,7 +75,7 @@ export class CourseChartComponent implements OnInit, AfterViewInit {
             },
           },
           onClick: (_, chartElements) => {
-            const index = chartElements[0].index;
+            const index = chartElements[0].datasetIndex;
             const link = getRouterLink(this.courseData[index].classData);
             this.router.navigate([link]);
           },
