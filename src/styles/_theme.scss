@@ -1,4 +1,4 @@
 @use '@angular/material' as mat;
 @import "_constants.scss";
 
-@include mat.all-component-themes($my-app-theme);
+@include mat.all-legacy-component-themes($my-app-theme);
