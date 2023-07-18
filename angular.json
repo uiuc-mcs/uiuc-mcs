@@ -162,7 +162,6 @@
             }
         }
     },
-    "defaultProject": "uiuc-mcs-org",
     "cli": {
         "analytics": false
     }
