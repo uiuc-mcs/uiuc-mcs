@@ -22,7 +22,8 @@
     "@angular/platform-browser-dynamic": "^16.2.10",
     "@angular/router": "^16.2.10",
     "chart.js": "^4.4.0",
-    "randomcolor": "^0.6.2"
+    "randomcolor": "^0.6.2",
+    "rxfire": "^6.0.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.2.7",
