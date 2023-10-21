@@ -32,19 +32,6 @@ export class AuthService {
         public ngZone: NgZone,
     ) {
         this.auth = getAuth()
-        enableIndexedDbPersistence(this.afs).catch((err: any) => {
-            if (err.code == 'failed-precondition') {
-                console.error("Persistence failed to enable, error:", err)
-                // Multiple tabs open, persistence can only be enabled
-                // in one tab at a a time.
-                // ...
-            } else if (err.code == 'unimplemented') {
-                console.error("Persistence failed to enable, error:", err)
-                // The current browser does not support all of the
-                // features required to enable persistence
-                // ...
-            }
-        });
 
         let localData = localStorage.getItem('user')
         if (localData != 'null' && localData) {

@@ -10,7 +10,10 @@ import { FlexLayoutModule } from '@angular/flex-layout'
 
 import { getApp, initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
-import { getFirestore, initializeFirestore, provideFirestore } from '@angular/fire/firestore';
+import {
+    initializeFirestore, provideFirestore, persistentLocalCache,
+    persistentMultipleTabManager
+} from '@angular/fire/firestore';
 import { getAnalytics, provideAnalytics, UserTrackingService, ScreenTrackingService } from '@angular/fire/analytics';
 
 import { environment } from '../environments/environment';
@@ -96,9 +99,13 @@ import { CourseChartComponent } from './courses/course-chart/course-chart.compon
         ReactiveFormsModule,
         FlexLayoutModule,
         provideFirebaseApp(() => initializeApp(environment.firebase)),
-        // provideFirestore(() => getFirestore()),
-        provideFirestore(() => initializeFirestore(getApp(), 
-        {experimentalForceLongPolling: true})),
+        provideFirestore(() => initializeFirestore(getApp(), {
+            localCache: persistentLocalCache({
+                tabManager: persistentMultipleTabManager(),
+            }),
+            experimentalForceLongPolling: true
+        })
+        ),
         provideAuth(() => getAuth()),
         provideAnalytics(() => getAnalytics()),
     ],
