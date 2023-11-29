@@ -9,31 +9,26 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^16.2.10",
-    "@angular/cdk": "^16.2.9",
-    "@angular/common": "^16.2.10",
-    "@angular/compiler": "^16.2.10",
-    "@angular/core": "^16.2.10",
-    "@angular/fire": "~7.6.1",
+    "@angular/animations": "^16.2.12",
+    "@angular/cdk": "^16.2.12",
+    "@angular/common": "^16.2.12",
+    "@angular/compiler": "^16.2.12",
+    "@angular/core": "^16.2.12",
+    "@angular/fire": "^16.0.0",
     "@angular/flex-layout": "^15.0.0-beta.42",
-    "@angular/forms": "^16.2.10",
-    "@angular/material": "^16.2.9",
-    "@angular/platform-browser": "^16.2.10",
-    "@angular/platform-browser-dynamic": "^16.2.10",
-    "@angular/router": "^16.2.10",
+    "@angular/forms": "^16.2.12",
+    "@angular/material": "^16.2.12",
+    "@angular/platform-browser": "^16.2.12",
+    "@angular/platform-browser-dynamic": "^16.2.12",
+    "@angular/router": "^16.2.12",
     "chart.js": "^4.4.0",
     "randomcolor": "^0.6.2"
   },
-  "overrides": {
-    "@angular/fire@~7.6.1": {
-      "rxfire@^6.0.0": "6.0.3"
-    }
-  },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^16.2.7",
-    "@angular/cli": "^16.2.7",
-    "@angular/compiler-cli": "^16.2.10",
-    "@types/randomcolor": "^0.5.8",
+    "@angular-devkit/build-angular": "^16.2.10",
+    "@angular/cli": "^16.2.10",
+    "@angular/compiler-cli": "^16.2.12",
+    "@types/randomcolor": "^0.5.9",
     "angular-cli-ghpages": "^1.0.7"
   }
 }
