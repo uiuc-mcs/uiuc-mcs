@@ -78,9 +78,6 @@ Apache-2.0
 @firebase/app
 Apache-2.0
 
-@firebase/app-check
-Apache-2.0
-
 @firebase/auth
 Apache-2.0
 
@@ -94,12 +91,6 @@ Apache-2.0
 Apache-2.0
 
 @firebase/logger
-Apache-2.0
-
-@firebase/messaging
-Apache-2.0
-
-@firebase/remote-config
 Apache-2.0
 
 @firebase/util
@@ -138,15 +129,9 @@ firebase/analytics
 
 firebase/app
 
-firebase/app-check
-
 firebase/auth
 
 firebase/firestore
-
-firebase/messaging
-
-firebase/remote-config
 
 idb
 ISC
