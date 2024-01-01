@@ -8,6 +8,13 @@
     "deploy-uiuc-mcs": "ng build --configuration=uiuc-mcs && ng deploy --base-href=https://uiucmcs.org --cname=uiucmcs.org --repo=git@github.com:uiuc-mcs/uiuc-mcs.git --no-build"
   },
   "private": true,
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^16.2.11",
+    "@angular/cli": "^16.2.11",
+    "@angular/compiler-cli": "^16.2.12",
+    "@types/randomcolor": "^0.5.9",
+    "angular-cli-ghpages": "^1.0.7"
+  },
   "dependencies": {
     "@angular/animations": "^16.2.12",
     "@angular/cdk": "^16.2.12",
@@ -21,14 +28,7 @@
     "@angular/platform-browser": "^16.2.12",
     "@angular/platform-browser-dynamic": "^16.2.12",
     "@angular/router": "^16.2.12",
-    "chart.js": "^4.4.0",
+    "chart.js": "^4.4.1",
     "randomcolor": "^0.6.2"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "^16.2.10",
-    "@angular/cli": "^16.2.10",
-    "@angular/compiler-cli": "^16.2.12",
-    "@types/randomcolor": "^0.5.9",
-    "angular-cli-ghpages": "^1.0.7"
   }
 }
