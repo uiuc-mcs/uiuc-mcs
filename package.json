@@ -21,7 +21,7 @@
     "@angular/platform-browser": "^16.2.12",
     "@angular/platform-browser-dynamic": "^16.2.12",
     "@angular/router": "^16.2.12",
-    "chart.js": "^4.4.1",
+    "chart.js": "^4.4.2",
     "randomcolor": "^0.6.2"
   },
   "devDependencies": {
