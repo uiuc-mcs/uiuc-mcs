@@ -21,12 +21,12 @@
     "@angular/platform-browser": "^16.2.12",
     "@angular/platform-browser-dynamic": "^16.2.12",
     "@angular/router": "^16.2.12",
-    "chart.js": "^4.4.2",
+    "chart.js": "^4.4.3",
     "randomcolor": "^0.6.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^16.2.12",
-    "@angular/cli": "^16.2.12",
+    "@angular-devkit/build-angular": "^16.2.14",
+    "@angular/cli": "^16.2.14",
     "@angular/compiler-cli": "^16.2.12",
     "@types/randomcolor": "^0.5.9",
     "angular-cli-ghpages": "^1.0.7"
