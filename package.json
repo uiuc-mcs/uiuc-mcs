@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "^16.2.12",
     "@angular/router": "^16.2.12",
     "chart.js": "^4.4.3",
+    "protobufjs": "^7.3.2",
     "randomcolor": "^0.6.2"
   },
   "devDependencies": {
@@ -29,6 +30,7 @@
     "@angular/cli": "^16.2.14",
     "@angular/compiler-cli": "^16.2.12",
     "@types/randomcolor": "^0.5.9",
-    "angular-cli-ghpages": "^1.0.7"
+    "angular-cli-ghpages": "^1.0.7",
+    "gh-pages": "^6.1.1"
   }
 }
