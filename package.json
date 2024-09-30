@@ -29,6 +29,6 @@
     "@angular/cli": "^16.2.16",
     "@angular/compiler-cli": "^16.2.12",
     "@types/randomcolor": "^0.5.9",
-    "angular-cli-ghpages": "^2.0.1"
+    "angular-cli-ghpages": "^1.0.7"
   }
 }
