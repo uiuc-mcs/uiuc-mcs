@@ -2,7 +2,7 @@ import { Component, ElementRef, AfterViewInit, ViewChild, HostListener, OnInit }
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
 import { Chart, registerables } from "chart.js";
-import randomColor from 'randomcolor';
+import { randomColor } from "./randomColor2"
 import { ClassService } from 'src/app/services/classes/class.service';
 import { getRouterLink } from 'src/app/shared/class/class';
 
