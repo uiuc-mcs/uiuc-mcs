@@ -34,13 +34,19 @@ $my-app-primary: mat.define-palette($uiuc-mcs-palette);
 $my-app-accent:  mat.define-palette(mat.$pink-palette, 500, 900, A100);
 $my-app-warn:    mat.define-palette(mat.$red-palette);
 
+
 $my-app-theme: mat.define-light-theme((
  color: (
    primary: $my-app-primary,
    accent: $my-app-accent,
    warn: $my-app-warn,
  ),
- typography: mat.define-typography-config(),
+ typography: mat.define-typography-config(
+
+                $font-family:
+                    '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+
+ ),
  density: 0,
 ));
 

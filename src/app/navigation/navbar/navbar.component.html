@@ -7,38 +7,45 @@
             <span class="nav-link-inner">{{ navInfo.get('courses')!.title }}</span>
           </a>
         </li>
-        <li fxHide fxShow.gt-xs>
+        <!-- <li fxHide fxShow.gt-xs> -->
+        <li class="fxhide-lt-xs">
           <a class="nav-link" routerLink="{{navInfo.get('grid')!.url}}" [title]="navInfo.get('grid')!.title">
             <span class="nav-link-inner">{{ navInfo.get('grid')!.title }}</span>
           </a>
         </li>
-        <li fxHide fxShow.gt-xs>
+        <!-- <li fxHide fxShow.gt-xs> -->
+        <li class="fxhide-lt-xs">
           <a class="nav-link" routerLink="{{navInfo.get('chart')!.url}}" [title]="navInfo.get('chart')!.title">
             <span class="nav-link-inner">{{ navInfo.get('chart')!.title }}</span>
           </a>
         </li>
-        <li fxHide fxShow.gt-xs>
+        <!-- <li fxHide fxShow.gt-xs> -->
+        <li class="fxhide-lt-xs">
           <a class="nav-link" routerLink="{{navInfo.get('reviews')!.url}}" [title]="navInfo.get('reviews')!.title">
             <span class="nav-link-inner">{{ navInfo.get('reviews')!.title }}</span>
           </a>
         </li>
-        <li fxFlex></li>
-        <li fxHide fxShow.gt-xs *ngIf="isLoggedIn">
+        <li style="flex: 1 1 0%; box-sizing: border-box;"></li>
+        <!-- <li fxHide fxShow.gt-xs *ngIf="isLoggedIn"> -->
+        <li class="fxhide-lt-xs" *ngIf="isLoggedIn">
           <a class="nav-link" routerLink="{{navInfo.get('createReview')!.url}}" [title]="navInfo.get('createReview')!.title">
             <span class="nav-link-inner">{{ navInfo.get('createReview')!.title }}</span>
           </a>
         </li>
-        <li fxHide fxShow.gt-xs *ngIf="isLoggedIn">
+        <!-- <li fxHide fxShow.gt-xs *ngIf="isLoggedIn"> -->
+        <li class="fxhide-lt-xs" *ngIf="isLoggedIn">
           <a class="nav-link" routerLink="{{navInfo.get('settings')!.url}}" [title]="navInfo.get('settings')!.title">
             <span class="nav-link-inner">{{ navInfo.get('settings')!.title }}</span>
           </a>
         </li>
-        <li fxHide fxShow.gt-xs *ngIf="isLoggedIn">
+        <!-- <li fxHide fxShow.gt-xs *ngIf="isLoggedIn"> -->
+        <li class="fxhide-lt-xs" *ngIf="isLoggedIn">
           <a class="nav-link" (click)="logout()" [title]="navInfo.get('logout')!.title">
             <span class="nav-link-inner">{{ navInfo.get('logout')!.title }}</span>
           </a>
         </li>
-        <li fxHide fxShow.gt-xs *ngIf="!isLoggedIn">
+        <!-- <li fxHide fxShow.gt-xs *ngIf="!isLoggedIn"> -->
+        <li class="fxhide-lt-xs" *ngIf="!isLoggedIn">
           <a class="nav-link" routerLink="{{navInfo.get('login')!.url}}" [title]="navInfo.get('login')!.title">
             <span class="nav-link-inner">{{ navInfo.get('login')!.title }}</span>
           </a>

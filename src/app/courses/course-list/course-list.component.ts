@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MatSort } from '@angular/material/sort';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ClassService } from 'src/app/services/classes/class.service';
@@ -24,7 +24,7 @@ interface FilterOption {
     templateUrl: './course-list.component.html',
     styleUrls: ['./course-list.component.scss'],
     standalone: true,
-    imports: [CommonModule, MatIconModule, MatTableModule, MatFormFieldModule, ReactiveFormsModule, MatOptionModule, MatSelectModule, MatChipsModule, MatCardModule]
+    imports: [CommonModule, MatIconModule, MatTableModule, MatFormFieldModule, ReactiveFormsModule, MatOptionModule, MatSelectModule, MatChipsModule, MatCardModule, MatSortModule, MatSort]
 })
 
 export class CourseListComponent implements AfterViewInit {

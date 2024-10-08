@@ -34,8 +34,7 @@
     </div>
   </div>
   <div class="table-container mat-elevation-z1">
-    <table mat-table matSort [dataSource]="dataSource" [trackBy]="trackById" matSortActive="ClassName"
-      matSortDirection="asc">
+    <table mat-table matSort [dataSource]="dataSource" [trackBy]="trackById" matSortActive="ClassName" matSortDirection="asc">
       <ng-container matColumnDef="CourseNumber">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Course Number</th>
         <td mat-cell *matCellDef="let class">{{class.CourseNumber}}</td>

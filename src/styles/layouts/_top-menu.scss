@@ -6,32 +6,40 @@ $hamburgerHiddenMargin: 0 -64px 0 0px;
 
 // DOCS PAGE / STANDARD: TOPNAV TOOLBAR FIXED
 mat-toolbar.mat-toolbar {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 10;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
 
-  mat-toolbar-row {
-    padding: 0 0 0 0;
-  }
+    mat-toolbar-row {
+        padding: 0 0 0 0;
+    }
 
-  mat-icon {
-    color: $white;
-  }
+    mat-icon {
+        color: $white;
+    }
 }
 
 // HOME PAGE OVERRIDE: TOPNAV TOOLBAR
 app-root.page-home mat-toolbar.mat-toolbar {
-  background-color: $blue;
+    background-color: $blue;
 
-  @media (min-width: 481px) {
-    &:not(.transitioning) {
-      background-color: transparent;
-      transition: background-color 0.2s linear;
+    @media (min-width: 481px) {
+        &:not(.transitioning) {
+            background-color: transparent;
+            transition: background-color 0.2s linear;
+        }
     }
-  }
+}
+
+.fxhide-lt-xs {
+    @media (max-width: $hideTopMenuWidth) {
+        // Hamburger hidden by default on large screens.
+        // (Will be shown per doc.)
+        display: none;
+    }
 }
 
 // MARKETING PAGES OVERRIDE: TOPNAV TOOLBAR AND HAMBURGER
@@ -39,12 +47,12 @@ app-root.page-home mat-toolbar.mat-toolbar,
 app-root.page-features mat-toolbar.mat-toolbar,
 app-root.page-events mat-toolbar.mat-toolbar,
 app-root.page-resources mat-toolbar.mat-toolbar {
-  box-shadow: none;
+    box-shadow: none;
 
-  // FIXED TOPNAV TOOLBAR FOR SMALL MOBILE
-  @media (min-width: 481px) {
-    position: absolute;
-  }
+    // FIXED TOPNAV TOOLBAR FOR SMALL MOBILE
+    @media (min-width: 481px) {
+        position: absolute;
+    }
 }
 
 // DOCS PAGES OVERRIDE: HAMBURGER
@@ -54,180 +62,205 @@ app-root.folder-docs mat-toolbar.mat-toolbar,
 app-root.folder-guide mat-toolbar.mat-toolbar,
 app-root.folder-start mat-toolbar.mat-toolbar,
 app-root.folder-tutorial mat-toolbar.mat-toolbar {
-  @media (min-width: $showTopMenuWidth) {
-    .hamburger.mat-mdc-button {
-      // Hamburger shown on non-marketing pages even on large screens.
-      margin: $hamburgerShownMargin;
+    @media (min-width: $showTopMenuWidth) {
+        .hamburger.mat-button {
+            // Hamburger shown on non-marketing pages even on large screens.
+            margin: $hamburgerShownMargin;
+        }
     }
-  }
 }
 
 // HAMBURGER BUTTON
-.hamburger.mat-mdc-button {
-  height: 100%;
-  margin: $hamburgerShownMargin;
-  padding: 0;
+button.hamburger {
+    height: 100%;
+    margin: $hamburgerShownMargin;
+    //   padding: 0;
 
-  @media (min-width: $showTopMenuWidth) {
-    // Hamburger hidden by default on large screens.
-    // (Will be shown per doc.)
-    margin: $hamburgerHiddenMargin;
-  }
+    @media (min-width: $showTopMenuWidth) {
+        // Hamburger hidden by default on large screens.
+        // (Will be shown per doc.)
+        margin: $hamburgerHiddenMargin;
+    }
 
-  @media (max-width: 480px) {
-    min-width: 15%;
-  }
+    @media (max-width: 480px) {
+        min-width: 15%;
+    }
 
-  &:not(.starting) {
-    transition-duration: 0.4s;
-    transition-property: color, margin;
-    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-  }
+    &:not(.starting) {
+        transition-duration: 0.4s;
+        transition-property: color, margin;
+        transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
 
-  &:hover {
-    color: $offwhite;
-  }
+    &:hover {
+        color: $offwhite;
+    }
 
-  & .mat-icon {
-    color: $white;
-    position: inherit;
-  }
+    & .mat-icon {
+        color: $white;
+        position: inherit;
+    }
+
+    box-sizing: border-box;
+    position: relative;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    text-align: center;
+    margin: 0;
+    min-width: 64px;
+    // line-height: 36px;
+    padding: 0 16px;
+    border-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    overflow: visible;
 }
 
 // HOME NAV-LINK
 .nav-link.home {
-  cursor: pointer;
-  margin: 0 16px 0 0;
-  padding: 8px 0;
+    cursor: pointer;
+    margin: 0 16px 0 0;
+    padding: 8px 0;
 
-  &:focus {
-    // `outline-offset` is not applied on Chrome on Windows, if `outline-style` is `auto.
-    outline: 1px solid $focus-outline-ondark;
-    outline-offset: 4px;
-  }
-
-  @media screen and (max-width: $hideTopMenuWidth) {
-    padding: 4px 0;
-  }
-
-  @media screen and (max-width: 480px) {
-    margin-right: 8px;
-  }
-
-  img {
-    position: relative;
-    margin-top: -21px;
-    top: 12px;
-    height: 45px;
-
-    @media (max-width: $hideTopMenuWidth) {
-      &:hover {
-        transform: scale(1.1);
-      }
+    &:focus {
+        // `outline-offset` is not applied on Chrome on Windows, if `outline-style` is `auto.
+        outline: 1px solid $focus-outline-ondark;
+        outline-offset: 4px;
     }
-  }
+
+    @media screen and (max-width: $hideTopMenuWidth) {
+        padding: 4px 0;
+    }
+
+    @media screen and (max-width: 480px) {
+        margin-right: 8px;
+    }
+
+    img {
+        position: relative;
+        margin-top: -21px;
+        top: 12px;
+        height: 45px;
+
+        @media (max-width: $hideTopMenuWidth) {
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
 }
 
 // TOP MENU
 // app-nav-nodes,
 #app-nav-nodes {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-
-  ul {
     display: flex;
     flex-direction: row;
     align-items: center;
-    list-style-position: inside;
-    padding: 0px;
-    margin: 0px;
     width: 100%;
 
-    li {
-      padding-bottom: 0px;
-      list-style-type: none;
-      cursor: pointer;
-
-      &:focus {
-        outline: none;
-      }
-
-      a.nav-link {
-        margin: 0 4px;
+    ul {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        list-style-position: inside;
         padding: 0px;
-        cursor: pointer;
+        margin: 0px;
+        width: 100%;
 
-        .nav-link-inner {
-          border-radius: 4px;
-          padding: 8px 16px;
+        li {
+            padding-bottom: 0px;
+            list-style-type: none;
+            cursor: pointer;
 
-          &:hover {
-            background: rgba($white, 0.15);
-          }
+            &:focus {
+                outline: none;
+            }
+
+            a.nav-link {
+                margin: 0 4px;
+                padding: 0px;
+                cursor: pointer;
+
+                .nav-link-inner {
+                    border-radius: 4px;
+                    padding: 8px 16px;
+
+                    &:hover {
+                        background: rgba($white, 0.15);
+                    }
+                }
+
+                &:focus {
+                    outline: none;
+
+                    .nav-link-inner {
+                        background: rgba($white, 0.15);
+                        border-radius: 1px;
+                        box-shadow: 0 0 1px 2px $focus-outline-ondark;
+                    }
+                }
+
+                &:active {
+                    .nav-link-inner {
+                        background: rgba($white, 0.15);
+                    }
+                }
+            }
+
+            &.selected {
+                a.nav-link {
+                    .nav-link-inner {
+                        background: rgba($white, 0.15);
+                    }
+                }
+            }
         }
-
-        &:focus {
-          outline: none;
-
-          .nav-link-inner {
-            background: rgba($white, 0.15);
-            border-radius: 1px;
-            box-shadow: 0 0 1px 2px $focus-outline-ondark;
-          }
-        }
-
-        &:active {
-          .nav-link-inner {
-            background: rgba($white, 0.15);
-          }
-        }
-      }
-
-      &.selected {
-        a.nav-link {
-          .nav-link-inner {
-            background: rgba($white, 0.15);
-          }
-        }
-      }
     }
-  }
 }
 
 // EXTERNAL LINK ICONS
 .app-toolbar {
-  .toolbar-external-icons-container {
-    display: flex;
-    flex-direction: row;
-    flex-shrink: 0; // This is required for the icons to be displayed correctly in IE11.
-    height: 100%;
+    .toolbar-external-icons-container {
+        display: flex;
+        flex-direction: row;
+        flex-shrink: 0; // This is required for the icons to be displayed correctly in IE11.
+        height: 100%;
 
-    a {
-      display: flex;
-      align-items: center;
-      padding: 24px;
-      margin: 0 -16px;
+        a {
+            display: flex;
+            align-items: center;
+            padding: 24px;
+            margin: 0 -16px;
 
-      &:focus {
-        // `outline-offset` is not applied on Chrome on Windows, if `outline-style` is `auto.
-        outline: 1px solid $focus-outline-ondark;
-        outline-offset: -16px;
-      }
+            &:focus {
+                // `outline-offset` is not applied on Chrome on Windows, if `outline-style` is `auto.
+                outline: 1px solid $focus-outline-ondark;
+                outline-offset: -16px;
+            }
 
-      @media screen and (max-width: 480px) {
-        margin: 0 0 0 8px;
-        padding: 0;
-      }
+            @media screen and (max-width: 480px) {
+                margin: 0 0 0 8px;
+                padding: 0;
+            }
 
-      &:hover {
-        opacity: 0.8;
-      }
+            &:hover {
+                opacity: 0.8;
+            }
 
-      img {
-        height: 24px;
-      }
+            img {
+                height: 24px;
+            }
+        }
     }
-  }
 }
