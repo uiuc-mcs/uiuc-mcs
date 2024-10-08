@@ -7,7 +7,7 @@
     <div *ngIf="!reviewData.length && !loading && showEmptyMsg">
       No reviews exist for this class yet. Be the first to leave one!
     </div>
-    <mat-card *ngFor="let review of reviewData">
+    <mat-card appearance="outlined" *ngFor="let review of reviewData">
       <mat-card-content>
         <div class="rev-card-header">
           <div class="left">
@@ -19,10 +19,10 @@
             <span *ngIf="!links" class="rev-course">
               {{review.course}}
             </span>
-            <mat-chip-list>
-              <mat-chip class="chip-outlined" disabled>{{review.semester}} {{review.year}}
-              </mat-chip>
-            </mat-chip-list>
+            <mat-chip-listbox>
+              <mat-chip-option class="chip-outlined" disabled>{{review.semester}} {{review.year}}
+              </mat-chip-option>
+            </mat-chip-listbox>
           </div>
           <div class="card-header-buttons">
             <button mat-icon-button (click)="openSnackBar('Link copied to clipboard.', review.reviewId)"
@@ -50,15 +50,15 @@
             [value]="getFeedbackValue(review.reviewId!)" [positive]="review.helpfulPositive"
             [negative]="review.helpfulNegative"></app-review-helpfulness>
           <div fxFlex></div>
-          <mat-chip-list>
-            <mat-chip class="chip-outlined hide-under-xs" [class]="'diff_'+review.difficulty" disabled
+          <mat-chip-listbox>
+            <mat-chip-option class="chip-outlined hide-under-xs" [class]="'diff_'+review.difficulty" disabled
               matTooltip="Difficulty">
-              {{review.difficultyString}}</mat-chip>
-            <mat-chip class="chip-outlined" [class]="'rat_'+review.rating" disabled matTooltip="Rating">
-              {{review.ratingString}}</mat-chip>
-            <mat-chip class="chip-outlined hide-under-xs" disabled matTooltip="Workload">{{review.workload}} hrs/wk
-            </mat-chip>
-          </mat-chip-list>
+              {{review.difficultyString}}</mat-chip-option>
+            <mat-chip-option class="chip-outlined" [class]="'rat_'+review.rating" disabled matTooltip="Rating">
+              {{review.ratingString}}</mat-chip-option>
+            <mat-chip-option class="chip-outlined hide-under-xs" disabled matTooltip="Workload">{{review.workload}} hrs/wk
+            </mat-chip-option>
+          </mat-chip-listbox>
         </mat-card-footer>
       </mat-card-content>
     </mat-card>

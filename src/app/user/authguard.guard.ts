@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth/auth.service';
 import { DialogNotLoggedIn } from '../shared/dialog/not-logged-in/dialog-not-logged-in.component';
 import { DialogNotVerified } from '../shared/dialog/not-verified/dialog-not-verified.component';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { FbUser } from '../shared/user/user';
 
 @Injectable({

@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
 @import "_constants.scss";
-$typography-configuration: mat.define-legacy-typography-config(
-    $body-1: mat.define-typography-level(16px, 1.5),
+$typography-configuration: mat.define-typography-config(
+    $body-2: mat.define-typography-level(16px, 1.5),
     $font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
 );
 // TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
@@ -12,8 +12,8 @@ $typography-configuration: mat.define-legacy-typography-config(
 //  If you don't need the default component typographies but still want the hierarchy styles,
 //  you can delete this line and instead use:
 //    `@include mat.legacy-typography-hierarchy($typography-configuration);`
-@include mat.all-legacy-component-typographies($typography-configuration);
-@include mat.legacy-core();
+@include mat.all-component-typographies($typography-configuration);
+@include mat.core();
 
 body {
     color: $darkgray;
@@ -105,6 +105,7 @@ h6 {
     }
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version.*/
 .mat-tab-body-wrapper h2 {
     margin-top: 0;
 }
@@ -155,6 +156,7 @@ li {
     justify-content: center !important;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version.*/
 .course-grid-container .mat-chip-list-wrapper {
     justify-content: center;
 }

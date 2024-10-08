@@ -10,7 +10,7 @@
     background-color: aquamarine;
 }
 
-.mat-standard-chip {
+.mat-mdc-standard-chip {
     height: auto;
 }
 
@@ -23,29 +23,29 @@
     justify-content: center;
     align-content: center;
     padding-top: 20px;
-
+    /* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
     mat-card{
         cursor: pointer;
     }
 
-    .mat-card-header,
-    .mat-card-title,
-    .mat-card-subtitle {
+    .mat-mdc-card-header,
+    .mat-mdc-card-title,
+    .mat-mdc-card-subtitle {
         display: flex;
         justify-content: center;
         text-align: center;
         align-items: center;
     }
 
-    .mat-card-header {
+    .mat-mdc-card-header {
         height: 100px;
     }
-
+    /* TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version. */
     .mat-chip-list {
         display: flex;
         justify-content: center;
     }
-
+    /* TODO(mdc-migration): The following rule targets internal classes of chips that may no longer apply for the MDC version. */
     .mat-chip-list-wrapper {
         justify-content: center;
     }

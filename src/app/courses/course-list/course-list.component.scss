@@ -1,5 +1,5 @@
-.mat-cell,
-.mat-header-cell {
+.mat-mdc-cell,
+.mat-mdc-header-cell {
     font-size: 14px;
     color: rgba(0, 0, 0, 0.87);
 }
@@ -8,6 +8,7 @@
     text-align: left !important;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
 .mat-form-field-infix {
     width: initial !important;
 }
@@ -16,7 +17,7 @@ td {
     text-overflow: ellipsis;
 }
 
-.mat-cell {
+.mat-mdc-cell {
     line-break: unset;
     white-space: nowrap;
     overflow: hidden;
@@ -97,17 +98,17 @@ table {
     overflow-x: auto;
 }
 
-tr.mat-row:hover {
+tr.mat-mdc-row:hover {
     background-color: #f5f5f5;
 }
 
-tr.mat-row,
-tr.mat-footer-row {
+tr.mat-mdc-row,
+tr.mat-mdc-footer-row {
     height: 37px !important;
     cursor: pointer;
 }
 
-tr.mat-header-row {
+tr.mat-mdc-header-row {
     height: 38px !important;
 }
 

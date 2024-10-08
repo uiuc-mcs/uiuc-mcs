@@ -40,10 +40,11 @@ ul {
 }
 
 @media (max-width: $bp-tiny) {
+    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
     #mat1 > .mat-form-field-wrapper {
         padding-bottom: 1em;
     }
-
+    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
     #mat2 > .mat-form-field-wrapper {
         padding-bottom: 1em;
     }
@@ -55,7 +56,7 @@ ul {
     }
     &.col-form {
         width: 100%;
-        .mat-card {
+        .mat-mdc-card {
             max-width: 900px;
             padding: 56px 48px;
             width: 100%;
@@ -63,10 +64,10 @@ ul {
                 padding: 36px 36px;
             }
         }
-        .mat-error {
+        .mat-mdc-form-field-error {
             font-size: 88%;
         }
-        .mat-card-content {
+        .mat-mdc-card-content {
             margin-bottom: 0;
         }
     }
@@ -95,7 +96,7 @@ form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    .mat-form-field,
+    .mat-mdc-form-field,
     button {
         width: 100%;
     }

@@ -1,44 +1,44 @@
 <div class="content">
   <div class="filter-cards">
-    <mat-card>
+    <mat-card appearance="outlined">
       <mat-card-subtitle>Filter by MCS Area:</mat-card-subtitle>
-      <mat-chip-list multiple>
-        <mat-chip [selected]="isSelected(category)" (click)="toggleSelection(category)"
+      <mat-chip-listbox multiple>
+        <mat-chip-option [selected]="isSelected(category)" (click)="toggleSelection(category)"
           *ngFor="let category of mcsCats">
           {{category}}
-        </mat-chip>
-      </mat-chip-list>
+        </mat-chip-option>
+      </mat-chip-listbox>
     </mat-card>
-    <mat-card>
+    <mat-card appearance="outlined">
       <mat-card-subtitle>Filter by MCS-DS Area:</mat-card-subtitle>
-      <mat-chip-list multiple>
-        <mat-chip [selected]="isSelected(category)" (click)="toggleSelection(category)"
+      <mat-chip-listbox multiple>
+        <mat-chip-option [selected]="isSelected(category)" (click)="toggleSelection(category)"
           *ngFor="let category of mcsdsCats">
           {{category}}
-        </mat-chip>
-      </mat-chip-list>
+        </mat-chip-option>
+      </mat-chip-listbox>
     </mat-card>
-    <mat-card>
+    <mat-card appearance="outlined">
       <mat-card-subtitle>Filter by Language:</mat-card-subtitle>
-      <mat-chip-list multiple>
-        <mat-chip [selected]="isSelected(language)" (click)="toggleSelection(language)"
+      <mat-chip-listbox multiple>
+        <mat-chip-option [selected]="isSelected(language)" (click)="toggleSelection(language)"
           *ngFor="let language of languages">
           {{language}}
-        </mat-chip>
-      </mat-chip-list>
+        </mat-chip-option>
+      </mat-chip-listbox>
     </mat-card>
   </div>
   <div class="course-grid-container">
-    <mat-card *ngFor="let class of visibleClasses" [routerLink]="getRouterLink(class)">
+    <mat-card appearance="outlined" *ngFor="let class of visibleClasses" [routerLink]="getRouterLink(class)">
       <mat-card-header>
         <mat-card-title>{{class.ClassName}}</mat-card-title>
         <mat-card-subtitle>{{class.CourseNumber}}</mat-card-subtitle>
       </mat-card-header>
-      <mat-chip-list>
-        <mat-chip *ngFor="let cat of class.category">{{cat}}&nbsp;
-        </mat-chip>
-        <mat-chip *ngFor="let lang of class.languages">{{lang}}</mat-chip>
-      </mat-chip-list>
+      <mat-chip-listbox>
+        <mat-chip-option *ngFor="let cat of class.category">{{cat}}&nbsp;
+        </mat-chip-option>
+        <mat-chip-option *ngFor="let lang of class.languages">{{lang}}</mat-chip-option>
+      </mat-chip-listbox>
     </mat-card>
   </div>
 </div>

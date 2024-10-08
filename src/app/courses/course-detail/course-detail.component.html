@@ -3,30 +3,30 @@
     <div class="image-container restrict-width" #imageContainer>
       <div>
         <div fxFlex></div>
-        <mat-chip [disableRipple]="true" style="display: none !important;" class="edit-chip"
+        <mat-chip-option [disableRipple]="true" style="display: none !important;" class="edit-chip"
           routerLink="/courses/edit/{{courseName}}">
           Edit<mat-icon matTooltip="Edit course details">mode_edit</mat-icon>
-        </mat-chip>
+        </mat-chip-option>
       </div>
       <div class="padded-cell white">
         <h1 class="white">{{courseName}}</h1>
         <h2 class="white">{{courseNumber}}</h2>
-        <mat-chip-list>
-          <mat-chip [disableRipple]="true" class="chip-hover-disabled" *ngFor="let cat of course?.category">{{cat}}
-          </mat-chip>
-          <mat-chip [disableRipple]="true" class="chip-hover-disabled" *ngFor="let lang of course?.languages">{{lang}}
+        <mat-chip-listbox>
+          <mat-chip-option [disableRipple]="true" class="chip-hover-disabled" *ngFor="let cat of course?.category">{{cat}}
+          </mat-chip-option>
+          <mat-chip-option [disableRipple]="true" class="chip-hover-disabled" *ngFor="let lang of course?.languages">{{lang}}
             <mat-icon svgIcon="icons:check">
             </mat-icon>
-          </mat-chip>
+          </mat-chip-option>
           <div *ngFor="let season of course?.season | keyvalue">
-            <mat-chip [disableRipple]="true" *ngIf="season.value" class="chip-hover-disabled">
+            <mat-chip-option [disableRipple]="true" *ngIf="season.value" class="chip-hover-disabled">
               {{season.key | titlecase}}<mat-icon svgIcon="icons:{{season.key}}"></mat-icon>
-            </mat-chip>
+            </mat-chip-option>
           </div>
-          <mat-chip [disableRipple]="true" class="chip-hover-disabled" *ngIf="course?.SampleSyllabus">
+          <mat-chip-option [disableRipple]="true" class="chip-hover-disabled" *ngIf="course?.SampleSyllabus">
             <a href="{{course?.SampleSyllabus}}">Sample Syllabus</a>
-          </mat-chip>
-        </mat-chip-list>
+          </mat-chip-option>
+        </mat-chip-listbox>
       </div>
     </div>
   </div>
