@@ -3,30 +3,31 @@
     <div class="image-container restrict-width" #imageContainer>
       <div>
         <div fxFlex></div>
-        <mat-chip-option [disableRipple]="true" style="display: none !important;" class="edit-chip"
+        <mat-chip [disableRipple]="true" style="display: none !important;" class="edit-chip"
           routerLink="/courses/edit/{{courseName}}">
           Edit<mat-icon matTooltip="Edit course details">mode_edit</mat-icon>
-        </mat-chip-option>
+        </mat-chip>
       </div>
       <div class="padded-cell white">
         <h1 class="white">{{courseName}}</h1>
         <h2 class="white">{{courseNumber}}</h2>
-        <mat-chip-listbox>
-          <mat-chip-option [disableRipple]="true" class="chip-hover-disabled" *ngFor="let cat of course?.category">{{cat}}
-          </mat-chip-option>
-          <mat-chip-option [disableRipple]="true" class="chip-hover-disabled" *ngFor="let lang of course?.languages">{{lang}}
-            <mat-icon svgIcon="icons:check">
+        <mat-chip-set>
+          <mat-chip [disableRipple]="true" class="chip-hover-disabled" *ngFor="let cat of course?.category">{{cat}}
+          </mat-chip>
+          <mat-chip [disableRipple]="true" class="chip-hover-disabled" *ngFor="let lang of course?.languages">{{lang}}
+            <mat-icon matChipTrailingIcon svgIcon="icons:check">
             </mat-icon>
-          </mat-chip-option>
+          </mat-chip>
           <div *ngFor="let season of course?.season | keyvalue">
-            <mat-chip-option [disableRipple]="true" *ngIf="season.value" class="chip-hover-disabled">
-              {{season.key | titlecase}}<mat-icon svgIcon="icons:{{season.key}}"></mat-icon>
-            </mat-chip-option>
+            <mat-chip [disableRipple]="true" *ngIf="season.value" class="chip-hover-disabled">
+              {{season.key | titlecase}}
+              <mat-icon matChipTrailingIcon svgIcon="icons:{{season.key}}"></mat-icon>
+            </mat-chip>
           </div>
-          <mat-chip-option [disableRipple]="true" class="chip-hover-disabled" *ngIf="course?.SampleSyllabus">
+          <mat-chip [disableRipple]="true" class="chip-hover-disabled" *ngIf="course?.SampleSyllabus">
             <a href="{{course?.SampleSyllabus}}">Sample Syllabus</a>
-          </mat-chip-option>
-        </mat-chip-listbox>
+          </mat-chip>
+        </mat-chip-set>
       </div>
     </div>
   </div>
