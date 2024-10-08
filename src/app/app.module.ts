@@ -57,39 +57,16 @@ import { CustomUrlSerializer } from './app-routing.module'
 import { UrlSerializer } from '@angular/router';
 import { CourseChartComponent } from './courses/course-chart/course-chart.component';
 
+import { importProvidersFrom } from '@angular/core';
+
 @NgModule({
     declarations: [
         AppComponent,
+    ],
+    imports: [
         NavbarComponent,
         LoginComponent,
         SettingsComponent,
-        ReviewsComponent,
-        CourseDetailComponent,
-        ReviewDetailComponent,
-        DialogOnDelete,
-        RegisterComponent,
-        ForgotPasswordComponent,
-        VerifyEmailComponent,
-        CourseListComponent,
-        CourseGridComponent,
-        LogoutComponent,
-        CreateReviewComponent,
-        DialogReviewSubmission,
-        DialogReviewTooShort,
-        DialogNotLoggedIn,
-        DialogNotVerified,
-        EditCourseComponent,
-        SidenavComponent,
-        SadPandaComponent,
-        NothingHereComponent,
-        PandaPartyComponent,
-        ReviewHelpfulnessComponent,
-        CreateCourseComponent,
-        PrivacyComponent,
-        TermsComponent,
-        CourseChartComponent,
-    ],
-    imports: [
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
@@ -98,21 +75,48 @@ import { CourseChartComponent } from './courses/course-chart/course-chart.compon
         FormsModule,
         ReactiveFormsModule,
         FlexLayoutModule,
-        provideFirebaseApp(() => initializeApp(environment.firebase)),
-        provideFirestore(() => initializeFirestore(getApp(), {
-            localCache: persistentLocalCache({
-                tabManager: persistentMultipleTabManager(),
-            }),
-            experimentalForceLongPolling: true
-        })
-        ),
-        provideAuth(() => getAuth()),
-        provideAnalytics(() => getAnalytics()),
+        NothingHereComponent,
+        PandaPartyComponent,
+        ReviewHelpfulnessComponent,
+        CreateCourseComponent,
+        DialogReviewTooShort,
+        DialogNotLoggedIn,
+        DialogNotVerified,
+        EditCourseComponent,
+        SidenavComponent,
+        SadPandaComponent,
+        CourseChartComponent,
+        PrivacyComponent,
+        TermsComponent,
+        ForgotPasswordComponent,
+        VerifyEmailComponent,
+        CourseListComponent,
+        CourseGridComponent,
+        LogoutComponent,
+        CreateReviewComponent,
+        DialogReviewSubmission,
+        ReviewsComponent,
+        CourseDetailComponent,
+        ReviewDetailComponent,
+        DialogOnDelete,
+        RegisterComponent,
     ],
     providers: [
         ScreenTrackingService,
         UserTrackingService,
         { provide: UrlSerializer, useClass: CustomUrlSerializer },
+        // importProvidersFrom(
+            provideFirebaseApp(() => initializeApp(environment.firebase)),
+        // ),
+            provideFirestore(() => initializeFirestore(getApp(), {
+                localCache: persistentLocalCache({
+                    tabManager: persistentMultipleTabManager(),
+                }),
+                experimentalForceLongPolling: true
+            })
+            ),
+            provideAuth(() => getAuth()),
+            provideAnalytics(() => getAnalytics()),
     ],
     bootstrap: [AppComponent]
 })

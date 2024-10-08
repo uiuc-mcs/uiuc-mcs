@@ -7,14 +7,38 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogOnDelete } from 'src/app/shared/dialog/review-delete/dialog-on-delete.component';
 import { Review } from 'src/app/shared/review/review';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatriculateSemYear } from 'src/app/shared/class/class'
 import { collection, deleteDoc, doc, getDocs, query, where }  from '@angular/fire/firestore';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatNavList } from '@angular/material/list';
+import { MatSelect } from '@angular/material/select';
+import { RouterModule } from '@angular/router';
+import { MatLabel } from '@angular/material/form-field';
+import { MatOption } from '@angular/material/core';
+import { MatFormField } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-settings',
     templateUrl: './settings.component.html',
-    styleUrls: ['./settings.component.scss']
+    styleUrls: ['./settings.component.scss'],
+    standalone: true,
+    imports: [
+        MatCardModule, 
+        MatIconModule, 
+        MatNavList, 
+        MatSelect, 
+        RouterModule, 
+        MatLabel, 
+        MatOption, 
+        MatFormField, 
+        MatInput, 
+        MatButton,
+        ReactiveFormsModule
+    ]
 })
 export class SettingsComponent implements OnInit {
     editUserDataForm: FormGroup
@@ -121,7 +145,7 @@ export class SettingsComponent implements OnInit {
         const response = await getDocs(q)
         if (!response.docs.length) {
             // console.warn("View User Reviews: getUserReviews - No reviews exist")
-            return
+            // console.warn("View User Reviews: getUserReviews - No reviews exist")
         }
         this.reviewData = []
         for (let item of response.docs) {

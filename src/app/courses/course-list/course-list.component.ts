@@ -1,10 +1,18 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { getRouterLink, ClassData, mcsCategories,
      mcsdsCategories, Semesters} from '../../shared/class/class'
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatCardModule } from '@angular/material/card';
 
 interface FilterOption {
     value: string;
@@ -15,6 +23,8 @@ interface FilterOption {
     selector: 'app-course-list',
     templateUrl: './course-list.component.html',
     styleUrls: ['./course-list.component.scss'],
+    standalone: true,
+    imports: [CommonModule, MatIconModule, MatTableModule, MatFormFieldModule, ReactiveFormsModule, MatOptionModule, MatSelectModule, MatChipsModule, MatCardModule]
 })
 
 export class CourseListComponent implements AfterViewInit {

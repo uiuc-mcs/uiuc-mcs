@@ -1,9 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { doc, getDoc, updateDoc, addDoc } from '@angular/fire/firestore';
 import { collection, getDocs, query, where } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatOptionModule } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatError, MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ClassService } from 'src/app/services/classes/class.service';
@@ -16,7 +22,9 @@ import { FbUser } from 'src/app/shared/user/user';
 @Component({
     selector: 'app-create-review',
     templateUrl: './review-create.component.html',
-    styleUrls: ['./review-create.component.scss']
+    styleUrls: ['./review-create.component.scss'],
+    standalone: true,
+    imports: [MatCardModule, MatError, MatFormFieldModule, MatOptionModule, MatSelectModule,MatInputModule, ReactiveFormsModule, CommonModule]
 })
 
 export class CreateReviewComponent implements OnInit {

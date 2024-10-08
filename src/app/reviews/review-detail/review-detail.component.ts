@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Firestore, doc, getDoc } from '@angular/fire/firestore';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { courseRouterLink, Review, ratingsToStrings } from 'src/app/shared/review/review';
 import { FbUser } from 'src/app/shared/user/user';
@@ -11,11 +11,20 @@ import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
 import { environment } from 'src/environments/environment';
 import { Title } from '@angular/platform-browser';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatCardModule } from '@angular/material/card';
+import { ReviewHelpfulnessComponent } from './review-helpfulness/review-helpfulness.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-review-detail',
     templateUrl: './review-detail.component.html',
-    styleUrls: ['./review-detail.component.scss']
+    styleUrls: ['./review-detail.component.scss'],
+    standalone: true,
+    imports: [CommonModule, MatIconModule, MatButtonModule, MatChipsModule, MatCardModule, ReviewHelpfulnessComponent, MatProgressSpinnerModule, RouterModule]
 })
 export class ReviewDetailComponent implements OnInit {
     @Input() reviewId: string = ""

@@ -1,6 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Firestore, doc, updateDoc } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatOptionModule } from '@angular/material/core';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { getRouterLink, ClassData, courseCategories, courseLanguages } from 'src/app/shared/class/class';
@@ -9,6 +16,8 @@ import { getRouterLink, ClassData, courseCategories, courseLanguages } from 'src
     selector: 'app-course-edit',
     templateUrl: './course-edit.component.html',
     styleUrls: ['./course-edit.component.scss'],
+    standalone: true,
+    imports: [MatOptionModule, MatSelectModule, MatDividerModule, MatCheckboxModule, MatFormFieldModule, CommonModule, MatCardModule, ReactiveFormsModule]
 })
 export class EditCourseComponent implements OnInit {
     courseName: string = ""

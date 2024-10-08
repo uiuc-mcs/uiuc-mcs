@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { getRouterLink, ClassData, mcsdsCategories, mcsCategories } from '../../shared/class/class'
+import { MatChipsModule } from '@angular/material/chips';
+import { MatCardModule } from '@angular/material/card';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-course-grid',
   templateUrl: './course-grid.component.html',
-  styleUrls: ['./course-grid.component.scss']
+  styleUrls: ['./course-grid.component.scss'],
+  standalone: true,
+  imports: [MatChipsModule, MatCardModule, RouterModule]
 })
 export class CourseGridComponent implements OnInit {
   classes: ClassData[] = []

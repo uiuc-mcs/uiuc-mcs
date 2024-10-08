@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClassData, courseCategories, courseLanguages } from 'src/app/shared/class/class';
 import { Firestore, addDoc, collection } from '@angular/fire/firestore';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
     selector: 'app-course-create',
     templateUrl: './course-create.component.html',
     styleUrls: ['./course-create.component.scss'],
+    standalone: true,
+    imports: [MatFormFieldModule, ReactiveFormsModule, MatCardModule]
 })
 export class CreateCourseComponent implements OnInit {
     courseName: string = ""

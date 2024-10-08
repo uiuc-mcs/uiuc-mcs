@@ -2,7 +2,7 @@ import {
     Component, OnInit, ViewChild, ElementRef, Renderer2,
     AfterViewInit, ViewEncapsulation
 } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData } from 'src/app/shared/class/class';
@@ -14,12 +14,22 @@ import {
 } from '@angular/fire/firestore';
 
 import { SEOService } from '../../services/seo/seo.service';
+import { ReviewDetailComponent } from 'src/app/reviews/review-detail/review-detail.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatChipsModule } from '@angular/material/chips';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
     selector: 'app-course-detail',
     templateUrl: './course-detail.component.html',
     styleUrls: ['./course-detail.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: true,
+    imports: [ReviewDetailComponent, MatOptionModule, MatFormFieldModule, MatSelectModule, MatProgressSpinnerModule, MatChipsModule, CommonModule, MatIconModule, RouterModule]
 })
 export class CourseDetailComponent implements OnInit, AfterViewInit {
     constructor(

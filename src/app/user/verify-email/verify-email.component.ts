@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-verify-email',
   templateUrl: './verify-email.component.html',
-  styleUrls: ['./verify-email.component.scss']
+  styleUrls: ['./verify-email.component.scss'],
+  standalone: true,
+  imports: [MatCardModule]
 })
 export class VerifyEmailComponent implements OnInit {
 

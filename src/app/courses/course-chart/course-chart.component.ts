@@ -1,4 +1,5 @@
 import { Component, ElementRef, AfterViewInit, ViewChild, HostListener, OnInit } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
 import { Chart, registerables } from "chart.js";
 import randomColor from 'randomcolor';
@@ -9,7 +10,9 @@ import { getRouterLink } from 'src/app/shared/class/class';
 @Component({
   selector: 'app-course-chart',
   templateUrl: './course-chart.component.html',
-  styleUrls: ['./course-chart.component.scss']
+  styleUrls: ['./course-chart.component.scss'],
+  standalone: true,
+  imports: [MatCardModule]
 })
 export class CourseChartComponent implements OnInit, AfterViewInit {
   @ViewChild('chartCanvas') public canvas?: ElementRef<HTMLCanvasElement>;

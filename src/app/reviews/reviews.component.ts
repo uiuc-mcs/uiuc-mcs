@@ -6,11 +6,17 @@ import { Review, ratingsToStrings } from '../shared/review/review';
 import { Firestore, collection } from '@angular/fire/firestore';
 import { DocumentData, getDocs, limit, orderBy, OrderByDirection, 
     query, QueryDocumentSnapshot, startAfter, where } from '@angular/fire/firestore';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReviewDetailComponent } from './review-detail/review-detail.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
     selector: 'app-reviews',
     templateUrl: './reviews.component.html',
-    styleUrls: ['./reviews.component.scss']
+    styleUrls: ['./reviews.component.scss'],
+    standalone: true,
+    imports: [MatFormFieldModule, ReviewDetailComponent,  MatOptionModule, MatSelectModule]
 })
 export class ReviewsComponent implements OnInit {
     constructor(
