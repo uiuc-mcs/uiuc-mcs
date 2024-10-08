@@ -103,21 +103,21 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "uiuc-mcs-org:build"
+                      "buildTarget": "uiuc-mcs-org:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "uiuc-mcs-org:build:production"
+                          "buildTarget": "uiuc-mcs-org:build:production"
                         },
                         "uiuc-mcs": {
-                            "browserTarget": "uiuc-mcs-org:build:uiuc-mcs"
+                          "buildTarget": "uiuc-mcs-org:build:uiuc-mcs"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "uiuc-mcs-org:build"
+                      "buildTarget": "uiuc-mcs-org:build"
                     }
                 },
                 "test": {
