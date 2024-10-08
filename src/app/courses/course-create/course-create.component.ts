@@ -4,13 +4,14 @@ import { ClassData, courseCategories, courseLanguages } from 'src/app/shared/cla
 import { Firestore, addDoc, collection } from '@angular/fire/firestore';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-course-create',
     templateUrl: './course-create.component.html',
     styleUrls: ['./course-create.component.scss'],
     standalone: true,
-    imports: [MatFormFieldModule, ReactiveFormsModule, MatCardModule]
+    imports: [MatFormFieldModule, ReactiveFormsModule, MatCardModule, CommonModule]
 })
 export class CreateCourseComponent implements OnInit {
     courseName: string = ""

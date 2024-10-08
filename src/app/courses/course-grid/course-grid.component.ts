@@ -4,13 +4,14 @@ import { getRouterLink, ClassData, mcsdsCategories, mcsCategories } from '../../
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-course-grid',
   templateUrl: './course-grid.component.html',
   styleUrls: ['./course-grid.component.scss'],
   standalone: true,
-  imports: [MatChipsModule, MatCardModule, RouterModule]
+  imports: [MatChipsModule, MatCardModule, RouterModule, CommonModule]
 })
 export class CourseGridComponent implements OnInit {
   classes: ClassData[] = []

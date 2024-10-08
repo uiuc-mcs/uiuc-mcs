@@ -105,18 +105,16 @@ import { importProvidersFrom } from '@angular/core';
         ScreenTrackingService,
         UserTrackingService,
         { provide: UrlSerializer, useClass: CustomUrlSerializer },
-        // importProvidersFrom(
-            provideFirebaseApp(() => initializeApp(environment.firebase)),
-        // ),
-            provideFirestore(() => initializeFirestore(getApp(), {
-                localCache: persistentLocalCache({
-                    tabManager: persistentMultipleTabManager(),
-                }),
-                experimentalForceLongPolling: true
-            })
-            ),
-            provideAuth(() => getAuth()),
-            provideAnalytics(() => getAnalytics()),
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideFirestore(() => initializeFirestore(getApp(), {
+            localCache: persistentLocalCache({
+                tabManager: persistentMultipleTabManager(),
+            }),
+            experimentalForceLongPolling: true
+        })
+        ),
+        provideAuth(() => getAuth()),
+        provideAnalytics(() => getAnalytics()),
     ],
     bootstrap: [AppComponent]
 })

@@ -4,13 +4,14 @@ import { NavInfo } from 'src/app/app-routing.module';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
   standalone: true,
-  imports: [RouterModule, MatIconModule, MatToolbarModule]
+  imports: [CommonModule, RouterModule, MatIconModule, MatToolbarModule]
 })
 export class NavbarComponent implements OnInit {
   @Input() drawerFunc: any
