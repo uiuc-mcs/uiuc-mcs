@@ -34,6 +34,7 @@ export class SidenavComponent implements OnInit {
   }
 
   updateLinkStatus(): void {
+    this.links.get("createReview")!.show = this.isLoggedIn
     this.links.get("settings")!.show = this.isLoggedIn
     this.links.get("logout")!.show = this.isLoggedIn
     this.links.get("login")!.show = !this.isLoggedIn

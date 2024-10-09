@@ -107,3 +107,31 @@ form {
     margin-left: auto;
     margin-right: auto;
 }
+
+.fx-layout-column {
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+}
+.fx-layout-align-center-center {
+    place-content: center;
+    align-items: center;
+}
+
+.fx-layout-row {
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+}
+.fx-layout-align-space-between-space-between {
+    place-content: space-between;
+    align-items: stretch;
+}
+.fx-flex {
+    flex: 1 1 0%; 
+    box-sizing: border-box;
+}
+
+.mat-mdc-raised-button {
+    letter-spacing: normal !important;
+}
