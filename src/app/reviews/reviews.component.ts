@@ -11,13 +11,14 @@ import { ReviewDetailComponent } from './review-detail/review-detail.component';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
     selector: 'app-reviews',
     templateUrl: './reviews.component.html',
     styleUrls: ['./reviews.component.scss'],
     standalone: true,
-    imports: [CommonModule, MatFormFieldModule, ReviewDetailComponent,  MatOptionModule, MatSelectModule]
+    imports: [CommonModule, MatFormFieldModule, ReviewDetailComponent,  MatOptionModule, MatSelectModule, MatButtonModule]
 })
 export class ReviewsComponent implements OnInit {
     constructor(

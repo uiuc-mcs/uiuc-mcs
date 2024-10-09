@@ -25,7 +25,7 @@
   [links]="true">
   </app-review-detail>
   <div *ngIf="reviewData.length && !noMore" style="text-align: center;">
-    <button mat-raised-button color="primary" class="btn-block" (click)="getMore()">
+    <button mat-raised-button color="primary" (click)="getMore()">
       More
     </button>
   </div>
