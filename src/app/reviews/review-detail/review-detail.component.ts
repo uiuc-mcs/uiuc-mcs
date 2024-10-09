@@ -18,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CommonModule } from '@angular/common';
+import {ThemePalette} from '@angular/material/core';
 
 @Component({
     selector: 'app-review-detail',
@@ -35,6 +36,19 @@ export class ReviewDetailComponent implements OnInit {
     userData: FbUser | undefined
     durationInSeconds: number = 3
     loading: boolean = true
+    availableColors: {name: string, color: string}[] = [
+            // {name: 'Primary', color: 'primary'},
+            // {name: 'Accent', color: 'accent'},
+            {name: 'Warn', color: 'warn'},
+            {name: 'Warn', color: 'warn'},
+            {name: 'Warn', color: 'warn'},
+            {name: 'Warn', color: 'warn'},
+            {name: 'Warn', color: 'warn'},
+            {name: 'Warn', color: 'warn'},
+            {name: 'Warn', color: 'warn'},
+            {name: 'Warn', color: 'warn'},
+            {name: 'Warn', color: 'warn'},
+        ]
     courseRouterLink = courseRouterLink
 
     constructor(
@@ -46,7 +60,7 @@ export class ReviewDetailComponent implements OnInit {
         public dialog: MatDialog,
         private router: Router,
         private classService: ClassService,
-        private titleService: Title
+        private titleService: Title,
     ) { }
 
     ngOnInit(): void {

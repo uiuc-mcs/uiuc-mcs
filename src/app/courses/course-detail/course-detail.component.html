@@ -12,9 +12,11 @@
         <h1 class="white">{{courseName}}</h1>
         <h2 class="white">{{courseNumber}}</h2>
         <mat-chip-set>
-          <mat-chip [disableRipple]="true" class="chip-hover-disabled" *ngFor="let cat of course?.category">{{cat}}
+          <mat-chip [disableRipple]="true" class="chip-hover-disabled"
+            *ngFor="let cat of course?.category">{{cat}}
           </mat-chip>
-          <mat-chip [disableRipple]="true" class="chip-hover-disabled" *ngFor="let lang of course?.languages">{{lang}}
+          <mat-chip [disableRipple]="true" class="chip-hover-disabled"
+            *ngFor="let lang of course?.languages">{{lang}}
             <mat-icon matChipTrailingIcon svgIcon="icons:check">
             </mat-icon>
           </mat-chip>
@@ -24,7 +26,8 @@
               <mat-icon matChipTrailingIcon svgIcon="icons:{{season.key}}"></mat-icon>
             </mat-chip>
           </div>
-          <mat-chip [disableRipple]="true" class="chip-hover-disabled" *ngIf="course?.SampleSyllabus">
+          <mat-chip [disableRipple]="true" class="chip-hover-disabled"
+            *ngIf="course?.SampleSyllabus">
             <a href="{{course?.SampleSyllabus}}">Sample Syllabus</a>
           </mat-chip>
         </mat-chip-set>
@@ -33,7 +36,8 @@
   </div>
 </div>
 <div class="restrict-width">
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="rating-grid mat-elevation-z1">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center"
+    class="rating-grid mat-elevation-z1">
     <div fxflex="" *ngFor="let card of cards" class="rating-grid-cell">
       <span class="rating-grid-title">{{card.title}}</span> <br>
       <span>{{card.value ? (card.value | number: '1.0-2') : 'N/A'}}</span>
@@ -52,8 +56,10 @@
   </div>
   <div *ngIf="reviewData.length">
     <div class="review-controller">
-      <div class="next-prev-container">
-        <div fxFlex></div>
+      <div class="next-prev-container" style="flex-direction: row;
+      box-sizing: border-box;
+      display: flex; height: 70.5625px;">
+        <div fxFlex style="flex: 1 1 0%;box-sizing: border-box;"></div>
         <mat-form-field class="order-dropdown" appearance="fill">
           <mat-select [(value)]="selectedSort" (selectionChange)="newSort($event)">
             <mat-option *ngFor="let option of orderByOptions" [value]="option">

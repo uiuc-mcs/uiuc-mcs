@@ -48,6 +48,22 @@ export class ReviewsComponent implements OnInit {
         var ret: (ClassData | '')[] = this.courses.filter((el) => {
             return el.RatingCount > 0
         });
+        // sort by name
+        ret.sort((a, b) => {
+            if ((typeof(a) != 'string') && (typeof(b) != 'string'))  {
+                const nameA = a.ClassName.toUpperCase(); // ignore upper and lowercase
+                const nameB = b.ClassName.toUpperCase(); // ignore upper and lowercase
+                if (nameA < nameB) {
+                return -1;
+                }
+                if (nameA > nameB) {
+                return 1;
+                }
+            }
+        
+            // names must be equal
+            return 0;
+        });
         ret.unshift('')
         return ret
     }
@@ -101,7 +117,6 @@ export class ReviewsComponent implements OnInit {
         )
 
         if (this.latestDoc) {
-            // console.log("latestDoc", this.latestDoc)
             q = query(q, startAfter(this.latestDoc))
         }
 

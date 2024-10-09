@@ -7,22 +7,22 @@
     <div *ngIf="!reviewData.length && !loading && showEmptyMsg">
       No reviews exist for this class yet. Be the first to leave one!
     </div>
-    <mat-card appearance="outlined" *ngFor="let review of reviewData">
+    <mat-card *ngFor="let review of reviewData" style="padding: 16px;">
       <mat-card-content>
         <div class="rev-card-header">
           <div class="left">
-            <span *ngIf="links" class="rev-course">
+            <span *ngIf="links" class="rev-course" style="padding-right: 4px;">
               <a [routerLink]="courseRouterLink(review)">
                 {{review.course}}
               </a>
             </span>
-            <span *ngIf="!links" class="rev-course">
+            <span *ngIf="!links" class="rev-course" style="padding-right: 4px;">
               {{review.course}}
             </span>
-            <mat-chip-listbox>
-              <mat-chip-option class="chip-outlined" disabled>{{review.semester}} {{review.year}}
-              </mat-chip-option>
-            </mat-chip-listbox>
+            <mat-chip-set>
+              <mat-chip class="chip-outlined header-chip">{{review.semester}} {{review.year}}
+              </mat-chip>
+            </mat-chip-set>
           </div>
           <div class="card-header-buttons">
             <button mat-icon-button (click)="openSnackBar('Link copied to clipboard.', review.reviewId)"
@@ -45,20 +45,23 @@
           </p>
         </div>
         <p style="white-space: pre-line;">{{review.review}}</p>
-        <mat-card-footer>
+        <mat-card-footer style="display: flex;">
           <app-review-helpfulness [isLoggedIn]="isLoggedIn" [reviewId]="review.reviewId"
             [value]="getFeedbackValue(review.reviewId!)" [positive]="review.helpfulPositive"
             [negative]="review.helpfulNegative"></app-review-helpfulness>
-          <div fxFlex></div>
-          <mat-chip-listbox>
-            <mat-chip-option class="chip-outlined hide-under-xs" [class]="'diff_'+review.difficulty" disabled
+          <div fxFlex style="flex: 1 1 0%; box-sizing: border-box;"></div>
+          <mat-chip-set>
+            <mat-chip class="chip-outlined hide-under-xs" [class]="'diff_'+review.difficulty" 
               matTooltip="Difficulty">
-              {{review.difficultyString}}</mat-chip-option>
-            <mat-chip-option class="chip-outlined" [class]="'rat_'+review.rating" disabled matTooltip="Rating">
-              {{review.ratingString}}</mat-chip-option>
-            <mat-chip-option class="chip-outlined hide-under-xs" disabled matTooltip="Workload">{{review.workload}} hrs/wk
-            </mat-chip-option>
-          </mat-chip-listbox>
+              {{review.difficultyString}}</mat-chip>
+            <!-- <mat-chip class="chip-outlined" [class]="'rat_'+review.rating" matTooltip="Rating"> -->
+            <!-- <mat-chip selected [color]="availableColors[review.rating].color" matTooltip="Rating"> -->
+            <!-- <mat-chip style="--mdc-chip-elevated-container-color: lightgreen;" matTooltip="Rating"> -->
+            <mat-chip class="chip-outlined" [class]="'rat_'+review.rating" matTooltip="Rating">
+              {{review.ratingString}}</mat-chip>
+            <mat-chip class="chip-outlined hide-under-xs" matTooltip="Workload">{{review.workload}} hrs/wk
+            </mat-chip>
+          </mat-chip-set>
         </mat-card-footer>
       </mat-card-content>
     </mat-card>
