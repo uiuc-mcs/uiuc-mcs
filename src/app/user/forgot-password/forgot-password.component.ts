@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatError, MatFormFieldModule } from '@angular/material/form-field';
-import { Router } from '@angular/router';
+import { MatInputModule } from '@angular/material/input';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -11,7 +13,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.scss'],
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatError, MatFormFieldModule, ReactiveFormsModule]
+  imports: [CommonModule, MatCardModule, MatError, MatFormFieldModule, ReactiveFormsModule, RouterModule, MatButtonModule, ReactiveFormsModule, MatInputModule]
 })
 export class ForgotPasswordComponent implements OnInit {
   error: any

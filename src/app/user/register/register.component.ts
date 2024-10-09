@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,7 +17,7 @@ import { MatriculateSemYear } from 'src/app/shared/class/class'
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.scss'],
     standalone: true,
-    imports: [ CommonModule, MatCardModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatInputModule, ReactiveFormsModule]
+    imports: [ CommonModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatInputModule, ReactiveFormsModule]
 })
 export class RegisterComponent implements OnInit {
     registerForm!: FormGroup

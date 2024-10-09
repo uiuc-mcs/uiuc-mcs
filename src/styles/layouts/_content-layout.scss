@@ -58,7 +58,7 @@ ul {
         width: 100%;
         .mat-mdc-card {
             max-width: 900px;
-            padding: 56px 48px;
+            padding: 40px 32px;
             width: 100%;
             @media (max-width: $bp-tiny) {
                 padding: 36px 36px;
@@ -134,4 +134,8 @@ form {
 
 .mat-mdc-raised-button {
     letter-spacing: normal !important;
+}
+
+.mdc-data-table__cell, .mdc-data-table__header-cell {
+    padding: 0px 8px 0 8px !important;
 }

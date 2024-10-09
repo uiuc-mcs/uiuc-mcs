@@ -12,7 +12,7 @@ import { MatriculateSemYear } from 'src/app/shared/class/class'
 import { collection, deleteDoc, doc, getDocs, query, where }  from '@angular/fire/firestore';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { MatNavList } from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 import { MatSelect } from '@angular/material/select';
 import { RouterModule } from '@angular/router';
 import { MatLabel } from '@angular/material/form-field';
@@ -31,7 +31,6 @@ import { CommonModule } from '@angular/common';
         CommonModule,
         MatCardModule, 
         MatIconModule, 
-        MatNavList, 
         MatSelect, 
         RouterModule, 
         MatLabel, 
@@ -39,7 +38,8 @@ import { CommonModule } from '@angular/common';
         MatFormField, 
         MatInput, 
         MatButton,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatListModule
     ]
 })
 export class SettingsComponent implements OnInit {

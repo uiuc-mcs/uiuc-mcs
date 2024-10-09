@@ -4,103 +4,114 @@
       <mat-card-title>{{headerText}}</mat-card-title>
     </mat-card-header>
 
-    <form class="login-form" [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
-      <mat-card-content>
-        <mat-form-field id="course" class="form-field-full-width" floatLabel="always" appearance="outline">
-          <mat-label>Course</mat-label>
-          <mat-select formControlName="course" required>
-            <div *ngFor="let course of courses">
-              <mat-option *ngIf="reviewId || !completedReviews.includes(course.ClassName)" [value]="course.ClassName">
-                {{course.ClassName}}
-              </mat-option>
-            </div>
-          </mat-select>
-          <mat-error *ngIf="reviewForm.controls.course.hasError('required')">
-            Please select a course
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field id="semester" class="form-field-full-width" floatLabel="always" appearance="outline">
-          <mat-label>Semester</mat-label>
-          <mat-select [compareWith]="compareSemyear" formControlName="semyear" required
-            [ngClass]="{'is-invalid': submitted}">
-            <mat-option *ngFor="let semyear of semesterYears" [value]="semyear">
-              {{semyear.semester + " " + semyear.year}}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="reviewForm.controls.semyear.hasError('required')">
-            Please select a semester
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field id="difficulty" class="form-field-full-width" floatLabel="always" appearance="outline">
-          <mat-label>Difficulty</mat-label>
-          <mat-select formControlName="difficulty" required [ngClass]="{'is-invalid': submitted}">
-            <mat-option *ngFor="let difficulty of difficulties" [value]="difficulty.value">
-              {{difficulty.view}}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="reviewForm.controls.difficulty.hasError('required')">
-            Please select a difficulty
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field id="workload" class="form-field-full-width" floatLabel="always" appearance="outline">
-          <mat-label>Workload (hours/week)</mat-label>
-          <input matInput type="number" required min="{{ minWorkload }}" max="{{ maxWorkload }}" autocomplete="off"
-            name="work" formControlName="workload">
-          <mat-error *ngIf="reviewForm.controls.workload.hasError('min')">
-            Workload minimum is {{minWorkload}}
-          </mat-error>
-          <mat-error *ngIf="reviewForm.controls.workload.hasError('max')">
-            Workload maximum is {{maxWorkload}}
-          </mat-error>
-          <mat-error *ngIf="reviewForm.controls.workload.hasError('required')">
-            Please enter a workload
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field id="rating" class="form-field-full-width" floatLabel="always" appearance="outline">
-          <mat-label>Rating</mat-label>
-          <mat-select formControlName="rating" required [ngClass]="{'is-invalid': submitted}">
-            <mat-option *ngFor="let rating of ratings" [value]="rating.value">
-              {{rating.view}}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="reviewForm.controls.rating.hasError('required')">
-            Please select a rating
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field id="title" class="form-field-full-width" floatLabel="always" appearance="outline">
-          <mat-label>Headline</mat-label>
-          <input matInput placeholder="Review Title" autocomplete="off" formControlName="title" required name="title"
-            placeholder="This is a fantastic course" [ngClass]="{'is-invalid': submitted}">
-          <mat-error *ngIf="reviewForm.controls.title.hasError('required')">
-            Please enter a headline
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field id="review" class="form-field-full-width" floatLabel="always" appearance="outline">
-          <mat-label>Review Body</mat-label>
-          <textarea matInput type="textarea" rows="12" formControlName="review" required
-            [ngClass]="{'is-invalid': submitted}" autocomplete="off" placeholder="{{reviewPlaceholder}}"></textarea>
-          <mat-error *ngIf="reviewForm.controls.review.hasError('required'); else reviewExists">
-            Please enter a review
-          </mat-error>
-          <ng-template #reviewExists>
-            <mat-error *ngIf="reviewForm.controls.review.hasError('minlength')">
-              Your review is {{ countReviewChars() }} long (it should be at least {{ minReviewCharLength}}).
+    <mat-card-content>
+      <form class="login-form" [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+          <mat-form-field id="course" class="form-field-full-width" floatLabel="always"
+            appearance="outline">
+            <mat-label>Course</mat-label>
+            <mat-select formControlName="course" required>
+              <div *ngFor="let course of courses">
+                <mat-option *ngIf="reviewId || !completedReviews.includes(course.ClassName)"
+                  [value]="course.ClassName">
+                  {{course.ClassName}}
+                </mat-option>
+              </div>
+            </mat-select>
+            <mat-error *ngIf="reviewForm.controls.course.hasError('required')">
+              Please select a course
             </mat-error>
-          </ng-template>
-        </mat-form-field>
+          </mat-form-field>
 
-      </mat-card-content>
-      <button [disabled]="loading" mat-raised-button color="primary" class="btn-block">
-        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-        Submit
-      </button>
-      <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
-    </form>
+          <mat-form-field id="semester" class="form-field-full-width" floatLabel="always"
+            appearance="outline">
+            <mat-label>Semester</mat-label>
+            <mat-select [compareWith]="compareSemyear" formControlName="semyear" required
+              [ngClass]="{'is-invalid': submitted}">
+              <mat-option *ngFor="let semyear of semesterYears" [value]="semyear">
+                {{semyear.semester + " " + semyear.year}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="reviewForm.controls.semyear.hasError('required')">
+              Please select a semester
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field id="difficulty" class="form-field-full-width" floatLabel="always"
+            appearance="outline">
+            <mat-label>Difficulty</mat-label>
+            <mat-select formControlName="difficulty" required [ngClass]="{'is-invalid': submitted}">
+              <mat-option *ngFor="let difficulty of difficulties" [value]="difficulty.value">
+                {{difficulty.view}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="reviewForm.controls.difficulty.hasError('required')">
+              Please select a difficulty
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field id="workload" class="form-field-full-width" floatLabel="always"
+            appearance="outline">
+            <mat-label>Workload (hours/week)</mat-label>
+            <input matInput type="number" required min="{{ minWorkload }}" max="{{ maxWorkload }}"
+              autocomplete="off" name="work" formControlName="workload">
+            <mat-error *ngIf="reviewForm.controls.workload.hasError('min')">
+              Workload minimum is {{minWorkload}}
+            </mat-error>
+            <mat-error *ngIf="reviewForm.controls.workload.hasError('max')">
+              Workload maximum is {{maxWorkload}}
+            </mat-error>
+            <mat-error *ngIf="reviewForm.controls.workload.hasError('required')">
+              Please enter a workload
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field id="rating" class="form-field-full-width" floatLabel="always"
+            appearance="outline">
+            <mat-label>Rating</mat-label>
+            <mat-select formControlName="rating" required [ngClass]="{'is-invalid': submitted}">
+              <mat-option *ngFor="let rating of ratings" [value]="rating.value">
+                {{rating.view}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="reviewForm.controls.rating.hasError('required')">
+              Please select a rating
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field id="title" class="form-field-full-width" floatLabel="always"
+            appearance="outline">
+            <mat-label>Headline</mat-label>
+            <input matInput placeholder="Review Title" autocomplete="off" formControlName="title"
+              required name="title" placeholder="This is a fantastic course"
+              [ngClass]="{'is-invalid': submitted}">
+            <mat-error *ngIf="reviewForm.controls.title.hasError('required')">
+              Please enter a headline
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field id="review" class="form-field-full-width" floatLabel="always"
+            appearance="outline">
+            <mat-label>Review Body</mat-label>
+            <textarea matInput type="textarea" rows="12" formControlName="review" required
+              [ngClass]="{'is-invalid': submitted}" autocomplete="off"
+              placeholder="{{reviewPlaceholder}}"></textarea>
+            <mat-error *ngIf="reviewForm.controls.review.hasError('required'); else reviewExists">
+              Please enter a review
+            </mat-error>
+            <ng-template #reviewExists>
+              <mat-error *ngIf="reviewForm.controls.review.hasError('minlength')">
+                Your review is {{ countReviewChars() }} long (it should be at least {{
+                minReviewCharLength}}).
+              </mat-error>
+            </ng-template>
+          </mat-form-field>
+
+        <button [disabled]="loading" mat-raised-button color="primary" class="btn-block">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Submit
+        </button>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+      </form>
+    </mat-card-content>
   </mat-card>
 </div>

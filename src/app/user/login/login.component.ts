@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatError, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   standalone: true,
-  imports: [MatCardModule, MatError, MatFormFieldModule, ReactiveFormsModule, CommonModule, MatButtonModule, MatInputModule]
+  imports: [MatCardModule, MatError, MatFormFieldModule, ReactiveFormsModule, CommonModule, MatButtonModule, MatInputModule, RouterModule]
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup

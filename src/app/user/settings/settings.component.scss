@@ -51,6 +51,22 @@ mat-card-header > div > button {
     display: flex;
 }
 
-// .user-reviews-card-content {
-//     text-align: center;
-// }
+.mdc-list-item {
+    // display: flex;
+    // position: relative;
+    // align-items: center;
+    // justify-content: flex-start;
+    // overflow: hidden;
+    // padding: 0;
+    // align-items: stretch;
+    // cursor: pointer;
+    padding-left: 0;
+}
+.mdc-list-item--with-trailing-meta .mdc-list-item__end {
+    margin-left: 0;
+    margin-right: 16px;
+}
+
+.mdc-list-item.mdc-list-item--with-trailing-meta .mdc-list-item__end {
+    color: inherit;
+}

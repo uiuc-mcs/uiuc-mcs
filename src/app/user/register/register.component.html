@@ -1,11 +1,11 @@
-<div fxLayout="row" fxLayoutAlign="center center">
+<div class="fx-layout-row fx-layout-align-center-center">
   <div class="col-form basic-container slim">
     <mat-card appearance="outlined">
       <mat-card-header>
         <mat-card-title>Create your account</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <form fxLayout="column" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <form class="fx-layout-column" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <mat-form-field appearance="outline" floatLabel="auto">
             <mat-label>First Name</mat-label>
             <input matInput placeholder="First Name" formControlName="firstName"
