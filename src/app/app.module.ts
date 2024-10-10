@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -57,19 +57,16 @@ import { UrlSerializer } from '@angular/router';
 import { CourseChartComponent } from './courses/course-chart/course-chart.component';
 
 
-@NgModule({
-    declarations: [
+@NgModule({ declarations: [
         AppComponent,
     ],
-    imports: [
-        NavbarComponent,
+    bootstrap: [AppComponent], imports: [NavbarComponent,
         LoginComponent,
         SettingsComponent,
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         MaterialModule,
-        HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
         NothingHereComponent,
@@ -96,9 +93,7 @@ import { CourseChartComponent } from './courses/course-chart/course-chart.compon
         CourseDetailComponent,
         ReviewDetailComponent,
         DialogOnDelete,
-        RegisterComponent,
-    ],
-    providers: [
+        RegisterComponent], providers: [
         ScreenTrackingService,
         UserTrackingService,
         { provide: UrlSerializer, useClass: CustomUrlSerializer },
@@ -108,11 +103,9 @@ import { CourseChartComponent } from './courses/course-chart/course-chart.compon
                 tabManager: persistentMultipleTabManager(),
             }),
             experimentalForceLongPolling: true
-        })
-        ),
+        })),
         provideAuth(() => getAuth()),
         provideAnalytics(() => getAnalytics()),
-    ],
-    bootstrap: [AppComponent]
-})
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule { }
