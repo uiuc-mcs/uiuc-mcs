@@ -1,8 +1,6 @@
 <div class="course-list-container">
-  <div   fxLayoutAlign="space-between center"
-   class="fx-layout-row fx-layout-align-space-between-space-between filter-container">
-    <div class="filter">
-      <mat-form-field appearance="fill">
+  <div class="fx-layout-row fx-layout-align-space-between-space-between filter-container">
+      <mat-form-field appearance="fill" class="filter">
         <mat-label>MCS Requirements Filter</mat-label>
         <mat-select [(value)]="mcsValue" panelClass="select-no-max-height">
           <mat-option *ngFor="let opt of mcsOptions" [value]="opt.value" (click)="onFilterOptionClick(false)">
@@ -10,9 +8,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-    </div>
-    <div class="filter">
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" class="filter">
         <mat-label>MCS-DS Requirements Filter</mat-label>
         <mat-select [(value)]="mcsdsValue" panelClass="select-no-max-height">
           <mat-option *ngFor="let opt of mcsdsOptions" [value]="opt.value" (click)="onFilterOptionClick(true)">
@@ -20,9 +16,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-    </div>
-    <div class="filter">
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" class="filter">
         <mat-label>Semester Filter</mat-label>
         <mat-select [(value)]="semesterValue" panelClass="select-no-max-height">
           <mat-option *ngFor="let opt of semesterOptions" [value]="opt.value" 
@@ -31,7 +25,6 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-    </div>
   </div>
   <div class="table-container mat-elevation-z1">
     <table mat-table matSort [dataSource]="dataSource" [trackBy]="trackById" matSortActive="ClassName" matSortDirection="asc">
