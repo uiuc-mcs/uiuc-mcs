@@ -4,8 +4,10 @@ import { ClassService } from '../services/classes/class.service';
 import { ClassData } from '../shared/class/class';
 import { Review, ratingsToStrings } from '../shared/review/review';
 import { Firestore, collection } from '@angular/fire/firestore';
-import { DocumentData, getDocs, limit, orderBy, OrderByDirection, 
-    query, QueryDocumentSnapshot, startAfter, where } from '@angular/fire/firestore';
+import {
+    DocumentData, getDocs, limit, orderBy, OrderByDirection,
+    query, QueryDocumentSnapshot, startAfter, where
+} from '@angular/fire/firestore';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReviewDetailComponent } from './review-detail/review-detail.component';
 import { MatOptionModule } from '@angular/material/core';
@@ -19,7 +21,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     templateUrl: './reviews.component.html',
     styleUrls: ['./reviews.component.scss'],
     standalone: true,
-    imports: [CommonModule, MatFormFieldModule, ReviewDetailComponent,  MatOptionModule, MatSelectModule, MatButtonModule, MatDialogModule]
+    imports: [CommonModule, MatFormFieldModule, ReviewDetailComponent, MatOptionModule, MatSelectModule, MatButtonModule, MatDialogModule]
 })
 export class ReviewsComponent implements OnInit {
     constructor(
@@ -52,17 +54,17 @@ export class ReviewsComponent implements OnInit {
         });
         // sort by name
         ret.sort((a, b) => {
-            if ((typeof(a) != 'string') && (typeof(b) != 'string'))  {
+            if ((typeof (a) != 'string') && (typeof (b) != 'string')) {
                 const nameA = a.ClassName.toUpperCase(); // ignore upper and lowercase
                 const nameB = b.ClassName.toUpperCase(); // ignore upper and lowercase
                 if (nameA < nameB) {
-                return -1;
+                    return -1;
                 }
                 if (nameA > nameB) {
-                return 1;
+                    return 1;
                 }
             }
-        
+
             // names must be equal
             return 0;
         });

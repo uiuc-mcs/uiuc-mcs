@@ -1,16 +1,8 @@
 import { Timestamp } from '@angular/fire/firestore';
 
-export const mcsdsCategories = [
-  "MCSDS Advanced", "MCSDS Elective", "Machine Learning", "Data Mining",
-  "Data Visualization", "Cloud Computing"
-]
+export const mcsdsCategories = ['Cloud Computing', 'Data Mining', 'Data Visualization', 'MCSDS Advanced', 'MCSDS Elective', 'Machine Learning']
 
-export const mcsCategories = [
-  "MCS Advanced", "MCS Elective", "Artificial Intelligence",
-  "Database and Information Systems", "Graphics/HCI", "Parallel Computing",
-  "Programming Languages & Software Engineering", "Security and Privacy", 
-  "Scientific Computing", "Systems and Networking"
-]
+export const mcsCategories = ['Artificial Intelligence', 'Database and Information Systems', 'Graphics/HCI', 'MCS Advanced', 'MCS Elective', 'Parallel Computing', 'Programming Languages & Software Engineering', 'Scientific Computing', 'Security and Privacy', 'Systems and Networking']
 
 export const courseCategories = Array.from(
   new Set<string>(mcsCategories.concat(mcsdsCategories)))
