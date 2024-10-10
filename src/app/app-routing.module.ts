@@ -30,8 +30,8 @@ export interface NavItem {
 }
 export const NavInfo = new Map<string, NavItem>([
     ['courses', { title: 'Courses', url: '/', show: true }],
-    ['chart', { title: 'Chart', url: '/chart', show: true }],
     ['grid', { title: 'Grid', url: '/grid', show: true }],
+    ['chart', { title: 'Chart', url: '/chart', show: true }],
     ['reviews', { title: 'Reviews', url: '/reviews', show: true }],
     ['createReview', { title: 'Create Review', url: '/createReview', show: false }],
     ['settings', { title: 'Profile', url: '/settings', show: false }],

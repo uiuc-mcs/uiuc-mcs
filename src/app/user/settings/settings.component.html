@@ -23,24 +23,33 @@
     </mat-card-header>
     <mat-card-content>
       <br>
-      <mat-form-field>
+        <!--
+        <input matInput placeholder="Placeholder">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+        -->
+      <!-- <mat-form-field> -->
+      <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input type="text" disabled matInput placeholder="Email" value="{{userInfo.a_email.value}}">
       </mat-form-field>
       <form class="user-edit-form" [formGroup]="editUserDataForm">
-        <mat-form-field>
+        <!-- <mat-form-field> -->
+        <mat-form-field appearance="outline">
           <mat-label>{{ userInfo['b_firstName'].displayName }}</mat-label>
           <input type="text" matInput placeholder="First Name"
             value="{{userInfo['b_firstName'].value}}"
             formControlName="{{userInfo['b_firstName'].name}}">
         </mat-form-field>
-        <mat-form-field>
+        <!-- <mat-form-field> -->
+        <mat-form-field appearance="outline">
           <mat-label>{{ userInfo['c_lastName'].displayName }}</mat-label>
           <input type="text" matInput placeholder="Last Name"
             value="{{userInfo['c_lastName'].value}}"
             formControlName="{{userInfo['c_lastName'].name}}">
         </mat-form-field>
-        <mat-form-field>
+        <!-- <mat-form-field> -->
+        <mat-form-field appearance="outline">
           <mat-label>First Semester</mat-label>
           <mat-select formControlName="firstSemester">
             <mat-option [value]="semester" *ngFor="let semester of Semesters">

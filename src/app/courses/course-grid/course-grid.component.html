@@ -1,44 +1,53 @@
 <div class="content">
   <div class="filter-cards">
     <mat-card appearance="outlined">
-      <mat-card-subtitle>Filter by MCS Area:</mat-card-subtitle>
-      <mat-chip-listbox multiple>
-        <mat-chip-option [selected]="isSelected(category)" (click)="toggleSelection(category)"
-          *ngFor="let category of mcsCats">
-          {{category}}
-        </mat-chip-option>
-      </mat-chip-listbox>
+      <mat-card-header>Filter by MCS Area:</mat-card-header>
+      <mat-card-content>
+        <mat-chip-listbox multiple>
+          <mat-chip-option [selected]="isSelected(category)" (click)="toggleSelection(category)"
+            *ngFor="let category of mcsCats">
+            {{category}}
+          </mat-chip-option>
+        </mat-chip-listbox>
+      </mat-card-content>
     </mat-card>
     <mat-card appearance="outlined">
-      <mat-card-subtitle>Filter by MCS-DS Area:</mat-card-subtitle>
-      <mat-chip-listbox multiple>
-        <mat-chip-option [selected]="isSelected(category)" (click)="toggleSelection(category)"
-          *ngFor="let category of mcsdsCats">
-          {{category}}
-        </mat-chip-option>
-      </mat-chip-listbox>
+      <mat-card-header>Filter by MCS-DS Area:</mat-card-header>
+      <mat-card-content>
+        <mat-chip-listbox multiple>
+          <mat-chip-option [selected]="isSelected(category)" (click)="toggleSelection(category)"
+            *ngFor="let category of mcsdsCats">
+            {{category}}
+          </mat-chip-option>
+        </mat-chip-listbox>
+      </mat-card-content>
     </mat-card>
     <mat-card appearance="outlined">
-      <mat-card-subtitle>Filter by Language:</mat-card-subtitle>
-      <mat-chip-listbox multiple>
-        <mat-chip-option [selected]="isSelected(language)" (click)="toggleSelection(language)"
-          *ngFor="let language of languages">
-          {{language}}
-        </mat-chip-option>
-      </mat-chip-listbox>
+      <mat-card-header>Filter by Language:</mat-card-header>
+      <mat-card-content>
+        <mat-chip-listbox multiple>
+          <mat-chip-option [selected]="isSelected(language)" (click)="toggleSelection(language)"
+            *ngFor="let language of languages">
+            {{language}}
+          </mat-chip-option>
+        </mat-chip-listbox>
+      </mat-card-content>
     </mat-card>
   </div>
   <div class="course-grid-container">
-    <mat-card appearance="outlined" *ngFor="let class of visibleClasses" [routerLink]="getRouterLink(class)">
+    <mat-card appearance="outlined" *ngFor="let class of visibleClasses"
+      [routerLink]="getRouterLink(class)">
       <mat-card-header>
         <mat-card-title>{{class.ClassName}}</mat-card-title>
         <mat-card-subtitle>{{class.CourseNumber}}</mat-card-subtitle>
       </mat-card-header>
-      <mat-chip-listbox>
-        <mat-chip-option *ngFor="let cat of class.category">{{cat}}&nbsp;
-        </mat-chip-option>
-        <mat-chip-option *ngFor="let lang of class.languages">{{lang}}</mat-chip-option>
-      </mat-chip-listbox>
+      <mat-card-content>
+        <mat-chip-set>
+          <mat-chip *ngFor="let cat of class.category">{{cat}}&nbsp;
+          </mat-chip>
+          <mat-chip *ngFor="let lang of class.languages">{{lang}}</mat-chip>
+        </mat-chip-set>
+      </mat-card-content>
     </mat-card>
   </div>
 </div>
