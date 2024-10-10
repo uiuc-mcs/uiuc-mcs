@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout'
 
 import { getApp, initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
@@ -57,7 +56,6 @@ import { CustomUrlSerializer } from './app-routing.module'
 import { UrlSerializer } from '@angular/router';
 import { CourseChartComponent } from './courses/course-chart/course-chart.component';
 
-import { importProvidersFrom } from '@angular/core';
 
 @NgModule({
     declarations: [
@@ -74,7 +72,6 @@ import { importProvidersFrom } from '@angular/core';
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
-        FlexLayoutModule,
         NothingHereComponent,
         PandaPartyComponent,
         ReviewHelpfulnessComponent,
