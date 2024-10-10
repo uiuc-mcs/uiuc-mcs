@@ -24,6 +24,10 @@
     }
 }
 
+.mat-mdc-chip-set .mdc-evolution-chip-set__chips {
+    margin: -4px !important;
+}
+
 .filter {
     flex-grow: 0;
     max-width: 50%;

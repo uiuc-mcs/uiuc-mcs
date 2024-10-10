@@ -56,44 +56,18 @@
           Write your first review
         </button>
       </div>
-      <!-- 
-      <mat-card-header *ngIf="reviewData.length" style="padding-left: 0; padding-right: 0;">
-        <mat-card-title>Reviews</mat-card-title>
-        <div class="fx-flex"></div>
-      </mat-card-header>
-      <mat-list>
-        <mat-list-item *ngFor="let review of reviewData" routerLink="/review/{{review.reviewId}}"
-          class="fx-layout-row">
-          <span style="min-width: 0;">
-            <span matListItemTitle>{{ review.course }}</span>
-            <span matListItemTitle>{{ review.title }}</span>
-          </span>
-          <div class="fx-flex"></div>
-          <div class="list-buttons" (click)="$event.stopPropagation()">
-            <button mat-icon-button routerLink="/review/edit/{{review.reviewId}}">
-              <mat-icon matListItemIcon>mode_edit</mat-icon>
-            </button>
-            <button mat-icon-button (click)="removeReview(review.reviewId)">
-              <mat-icon matListItemIcon>delete</mat-icon>
-            </button>
-          </div>
-        </mat-list-item>
-      </mat-list> -->
       <mat-nav-list>
         <mat-card-header *ngIf="reviewData.length" style="padding-left: 0; padding-right: 0;">
           <mat-card-title>Reviews</mat-card-title>
-          <!-- <div class="fx-flex"></div> -->
         </mat-card-header>
         <mat-list-item *ngFor="let review of reviewData" routerLink="/review/{{review.reviewId}}"
           class="fx-layout-row">
           <span matListItemTitle>{{ review.course }}</span>
           <span matListItemLine>{{ review.title }}</span>
           <button mat-icon-button routerLink="/review/edit/{{review.reviewId}}" matListItemMeta>
-            <!-- <mat-icon>mode_edit</mat-icon> -->
             <mat-icon fontIcon="edit"></mat-icon>
           </button>
           <button mat-icon-button (click)="removeReview(review.reviewId)" matListItemMeta>
-            <!-- <mat-icon>delete</mat-icon> -->
             <mat-icon fontIcon="delete"></mat-icon>
           </button>
         </mat-list-item>

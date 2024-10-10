@@ -128,6 +128,20 @@ margin-left: 4px;
     --mdc-chip-with-trailing-icon-trailing-icon-color: inherit;
     --mdc-chip-with-icon-selected-icon-color: inherit;
   }
+button.mat-mdc-icon-button {
+    // height: 40px !important;
+    // width: 40px !important;
+    padding: 0 !important;
+    min-width: 0 !important;
+    width: 40px !important;
+    height: 40px !important;
+    flex-shrink: 0 !important;
+    line-height: 40px !important;
+    border-radius: 50% !important;
+}
+div.mdc-evolution-chip-set__chips {
+    margin: -4px !important;
+}
 
 $vbad: #d32f2f;
 $bad: #fb8c00;
