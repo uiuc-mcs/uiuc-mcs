@@ -1,12 +1,12 @@
 @import "_constants.scss";
 
 .hero {
-    margin-left: -$main-pad-side;
-    margin-right: -$main-pad-side;
-    @media (max-width: $bp-tiny) {
-        margin-left: -$main-pad-side-mobile;
-        margin-right: -$main-pad-side-mobile;
-    }
+  margin-left: -$main-pad-side;
+  margin-right: -$main-pad-side;
+  @media (max-width: $bp-tiny) {
+    margin-left: -$main-pad-side-mobile;
+    margin-right: -$main-pad-side-mobile;
+  }
 }
 
 // .chip-hover-disabled:hover::after,
@@ -16,16 +16,16 @@
 // }
 
 .hero-back {
-    margin-top: -94px;
-    padding-top: 90px;
-    background-color: $uiuc-navy-lite;
+  margin-top: -94px;
+  padding-top: 90px;
+  background-color: $uiuc-navy-lite;
 }
 
 .image-container {
-    background-size: contain;
-    background-position: 90% 50%;
-    background-repeat: no-repeat;
-    background-attachment: local;
+  background-size: contain;
+  background-position: 90% 50%;
+  background-repeat: no-repeat;
+  background-attachment: local;
 }
 
 // .edit-chip {
@@ -41,97 +41,97 @@
 // }
 
 div.mdc-evolution-chip-set__chips {
-    margin: -4px !important;
+  margin: -4px !important;
 }
 
 .rating-grid {
-    margin-top: 20px;
-    border-radius: 4px;
-    color: rgba(0, 0, 0, 0.87);
-    background: white;
-    @media screen and (min-width: 600px) {
+  margin-top: 20px;
+  border-radius: 4px;
+  color: rgba(0, 0, 0, 0.87);
+  background: white;
+  @media screen and (min-width: 600px) {
     flex-direction: row;
     box-sizing: border-box;
     display: flex;
     place-content: center space-between;
     align-items: center;
-    }
+  }
 }
 
 .rating-grid-title {
-    color: rgba(0, 0, 0, 0.57);
-    font-size: 0.875rem;
+  color: rgba(0, 0, 0, 0.57);
+  font-size: 0.875rem;
 }
 
 .rating-grid-cell {
-    padding: 16px;
-    width: 25%;
-    text-align: center;
-    border-right: 1px solid #efefef;
+  padding: 16px;
+  width: 25%;
+  text-align: center;
+  border-right: 1px solid #efefef;
+  &:last-child {
+    border-right: none;
+  }
+  @media screen and (max-width: 599px) {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #efefef;
     &:last-child {
-        border-right: none;
+      border-bottom: none;
     }
-    @media screen and (max-width: 599px) {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid #efefef;
-        &:last-child {
-            border-bottom: none;
-        }
-    }
+  }
 }
 
 .padded-cell {
-    padding: 4rem 1.5rem;
+  padding: 4rem 1.5rem;
 }
 
 .white {
-    color: #ffffff !important;
+  color: #ffffff !important;
 }
 
 .order-dropdown {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .review-controller {
-    display: flex;
-    flex-flow: wrap;
-    justify-content: space-between;
-    margin: 0 0 -16px;
-    margin-top: 12px;
-    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
-    ::ng-deep .mat-form-field-infix {
-        border-top: 0.5em solid transparent;
-        min-width: 100%;
-    }
-    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
-    ::ng-deep .mat-form-field-flex {
-        padding-top: 0px !important;
-        border: 1px solid rgba(0, 0, 0, 0.26);
-        border-radius: 4px 4px 4px 4px !important;
-    }
-    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
-    ::ng-deep .mat-form-field-underline {
-        width: 0px !important;
-    }
-    /* TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version. */
-    ::ng-deep .mat-select-arrow-wrapper {
-        vertical-align: bottom !important;
-    }
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+  //   margin: 0 0 -16px;
+  margin-top: 12px;
+  /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
+  ::ng-deep .mat-form-field-infix {
+    border-top: 0.5em solid transparent;
+    min-width: 100%;
+  }
+  /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
+  ::ng-deep .mat-form-field-flex {
+    padding-top: 0px !important;
+    border: 1px solid rgba(0, 0, 0, 0.26);
+    border-radius: 4px 4px 4px 4px !important;
+  }
+  /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
+  ::ng-deep .mat-form-field-underline {
+    width: 0px !important;
+  }
+  /* TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version. */
+  ::ng-deep .mat-select-arrow-wrapper {
+    vertical-align: bottom !important;
+  }
 
-    .page-label {
-        vertical-align: middle;
-        margin-right: 9px;
-    }
+  .page-label {
+    vertical-align: middle;
+    margin-right: 9px;
+  }
 }
 
 .next-prev-container {
-    width: 100%;
-    flex-wrap: wrap;
-    button {
-        margin-right: 4px;
-        padding: 0.16rem 0rem 0.16rem 0rem;
-    }
+  width: 100%;
+  flex-wrap: wrap;
+  button {
+    margin-right: 4px;
+    padding: 0.16rem 0rem 0.16rem 0rem;
+  }
 }
 // button.mat-mdc-icon-button {
 //     // height: 40px !important;
@@ -146,6 +146,6 @@ div.mdc-evolution-chip-set__chips {
 // }
 
 .no-reviews {
-    padding-top: 20px;
-    text-align: center;
+  padding-top: 20px;
+  text-align: center;
 }

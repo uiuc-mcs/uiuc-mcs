@@ -1,36 +1,50 @@
 <div class="content restrict-width">
   <div class="review-container">
     <div *ngIf="!reviewData.length && loading">
-      <mat-progress-spinner mode="indeterminate" diameter="80" style="margin: auto;">
+      <mat-progress-spinner
+        mode="indeterminate"
+        diameter="80"
+        style="margin: auto"
+      >
       </mat-progress-spinner>
     </div>
     <div *ngIf="!reviewData.length && !loading && showEmptyMsg">
       No reviews exist for this class yet. Be the first to leave one!
     </div>
-    <mat-card *ngFor="let review of reviewData" style="padding: 16px;">
+    <mat-card *ngFor="let review of reviewData" style="padding: 16px">
       <mat-card-content>
         <div class="rev-card-header">
           <div class="left">
-            <span *ngIf="links" class="rev-course" style="padding-right: 4px;">
+            <span *ngIf="links" class="rev-course" style="padding-right: 4px">
               <a [routerLink]="courseRouterLink(review)">
-                {{review.course}}
+                {{ review.course }}
               </a>
             </span>
-            <span *ngIf="!links" class="rev-course" style="padding-right: 4px;">
-              {{review.course}}
+            <span *ngIf="!links" class="rev-course" style="padding-right: 4px">
+              {{ review.course }}
             </span>
             <mat-chip-set>
-              <mat-chip class="chip-outlined header-chip">{{review.semester}} {{review.year}}
+              <mat-chip class="chip-outlined header-chip"
+                >{{ review.semester }} {{ review.year }}
               </mat-chip>
             </mat-chip-set>
           </div>
           <div class="card-header-buttons">
-            <button mat-icon-button (click)="openSnackBar('Link copied to clipboard.', review.reviewId)"
-             aria-label="copy review link to clipboard.">
+            <button
+              mat-icon-button
+              (click)="
+                openSnackBar('Link copied to clipboard.', review.reviewId)
+              "
+              aria-label="copy review link to clipboard."
+            >
               <mat-icon matTooltip="Copy link">link</mat-icon>
             </button>
-            <button *ngIf="review.userId === userData?.uid" mat-icon-button
-              routerLink="/review/edit/{{review.reviewId}}" aria-label="edit review">
+            <button
+              *ngIf="review.userId === userData?.uid"
+              mat-icon-button
+              routerLink="/review/edit/{{ review.reviewId }}"
+              aria-label="edit review"
+            >
               <mat-icon matTooltip="Edit review">mode_edit</mat-icon>
             </button>
             <!-- <button *ngIf="review.userId === userData?.uid" mat-icon-button (click)="removeReview(review.reviewId)">
@@ -40,26 +54,43 @@
         </div>
         <div class="rev-header">
           <p>
-            <span class="rev-title">{{review.title}}</span><br>
-            <span class="rev-subtitle">{{review.timestamp.toMillis() | date: 'M/d/yyyy, h:mm a'}}</span>
+            <span class="rev-title">{{ review.title }}</span
+            ><br />
+            <span class="rev-subtitle">{{
+              review.timestamp.toMillis() | date : "M/d/yyyy, h:mm a"
+            }}</span>
           </p>
         </div>
-        <p style="white-space: pre-line;">{{review.review}}</p>
-        <mat-card-footer style="display: flex;">
-          <app-review-helpfulness [isLoggedIn]="isLoggedIn" [reviewId]="review.reviewId"
-            [value]="getFeedbackValue(review.reviewId!)" [positive]="review.helpfulPositive"
-            [negative]="review.helpfulNegative"></app-review-helpfulness>
-          <div fxFlex style="flex: 1 1 0%; box-sizing: border-box;"></div>
+        <p style="white-space: pre-line">{{ review.review }}</p>
+        <mat-card-footer style="display: flex">
+          <app-review-helpfulness
+            [isLoggedIn]="isLoggedIn"
+            [reviewId]="review.reviewId"
+            [value]="getFeedbackValue(review.reviewId!)"
+            [positive]="review.helpfulPositive"
+            [negative]="review.helpfulNegative"
+          ></app-review-helpfulness>
+          <div style="flex: 1 1 0%; box-sizing: border-box"></div>
           <mat-chip-set>
-            <mat-chip class="chip-outlined hide-under-xs" [class]="'diff_'+review.difficulty" 
-              matTooltip="Difficulty">
-              {{review.difficultyString}}</mat-chip>
+            <mat-chip
+              class="chip-outlined hide-under-xs"
+              [class]="'diff_' + review.difficulty"
+              matTooltip="Difficulty"
+            >
+              {{ review.difficultyString }}</mat-chip
+            >
             <!-- <mat-chip class="chip-outlined" [class]="'rat_'+review.rating" matTooltip="Rating"> -->
             <!-- <mat-chip selected [color]="availableColors[review.rating].color" matTooltip="Rating"> -->
             <!-- <mat-chip style="--mdc-chip-elevated-container-color: lightgreen;" matTooltip="Rating"> -->
-            <mat-chip class="chip-outlined" [class]="'rat_'+review.rating" matTooltip="Rating">
-              {{review.ratingString}}</mat-chip>
-            <mat-chip class="chip-outlined hide-under-xs" matTooltip="Workload">{{review.workload}} hrs/wk
+            <mat-chip
+              class="chip-outlined"
+              [class]="'rat_' + review.rating"
+              matTooltip="Rating"
+            >
+              {{ review.ratingString }}</mat-chip
+            >
+            <mat-chip class="chip-outlined hide-under-xs" matTooltip="Workload"
+              >{{ review.workload }} hrs/wk
             </mat-chip>
           </mat-chip-set>
         </mat-card-footer>

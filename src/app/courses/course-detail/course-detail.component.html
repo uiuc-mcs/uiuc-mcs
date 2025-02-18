@@ -2,33 +2,52 @@
   <div class="hero-back">
     <div class="image-container restrict-width" #imageContainer>
       <div>
-        <div fxFlex></div>
-        <mat-chip [disableRipple]="true" style="display: none !important;" class="edit-chip"
-          routerLink="/courses/edit/{{courseName}}">
+        <div></div>
+        <mat-chip
+          [disableRipple]="true"
+          style="display: none !important"
+          class="edit-chip"
+          routerLink="/courses/edit/{{ courseName }}"
+        >
           Edit<mat-icon matTooltip="Edit course details">mode_edit</mat-icon>
         </mat-chip>
       </div>
       <div class="padded-cell white">
-        <h1 class="white">{{courseName}}</h1>
-        <h2 class="white">{{courseNumber}}</h2>
+        <h1 class="white">{{ courseName }}</h1>
+        <h2 class="white">{{ courseNumber }}</h2>
         <mat-chip-set>
-          <mat-chip [disableRipple]="true" class="chip-hover-disabled"
-            *ngFor="let cat of course?.category">{{cat}}
+          <mat-chip
+            [disableRipple]="true"
+            class="chip-hover-disabled"
+            *ngFor="let cat of course?.category"
+            >{{ cat }}
           </mat-chip>
-          <mat-chip [disableRipple]="true" class="chip-hover-disabled"
-            *ngFor="let lang of course?.languages">{{lang}}
-            <mat-icon matChipTrailingIcon svgIcon="icons:check">
-            </mat-icon>
+          <mat-chip
+            [disableRipple]="true"
+            class="chip-hover-disabled"
+            *ngFor="let lang of course?.languages"
+            >{{ lang }}
+            <mat-icon matChipTrailingIcon svgIcon="icons:check"> </mat-icon>
           </mat-chip>
           <div *ngFor="let season of course?.season | keyvalue">
-            <mat-chip [disableRipple]="true" *ngIf="season.value" class="chip-hover-disabled">
-              {{season.key | titlecase}}
-              <mat-icon matChipTrailingIcon svgIcon="icons:{{season.key}}"></mat-icon>
+            <mat-chip
+              [disableRipple]="true"
+              *ngIf="season.value"
+              class="chip-hover-disabled"
+            >
+              {{ season.key | titlecase }}
+              <mat-icon
+                matChipTrailingIcon
+                svgIcon="icons:{{ season.key }}"
+              ></mat-icon>
             </mat-chip>
           </div>
-          <mat-chip [disableRipple]="true" class="chip-hover-disabled"
-            *ngIf="course?.SampleSyllabus">
-            <a href="{{course?.SampleSyllabus}}">Sample Syllabus</a>
+          <mat-chip
+            [disableRipple]="true"
+            class="chip-hover-disabled"
+            *ngIf="course?.SampleSyllabus"
+          >
+            <a href="{{ course?.SampleSyllabus }}">Sample Syllabus</a>
           </mat-chip>
         </mat-chip-set>
       </div>
@@ -36,39 +55,55 @@
   </div>
 </div>
 <div class="restrict-width">
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center"
-    class="rating-grid mat-elevation-z1">
-    <div fxflex="" *ngFor="let card of cards" class="rating-grid-cell">
-      <span class="rating-grid-title">{{card.title}}</span> <br>
-      <span>{{card.value ? (card.value | number: '1.0-2') : 'N/A'}}</span>
+  <div class="rating-grid mat-elevation-z1">
+    <div *ngFor="let card of cards" class="rating-grid-cell">
+      <span class="rating-grid-title">{{ card.title }}</span> <br />
+      <span>{{ card.value ? (card.value | number : "1.0-2") : "N/A" }}</span>
     </div>
   </div>
   <div *ngIf="!reviewData.length && loading" style="margin-top: 12px">
-    <mat-progress-spinner mode="indeterminate" diameter="80" style="margin: auto;">
+    <mat-progress-spinner
+      mode="indeterminate"
+      diameter="80"
+      style="margin: auto"
+    >
     </mat-progress-spinner>
   </div>
   <div *ngIf="!reviewData.length && !loading" class="no-reviews">
     <div>No reviews exist for this class yet.</div>
     <div style="padding-top: 20px">
       <button mat-raised-button color="primary" routerLink="/createReview">
-        Create Review</button>
+        Create Review
+      </button>
     </div>
   </div>
   <div *ngIf="reviewData.length">
     <div class="review-controller">
-      <div class="next-prev-container" style="flex-direction: row;
-      box-sizing: border-box;
-      display: flex; height: 70.5625px;">
-        <div fxFlex style="flex: 1 1 0%;box-sizing: border-box;"></div>
+      <div
+        class="next-prev-container"
+        style="
+          flex-direction: row;
+          box-sizing: border-box;
+          display: flex;
+          height: 70.5625px;
+        "
+      >
+        <div style="flex: 1 1 0%; box-sizing: border-box"></div>
         <mat-form-field class="order-dropdown" appearance="fill">
-          <mat-select [(value)]="selectedSort" (selectionChange)="newSort($event)">
+          <mat-select
+            [(value)]="selectedSort"
+            (selectionChange)="newSort($event)"
+          >
             <mat-option *ngFor="let option of orderByOptions" [value]="option">
-              Sort by {{option.displayText}}
+              Sort by {{ option.displayText }}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
     </div>
-    <app-review-detail [reviewData]="reviewData" [links]="false"></app-review-detail>
+    <app-review-detail
+      [reviewData]="reviewData"
+      [links]="false"
+    ></app-review-detail>
   </div>
 </div>
