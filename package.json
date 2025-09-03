@@ -20,11 +20,11 @@
     "@angular/platform-browser": "^18.2.13",
     "@angular/platform-browser-dynamic": "^18.2.13",
     "@angular/router": "^18.2.13",
-    "chart.js": "^4.4.9"
+    "chart.js": "^4.5.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^18.2.19",
-    "@angular/cli": "^18.2.19",
+    "@angular-devkit/build-angular": "^18.2.20",
+    "@angular/cli": "^18.2.20",
     "@angular/compiler-cli": "^18.2.13",
     "@types/randomcolor": "^0.5.9",
     "angular-cli-ghpages": "^1.0.7"
