@@ -21,7 +21,8 @@
     "@angular/platform-browser-dynamic": "^20.2.3",
     "@angular/router": "^20.2.3",
     "chart.js": "^4.5.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "zone.js": "^0.15.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^20.2.1",
