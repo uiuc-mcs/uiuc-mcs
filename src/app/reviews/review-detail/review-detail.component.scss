@@ -118,15 +118,15 @@ margin-left: 4px;
 }
 
 .mat-mdc-standard-chip {
-    --mdc-chip-elevated-container-color: inherit;
-    --mdc-chip-elevated-disabled-container-color: inherit;
-    --mdc-chip-label-text-color: inherit;
-    --mdc-chip-disabled-label-text-color: inherit;
-    --mdc-chip-with-icon-icon-color: inherit;
-    --mdc-chip-with-icon-disabled-icon-color: inherit;
-    --mdc-chip-with-trailing-icon-disabled-trailing-icon-color: inherit;
-    --mdc-chip-with-trailing-icon-trailing-icon-color: inherit;
-    --mdc-chip-with-icon-selected-icon-color: inherit;
+    --mat-chip-elevated-container-color: inherit;
+    --mat-chip-elevated-disabled-container-color: inherit;
+    --mat-chip-label-text-color: inherit;
+    --mat-chip-disabled-label-text-color: inherit;
+    --mat-chip-with-icon-icon-color: inherit;
+    --mat-chip-with-icon-disabled-icon-color: inherit;
+    --mat-chip-with-trailing-icon-disabled-trailing-icon-color: inherit;
+    --mat-chip-with-trailing-icon-trailing-icon-color: inherit;
+    --mat-chip-with-icon-selected-icon-color: inherit;
   }
 button.mat-mdc-icon-button {
     // height: 40px !important;
