@@ -12,17 +12,19 @@
           Edit<mat-icon matTooltip="Edit course details">mode_edit</mat-icon>
         </mat-chip>
       </div>
-      <div class="padded-cell white">
+      <div class="padded-cell">
         <h1 class="white">{{ courseName }}</h1>
         <h2 class="white">{{ courseNumber }}</h2>
         <mat-chip-set>
           <mat-chip
+            style="background-color:#e0e0e0"
             [disableRipple]="true"
             class="chip-hover-disabled"
             *ngFor="let cat of course?.category"
             >{{ cat }}
           </mat-chip>
           <mat-chip
+            style="background-color:#e0e0e0"
             [disableRipple]="true"
             class="chip-hover-disabled"
             *ngFor="let lang of course?.languages"
@@ -31,6 +33,7 @@
           </mat-chip>
           <div *ngFor="let season of course?.season | keyvalue">
             <mat-chip
+              style="background-color:#e0e0e0"
               [disableRipple]="true"
               *ngIf="season.value"
               class="chip-hover-disabled"
@@ -43,6 +46,7 @@
             </mat-chip>
           </div>
           <mat-chip
+            style="background-color:#e0e0e0"
             [disableRipple]="true"
             class="chip-hover-disabled"
             *ngIf="course?.SampleSyllabus"
