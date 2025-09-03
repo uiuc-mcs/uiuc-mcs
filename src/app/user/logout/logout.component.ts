@@ -8,8 +8,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
     selector: 'app-logout',
     templateUrl: './logout.component.html',
     styleUrls: ['./logout.component.scss'],
-    standalone: true,
-    imports: [ MatCardModule, MatError]
+    imports: [MatCardModule, MatError]
 })
 export class LogoutComponent implements OnInit {
     timeRemaining: number = 3

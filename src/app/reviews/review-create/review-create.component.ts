@@ -24,8 +24,7 @@ import { FbUser } from 'src/app/shared/user/user';
     selector: 'app-create-review',
     templateUrl: './review-create.component.html',
     styleUrls: ['./review-create.component.scss'],
-    standalone: true,
-    imports: [MatCardModule, MatError, MatFormFieldModule, MatOptionModule, MatSelectModule,MatInputModule, ReactiveFormsModule, CommonModule, MatButtonModule]
+    imports: [MatCardModule, MatError, MatFormFieldModule, MatOptionModule, MatSelectModule, MatInputModule, ReactiveFormsModule, CommonModule, MatButtonModule]
 })
 
 export class CreateReviewComponent implements OnInit {

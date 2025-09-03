@@ -20,7 +20,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     selector: 'app-reviews',
     templateUrl: './reviews.component.html',
     styleUrls: ['./reviews.component.scss'],
-    standalone: true,
     imports: [CommonModule, MatFormFieldModule, ReviewDetailComponent, MatOptionModule, MatSelectModule, MatButtonModule, MatDialogModule]
 })
 export class ReviewsComponent implements OnInit {

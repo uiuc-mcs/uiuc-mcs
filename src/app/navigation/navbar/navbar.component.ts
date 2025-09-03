@@ -7,11 +7,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
-  standalone: true,
-  imports: [CommonModule, RouterModule, MatIconModule, MatToolbarModule]
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.scss'],
+    imports: [CommonModule, RouterModule, MatIconModule, MatToolbarModule]
 })
 export class NavbarComponent implements OnInit {
   @Input() drawerFunc: any

@@ -16,7 +16,6 @@ import { getRouterLink, ClassData, courseCategories, courseLanguages } from 'src
     selector: 'app-course-edit',
     templateUrl: './course-edit.component.html',
     styleUrls: ['./course-edit.component.scss'],
-    standalone: true,
     imports: [MatOptionModule, MatSelectModule, MatDividerModule, MatCheckboxModule, MatFormFieldModule, CommonModule, MatCardModule, ReactiveFormsModule]
 })
 export class EditCourseComponent implements OnInit {

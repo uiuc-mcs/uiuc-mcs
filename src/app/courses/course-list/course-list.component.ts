@@ -23,7 +23,6 @@ interface FilterOption {
     selector: 'app-course-list',
     templateUrl: './course-list.component.html',
     styleUrls: ['./course-list.component.scss'],
-    standalone: true,
     imports: [CommonModule, MatIconModule, MatTableModule, MatFormFieldModule, ReactiveFormsModule, MatOptionModule, MatSelectModule, MatChipsModule, MatCardModule, MatSortModule, MatSort]
 })
 

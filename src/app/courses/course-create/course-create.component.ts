@@ -10,7 +10,6 @@ import { CommonModule } from '@angular/common';
     selector: 'app-course-create',
     templateUrl: './course-create.component.html',
     styleUrls: ['./course-create.component.scss'],
-    standalone: true,
     imports: [MatFormFieldModule, ReactiveFormsModule, MatCardModule, CommonModule]
 })
 export class CreateCourseComponent implements OnInit {

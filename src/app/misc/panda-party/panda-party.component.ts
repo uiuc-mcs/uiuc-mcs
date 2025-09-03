@@ -3,11 +3,10 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-panda-party',
-  templateUrl: './panda-party.component.html',
-  styleUrls: ['./panda-party.component.scss'],
-  standalone: true,
-  imports: [RouterModule, MatCardModule]
+    selector: 'app-panda-party',
+    templateUrl: './panda-party.component.html',
+    styleUrls: ['./panda-party.component.scss'],
+    imports: [RouterModule, MatCardModule]
 })
 export class PandaPartyComponent {
   @Input() title: string = ""

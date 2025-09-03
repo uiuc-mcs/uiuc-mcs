@@ -24,7 +24,6 @@ import {ThemePalette} from '@angular/material/core';
     selector: 'app-review-detail',
     templateUrl: './review-detail.component.html',
     styleUrls: ['./review-detail.component.scss'],
-    standalone: true,
     imports: [CommonModule, MatIconModule, MatButtonModule, MatChipsModule, MatCardModule, ReviewHelpfulnessComponent, MatProgressSpinnerModule, RouterModule]
 })
 export class ReviewDetailComponent implements OnInit {

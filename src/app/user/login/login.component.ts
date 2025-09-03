@@ -9,11 +9,10 @@ import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  standalone: true,
-  imports: [MatCardModule, MatError, MatFormFieldModule, ReactiveFormsModule, CommonModule, MatButtonModule, MatInputModule, RouterModule]
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+    imports: [MatCardModule, MatError, MatFormFieldModule, ReactiveFormsModule, CommonModule, MatButtonModule, MatInputModule, RouterModule]
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup

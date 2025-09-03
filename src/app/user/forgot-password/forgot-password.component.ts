@@ -9,11 +9,10 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
-  selector: 'app-forgot-password',
-  templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.scss'],
-  standalone: true,
-  imports: [CommonModule, MatCardModule, MatError, MatFormFieldModule, ReactiveFormsModule, RouterModule, MatButtonModule, ReactiveFormsModule, MatInputModule]
+    selector: 'app-forgot-password',
+    templateUrl: './forgot-password.component.html',
+    styleUrls: ['./forgot-password.component.scss'],
+    imports: [CommonModule, MatCardModule, MatError, MatFormFieldModule, ReactiveFormsModule, RouterModule, MatButtonModule, ReactiveFormsModule, MatInputModule]
 })
 export class ForgotPasswordComponent implements OnInit {
   error: any

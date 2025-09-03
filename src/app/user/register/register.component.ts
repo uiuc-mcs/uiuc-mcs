@@ -16,8 +16,7 @@ import { MatriculateSemYear } from 'src/app/shared/class/class'
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.scss'],
-    standalone: true,
-    imports: [ CommonModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatInputModule, ReactiveFormsModule]
+    imports: [CommonModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatInputModule, ReactiveFormsModule]
 })
 export class RegisterComponent implements OnInit {
     registerForm!: FormGroup

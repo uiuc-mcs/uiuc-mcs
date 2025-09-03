@@ -6,11 +6,10 @@ import { NavInfo, NavItem } from 'src/app/app-routing.module';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
-  selector: 'app-sidenav',
-  templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss'],
-  standalone: true,
-  imports: [CommonModule, RouterModule, MatListModule]
+    selector: 'app-sidenav',
+    templateUrl: './sidenav.component.html',
+    styleUrls: ['./sidenav.component.scss'],
+    imports: [CommonModule, RouterModule, MatListModule]
 })
 export class SidenavComponent implements OnInit {
   @Output() routeSelected: EventEmitter<any> = new EventEmitter

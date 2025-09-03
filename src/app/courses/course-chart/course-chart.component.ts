@@ -8,11 +8,10 @@ import { getRouterLink } from 'src/app/shared/class/class';
 
 
 @Component({
-  selector: 'app-course-chart',
-  templateUrl: './course-chart.component.html',
-  styleUrls: ['./course-chart.component.scss'],
-  standalone: true,
-  imports: [MatCardModule]
+    selector: 'app-course-chart',
+    templateUrl: './course-chart.component.html',
+    styleUrls: ['./course-chart.component.scss'],
+    imports: [MatCardModule]
 })
 export class CourseChartComponent implements OnInit, AfterViewInit {
   @ViewChild('chartCanvas') public canvas?: ElementRef<HTMLCanvasElement>;

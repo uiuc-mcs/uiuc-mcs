@@ -28,7 +28,6 @@ import { MatIconModule } from '@angular/material/icon';
     templateUrl: './course-detail.component.html',
     styleUrls: ['./course-detail.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    standalone: true,
     imports: [ReviewDetailComponent, MatOptionModule, MatFormFieldModule, MatSelectModule, MatProgressSpinnerModule, MatChipsModule, CommonModule, MatIconModule, RouterModule]
 })
 export class CourseDetailComponent implements OnInit, AfterViewInit {

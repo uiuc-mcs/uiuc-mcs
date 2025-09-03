@@ -6,11 +6,10 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { reviewFeedbackType } from 'src/app/shared/review/review';
 
 @Component({
-  selector: 'app-review-helpfulness',
-  templateUrl: './review-helpfulness.component.html',
-  styleUrls: ['./review-helpfulness.component.scss'],
-  standalone: true,
-  imports: [MatButtonModule, MatButtonToggleModule, MatTooltipModule]
+    selector: 'app-review-helpfulness',
+    templateUrl: './review-helpfulness.component.html',
+    styleUrls: ['./review-helpfulness.component.scss'],
+    imports: [MatButtonModule, MatButtonToggleModule, MatTooltipModule]
 })
 export class ReviewHelpfulnessComponent {
   @Input() isLoggedIn: boolean = false
