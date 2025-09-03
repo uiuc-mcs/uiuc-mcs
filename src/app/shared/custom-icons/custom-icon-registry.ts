@@ -1,6 +1,6 @@
 // Original source code for this snippet comes from https://github.com/angular/angular/blob/a6971ba89adc253bfa4260036ee4a1e0bd76159f/aio/src/app/shared/custom-icon-registry.ts
-import { ErrorHandler, InjectionToken, Inject, Injectable, Optional } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { ErrorHandler, InjectionToken, Inject, Injectable, Optional, DOCUMENT } from '@angular/core';
+
 import { of } from 'rxjs';
 import { MatIconRegistry } from '@angular/material/icon';
 import { HttpClient } from '@angular/common/http';
