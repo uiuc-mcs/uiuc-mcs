@@ -13,7 +13,8 @@ $typography-configuration: mat.m2-define-typography-config(
 //  you can delete this line and instead use:
 //    `@include mat.legacy-typography-hierarchy($typography-configuration);`
 @include mat.all-component-typographies($typography-configuration);
-@include mat.core();
+@include mat.elevation-classes();
+@include mat.app-background();
 
 body {
     color: $darkgray;
