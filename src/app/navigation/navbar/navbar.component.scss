@@ -1,7 +1,7 @@
-@import "_constants.scss";
+@use "_constants.scss";
 
 .app-toolbar {
-    background-color: $uiuc-navy !important;
+    background-color: constants.$uiuc-navy !important;
     a {
         font-size: 16px;
         color: #fff;

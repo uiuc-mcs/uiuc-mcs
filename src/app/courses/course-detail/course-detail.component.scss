@@ -1,11 +1,11 @@
-@import "_constants.scss";
+@use "_constants.scss";
 
 .hero {
-  margin-left: -$main-pad-side;
-  margin-right: -$main-pad-side;
-  @media (max-width: $bp-tiny) {
-    margin-left: -$main-pad-side-mobile;
-    margin-right: -$main-pad-side-mobile;
+  margin-left: -(constants.$main-pad-side);
+  margin-right: -(constants.$main-pad-side);
+  @media (max-width: constants.$bp-tiny) {
+    margin-left: -(constants.$main-pad-side-mobile);
+    margin-right: -(constants.$main-pad-side-mobile);
   }
 }
 
@@ -18,7 +18,7 @@
 .hero-back {
   margin-top: -94px;
   padding-top: 90px;
-  background-color: $uiuc-navy-lite;
+  background-color: constants.$uiuc-navy-lite;
 }
 
 .image-container {
