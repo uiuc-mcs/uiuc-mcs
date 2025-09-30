@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
-@import "_constants.scss";
+@use "_constants.scss";
 
-@include mat.all-component-themes($my-app-theme);
+@include mat.all-component-themes(constants.$my-app-theme);
 
 
 .mdc-text-field--filled:not(.mdc-text-field--disabled) {

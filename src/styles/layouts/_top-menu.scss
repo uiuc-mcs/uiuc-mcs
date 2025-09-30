@@ -1,3 +1,5 @@
+@use "constants";
+
 // VARIABLES
 $showTopMenuWidth: 600px;
 $hideTopMenuWidth: $showTopMenuWidth - 1;
@@ -18,13 +20,13 @@ mat-toolbar.mat-toolbar {
     }
 
     mat-icon {
-        color: $white;
+        color: constants.$white;
     }
 }
 
 // HOME PAGE OVERRIDE: TOPNAV TOOLBAR
 app-root.page-home mat-toolbar.mat-toolbar {
-    background-color: $blue;
+    background-color: constants.$blue;
 
     @media (min-width: 481px) {
         &:not(.transitioning) {
@@ -93,11 +95,11 @@ button.hamburger {
     }
 
     &:hover {
-        color: $offwhite;
+        color: constants.$offwhite;
     }
 
     & .mat-icon {
-        color: $white;
+        color: constants.$white;
         position: inherit;
     }
 
@@ -135,7 +137,7 @@ button.hamburger {
 
     &:focus {
         // `outline-offset` is not applied on Chrome on Windows, if `outline-style` is `auto.
-        outline: 1px solid $focus-outline-ondark;
+        outline: 1px solid constants.$focus-outline-ondark;
         outline-offset: 4px;
     }
 
@@ -197,7 +199,7 @@ button.hamburger {
                     padding: 8px 16px;
 
                     &:hover {
-                        background: rgba($white, 0.15);
+                        background: rgba(constants.$white, 0.15);
                     }
                 }
 
@@ -205,15 +207,15 @@ button.hamburger {
                     outline: none;
 
                     .nav-link-inner {
-                        background: rgba($white, 0.15);
+                        background: rgba(constants.$white, 0.15);
                         border-radius: 1px;
-                        box-shadow: 0 0 1px 2px $focus-outline-ondark;
+                        box-shadow: 0 0 1px 2px constants.$focus-outline-ondark;
                     }
                 }
 
                 &:active {
                     .nav-link-inner {
-                        background: rgba($white, 0.15);
+                        background: rgba(constants.$white, 0.15);
                     }
                 }
             }
@@ -221,7 +223,7 @@ button.hamburger {
             &.selected {
                 a.nav-link {
                     .nav-link-inner {
-                        background: rgba($white, 0.15);
+                        background: rgba(constants.$white, 0.15);
                     }
                 }
             }
@@ -245,7 +247,7 @@ button.hamburger {
 
             &:focus {
                 // `outline-offset` is not applied on Chrome on Windows, if `outline-style` is `auto.
-                outline: 1px solid $focus-outline-ondark;
+                outline: 1px solid constants.$focus-outline-ondark;
                 outline-offset: -16px;
             }
 

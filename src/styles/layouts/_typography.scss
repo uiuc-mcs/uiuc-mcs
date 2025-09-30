@@ -1,5 +1,8 @@
 @use '@angular/material' as mat;
-@import "_constants.scss";
+@use "sass:map";
+@use "_constants.scss";
+@use "mixins";
+
 $typography-configuration: mat.m2-define-typography-config(
     $body-2: mat.m2-define-typography-level(16px, 1.5),
     $font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
@@ -17,12 +20,12 @@ $typography-configuration: mat.m2-define-typography-config(
 @include mat.app-background();
 
 body {
-    color: $darkgray;
+    color: constants.$darkgray;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-$primary: map-get($my-app-theme, primary);
+$primary: map.get(constants.$my-app-theme, primary);
 
 a {
     text-decoration: none;
@@ -42,11 +45,11 @@ h3,
 h4,
 h5,
 h6 {
-    color: $deepgray;
+    color: constants.$deepgray;
 }
 
 h1 {
-    @include font-size(24);
+    @include mixins.font-size(24);
     font-weight: 500;
     display: inline-block;
     margin: 8px 0px;
@@ -57,37 +60,37 @@ h1 {
 }
 
 h2 {
-    @include font-size(22);
+    @include mixins.font-size(22);
     font-weight: 500;
     margin: 32px 0px 24px;
     clear: both;
 }
 
 h3 {
-    @include font-size(20);
+    @include mixins.font-size(20);
     font-weight: 400;
     margin: 24px 0px 12px;
     clear: both;
 }
 
 h4 {
-    @include font-size(18);
+    @include mixins.font-size(18);
     font-weight: 400;
     margin: 8px 0px;
     clear: both;
 }
 
 h5 {
-    @include font-size(16);
+    @include mixins.font-size(16);
     font-weight: 500;
     margin: 8px 0px;
     clear: both;
 }
 
 h6 {
-    @include font-size(16);
+    @include mixins.font-size(16);
     font-weight: 500;
-    color: $mediumgray;
+    color: constants.$mediumgray;
     margin: 8px 0px;
     clear: both;
 }
@@ -143,9 +146,9 @@ li {
 }
 
 .sidenav-content a {
-    color: $blue;
+    color: constants.$blue;
     &:hover {
-        color: $mediumgray;
+        color: constants.$mediumgray;
     }
 }
 

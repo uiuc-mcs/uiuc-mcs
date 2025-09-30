@@ -1,3 +1,5 @@
+@use "constants";
+
 *,
 ::before,
 ::after {
@@ -13,9 +15,9 @@ body {
 }
 
 main {
-    padding: $main-pad-above $main-pad-side 2rem;
-    @media (max-width: $bp-tiny) {
-        padding: $main-pad-above-mobile $main-pad-side-mobile 2rem;
+    padding: constants.$main-pad-above constants.$main-pad-side 2rem;
+    @media (max-width: constants.$bp-tiny) {
+        padding: constants.$main-pad-above-mobile constants.$main-pad-side-mobile 2rem;
     }
 }
 
@@ -39,7 +41,7 @@ ul {
     margin: 0;
 }
 
-@media (max-width: $bp-tiny) {
+@media (max-width: constants.$bp-tiny) {
     /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
     #mat1 > .mat-form-field-wrapper {
         padding-bottom: 1em;
@@ -60,7 +62,7 @@ ul {
             max-width: 900px;
             padding: 40px 32px;
             width: 100%;
-            @media (max-width: $bp-tiny) {
+            @media (max-width: constants.$bp-tiny) {
                 padding: 36px 36px;
             }
         }
@@ -85,7 +87,7 @@ form {
     }
 }
 
-@media (max-width: $bp-tiny) {
+@media (max-width: constants.$bp-tiny) {
     form .form-row {
         margin-top: 1rem;
         width: 100%;

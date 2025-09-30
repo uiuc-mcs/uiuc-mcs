@@ -5,16 +5,16 @@
 // @import './ng-io-theme';
 
 // global constants
-@import './constants.scss';
+@use 'constants.scss';
 
 // mixins
-@import './mixins.scss';
+@use 'mixins.scss';
 
 // base layouts
-@import './layouts/layouts-dir';
+@use 'layouts/layouts-dir';
 
 // theme
-@import './_theme.scss';
+@use '_theme.scss';
 
 .select-no-max-height {
     max-height: none !important;
