@@ -59,6 +59,7 @@ function createNotFoundPage(dir, options, logger) {
             'CS-446-Machine-Learning',
             'CS-461-Computer-Security-I',
             'CS-475-Formal-Models-of-Computation',
+            'CS-591-CS-Colloquium',
         ]
         const directory = path.join(dir, 'courses')
         logger.info(`directory = ${directory}`)
