@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { MatError } from '@angular/material/form-field';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
@@ -8,7 +7,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
     selector: 'app-logout',
     templateUrl: './logout.component.html',
     styleUrls: ['./logout.component.scss'],
-    imports: [MatCardModule, MatError]
+    imports: [MatCardModule]
 })
 export class LogoutComponent implements OnInit {
     timeRemaining: number = 3
