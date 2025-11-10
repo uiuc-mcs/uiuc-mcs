@@ -133,8 +133,13 @@
                         ],
                         "styles": [
                             "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-                            "src/styles.scss"
+                            "src/styles/main.scss"
                         ],
+                        "stylePreprocessorOptions": {
+                            "includePaths": [
+                                "./src/styles/"
+                            ]
+                        },
                         "scripts": []
                     }
                 },
