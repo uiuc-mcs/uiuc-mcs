@@ -1,6 +1,10 @@
 /**
  * Course data constants
  * This file contains all course information, requirements, and track definitions
+ * 
+ * Based on UIUC MCS Course Planner (https://github.com/uiucmcs/courseplanner)
+ * Copyright (c) 2021 UIUC MCS Community
+ * Licensed under the MIT License
  */
 
 import { CourseId, CourseCode, CategoryId, TrackId, Semester } from './enums';

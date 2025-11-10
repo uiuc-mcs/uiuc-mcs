@@ -1,3 +1,9 @@
+/**
+ * Based on UIUC MCS Course Planner (https://github.com/uiucmcs/courseplanner)
+ * Copyright (c) 2021 UIUC MCS Community
+ * Licensed under the MIT License
+ */
+
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CourseDataService, Course, RequirementCategory } from '../services/course-data.service';

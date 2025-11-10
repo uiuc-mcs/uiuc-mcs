@@ -1,3 +1,9 @@
+/**
+ * Based on UIUC MCS Course Planner (https://github.com/uiucmcs/courseplanner)
+ * Copyright (c) 2021 UIUC MCS Community
+ * Licensed under the MIT License
+ */
+
 import { Injectable } from '@angular/core';
 import { CourseDataService, Course, CourseRequirement } from './course-data.service';
 import { CategoryId, Semester, DEFAULT_CREDITS } from '../constants/enums';

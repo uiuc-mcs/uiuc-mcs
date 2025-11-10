@@ -1,3 +1,9 @@
+/**
+ * Based on UIUC MCS Course Planner (https://github.com/uiucmcs/courseplanner)
+ * Copyright (c) 2021 UIUC MCS Community
+ * Licensed under the MIT License
+ */
+
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
