@@ -1,0 +1,221 @@
+<div class="planner-container" (click)="closeQuickAdd()">
+  <h1>Course Planner</h1>
+
+  <!-- Category Browser -->
+  <app-category-browser [selectedCourseIds]="selectedCourseIds"></app-category-browser>
+
+  <div class="controls-section">
+    <div class="controls">
+      <div class="control-group">
+        <label for="track-select">Specialization Track:</label>
+        <select id="track-select" [(ngModel)]="selectedTrackId" (change)="selectTrack(selectedTrackId)">
+          <option value="">None - General Requirements</option>
+          <option *ngFor="let track of availableTracks" [value]="track.id">
+            {{ track.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="semester-select">Starting Semester:</label>
+        <select id="semester-select" [(ngModel)]="startSemester" (change)="onSemesterChange()">
+          <option *ngFor="let opt of getSemesterOptions()" [value]="opt.code">
+            {{ opt.label }}
+          </option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="year-select">Year:</label>
+        <select id="year-select" [(ngModel)]="startYear" (change)="onYearChange()">
+          <option *ngFor="let year of getYearOptions()" [value]="year">
+            {{ year }}
+          </option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="course-select">Add Course:</label>
+        <select id="course-select" [(ngModel)]="selectedCourse">
+          <option [ngValue]="null">Select a course...</option>
+          <option *ngFor="let course of getAvailableCourses()" [ngValue]="course">
+            {{ getCourseLabel(course) }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="calculation-summary" *ngIf="calculation">
+    <div class="summary-item">
+      <h3>Total Credits</h3>
+      <p class="total-credits" [ngClass]="calculation.color">{{ calculation.total }}/32</p>
+    </div>
+
+    <div class="requirement-item" (click)="toggleBreadthDetails()">
+      <div class="requirement-header">
+        <h4>Breadth Category Requirements</h4>
+        <span class="expand-arrow">{{ breadthDetailsExpanded ? '▼' : '▶' }}</span>
+      </div>
+      <p class="credits" [ngClass]="calculation.breadthComplete === 4 ? 'color-ok' : 'color-notok'">
+        {{ calculation.breadthComplete }}/{{ calculation.breadthNeeded }} Categories
+      </p>
+      <div class="requirement-details" *ngIf="breadthDetailsExpanded">
+        <ul class="course-breakdown">
+          <li *ngFor="let courseId of calculation.breadthCourses">
+            {{ getCourseName(courseId) }}
+          </li>
+          <li *ngIf="calculation.breadthCourses.length === 0" class="no-courses">No courses yet</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="requirement-item" (click)="toggleAdvancedDetails()">
+      <div class="requirement-header">
+        <h4>Advanced Coursework</h4>
+        <span class="expand-arrow">{{ advancedDetailsExpanded ? '▼' : '▶' }}</span>
+      </div>
+      <p class="credits" [ngClass]="calculation.advancedComplete === 3 ? 'color-ok' : 'color-notok'">
+        {{ calculation.advancedComplete }}/{{ calculation.advancedNeeded }} Courses
+      </p>
+      <div class="requirement-details" *ngIf="advancedDetailsExpanded">
+        <ul class="course-breakdown">
+          <li *ngFor="let courseId of calculation.advancedCourses">
+            {{ getCourseName(courseId) }}
+          </li>
+          <li *ngIf="calculation.advancedCourses.length === 0" class="no-courses">No courses yet</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="requirement-item" (click)="toggleElectivesDetails()">
+      <div class="requirement-header">
+        <h4>Electives</h4>
+        <span class="expand-arrow">{{ electivesDetailsExpanded ? '▼' : '▶' }}</span>
+      </div>
+      <p class="credits" [ngClass]="calculation.electivesComplete >= 1 ? 'color-ok' : 'color-notok'">
+        {{ calculation.electivesComplete }}/{{ calculation.electivesNeeded }} Course
+      </p>
+      <div class="requirement-details" *ngIf="electivesDetailsExpanded">
+        <ul class="course-breakdown">
+          <li *ngFor="let courseId of calculation.electivesCourses">
+            {{ getCourseName(courseId) }}
+          </li>
+          <li *ngIf="calculation.electivesCourses.length === 0" class="no-courses">No courses yet</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Track Requirements Section -->
+  <div class="track-requirements" *ngIf="currentTrack">
+    <div class="track-header">
+      <button class="collapse-toggle" (click)="toggleTrackRequirementsCollapse()">
+        {{ trackRequirementsCollapsed ? '▶' : '▼' }}
+      </button>
+      <h2>{{ currentTrack.name }} Track Requirements</h2>
+    </div>
+    <p class="track-description">{{ currentTrack.description }}</p>
+
+    <div class="track-content" *ngIf="!trackRequirementsCollapsed">
+      <!-- Data Science Track Special Display -->
+      <div *ngIf="isDataScienceTrack" class="data-science-requirements">
+        <h3>Breadth Areas</h3>
+        <div class="breadth-areas-grid">
+          <div *ngFor="let area of getDataScienceBreadthAreas()" class="breadth-area">
+            <h4>{{ area.name }}</h4>
+            <p class="requirement">{{ area.required }} course required</p>
+            <ul class="course-list">
+              <li *ngFor="let courseId of area.courseIds"
+                  [ngClass]="{ 'course-selected': isCourseSelected(courseId) }">
+                {{ getCourseName(courseId) }}
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Advanced Coursework</h3>
+        <ul class="course-list">
+          <li *ngFor="let courseId of getDataScienceAdvancedCourses()"
+              [ngClass]="{ 'course-selected': isCourseSelected(courseId) }">
+            {{ getCourseName(courseId) }}
+          </li>
+        </ul>
+
+        <h3>Recommended Electives</h3>
+        <ul class="course-list">
+          <li *ngFor="let courseId of getDataScienceElectives()"
+              [ngClass]="{ 'course-selected': isCourseSelected(courseId) }">
+            {{ getCourseName(courseId) }}
+          </li>
+        </ul>
+      </div>
+
+      <!-- Standard Track Display -->
+      <div *ngIf="!isDataScienceTrack" class="standard-track-requirements">
+        <div *ngFor="let req of currentTrack.requirements" class="track-requirement">
+          <h3>{{ req.name }}</h3>
+          <p class="requirement">{{ req.required }} courses required</p>
+          <p *ngIf="req.description" class="requirement-description">{{ req.description }}</p>
+          <ul class="course-list">
+            <li *ngFor="let courseId of req.courseIds"
+                [ngClass]="{ 'course-selected': isCourseSelected(courseId) }">
+              {{ getCourseName(courseId) }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="selection-boxes-container" (click)="closeQuickAdd()">
+    <div class="selection-box" *ngFor="let box of selectionBoxes; let boxIndex = index" (click)="closeQuickAdd()">
+      <div class="semester-header-wrapper">
+        <h3 class="semester-header">{{ box.name }}</h3>
+      </div>
+
+      <button class="quick-add-btn"
+              title="Add course to this semester"
+              (click)="toggleQuickAdd(boxIndex, $event)">+</button>
+      <div class="quick-add-dropdown" *ngIf="isQuickAddOpen(boxIndex)">
+        <input type="text" class="quick-add-search" placeholder="Search courses..." [(ngModel)]="quickAddSearch" (keydown)="onQuickAddKeydown($event)" (input)="quickAddSelectedIndex = 0" (click)="$event.stopPropagation()">
+        <div class="quick-add-courses">
+          <div class="quick-add-course"
+               *ngFor="let course of getFilteredAvailableCourses(); let i = index"
+               [ngClass]="{ 'quick-add-course-selected': i === quickAddSelectedIndex }"
+               (click)="addCourseFromBox(boxIndex, course); $event.stopPropagation()">
+            {{ course.code }} - {{ course.name }}
+          </div>
+        </div>
+      </div>
+
+      <div class="add-course-section">
+        <button class="add-btn" (click)="addCourse(boxIndex)" [disabled]="!selectedCourse">
+          Add Course
+        </button>
+      </div>
+
+      <div class="courses-list">
+        <div class="course-item" *ngFor="let course of box.courses">
+          <span class="course-code">{{ course.code }}</span>
+          <span class="course-name">{{ course.name }}</span>
+          <div class="course-controls">
+            <select *ngIf="hasCreditOptions(course)"
+                    class="credit-select"
+                    [(ngModel)]="course.creditHours"
+                    (change)="setCreditHours(course.id, course.creditHours || 4)">
+              <option *ngFor="let credits of course.creditOptions" [ngValue]="credits">
+                {{ credits }}h
+              </option>
+            </select>
+            <span *ngIf="!hasCreditOptions(course)" class="credit-display">{{ getCreditHours(course.id) }}h</span>
+          </div>
+          <button class="remove-btn" (click)="removeCourse(course.id, boxIndex)">✕</button>
+        </div>
+        <div *ngIf="box.courses.length === 0" class="empty-message">
+          No courses selected
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

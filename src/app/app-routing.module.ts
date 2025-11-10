@@ -22,6 +22,7 @@ import { environment } from 'src/environments/environment'
 
 import { DefaultUrlSerializer, UrlSerializer, UrlTree } from '@angular/router';
 import { CourseChartComponent } from './courses/course-chart/course-chart.component';
+import { PlannerComponent } from './planner/components/planner.component';
 
 export interface NavItem {
     title: string,
@@ -32,6 +33,7 @@ export const NavInfo = new Map<string, NavItem>([
     ['courses', { title: 'Courses', url: '/', show: true }],
     ['grid', { title: 'Grid', url: '/grid', show: true }],
     ['chart', { title: 'Chart', url: '/chart', show: true }],
+    ['planner', { title: 'Planner', url: '/planner', show: true }],
     ['reviews', { title: 'Reviews', url: '/reviews', show: true }],
     ['createReview', { title: 'Create Review', url: '/createReview', show: false }],
     ['settings', { title: 'Profile', url: '/settings', show: false }],
@@ -87,6 +89,10 @@ const routes: Routes = [
     {
         path: 'chart', component: CourseChartComponent,
         data: { title: `Course Chart | ${environment.websiteName}`, description: '' }
+    },
+    {
+        path: 'planner', component: PlannerComponent,
+        data: { title: `Course Planner | ${environment.websiteName}`, description: '' }
     },
     {
         path: 'reviews', component: ReviewsComponent,

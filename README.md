@@ -9,6 +9,10 @@
 
 Original code forked from [MSCSHub](https://github.com/MSCSHub/MSCSHub).
 
+The course planner feature is based on [UIUC MCS Course Planner](https://github.com/uiucmcs/courseplanner) by UIUC MCS Community, licensed under the MIT License.
+
 ## License
 
 This project is licensed under the [AGPLv3](https://www.gnu.org/licenses/agpl-3.0.html).
+
+Third-party licenses can be found in [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md).
