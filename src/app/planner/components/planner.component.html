@@ -100,6 +100,12 @@
         <ul class="course-breakdown">
           <li *ngFor="let courseId of calculation.electivesCourses">
             {{ getCourseName(courseId) }}
+            <span class="overflow-note" *ngIf="calculation.overflowBreadthCourses?.includes(courseId)">
+              (extra breadth)
+            </span>
+            <span class="overflow-note" *ngIf="calculation.overflowAdvancedCourses?.includes(courseId)">
+              (extra advanced)
+            </span>
           </li>
           <li *ngIf="calculation.electivesCourses.length === 0" class="no-courses">No courses yet</li>
         </ul>

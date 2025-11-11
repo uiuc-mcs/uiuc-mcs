@@ -25,6 +25,8 @@ export interface CalculationResult {
   electivesComplete: number;
   electivesNeeded: number;
   electivesCourses: string[]; // Course IDs that count toward electives
+  overflowBreadthCourses?: string[]; // Breadth courses beyond 4 that count as electives
+  overflowAdvancedCourses?: string[]; // Advanced courses beyond 3 that count as electives
   categories: CategoryCalculation[];
 }
 
@@ -193,6 +195,8 @@ export class PlannerLogicService {
     const breadthCourses: string[] = [];
     const advancedCourses: string[] = [];
     const electivesCourses: string[] = [];
+    const overflowBreadthCourses: string[] = [];
+    const overflowAdvancedCourses: string[] = [];
 
     // Track courses that fulfill multiple breadth areas
     const breadthCoursesMap: Map<string, string[]> = new Map();
@@ -248,6 +252,7 @@ export class PlannerLogicService {
         if (course && !course.category.includes(CategoryId.ELECTIVES)) {
           electiveCount++;
           electivesCourses.push(courseId);
+          overflowBreadthCourses.push(courseId);
         }
       }
     }
@@ -264,6 +269,7 @@ export class PlannerLogicService {
           if (!electivesCourses.includes(courseId)) {
             electivesCourses.push(courseId);
           }
+          overflowAdvancedCourses.push(courseId);
         }
       }
     }
@@ -280,6 +286,8 @@ export class PlannerLogicService {
       electivesComplete: electiveCount,
       electivesNeeded: 1,
       electivesCourses: electivesCourses,
+      overflowBreadthCourses: overflowBreadthCourses.length > 0 ? overflowBreadthCourses : undefined,
+      overflowAdvancedCourses: overflowAdvancedCourses.length > 0 ? overflowAdvancedCourses : undefined,
       categories: []
     };
 
