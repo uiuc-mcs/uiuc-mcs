@@ -1,10 +1,11 @@
-import { Component, ElementRef, AfterViewInit, ViewChild, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, ViewChild, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
 import { Chart, registerables } from "chart.js";
 import { randomColor } from "./randomColor2"
 import { ClassService } from 'src/app/services/classes/class.service';
 import { getRouterLink } from 'src/app/shared/class/class';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -13,17 +14,18 @@ import { getRouterLink } from 'src/app/shared/class/class';
     styleUrls: ['./course-chart.component.scss'],
     imports: [MatCardModule]
 })
-export class CourseChartComponent implements OnInit, AfterViewInit {
+export class CourseChartComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('chartCanvas') public canvas?: ElementRef<HTMLCanvasElement>;
   public chart: Chart | undefined;
   public courseData: any[] = [];
+  private classesSubscription?: Subscription;
 
   constructor(private courses: ClassService, private router: Router) {
     Chart.register(...registerables);
   }
 
   public ngOnInit(): void {
-    this.courses.classes.subscribe(classes => {
+    this.classesSubscription = this.courses.classes.subscribe(classes => {
       this.courseData = classes.map(classData => ({
         label: classData.CourseNumber,
         data: [{
@@ -42,8 +44,18 @@ export class CourseChartComponent implements OnInit, AfterViewInit {
     this.redrawChart();
   }
 
+  public ngOnDestroy(): void {
+    if (this.classesSubscription) {
+      this.classesSubscription.unsubscribe();
+    }
+    if (this.chart) {
+      this.chart.destroy();
+      this.chart = undefined;
+    }
+  }
+
   @HostListener('window:resize', ['$event'])
-  public onResize() {
+  public onResize(event?: Event) {
     this.redrawChart();
   }
 
