@@ -194,7 +194,10 @@ export class PlannerLogicService {
     const advancedCourses: string[] = [];
     const electivesCourses: string[] = [];
 
-    // Count courses by type
+    // Track courses that fulfill multiple breadth areas
+    const breadthCoursesMap: Map<string, string[]> = new Map();
+
+    // First pass: count all courses and categorize them
     for (const courseId of this.selected) {
       const course = courses.find(c => c.id === courseId);
       if (!course) continue;
@@ -207,28 +210,67 @@ export class PlannerLogicService {
         advancedCourses.push(courseId);
       }
 
-      // Check for electives
+      // Check for explicit electives
       if (course.category.includes(CategoryId.ELECTIVES)) {
         electiveCount++;
         electivesCourses.push(courseId);
       }
 
-      // Check for breadth areas (can overlap with advanced or electives)
-      let isBreadth = false;
+      // Check for breadth areas
+      const courseBreadthAreas: string[] = [];
       for (const cat of course.category) {
-        if (breadthCategoryMap[cat] && !breadthAreas.has(breadthCategoryMap[cat])) {
-          breadthAreas.add(breadthCategoryMap[cat]);
-          isBreadth = true;
+        if (breadthCategoryMap[cat]) {
+          courseBreadthAreas.push(breadthCategoryMap[cat]);
         }
       }
-      if (isBreadth) {
-        breadthCourses.push(courseId);
+
+      if (courseBreadthAreas.length > 0) {
+        breadthCoursesMap.set(courseId, courseBreadthAreas);
+      }
+    }
+
+    // Assign breadth courses to areas, tracking overflow
+    for (const [courseId, areas] of breadthCoursesMap.entries()) {
+      let assignedToBreadth = false;
+      for (const area of areas) {
+        // Only assign to breadth if we haven't met the requirement yet
+        if (!breadthAreas.has(area) && breadthAreas.size < 4) {
+          breadthAreas.add(area);
+          breadthCourses.push(courseId);
+          assignedToBreadth = true;
+          break;
+        }
+      }
+      // If course wasn't assigned to breadth (overflow), count as elective
+      // But only if it doesn't already count as explicit elective
+      if (!assignedToBreadth) {
+        const course = courses.find(c => c.id === courseId);
+        if (course && !course.category.includes(CategoryId.ELECTIVES)) {
+          electiveCount++;
+          electivesCourses.push(courseId);
+        }
+      }
+    }
+
+    // Calculate overflow for advanced courses
+    if (advancedCount > 3) {
+      const overflow = advancedCount - 3;
+      // Add overflow count to electives, but don't duplicate courses already counted
+      const overflowCourses = advancedCourses.slice(-overflow);
+      for (const courseId of overflowCourses) {
+        const course = courses.find(c => c.id === courseId);
+        if (course && !course.category.includes(CategoryId.ELECTIVES)) {
+          electiveCount++;
+          if (!electivesCourses.includes(courseId)) {
+            electivesCourses.push(courseId);
+          }
+        }
       }
     }
 
     const calc: CalculationResult = {
       total: totalCredits,
-      color: totalCredits === 32 ? 'color-ok' : 'color-notok',
+      color: totalCredits >= 32 ? 'color-ok' : 'color-notok',
       breadthComplete: breadthAreas.size,
       breadthNeeded: 4,
       breadthCourses: breadthCourses,

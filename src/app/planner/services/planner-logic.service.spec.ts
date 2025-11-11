@@ -374,6 +374,91 @@ describe('PlannerLogicService', () => {
       const result = service.calculate();
       expect(Array.isArray(result.categories)).toBe(true);
     });
+
+    it('should count overflow breadth courses as electives', () => {
+      // Clear any existing courses
+      service.setSelectedCourses([]);
+      
+      // Find courses from different breadth areas
+      const courses = courseDataService.getCourseData().courses;
+      const breadthCategories = ['ai-1', 'db-1', 'sys-1', 'sec-1', 'arch-1'];
+      
+      // Map to track courses per breadth area
+      const coursesByArea = new Map<string, string>();
+      
+      for (const course of courses) {
+        for (const breadthCat of breadthCategories) {
+          if (course.category.includes(breadthCat) && !coursesByArea.has(breadthCat)) {
+            coursesByArea.set(breadthCat, course.id);
+            break;
+          }
+        }
+        if (coursesByArea.size === 5) break;
+      }
+
+      // Add all 5 breadth courses (1 more than the requirement of 4)
+      coursesByArea.forEach(courseId => {
+        service.addCourse(courseId);
+      });
+
+      const result = service.calculate();
+      
+      // Should have found 5 breadth courses from different areas
+      if (coursesByArea.size === 5) {
+        // Should have 4 breadth categories met (max requirement)
+        expect(result.breadthComplete).toBe(4);
+        
+        // The 5th breadth course should count as an elective
+        expect(result.electivesComplete).toBeGreaterThanOrEqual(1);
+      } else {
+        // If we couldn't find 5 different breadth courses, skip the elective check
+        expect(coursesByArea.size).toBeLessThan(5);
+      }
+    });
+
+    it('should count overflow advanced courses as electives', () => {
+      // Clear any existing courses
+      service.setSelectedCourses([]);
+      
+      // Find advanced courses
+      const courses = courseDataService.getCourseData().courses;
+      const advancedCourses = courses.filter(c => c.category.includes('adv-1'));
+
+      // Add 5 advanced courses (2 more than the requirement of 3)
+      for (let i = 0; i < Math.min(5, advancedCourses.length); i++) {
+        service.addCourse(advancedCourses[i].id);
+      }
+
+      const result = service.calculate();
+      
+      // Should have at least 5 advanced courses
+      expect(result.advancedComplete).toBe(5);
+      
+      // The overflow (2 courses) should count as electives
+      expect(result.electivesComplete).toBeGreaterThanOrEqual(2);
+    });
+
+    it('should show green (color-ok) for total credits when >= 32', () => {
+      // Clear any existing courses
+      service.setSelectedCourses([]);
+      
+      // Add enough courses to get 36 credits (more than the 32 requirement)
+      const courses = courseDataService.getCourseData().courses;
+      let totalCredits = 0;
+      
+      for (const course of courses) {
+        if (totalCredits < 36) {
+          service.addCourse(course.id);
+          totalCredits += service.getCreditHours(course.id);
+        }
+      }
+
+      const result = service.calculate();
+      
+      if (result.total >= 32) {
+        expect(result.color).toBe('color-ok');
+      }
+    });
   });
 
   describe('checkPrerequisite', () => {

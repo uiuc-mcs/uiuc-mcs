@@ -57,7 +57,7 @@
         <h4>Breadth Category Requirements</h4>
         <span class="expand-arrow">{{ breadthDetailsExpanded ? '▼' : '▶' }}</span>
       </div>
-      <p class="credits" [ngClass]="calculation.breadthComplete === 4 ? 'color-ok' : 'color-notok'">
+      <p class="credits" [ngClass]="calculation.breadthComplete >= 4 ? 'color-ok' : 'color-notok'">
         {{ calculation.breadthComplete }}/{{ calculation.breadthNeeded }} Categories
       </p>
       <div class="requirement-details" *ngIf="breadthDetailsExpanded">
@@ -75,7 +75,7 @@
         <h4>Advanced Coursework</h4>
         <span class="expand-arrow">{{ advancedDetailsExpanded ? '▼' : '▶' }}</span>
       </div>
-      <p class="credits" [ngClass]="calculation.advancedComplete === 3 ? 'color-ok' : 'color-notok'">
+      <p class="credits" [ngClass]="calculation.advancedComplete >= 3 ? 'color-ok' : 'color-notok'">
         {{ calculation.advancedComplete }}/{{ calculation.advancedNeeded }} Courses
       </p>
       <div class="requirement-details" *ngIf="advancedDetailsExpanded">
