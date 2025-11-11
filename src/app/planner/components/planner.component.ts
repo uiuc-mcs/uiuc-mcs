@@ -25,7 +25,6 @@ export class PlannerComponent implements OnInit {
   calculation: CalculationResult | null = null;
   startSemester: string = '';
   startYear: number = new Date().getFullYear();
-  selectedCourse: Course | null = null;
   allCourses: Course[] = [];
   totalBoxes: number = TOTAL_BOXES;
   perCredit: number = DEFAULT_CREDITS;
@@ -95,38 +94,6 @@ export class PlannerComponent implements OnInit {
     this.updateSelectionBoxLabels();
   }
 
-  async addCourse(boxIndex: number): Promise<void> {
-    if (!this.selectedCourse) return;
-
-    const semester = this.selectionBoxes[boxIndex].semester;
-    const course = this.selectedCourse;
-
-    // Check if semester availability
-    if (!course.semester.includes(semester)) {
-      const semText = semester.charAt(0).toUpperCase() + semester.slice(1);
-      const proceed = confirm(
-        `${course.code} ${course.name} is usually not offered in the ${semText} semester. ` +
-        `Generally offered in ${course.semester.join(', ')} semester(s).\n\nAdd to ${semText} anyway?`
-      );
-      if (!proceed) return;
-    }
-
-    // Check prerequisites
-    const prereqCheck = this.plannerLogicService.checkPrerequisite(course.id);
-    if (!prereqCheck.valid) {
-      const proceed = confirm(
-        `${prereqCheck.message}\n\nAdd to ${this.selectionBoxes[boxIndex].name} anyway?`
-      );
-      if (!proceed) return;
-    }
-
-    this.plannerLogicService.addCourse(course.id);
-    this.selectionBoxes[boxIndex].courses.push(course);
-    this.selectedCourse = null;
-    this.updateSelectedCourseIds();
-    this.updateCalculation();
-  }
-
   removeCourse(courseId: string, boxIndex: number): void {
     const course = this.selectionBoxes[boxIndex].courses.find(c => c.id === courseId);
     if (course) {
@@ -174,10 +141,6 @@ export class PlannerComponent implements OnInit {
       years.push(i);
     }
     return years;
-  }
-
-  getCourseLabel(course: Course): string {
-    return `${course.code} - ${course.name}`;
   }
 
   hasCreditOptions(course: Course): boolean {

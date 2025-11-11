@@ -295,31 +295,6 @@
     }
   }
 
-  .add-course-section {
-    margin-bottom: 12px;
-
-    .add-btn {
-      width: 100%;
-      padding: 8px 12px;
-      background: #1976d2;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background 0.3s;
-
-      &:hover:not(:disabled) {
-        background: #1565c0;
-      }
-
-      &:disabled {
-        background: #ccc;
-        cursor: not-allowed;
-      }
-    }
-  }
-
   .courses-list {
     display: flex;
     flex-direction: column;

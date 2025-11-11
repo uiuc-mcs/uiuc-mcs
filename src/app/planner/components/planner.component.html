@@ -33,16 +33,6 @@
           </option>
         </select>
       </div>
-
-      <div class="control-group">
-        <label for="course-select">Add Course:</label>
-        <select id="course-select" [(ngModel)]="selectedCourse">
-          <option [ngValue]="null">Select a course...</option>
-          <option *ngFor="let course of getAvailableCourses()" [ngValue]="course">
-            {{ getCourseLabel(course) }}
-          </option>
-        </select>
-      </div>
     </div>
   </div>
 
@@ -193,12 +183,6 @@
             {{ course.code }} - {{ course.name }}
           </div>
         </div>
-      </div>
-
-      <div class="add-course-section">
-        <button class="add-btn" (click)="addCourse(boxIndex)" [disabled]="!selectedCourse">
-          Add Course
-        </button>
       </div>
 
       <div class="courses-list">

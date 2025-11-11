@@ -115,58 +115,6 @@ describe('PlannerComponent', () => {
     });
   });
 
-  describe('addCourse', () => {
-    it('should not add course if none selected', async () => {
-      component.selectedCourse = null;
-      const initialLength = component.selectionBoxes[0].courses.length;
-      await component.addCourse(0);
-      expect(component.selectionBoxes[0].courses.length).toBe(initialLength);
-    });
-
-    it('should add course to selection box', async () => {
-      const courses = courseDataService.getCourseData().courses;
-      const springCourse = courses.find(c => c.semester.includes('spring'));
-      if (springCourse) {
-        component.selectionBoxes[0].semester = 'spring';
-        component.selectedCourse = springCourse;
-        
-        spyOn(window, 'confirm').and.returnValue(true);
-        await component.addCourse(0);
-        
-        expect(component.selectionBoxes[0].courses).toContain(springCourse);
-      }
-    });
-
-    it('should clear selected course after adding', async () => {
-      const courses = courseDataService.getCourseData().courses;
-      const springCourse = courses.find(c => c.semester.includes('spring'));
-      if (springCourse) {
-        component.selectionBoxes[0].semester = 'spring';
-        component.selectedCourse = springCourse;
-        
-        spyOn(window, 'confirm').and.returnValue(true);
-        await component.addCourse(0);
-        
-        expect(component.selectedCourse).toBeNull();
-      }
-    });
-
-    it('should update calculation after adding course', async () => {
-      const courses = courseDataService.getCourseData().courses;
-      const springCourse = courses.find(c => c.semester.includes('spring'));
-      if (springCourse) {
-        component.selectionBoxes[0].semester = 'spring';
-        component.selectedCourse = springCourse;
-        
-        spyOn(window, 'confirm').and.returnValue(true);
-        const initialTotal = component.calculation?.total || 0;
-        await component.addCourse(0);
-        
-        expect(component.calculation).toBeDefined();
-      }
-    });
-  });
-
   describe('removeCourse', () => {
     it('should remove course from selection box', () => {
       const courses = courseDataService.getCourseData().courses;
@@ -252,18 +200,6 @@ describe('PlannerComponent', () => {
     it('should include past and future years', () => {
       const options = component.getYearOptions();
       expect(options.length).toBeGreaterThan(3);
-    });
-  });
-
-  describe('getCourseLabel', () => {
-    it('should return formatted course label', () => {
-      const courses = courseDataService.getCourseData().courses;
-      if (courses.length > 0) {
-        const label = component.getCourseLabel(courses[0]);
-        expect(label).toContain(courses[0].code);
-        expect(label).toContain(courses[0].name);
-        expect(label).toContain(' - ');
-      }
     });
   });
 
@@ -501,41 +437,6 @@ describe('PlannerComponent', () => {
   });
 
   describe('Edge cases and confirm dialogs', () => {
-    it('should handle confirm rejection when adding course to wrong semester', async () => {
-      const courses = courseDataService.getCourseData().courses;
-      const fallOnlyCourse = courses.find((c: Course) => 
-        c.semester.includes('fall') && !c.semester.includes('spring')
-      );
-      
-      if (fallOnlyCourse) {
-        component.selectionBoxes[0].semester = 'spring';
-        component.selectedCourse = fallOnlyCourse;
-        
-        spyOn(window, 'confirm').and.returnValue(false);
-        const initialLength = component.selectionBoxes[0].courses.length;
-        
-        await component.addCourse(0);
-        
-        expect(component.selectionBoxes[0].courses.length).toBe(initialLength);
-      }
-    });
-
-    it('should handle confirm rejection when prerequisite not met', async () => {
-      const courses = courseDataService.getCourseData().courses;
-      const courseWithPrereq = courses.find((c: Course) => c.prerequisite && c.prerequisite.minimum > 0);
-      
-      if (courseWithPrereq) {
-        component.selectedCourse = courseWithPrereq;
-        
-        spyOn(window, 'confirm').and.returnValue(false);
-        const initialLength = component.selectionBoxes[0].courses.length;
-        
-        await component.addCourse(0);
-        
-        expect(component.selectionBoxes[0].courses.length).toBe(initialLength);
-      }
-    });
-
     it('should handle addCourseFromBox with wrong semester and user confirmation', async () => {
       const courses = courseDataService.getCourseData().courses;
       const fallOnlyCourse = courses.find((c: Course) => 
