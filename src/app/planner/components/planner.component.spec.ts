@@ -187,19 +187,30 @@ describe('PlannerComponent', () => {
   });
 
   describe('getYearOptions', () => {
-    it('should return year options', () => {
+    it('should return +/- 5 years around the current year', () => {
+      const currentYear = new Date().getFullYear();
       const options = component.getYearOptions();
-      expect(options.length).toBeGreaterThan(0);
+      expect(options.length).toBe(11);
+      expect(options[0]).toBe(currentYear - 5);
+      expect(options[options.length - 1]).toBe(currentYear + 5);
     });
 
-    it('should include current year', () => {
+    it('should include the current start year when within range', () => {
+      const currentYear = new Date().getFullYear();
+      component.startYear = currentYear + 2;
       const options = component.getYearOptions();
       expect(options).toContain(component.startYear);
     });
 
-    it('should include past and future years', () => {
-      const options = component.getYearOptions();
-      expect(options.length).toBeGreaterThan(3);
+    it('should clamp the start year to the allowed range', () => {
+      const currentYear = new Date().getFullYear();
+      component.startYear = currentYear + 10;
+      component.getYearOptions();
+      expect(component.startYear).toBe(currentYear + 5);
+
+      component.startYear = currentYear - 10;
+      component.getYearOptions();
+      expect(component.startYear).toBe(currentYear - 5);
     });
   });
 

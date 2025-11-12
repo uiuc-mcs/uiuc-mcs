@@ -20,11 +20,14 @@ import { TrackId, Semester, TOTAL_BOXES, DEFAULT_CREDITS } from '../constants/en
   imports: [CommonModule, FormsModule, CategoryBrowserComponent]
 })
 export class PlannerComponent implements OnInit {
+  private readonly yearRange = 5;
+  private readonly currentYear = new Date().getFullYear();
+
   categories: Category[] = [];
   selectionBoxes: SelectionBox[] = [];
   calculation: CalculationResult | null = null;
   startSemester: string = '';
-  startYear: number = new Date().getFullYear();
+  startYear: number = this.currentYear;
   allCourses: Course[] = [];
   totalBoxes: number = TOTAL_BOXES;
   perCredit: number = DEFAULT_CREDITS;
@@ -52,6 +55,7 @@ export class PlannerComponent implements OnInit {
     this.allCourses = this.courseDataService.getCourseData().courses;
     this.startSemester = this.plannerLogicService.getCurrentSemester();
     this.availableTracks = this.courseDataService.getTracks();
+    this.clampStartYear();
   }
 
   ngOnInit(): void {
@@ -91,6 +95,7 @@ export class PlannerComponent implements OnInit {
   }
 
   onYearChange(): void {
+    this.clampStartYear();
     this.updateSelectionBoxLabels();
   }
 
@@ -136,9 +141,12 @@ export class PlannerComponent implements OnInit {
   }
 
   getYearOptions(): number[] {
+    this.clampStartYear();
+    const minYear = this.getMinYear();
+    const maxYear = this.getMaxYear();
     const years: number[] = [];
-    for (let i = this.startYear - 5; i <= this.startYear + 1; i++) {
-      years.push(i);
+    for (let year = minYear; year <= maxYear; year++) {
+      years.push(year);
     }
     return years;
   }
@@ -216,6 +224,24 @@ export class PlannerComponent implements OnInit {
 
   toggleTrackRequirementsCollapse(): void {
     this.trackRequirementsCollapsed = !this.trackRequirementsCollapsed;
+  }
+
+  private clampStartYear(): void {
+    const minYear = this.getMinYear();
+    const maxYear = this.getMaxYear();
+    if (this.startYear < minYear) {
+      this.startYear = minYear;
+    } else if (this.startYear > maxYear) {
+      this.startYear = maxYear;
+    }
+  }
+
+  private getMinYear(): number {
+    return this.currentYear - this.yearRange;
+  }
+
+  private getMaxYear(): number {
+    return this.currentYear + this.yearRange;
   }
 
   isCourseSelected(courseId: string): boolean {
