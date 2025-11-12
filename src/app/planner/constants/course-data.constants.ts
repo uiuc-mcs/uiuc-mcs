@@ -112,8 +112,8 @@ export const COURSE_DATA: CourseData = {
     // Placeholder Electives - Pre-approved graduate courses
     // Graduate (400- and 500-level) coursework from Computer Science, other Grainger College of Engineering Departments,
     // MATH, STAT, or PHYS are pre-approved as elective courses. All other courses must receive prior approval.
-    { id: CourseId.CS_400_490_ELECTIVE, code: CourseCode.CS_400_490, name: "CS 400-level Elective", semester: [], category: [CategoryId.ELECTIVES], creditHours: 4 },
-    { id: CourseId.CS_500_590_ELECTIVE, code: CourseCode.CS_500_590, name: "CS 500-level Elective", semester: [], category: [CategoryId.ELECTIVES], creditHours: 4 },
+    // { id: CourseId.CS_400_490_ELECTIVE, code: CourseCode.CS_400_490, name: "CS 400-level Elective", semester: [], category: [CategoryId.ELECTIVES], creditHours: 4 },
+    // { id: CourseId.CS_500_590_ELECTIVE, code: CourseCode.CS_500_590, name: "CS 500-level Elective", semester: [], category: [CategoryId.ELECTIVES], creditHours: 4 },
     // { id: CourseId.MATH_400_ELECTIVE, code: CourseCode.MATH_400, name: "MATH 400-level Elective", semester: [], category: [CategoryId.ELECTIVES], creditHours: 4 },
     // { id: CourseId.MATH_500_ELECTIVE, code: CourseCode.MATH_500, name: "MATH 500-level Elective", semester: [], category: [CategoryId.ELECTIVES], creditHours: 4 },
     // { id: CourseId.STAT_400_ELECTIVE, code: CourseCode.STAT_400, name: "STAT 400-level Elective", semester: [], category: [CategoryId.ELECTIVES], creditHours: 4 },
