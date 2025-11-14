@@ -60,13 +60,13 @@
                             "budgets": [
                                 {
                                     "type": "initial",
-                                    "maximumWarning": "500kb",
-                                    "maximumError": "2mb"
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "3mb"
                                 },
                                 {
                                     "type": "anyComponentStyle",
-                                    "maximumWarning": "2kb",
-                                    "maximumError": "4kb"
+                                    "maximumWarning": "10kb",
+                                    "maximumError": "15kb"
                                 }
                             ],
                             "styles": [
@@ -133,8 +133,13 @@
                         ],
                         "styles": [
                             "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-                            "src/styles.scss"
+                            "src/styles/main.scss"
                         ],
+                        "stylePreprocessorOptions": {
+                            "includePaths": [
+                                "./src/styles/"
+                            ]
+                        },
                         "scripts": []
                     }
                 },

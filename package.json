@@ -4,6 +4,9 @@
   "scripts": {
     "start": "ng serve",
     "build": "ng build",
+    "test": "ng test",
+    "test:headless": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
+    "test:mutation": "stryker run",
     "deploy": "ng deploy --no-nojekyll && gh-pages -d dist/uiuc-mcs-org -r git@github.com:uiuc-mcs/uiuc-mcs.git -p 4 -t",
     "deploy-uiuc-mcs": "ng build --configuration=uiuc-mcs && ng deploy --base-href=https://uiucmcs.org --cname=uiucmcs.org --repo=git@github.com:uiuc-mcs/uiuc-mcs.git --no-build"
   },
@@ -27,7 +30,17 @@
     "@angular-devkit/build-angular": "^20.3.4",
     "@angular/cli": "^20.3.4",
     "@angular/compiler-cli": "^20.3.3",
+    "@stryker-mutator/core": "^9.3.0",
+    "@stryker-mutator/karma-runner": "^9.3.0",
+    "@stryker-mutator/typescript-checker": "^9.3.0",
+    "@types/jasmine": "^5.1.12",
     "@types/randomcolor": "^0.5.9",
-    "angular-cli-ghpages": "^2.0.3"
+    "angular-cli-ghpages": "^2.0.3",
+    "jasmine-core": "^5.12.1",
+    "karma": "^6.4.4",
+    "karma-chrome-launcher": "^3.2.0",
+    "karma-coverage": "^2.2.1",
+    "karma-jasmine": "^5.1.0",
+    "karma-jasmine-html-reporter": "^2.1.0"
   }
 }
