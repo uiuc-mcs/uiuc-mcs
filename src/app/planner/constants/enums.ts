@@ -57,6 +57,7 @@ export enum CourseId {
   ADVANCED_SEMINAR = 'ads',
   CS_591_COLLOQUIUM = 'coll',
   CS_591_STARTUP_SEMINAR = 'css',
+  TOPICS_IN_AUTOMATED_DEDUCTION = 'tad',
 
   // Placeholder Electives
   CS_400_490_ELECTIVE = 'cs400-490',
@@ -93,6 +94,7 @@ export enum CourseCode {
   CS_498 = 'CS 498',
   CS_513 = 'CS 513',
   CS_519 = 'CS 519',
+  CS_576 = 'CS 576',
   CS_591 = 'CS 591',
   CS_598 = 'CS 598',
   STAT_420 = 'STAT 420',
