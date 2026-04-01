@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { ReviewAggregateService } from 'src/app/services/review-aggregate/review-aggregate.service';
 import { FbUser } from 'src/app/shared/user/user';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { Firestore } from '@angular/fire/firestore';
@@ -63,6 +64,7 @@ export class SettingsComponent implements OnInit {
         private _snackBar: MatSnackBar,
         public dialog: MatDialog,
         private formBuilder: FormBuilder,
+        private reviewAggregateService: ReviewAggregateService,
     ) {
         this.editUserDataForm = this.formBuilder.group({
             firstName: [{ value: '', disabled: true }, Validators.required],
@@ -173,8 +175,15 @@ export class SettingsComponent implements OnInit {
         dialogRef.afterClosed().subscribe(
             async (result) => {
                 if (result) {
+                    const review = this.reviewData.find(x => x.reviewId == reviewId)
                     const ref = doc(this.afs, "Reviews", reviewId as string)
                     await deleteDoc(ref)
+                    if (review?.course) {
+                        await this.reviewAggregateService.syncCourseStats({
+                            classId: review.classId,
+                            courseName: review.course,
+                        })
+                    }
                     let index = this.reviewData.findIndex(x => x.reviewId == reviewId)
                     this.reviewData.splice(index, 1)
                 }
