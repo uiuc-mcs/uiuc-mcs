@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { ReviewAggregateService } from 'src/app/services/review-aggregate/review-aggregate.service';
 import { ClassService } from 'src/app/services/classes/class.service';
 import { ClassData, Difficulties, Ratings, Semesters, getRouterLink } from 'src/app/shared/class/class';
 import { DialogReviewSubmission } from 'src/app/shared/dialog/review-submission/dialog-review-submission.component';
@@ -65,6 +66,7 @@ export class CreateReviewComponent implements OnInit {
         private courseService: ClassService,
         private formBuilder: FormBuilder,
         private auth: AuthService,
+        private reviewAggregateService: ReviewAggregateService,
         public dialog: MatDialog,
         private afs: Firestore,
         private router: Router,
@@ -199,6 +201,10 @@ export class CreateReviewComponent implements OnInit {
             const ref = collection(this.afs, 'Reviews')
             await addDoc(ref, this.reviewForm.value)
         }
+        await this.reviewAggregateService.syncCourseStats({
+            classId,
+            courseName,
+        })
         this.loading = false
         this.openSubmittedDialog(course)
 
