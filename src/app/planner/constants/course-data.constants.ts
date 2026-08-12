@@ -98,6 +98,9 @@ export const COURSE_DATA: CourseData = {
     { id: CourseId.DATA_MINING_CAPSTONE, code: CourseCode.CS_598, name: "Data Mining Capstone", semester: [Semester.SUMMER], category: [CategoryId.ADVANCED_COURSEWORK], prerequisite: { minimum: 2, courses: { mandatory: [CourseId.TEXT_INFORMATION_SYSTEMS, CourseId.INTRODUCTION_TO_DATA_MINING], optional: [] } } },
     { id: CourseId.CLOUD_COMPUTING_CAPSTONE, code: CourseCode.CS_598, name: "Cloud Computing Capstone", semester: [Semester.FALL], category: [CategoryId.ADVANCED_COURSEWORK], prerequisite: { minimum: 2, courses: { mandatory: [CourseId.CLOUD_COMPUTING_APPLICATIONS], optional: [CourseId.DISTRIBUTED_SYSTEMS, CourseId.CLOUD_NETWORKING, CourseId.INTERNET_OF_THINGS] } } },
     { id: CourseId.TOPICS_IN_AUTOMATED_DEDUCTION, code: CourseCode.CS_576, name: "Topics in Automated Deduction", semester: [Semester.SPRING], category: [CategoryId.ADVANCED_COURSEWORK], creditHours: 4 },
+    { id: CourseId.ADVANCED_COMPUTER_SECURITY, code: CourseCode.CS_563, name: "Advanced Computer Security", semester: [Semester.FALL], category: [CategoryId.ADVANCED_COURSEWORK], creditHours: 4 },
+    { id: CourseId.QUANTUM_COMPUTING, code: CourseCode.CS_598, name: "Quantum Computing", semester: [Semester.FALL], category: [CategoryId.ADVANCED_COURSEWORK], creditHours: 4 },
+
 
     // Electives - Online Available
     { id: CourseId.FOUNDATIONS_OF_DATA_CURATION, code: CourseCode.CS_598, name: "Foundations of Data Curation", semester: [Semester.FALL], category: [CategoryId.ADVANCED_COURSEWORK] },

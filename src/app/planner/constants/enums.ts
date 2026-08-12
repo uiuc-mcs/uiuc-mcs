@@ -49,6 +49,8 @@ export enum CourseId {
   ADVANCED_BAYESIAN_MODELING = 'adm',
   DATA_MINING_CAPSTONE = 'dmc',
   CLOUD_COMPUTING_CAPSTONE = 'ccc',
+  ADVANCED_COMPUTER_SECURITY = 'acs',
+  QUANTUM_COMPUTING = 'qc',
 
   // Electives
   FOUNDATIONS_OF_DATA_CURATION = 'fdoc',
@@ -94,6 +96,7 @@ export enum CourseCode {
   CS_498 = 'CS 498',
   CS_513 = 'CS 513',
   CS_519 = 'CS 519',
+  CS_563 = 'CS 563',
   CS_576 = 'CS 576',
   CS_591 = 'CS 591',
   CS_598 = 'CS 598',
