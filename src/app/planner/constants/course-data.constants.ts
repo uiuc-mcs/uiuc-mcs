@@ -98,7 +98,7 @@ export const COURSE_DATA: CourseData = {
     { id: CourseId.DATA_MINING_CAPSTONE, code: CourseCode.CS_598, name: "Data Mining Capstone", semester: [Semester.SUMMER], category: [CategoryId.ADVANCED_COURSEWORK], prerequisite: { minimum: 2, courses: { mandatory: [CourseId.TEXT_INFORMATION_SYSTEMS, CourseId.INTRODUCTION_TO_DATA_MINING], optional: [] } } },
     { id: CourseId.CLOUD_COMPUTING_CAPSTONE, code: CourseCode.CS_598, name: "Cloud Computing Capstone", semester: [Semester.FALL], category: [CategoryId.ADVANCED_COURSEWORK], prerequisite: { minimum: 2, courses: { mandatory: [CourseId.CLOUD_COMPUTING_APPLICATIONS], optional: [CourseId.DISTRIBUTED_SYSTEMS, CourseId.CLOUD_NETWORKING, CourseId.INTERNET_OF_THINGS] } } },
     { id: CourseId.TOPICS_IN_AUTOMATED_DEDUCTION, code: CourseCode.CS_576, name: "Topics in Automated Deduction", semester: [Semester.SPRING], category: [CategoryId.ADVANCED_COURSEWORK], creditHours: 4 },
-    { id: CourseId.ADVANCED_COMPUTER_SECURITY, code: CourseCode.CS_563, name: "Advanced Computer Security", semester: [Semester.FALL], category: [CategoryId.ADVANCED_COURSEWORK], creditHours: 4 },
+    { id: CourseId.ADVANCED_COMPUTER_SECURITY, code: CourseCode.CS_563, name: "Advanced Computer Security", semester: [Semester.FALL], category: [CategoryId.ADVANCED_COURSEWORK], creditHours: 4, prerequisite: { minimum: 1, courses: { mandatory: [], optional: [CourseId.COMPUTER_SECURITY_I, CourseId.COMPUTER_SECURITY_II] } } },
     { id: CourseId.QUANTUM_COMPUTING, code: CourseCode.CS_598, name: "Quantum Computing", semester: [Semester.FALL], category: [CategoryId.ADVANCED_COURSEWORK], creditHours: 4 },
 
 
@@ -106,11 +106,11 @@ export const COURSE_DATA: CourseData = {
     { id: CourseId.FOUNDATIONS_OF_DATA_CURATION, code: CourseCode.CS_598, name: "Foundations of Data Curation", semester: [Semester.FALL], category: [CategoryId.ADVANCED_COURSEWORK] },
     { id: CourseId.METHODS_OF_APPLIED_STATISTICS, code: CourseCode.STAT_420, name: "Methods of Applied Statistics", semester: [Semester.SUMMER], category: [CategoryId.ELECTIVES] },
     { id: CourseId.AI_AGENTS_IN_THE_WILD, code: CourseCode.CS_498, name: "AI Agents in the Wild", semester: [Semester.SPRING], category: [CategoryId.ELECTIVES], creditOptions: [3, 4], creditHours: 4 },
+    { id: CourseId.CS_591_STARTUP_SEMINAR, code: CourseCode.CS_591, name: "Computing Startup Seminar", semester: [Semester.FALL], category: [CategoryId.ELECTIVES], creditHours: 1 },
 
 
     // CS 591 Seminars (not available for online students, but included for future reference)
     { id: CourseId.CS_591_COLLOQUIUM, code: CourseCode.CS_591, name: "CS Colloquium", semester: [], category: [CategoryId.ELECTIVES], creditHours: 1  },
-    { id: CourseId.CS_591_STARTUP_SEMINAR, code: CourseCode.CS_591, name: "Computing Startup Seminar", semester: [], category: [CategoryId.ELECTIVES], creditHours: 1  },
     { id: CourseId.ADVANCED_SEMINAR, code: CourseCode.CS_591, name: "Other Advanced Seminar", semester: [], category: [CategoryId.ELECTIVES], creditHours: 1 },
 
     // Placeholder Electives - Pre-approved graduate courses
