@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { CourseDataService, Course, Track, DataScienceTrack } from './course-data.service';
+import { CategoryId, CourseCode, CourseId, Semester } from '../constants';
 
 describe('CourseDataService', () => {
   let service: CourseDataService;
@@ -63,6 +64,41 @@ describe('CourseDataService', () => {
           expect(Array.isArray(course.category)).toBe(true);
         }
       }
+    });
+
+    it('should include the Fall 2026 course additions', () => {
+      const advancedSecurity = service.getCourse(CourseId.ADVANCED_COMPUTER_SECURITY);
+      const quantumComputing = service.getCourse(CourseId.QUANTUM_COMPUTING);
+      const startupSeminar = service.getCourse(CourseId.CS_591_STARTUP_SEMINAR);
+
+      expect(advancedSecurity).toEqual(jasmine.objectContaining({
+        code: CourseCode.CS_563,
+        name: 'Advanced Computer Security',
+        semester: [Semester.FALL],
+        category: [CategoryId.ADVANCED_COURSEWORK],
+        creditHours: 4,
+      }));
+      expect(advancedSecurity?.prerequisite).toEqual({
+        minimum: 1,
+        courses: {
+          mandatory: [],
+          optional: [CourseId.COMPUTER_SECURITY_I, CourseId.COMPUTER_SECURITY_II],
+        },
+      });
+      expect(quantumComputing).toEqual(jasmine.objectContaining({
+        code: CourseCode.CS_598,
+        name: 'Quantum Computing',
+        semester: [Semester.FALL],
+        category: [CategoryId.ADVANCED_COURSEWORK],
+        creditHours: 4,
+      }));
+      expect(startupSeminar).toEqual(jasmine.objectContaining({
+        code: CourseCode.CS_591,
+        name: 'Computing Startup Seminar',
+        semester: [Semester.FALL],
+        category: [CategoryId.ELECTIVES],
+        creditHours: 1,
+      }));
     });
   });
 
